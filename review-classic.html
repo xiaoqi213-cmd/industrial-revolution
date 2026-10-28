@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>影响世界的工业革命 · 高三复习</title>
+
+<!-- Fonts: Anton (English display & numbers), Courier Prime (typed records), Noto Sans SC (Chinese) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Anton&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================================
+   THEME TOKENS — "Time card" system, reused from 汽笛响起时
+   =========================================== */
+:root {
+    --stage-bg: #1f2724;
+    --slide-bg: #33403b;          /* ink-green office wall */
+    --chalk: #eef0e8;
+    --chalk-dim: rgba(238,240,232,.7);
+    --chalk-faint: rgba(238,240,232,.32);
+    --brass: #e8c46a;             /* labels and key terms on the wall */
+    --card: #ead9ae;              /* manila card stock */
+    --card-line: #c9b07a;
+    --ink: #2a2620;
+    --ink-dim: #6b5a3a;
+    --stamp: #b8322a;             /* red: exam focus / errors */
+    --stamp2: #4b3b8f;            /* violet: textbook terms / answers */
+    --green: #2f6b4f;             /* correct marks */
+
+    --f-m: 'Courier Prime', 'Noto Sans SC', monospace;
+    --f-d: 'Anton', 'Noto Sans SC', sans-serif;
+    --f-cn: 'Noto Sans SC', sans-serif;
+    --ease: cubic-bezier(.16,1,.3,1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* === FIXED STAGE BASE (viewport-base.css, included in full) === */
+/* ===========================================
+   FIXED 16:9 STAGE: MANDATORY BASE STYLES
+   Include this ENTIRE file in every presentation.
+   Slides are authored at 1920×1080 and scaled as a whole.
+   =========================================== */
+
+/* 1. Lock the browser viewport */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 2. Full-window deck viewport */
+.deck-viewport {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 3. Fixed 16:9 design canvas.
+   JavaScript sets transform: translate(...) scale(...). */
+.deck-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    transform-origin: 0 0;
+    background: var(--slide-bg, #fff);
+}
+
+/* 4. Slides stack inside the fixed stage.
+   Content must be laid out at 1920×1080, not reflowed per device. */
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--slide-bg, #fff);
+}
+
+.slide.active,
+.slide.visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* 5. Keep media inside authored slide bounds */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 6. Presentation chrome stays outside the slide design system */
+.deck-controls {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* 7. Print one fixed-size slide per page */
+@media print {
+    html,
+    body {
+        width: 1920px;
+        height: auto;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-viewport {
+        position: static;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-stage {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: none !important;
+        background: none;
+    }
+
+    .slide {
+        position: relative;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        width: 1920px;
+        height: 1080px;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .deck-controls {
+        display: none !important;
+    }
+}
+
+/* 8. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+
+/* ===========================================
+   SLIDE BACKGROUND
+   =========================================== */
+.slide {
+    font-family: var(--f-cn); font-size: 24px; line-height: 1.6; color: var(--chalk);
+    background:
+        radial-gradient(ellipse at 30% 35%, rgba(255,255,255,.06), transparent 60%),
+        repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 2px, transparent 2px 7px),
+        var(--slide-bg);
+    transition: opacity .4s ease, visibility .4s;
+}
+
+/* ===========================================
+   ANIMATIONS — --d sets stagger order; stamps thump in
+   =========================================== */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .7s var(--ease); transition-delay: calc(var(--d, 0) * .08s + .08s); }
+.slide.visible .reveal { opacity: 1; transform: rotate(var(--r, 0deg)); }
+.stamp { display: inline-block; border: 4px solid var(--stamp); color: var(--stamp); padding: 4px 14px; font-family: var(--f-d); font-size: 30px; letter-spacing: .05em; line-height: 1.05; text-align: center; mix-blend-mode: multiply; opacity: 0; transform: rotate(var(--sr, -8deg)); background: rgba(234,217,174,.55); }
+.stamp small { display: block; font-family: var(--f-cn); font-weight: 900; font-size: 17px; letter-spacing: .12em; }
+.stamp.violet { border-color: var(--stamp2); color: var(--stamp2); }
+.slide.visible .stamp { animation: thump .45s cubic-bezier(.3,1.6,.5,1) both; animation-delay: var(--sd, 1s); }
+@keyframes thump { from { opacity: 0; transform: rotate(var(--sr,-8deg)) scale(2.2); } to { opacity: .9; transform: rotate(var(--sr,-8deg)) scale(1); } }
+.hbar { transform: scaleX(0); transform-origin: left; transition: transform 1s var(--ease); transition-delay: calc(var(--d,0) * .1s + .4s); }
+.slide.visible .hbar { transform: none; }
+
+/* ===========================================
+   LAYOUT
+   =========================================== */
+.content { position: absolute; left: 100px; right: 100px; top: 70px; bottom: 112px; display: flex; flex-direction: column; }
+.hd { margin-bottom: 20px; display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; }
+.tag { font-family: var(--f-m); font-size: 19px; letter-spacing: .16em; color: var(--brass); text-transform: uppercase; }
+.hd .sec { display: inline-block; font-weight: 900; font-size: 34px; line-height: 1.2; color: #1f2724; background: var(--brass); padding: 2px 16px 4px; letter-spacing: .04em; }
+.hd h2 { font-weight: 900; font-size: 50px; line-height: 1.2; margin-top: 8px; }
+.hd h2 .en { font-family: var(--f-d); font-weight: 400; font-size: 30px; letter-spacing: .04em; color: var(--chalk-faint); text-transform: uppercase; margin-left: 18px; }
+.hd .lk { font-family: var(--f-m); font-size: 17px; color: var(--chalk-dim); text-align: right; line-height: 1.5; white-space: nowrap; }
+.body { flex: 1; min-height: 0; position: relative; }
+.row { display: grid; gap: 30px; align-items: start; }
+.col { display: flex; flex-direction: column; gap: 20px; }
+
+.dim { color: var(--chalk-dim); } .brass { color: var(--brass); }
+.small { font-size: 21px; line-height: 1.55; }
+.xs { font-size: 19px; line-height: 1.5; }
+
+/* Chalk-side note */
+.note { border: 2px dashed var(--chalk-faint); padding: 16px 22px; }
+.note .k { font-family: var(--f-m); font-size: 17px; letter-spacing: .14em; color: var(--brass); display: block; margin-bottom: 6px; }
+
+ul.pl { list-style: none; }
+ul.pl li { position: relative; padding-left: 28px; margin: 5px 0; }
+ul.pl li::before { content: ""; position: absolute; left: 0; top: .55em; width: 12px; height: 12px; border-radius: 50%; border: 3px solid var(--brass); }
+.card ul.pl li::before { border-color: var(--stamp2); }
+
+/* ===========================================
+   MANILA CARD
+   =========================================== */
+.card { position: relative; background: var(--card); color: var(--ink); padding: 22px 26px; font-size: 22px; line-height: 1.55; box-shadow: 0 18px 38px rgba(0,0,0,.38), 0 3px 0 rgba(0,0,0,.15); }
+.card::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0 37px, rgba(150,120,70,.2) 37px 38px); }
+.card > * { position: relative; }
+.card .ct { font-family: var(--f-d); font-size: 28px; letter-spacing: .04em; line-height: 1.15; }
+.card .ct small { font-family: var(--f-cn); font-weight: 900; font-size: 22px; letter-spacing: 0; margin-left: 8px; }
+.card .meta { display: flex; justify-content: space-between; gap: 16px; font-family: var(--f-m); font-size: 17px; border-bottom: 3px solid var(--ink); padding: 4px 0 8px; margin: 4px 0 10px; }
+.card:has(> .stamp) .meta { padding-right: 100px; }
+.card .stamp { position: absolute; top: -18px; right: -18px; }
+.card .src, .src { font-family: var(--f-m); font-size: 15px; line-height: 1.45; margin-top: 10px; }
+.card .src { color: var(--ink-dim); padding-top: 8px; border-top: 1px dashed var(--card-line); }
+.src { color: var(--chalk-dim); }
+.card b.r, .r { color: var(--stamp); } .card b.v, .v { color: var(--stamp2); }
+.card .key { color: var(--stamp2); font-weight: 900; }
+
+/* Ledger table */
+table.lg { width: 100%; border-collapse: collapse; font-size: 20px; line-height: 1.45; }
+table.lg th { font-family: var(--f-m); font-size: 15px; letter-spacing: .1em; text-align: left; padding: 5px 9px; border-bottom: 2px solid var(--ink); }
+table.lg td { padding: 7px 9px; border-bottom: 1px solid var(--card-line); vertical-align: top; }
+table.lg td.n { font-family: var(--f-m); font-weight: 700; color: var(--stamp2); white-space: nowrap; }
+table.lg td.h { font-weight: 900; white-space: nowrap; }
+table.lg td.f { font-family: var(--f-d); font-size: 24px; color: var(--stamp); text-align: right; white-space: nowrap; }
+
+/* Bars */
+.hrow { display: grid; grid-template-columns: 110px 1fr 90px; align-items: center; gap: 12px; margin: 8px 0; }
+.hrow .lab { font-family: var(--f-m); font-size: 17px; line-height: 1.2; }
+.hrow .track { height: 30px; border-left: 3px solid var(--ink); }
+.hrow .hbar { height: 100%; background: repeating-linear-gradient(45deg, var(--stamp) 0 4px, rgba(184,50,42,.35) 4px 10px); border: 2px solid var(--ink); }
+.hrow .hbar.v { background: repeating-linear-gradient(45deg, var(--stamp2) 0 4px, rgba(75,59,143,.3) 4px 10px); }
+.hrow .val { font-family: var(--f-d); font-size: 26px; }
+.stack { display: flex; height: 44px; border: 2px solid var(--ink); }
+.stack span { display: flex; align-items: center; justify-content: center; font-family: var(--f-m); font-weight: 700; font-size: 17px; border-right: 2px solid var(--ink); }
+.stack span:last-child { border-right: none; }
+.stack .s1 { background: repeating-linear-gradient(45deg, rgba(184,50,42,.45) 0 4px, rgba(184,50,42,.15) 4px 10px); }
+.stack .s2 { background: repeating-linear-gradient(45deg, rgba(75,59,143,.4) 0 4px, rgba(75,59,143,.12) 4px 10px); }
+.stack .s3 { background: rgba(255,255,255,.35); }
+
+/* Keyword chips */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chips span { border: 2px solid var(--brass); color: var(--brass); padding: 3px 12px; font-size: 20px; font-weight: 700; }
+.card .chips span { border-color: var(--stamp2); color: var(--stamp2); }
+
+/* Chain flow */
+.flow { display: grid; align-items: stretch; }
+.flow .arr { display: flex; align-items: center; justify-content: center; font-family: var(--f-d); font-size: 34px; color: var(--brass); }
+
+/* Exam question card */
+.q .stem { font-size: 30px; line-height: 1.65; }
+.q .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-top: 14px; font-size: 27px; }
+.q .ans { margin-top: 16px; padding-top: 12px; border-top: 2px solid var(--ink); font-size: 24px; line-height: 1.55; cursor: pointer; }
+.q .ans b { font-family: var(--f-d); font-size: 26px; color: var(--stamp); margin-right: 8px; }
+.q .ans .hide { filter: blur(7px); transition: filter .3s; user-select: none; }
+.q .ans.shown .hide { filter: none; user-select: auto; }
+.q .ans .tip { font-family: var(--f-m); font-size: 14px; color: var(--ink-dim); }
+.q .ans.shown .tip { display: none; }
+.q .from { font-family: var(--f-m); font-size: 18px; color: var(--stamp2); font-weight: 700; }
+
+.q.compact .stem { font-size: 20px; } .q.compact .opts { font-size: 19px; margin-top: 6px; } .q.compact .ans { font-size: 18px; margin-top: 8px; }
+table.lg.exam td, table.lg.exam th { padding: 5px 8px; }
+/* Footer: lesson / module strip / card number */
+.foot { position: absolute; left: 100px; right: 100px; bottom: 40px; height: 40px; display: flex; align-items: center; justify-content: space-between; font-family: var(--f-m); font-size: 17px; letter-spacing: .08em; color: var(--chalk-faint); border-top: 1px solid var(--chalk-faint); padding-top: 8px; }
+.foot .mods { display: flex; gap: 6px; }
+.foot .mods span { padding: 0 10px; border: 1px solid var(--chalk-faint); font-family: var(--f-cn); letter-spacing: 0; font-size: 16px; }
+.foot .mods span.on { background: var(--brass); color: #1f2724; border-color: var(--brass); font-weight: 700; }
+
+/* Title slide */
+.t-tag { position: absolute; left: 110px; top: 120px; font-family: var(--f-m); font-size: 22px; letter-spacing: .2em; color: var(--brass); }
+.t-en { position: absolute; left: 106px; top: 168px; font-family: var(--f-d); font-size: 66px; line-height: 1; letter-spacing: .03em; text-transform: uppercase; color: rgba(238,240,232,.32); }
+.t-cn { position: absolute; left: 102px; top: 280px; font-weight: 900; font-size: 128px; line-height: 1.15; }
+.t-sub { position: absolute; left: 110px; top: 600px; font-size: 36px; font-weight: 700; }
+.t-note { position: absolute; left: 110px; top: 676px; width: 820px; font-size: 26px; line-height: 1.8; color: var(--chalk-dim); }
+.t-meta { position: absolute; left: 110px; bottom: 90px; font-family: var(--f-m); font-size: 20px; color: rgba(238,240,232,.5); letter-spacing: .1em; }
+.bigcard { position: absolute; left: 1020px; top: 110px; width: 780px; height: 860px; --r: 2deg; display: flex; flex-direction: column; }
+.bigcard .hole { position: absolute; top: -8px; left: 50%; width: 34px; height: 34px; margin-left: -17px; border-radius: 50%; background: var(--slide-bg); box-shadow: inset 0 2px 4px rgba(0,0,0,.5); }
+
+/* Dual timeline (slide 3): x = (year − 1730) × 9.33px */
+.tl { position: relative; width: 1720px; height: 520px; }
+.tl .axis { position: absolute; left: 0; right: 0; top: 260px; height: 3px; background: var(--chalk); }
+.tl .yr { position: absolute; top: 268px; font-family: var(--f-m); font-size: 15px; color: var(--chalk-faint); transform: translateX(-50%); }
+.tl .lane { position: absolute; left: -100px; font-family: var(--f-m); font-size: 15px; letter-spacing: .12em; color: var(--brass); writing-mode: vertical-rl; }
+.ev { position: absolute; width: 168px; }
+.ev::before { content: ""; position: absolute; left: 0; width: 2px; background: var(--brass); }
+.ev::after { content: ""; position: absolute; left: -5px; width: 12px; height: 12px; border-radius: 50%; background: var(--brass); }
+.ev .y { font-family: var(--f-d); font-size: 26px; color: var(--brass); line-height: 1; padding-left: 10px; }
+.ev .x { font-size: 18px; line-height: 1.3; padding-left: 10px; }
+.ev.cn::before, .ev.cn::after { background: #f08a7c; }
+.ev.cn .y { color: #f08a7c; }
+.ev.r { text-align: right; transform: translateX(-100%); }
+.ev.r::before { left: auto; right: 0; } .ev.r::after { left: auto; right: -5px; }
+.ev.r .y, .ev.r .x { padding-left: 0; padding-right: 10px; }
+.ev.ah { top: 0; }    .ev.ah::before { top: 0; height: 260px; }  .ev.ah::after { top: 254px; }
+.ev.al { top: 120px; } .ev.al::before { top: 0; height: 140px; } .ev.al::after { top: 134px; }
+.ev.bl { top: 300px; } .ev.bl::before { top: -40px; height: 90px; } .ev.bl::after { top: -46px; }
+.ev.bh { top: 410px; } .ev.bh::before { top: -150px; height: 200px; } .ev.bh::after { top: -156px; }
+
+/* Mind map (slide 12) */
+.mm { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; }
+.mm .card { padding: 18px 22px; }
+.mm .card .ct { font-size: 24px; }
+
+/* Deck chrome outside stage */
+.progress { position: fixed; left: 0; bottom: 0; height: 4px; background: var(--brass); width: 0; transition: width .4s var(--ease); z-index: 1000; }
+.deck-controls { font-family: 'Courier Prime', monospace; font-size: 13px; color: rgba(238,240,232,.6); letter-spacing: .1em; background: rgba(31,39,36,.75); padding: 4px 12px; border: 1px solid rgba(238,240,232,.2); opacity: 0; transition: opacity .3s; }
+body:hover .deck-controls { opacity: 1; }
+.edit-hotzone { position: fixed; top: 0; left: 0; width: 80px; height: 80px; z-index: 10000; cursor: pointer; }
+.edit-toggle { position: fixed; top: 16px; left: 16px; z-index: 10001; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--brass); background: #1f2724; color: var(--brass); font-size: 20px; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.edit-toggle.show, .edit-toggle.active { opacity: 1; pointer-events: auto; }
+.edit-toggle.active { background: var(--brass); color: #1f2724; }
+body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7); outline-offset: 4px; cursor: text; }
+.toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: var(--brass); color: #1f2724; font-family: 'Courier Prime', monospace; font-size: 13px; padding: 8px 16px; z-index: 10002; opacity: 0; transition: opacity .3s; pointer-events: none; }
+.toast.show { opacity: 1; }
+/* PDF/print: show every answer */
+@media print { .q .ans .hide { filter: none !important; } .q .ans .tip { display: none; } }
+</style>
+</head>
+<body>
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage">
+
+<!-- =========================================================
+     01 — COVER
+     ========================================================= -->
+<section class="slide" data-mod="0">
+  <div class="t-tag reveal" style="--d:0">高三一轮复习 · 世界近代史</div>
+  <div class="t-en reveal" style="--d:1">The Industrial Revolution</div>
+  <h1 class="t-cn reveal" style="--d:2">影响世界的<br>工业革命</h1>
+  <p class="t-sub reveal" style="--d:3">从工场到工厂，从英国到世界</p>
+  <p class="t-note reveal" style="--d:4">一条主线：<b class="brass">生产力变革 → 生产关系与社会结构变化 → 世界格局重塑</b>。一个视角：机器如何改变普通人的劳作与生活。</p>
+  <div class="t-meta reveal" style="--d:5">纲要下 第10课 · 选必2 第5课 · 跨册整合</div>
+  <div class="card bigcard reveal" style="--d:2">
+    <div class="hole"></div>
+    <div class="ct" style="text-align:center;font-size:46px;margin-top:20px">REVIEW CARD · 复习卡</div>
+    <div class="meta"><span>课时 1 课时（约 45 分钟）</span><span>SHEETS 01–31</span></div>
+    <table class="lg" style="font-size:22px">
+      <tr><th>MODULE</th><th>内容</th><th>CARDS</th></tr>
+      <tr><td class="n">导航</td><td>课标考情 · 高考考点全景 · 时空坐标</td><td class="n">02–05</td></tr>
+      <tr><td class="n">一</td><td><b>工业革命的背景</b></td><td class="n">06–08</td></tr>
+      <tr><td class="n">二</td><td><b>工业革命的进程</b></td><td class="n">09–13</td></tr>
+      <tr><td class="n">三</td><td><b>工业革命的影响</b></td><td class="n">14–23</td></tr>
+      <tr><td class="n">四</td><td><b>高考链接</b>：史料 · 真题 · 易错 · 框架</td><td class="n">24–31</td></tr>
+    </table>
+    <div style="margin-top:auto;font-size:20px;line-height:1.6">
+      <b class="r">红色</b>＝高频考点/易错　<b class="v">紫色</b>＝教材关键表述<br>真题答案默认遮挡，<b>点击答案栏</b>揭晓。
+    </div>
+    <div class="stamp" style="top:auto;bottom:210px;right:44px;--sr:-12deg;--sd:1.2s;font-size:40px">高考高频<small>2023—2026 · 22 题</small></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     02 — CURRICULUM & EXAM TRENDS
+     ========================================================= -->
+<section class="slide" data-mod="0">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">复习导航</div><h2>课标要求与命题趋势</h2></div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1.05fr .95fr">
+        <div class="col">
+          <div class="card reveal" style="--d:1;--r:-.5deg">
+            <div class="ct">STANDARDS <small>课程标准</small></div>
+            <div class="meta"><span>必修 + 选择性必修</span><span>纲要下10 · 选必2 5/12</span></div>
+            <p><b class="v">必修：</b>了解工业革命的发生和发展，以及带来的<b class="key">社会生产力的极大发展</b>和所引起的<b class="key">生产关系的深刻变化</b>；理解工业革命对<b class="key">资本主义世界体系的形成</b>及对<b class="key">人类社会生活</b>的深远影响。</p>
+            <p style="margin-top:8px"><b class="v">选必：</b>认识大机器生产、工厂制度等对人类<b class="key">劳作方式及生活方式</b>的影响；认识工业革命对促进<b class="key">交通进步</b>的作用。</p>
+          </div>
+          <div class="card reveal" style="--d:3;--r:.4deg;padding:16px 22px">
+            <div class="ct" style="font-size:24px">HEAT MAP <small>考点热度（第 3—4 页所列 25 题）</small></div>
+            <div class="hrow" style="grid-template-columns:230px 1fr 50px;margin:5px 0"><span class="lab">各国工业化道路</span><div class="track"><div class="hbar" style="width:100%;--d:3"></div></div><span class="val">6</span></div>
+            <div class="hrow" style="grid-template-columns:230px 1fr 50px;margin:5px 0"><span class="lab">社会生活与城市化</span><div class="track"><div class="hbar" style="width:66.7%;--d:4"></div></div><span class="val">4</span></div>
+            <div class="hrow" style="grid-template-columns:230px 1fr 50px;margin:5px 0"><span class="lab">世界市场与国家政策</span><div class="track"><div class="hbar" style="width:66.7%;--d:5"></div></div><span class="val">4</span></div>
+            <div class="hrow" style="grid-template-columns:230px 1fr 50px;margin:5px 0"><span class="lab">生产组织与劳作方式</span><div class="track"><div class="hbar v" style="width:50%;--d:6"></div></div><span class="val">3</span></div>
+            <div class="hrow" style="grid-template-columns:230px 1fr 50px;margin:5px 0"><span class="lab">技术进步与进程</span><div class="track"><div class="hbar v" style="width:50%;--d:7"></div></div><span class="val">3</span></div>
+            <div class="hrow" style="grid-template-columns:230px 1fr 50px;margin:5px 0"><span class="lab">背景与条件</span><div class="track"><div class="hbar v" style="width:50%;--d:8"></div></div><span class="val">3</span></div>
+            <div class="hrow" style="grid-template-columns:230px 1fr 50px;margin:5px 0"><span class="lab">垄断组织</span><div class="track"><div class="hbar v" style="width:33.3%;--d:9"></div></div><span class="val">2</span></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card reveal" style="--d:2;--r:.6deg">
+            <div class="ct">TRENDS <small>命题趋势</small></div>
+            <div class="meta"><span>近三年高考</span><span>2024–2026</span></div>
+            <ul class="pl">
+              <li>高频考查工业革命与<b class="r">生活方式、劳作方式、社会结构</b>的变化</li>
+              <li>以回忆录、数据、图表等<b class="r">多类型史料</b>考查史料实证</li>
+              <li>关注<b class="r">政府政策、技术与劳资关系</b>及后起国家的工业化道路</li>
+            </ul>
+          </div>
+          <div class="reveal" style="--d:4">
+            <div class="tag" style="margin-bottom:10px">Key Terms · 必背关键词</div>
+            <div class="chips">
+              <span>圈地运动</span><span>手工工场</span><span>珍妮纺纱机</span><span>水力纺纱厂</span><span>改良蒸汽机</span><span>蒸汽时代</span><span>世界工厂</span><span>电力</span><span>内燃机</span><span>电气时代</span><span>工厂制度</span><span>垄断组织</span><span>两大阶级</span><span>城市化</span><span>世界市场</span><span>资本主义世界经济体系</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 03–04 — PAST EXAM POINTS BY YEAR AND PAPER === -->
+<section class="slide" data-mod="0">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">复习导航</div><h2>高考考点全景（一）：2026—2025 年</h2></div><div class="lk">按年份 · 卷别排列</div></div>
+    <div class="body">
+      <div class="card reveal" style="--d:1;--r:-.2deg;padding:14px 22px">
+        <table class="lg exam" style="font-size:19px"><tr><th style="width:70px">年份</th><th style="width:150px">卷别</th><th style="width:60px">题号</th><th>材料情境</th><th style="width:330px">考查角度（答案指向）</th><th style="width:230px">对应考点</th></tr><tr><td class="n">2026</td><td class="h">浙江1月</td><td class="n">14</td><td>1824 年海德纺纱工人罢工后，雇主催促工程师研制自动纺纱机</td><td><b class="r">以技术革新应对工人反抗</b></td><td>二（一）技术革新</td></tr><tr><td class="n">2026</td><td class="h">浙江6月</td><td class="n">12</td><td>1813—1846 年英国取消东印度公司垄断、废除机械出口禁令、削减关税</td><td><b class="r">推动工业发展，强化经济优势</b></td><td>二（二）国家政策</td></tr><tr><td class="n">2026</td><td class="h">陕晋宁青</td><td class="n">14</td><td>橡胶研究与硫化技术，19世纪后期用于绝缘材料</td><td><b class="r">科技突破推动生产方式变革</b></td><td>二（三）第二次工业革命</td></tr><tr><td class="n">2026</td><td class="h">黑吉辽蒙</td><td class="n">14</td><td>19世纪中后期英国赛马场开设临时电报局</td><td><b class="r">工业革命成果融入社会生活</b></td><td>三（六）社会生活</td></tr><tr><td class="n">2026</td><td class="h">江苏</td><td class="n">13</td><td>1867—1897 年日本各类棉布需求变化</td><td><b class="r">手工劳动与机器生产并存</b></td><td>二（五）后起国家</td></tr><tr><td class="n">2026</td><td class="h">河南</td><td class="n">14</td><td>海外商会的活动</td><td><b class="r">生产组织与管理方式变革</b></td><td>三（二）生产组织</td></tr><tr><td class="n">2026</td><td class="h">湖南</td><td class="n">14</td><td>19世纪中叶英国“比例尺之争”（产权登记、道路、排水）</td><td><b class="r">城市发展进程加快</b></td><td>三（六）城市化</td></tr><tr><td class="n">2025</td><td class="h">黑吉辽蒙</td><td class="n">14</td><td>1837 年电报专利，1839 年首次用于铁路并推广</td><td><b class="r">产业革命的深入</b></td><td>二（二）交通通讯</td></tr><tr><td class="n">2025</td><td class="h">陕晋宁青</td><td class="n">14</td><td>格拉斯哥商会感谢美洲贸易商人支持制造业</td><td><b class="r">英国制造业与大西洋贸易联系密切</b></td><td>三（八）世界市场</td></tr><tr><td class="n">2025</td><td class="h">甘肃</td><td class="n">15</td><td>工厂兴起后丈夫往返于工作场所与住所</td><td><b class="r">生活空间和劳作方式的改变</b></td><td>三（四）劳作方式</td></tr><tr><td class="n">2025</td><td class="h">四川</td><td class="n">14</td><td>英国棉花进口数据</td><td><b class="r">工业革命后英美经济的特征</b></td><td>三（八）世界市场</td></tr><tr><td class="n">2025</td><td class="h">河南</td><td class="n">14</td><td>运用历史结论</td><td><b class="r">世界经济发展的特征</b></td><td>三（八）世界体系</td></tr><tr><td class="n">2025</td><td class="h">山东</td><td class="n">8</td><td>1895—1909 年英国在华公司占外国在华公司比重变化</td><td><b class="r">垄断资本主义的形成</b></td><td>三（三）垄断组织</td></tr></table>
+      </div>
+      <p class="small reveal" style="--d:2;margin-top:14px;color:var(--chalk-dim)"><b class="brass">读表：</b>2026 年七套卷中，题目分布在技术、政策、生活、城市化、后起国家多个角度；2025 年集中在<b class="brass">世界市场与社会生活</b>。</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-mod="0">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">复习导航</div><h2>高考考点全景（二）：2024 年及以前</h2></div><div class="lk">按年份 · 卷别排列</div></div>
+    <div class="body">
+      <div class="card reveal" style="--d:1;--r:-.2deg;padding:14px 22px">
+        <table class="lg exam" style="font-size:19px"><tr><th style="width:70px">年份</th><th style="width:150px">卷别</th><th style="width:60px">题号</th><th>材料情境</th><th style="width:330px">考查角度（答案指向）</th><th style="width:230px">对应考点</th></tr><tr><td class="n">2024</td><td class="h">新课标</td><td class="n">32</td><td>17世纪法国细布工场雇佣近 1700 人，分工细致</td><td><b class="r">生产方式变革的条件渐趋成熟</b></td><td>一（二）手工工场</td></tr><tr><td class="n">2024</td><td class="h">全国甲</td><td class="n">33</td><td>“是机器迫使工人接受工厂纪律的”</td><td><b class="r">生产组织方式发生深刻变革</b></td><td>三（四）工厂纪律</td></tr><tr><td class="n">2024</td><td class="h">安徽</td><td class="n">15</td><td>20世纪初德意志制造同盟成立</td><td><b class="r">德国的文化创新助力工业发展</b></td><td>二（五）德国道路</td></tr><tr><td class="n">2024</td><td class="h">江西</td><td class="n">15</td><td>1914 年外资占俄国公司投资约 1/3</td><td><b class="r">俄国资本原始积累不足</b></td><td>二（五）俄国道路</td></tr><tr><td class="n">2024</td><td class="h">湖南</td><td class="n">14</td><td>缝纫机的生产</td><td><b class="r">工业革命推动标准化生产</b></td><td>三（二）生产组织</td></tr><tr><td class="n">2024</td><td class="h">广西</td><td class="n">—</td><td>1894 年劳埃德批评标准石油公司操纵市场</td><td><b class="r">垄断资本主义的形成</b></td><td>三（三）垄断组织</td></tr><tr><td class="n">2023</td><td class="h">辽宁</td><td class="n">13</td><td>1840 年法国最高纳税人职业表</td><td><b class="r">法国工业化程度有限</b></td><td>二（五）法国道路</td></tr><tr><td class="n">2023</td><td class="h">河北</td><td class="n">14</td><td>19世纪英法贸易商品结构</td><td><b class="r">英法工业化进程各具特色</b></td><td>二（五）各具特色</td></tr><tr><td class="n">2023</td><td class="h">海南</td><td class="n">12</td><td>19世纪中叶男装由华美转向简洁实用</td><td><b class="r">社会变迁影响流行风尚</b></td><td>三（五）阶级结构</td></tr><tr><td class="n">2019</td><td class="h">全国Ⅰ</td><td class="n">—</td><td>修理过唧筒的瓦特改进蒸汽机</td><td><b class="r">发明创造源自劳动实践</b></td><td>一（一）/二（一）</td></tr><tr><td class="n">2018</td><td class="h">江苏</td><td class="n">—</td><td>因棉布紧俏发明新纺纱机，因动力不足改良蒸汽机</td><td><b class="r">技术革新着力解决生产中的迫切问题</b></td><td>二（一）发明链</td></tr><tr><td class="n">2016</td><td class="h">全国</td><td class="n">—</td><td>19世纪60年代美国铁路轨距不统一</td><td><b class="r">尚未形成成熟的统一国内市场</b></td><td>二（五）美国道路</td></tr></table>
+      </div>
+      <p class="small reveal" style="--d:2;margin-top:14px;color:var(--chalk-dim)"><b class="brass">规律：</b>后起国家（德、法、俄、美）的工业化道路反复出现——复习时要能说出<b class="brass">各国条件不同，进程各具特色</b>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     03 — SPACE-TIME COORDINATES: West vs China
+     x = (year − 1730) × 9.33px
+     ========================================================= -->
+<section class="slide" data-mod="0">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">复习导航</div><h2>时空坐标：同一条时间轴上的东方与西方</h2></div>
+      <div class="lk">第一次：18世纪60年代—19世纪中期<br>第二次：19世纪70年代—20世纪初</div></div>
+    <div class="body">
+      <div class="tl reveal" style="--d:1;margin-left:60px;width:1660px">
+        <div class="lane" style="top:30px">西 方 · WEST</div>
+        <div class="lane" style="top:330px;color:#f08a7c">中 国 · CHINA</div>
+        <div class="axis"></div>
+        <div class="yr" style="left:187px">1750</div><div class="yr" style="left:653px">1800</div><div class="yr" style="left:1120px">1850</div><div class="yr" style="left:1586px">1900</div>
+        <div class="ev ah" style="left:28px"><div class="y">1733</div><div class="x">凯伊发明“飞梭”</div></div>
+        <div class="ev al" style="left:327px"><div class="y">1765</div><div class="x">珍妮纺纱机：工业革命开始</div></div>
+        <div class="ev ah" style="left:383px"><div class="y">1771</div><div class="x">阿克莱特水力纺纱厂：近代工厂开端</div></div>
+        <div class="ev al" style="left:513px"><div class="y">1785</div><div class="x">瓦特蒸汽机用于棉纺织厂</div></div>
+        <div class="ev ah" style="left:718px"><div class="y">1807</div><div class="x">富尔顿汽船</div></div>
+        <div class="ev al" style="left:784px"><div class="y">1814</div><div class="x">史蒂芬孙改进蒸汽机车</div></div>
+        <div class="ev ah" style="left:886px"><div class="y">1825</div><div class="x">斯托克顿—达灵顿铁路</div></div>
+        <div class="ev al" style="left:1129px"><div class="y">19世纪中期</div><div class="x">英国完成工业革命·“世界工厂”</div></div>
+        <div class="ev ah" style="left:1269px"><div class="y">1866</div><div class="x">西门子发电机</div></div>
+        <div class="ev al" style="left:1376px"><div class="y">1876–79</div><div class="x">电话、电灯</div></div>
+        <div class="ev ah" style="left:1446px"><div class="y">1885–86</div><div class="x">本茨汽车</div></div>
+        <div class="ev al r" style="left:1614px"><div class="y">1903</div><div class="x">莱特兄弟飞机</div></div>
+        <div class="ev cn bl" style="left:327px"><div class="y">乾隆三十年</div><div class="x">1765：康乾盛世</div></div>
+        <div class="ev cn bh" style="left:588px"><div class="y">1793</div><div class="x">马戛尔尼使华，通商要求被拒</div></div>
+        <div class="ev cn bl" style="left:1026px"><div class="y">1840</div><div class="x">鸦片战争</div></div>
+        <div class="ev cn bh" style="left:1260px"><div class="y">1860s–90s</div><div class="x">洋务运动：江南制造总局等</div></div>
+        <div class="ev cn bl" style="left:1493px"><div class="y">1890</div><div class="x">汉阳铁厂动工</div></div>
+        <div class="ev cn bh r" style="left:1680px"><div class="y">1894–95</div><div class="x">甲午战争</div></div>
+      </div>
+      <div class="row reveal" style="--d:3;grid-template-columns:1fr 1fr;margin-top:0">
+        <div class="note"><span class="k">FUN FACT · 冷知识</span><span class="small">乾隆帝与华盛顿同在 <b class="brass">1799 年</b>去世——前者统治着一个农业帝国，后者的国家即将迎来工业化。</span></div>
+        <div class="note"><span class="k">THINK · 时空观念</span><span class="small">中西差距从何时开始明显拉开？结合时间轴说明工业革命与鸦片战争的关系（纲要上 P90）。</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     04 — WHY BRITAIN? WHY THE 18TH CENTURY?
+     ========================================================= -->
+<section class="slide" data-mod="1">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">一、工业革命的背景</div><h2>（一）为什么是英国？为什么是18世纪？</h2></div><div class="lk">纲要下 P57</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1.35fr .65fr">
+        <div class="card reveal" style="--d:1;--r:-.4deg;padding:18px 24px">
+          <table class="lg" style="font-size:19.5px">
+            <tr><th style="width:118px">条件</th><th>教材表述（必背）</th></tr>
+            <tr><td class="h">政治前提</td><td>“光荣革命”后，国内<b class="v">政局稳定</b>，政府积极鼓励经济发展</td></tr>
+            <tr><td class="h">劳动力·市场</td><td><b class="v">农业资本主义</b>发展迅速（圈地运动），提供充裕的农产品、<b class="v">自由劳动力</b>和国内市场</td></tr>
+            <tr><td class="h">资本·原料</td><td>通过<b class="v">殖民扩张</b>促进资本原始积累，获得大量廉价原材料和广阔海外市场</td></tr>
+            <tr><td class="h">技术基础</td><td><b class="v">手工工场</b>发展水平较高：分工细致、工具专门化、工人技术纯熟；17世纪中期英国成为欧洲<b class="v">科学技术中心</b>之一</td></tr>
+            <tr><td class="h">直接原因</td><td>国内外<b class="r">市场扩大、需求增长</b>，手工生产不能满足需要，提高生产力成为当务之急</td></tr>
+            <tr><td class="h">补充（拓展）</td><td>煤铁资源丰富、岛国海运便利；专利制度保护技术革新</td></tr>
+          </table>
+        </div>
+        <div class="col">
+          <div class="card reveal" style="--d:2;--r:.8deg;padding:18px 22px">
+            <div class="ct" style="font-size:24px">ANALYSIS <small>答题思路</small></div>
+            <p style="font-size:20px;margin-top:6px"><b class="r">可能性</b>（条件具备）：政治·资本·劳动力·技术·资源</p>
+            <p style="font-size:20px"><b class="r">必要性</b>（需求驱动）：市场扩大，手工生产供不应求</p>
+            <p style="font-size:20px;margin-top:6px">根本动力：<b class="v">生产力与市场需求的矛盾</b>；根本原因：英国<b class="v">资本主义进一步发展</b>的需要</p>
+          </div>
+          <div class="note reveal" style="--d:3"><span class="k">MATERIAL · 教材史料</span><span class="xs">“市场总是在扩大，需求总是在增加……于是，蒸汽和机器引起了工业生产的革命。”——《共产党宣言》（纲要下 P57 史料阅读）</span></div>
+          <div class="note reveal" style="--d:4"><span class="k">COMPARE · 为何不是我？</span><span class="xs">同时期法国君主专制，德意志、意大利四分五裂，中国处于封建统治下——缺少英国式的政治与经济前提。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     05 — CONCEPTS: enclosure, manufactory vs factory
+     ========================================================= -->
+<section class="slide" data-fs="1.1" data-mod="1">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">一、工业革命的背景</div><h2>（二）概念辨析：圈地运动 · 工场与工厂</h2></div><div class="lk">纲要下 P57 · 选必2 P24</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="col">
+          <div class="card reveal" style="--d:1;--r:-.7deg">
+            <div class="ct">ENCLOSURE <small>圈地运动</small></div>
+            <div class="meta"><span>约从15世纪开始</span><span>英国最典型</span></div>
+            <ul class="pl" style="font-size:20.5px">
+              <li><b>主体：</b>新兴资产阶级和新贵族，强行圈占公有土地和农民份地</li>
+              <li><b>动因：</b>制呢业发达，羊毛需求激增，养羊获取高额利润（“羊吃人”）</li>
+              <li><b>结果：</b>大批农民成为靠出卖劳动力为生的<b class="v">雇佣劳动者</b></li>
+              <li><b>定性：</b>英国<b class="r">资本原始积累</b>的重要手段之一，客观上促进了资本主义发展</li>
+            </ul>
+          </div>
+          <div class="note reveal" style="--d:3"><span class="k">CONCEPT · 手工工场</span><span class="xs">资本主义生产发展早期阶段，以<b class="brass">手工技术</b>和<b class="brass">雇佣工人的分工</b>为基础的生产形式；工业革命前英国已由分散的手工工场向<b class="brass">集中的手工工场</b>发展（选必2 P24）。</span></div>
+        </div>
+        <div class="card reveal" style="--d:2;--r:.6deg">
+          <div class="ct">WORKSHOP vs FACTORY <small>手工工场 vs 机器工厂</small></div>
+          <div class="meta"><span>高频辨析</span><span>1771 为分界</span></div>
+          <table class="lg">
+            <tr><th>比较项</th><th>手工工场</th><th>机器工厂</th></tr>
+            <tr><td class="h">技术</td><td>手工劳动</td><td><b class="v">机器生产</b></td></tr>
+            <tr><td class="h">动力</td><td>人力为主</td><td>水力→<b class="v">蒸汽</b></td></tr>
+            <tr><td class="h">规模</td><td>较小</td><td>较大</td></tr>
+            <tr><td class="h">组织</td><td>相对分散</td><td><b class="v">集中生产</b>、倒班制、严格规章</td></tr>
+            <tr><td class="h">效率</td><td>低</td><td>大大提高劳动生产率</td></tr>
+            <tr><td class="h">相同点</td><td colspan="2">都以<b class="r">雇佣劳动</b>为基础，都属于<b class="r">资本主义性质</b>的生产组织</td></tr>
+          </table>
+          <p style="font-size:20px;margin-top:10px">标志：<b class="r">1771 年</b>阿克莱特开办第一家水力纺纱厂，成为<b class="v">近代工厂的开端</b>（纲要下 P58）。</p>
+          <div class="stamp" style="--sr:7deg;--sd:1.2s">易错<small>不是“工厂”</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     06 — SOURCE READING: Lancashire & the state
+     ========================================================= -->
+<section class="slide" data-fs="1.14" data-mod="1">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">一、工业革命的背景</div><h2>（三）史料研读：市场与国家如何“点火”</h2></div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="card reveal" style="--d:1;--r:-.6deg">
+          <div class="ct">MATERIAL 1 <small>兰开夏的棉纺织业</small></div>
+          <p style="font-size:20.5px">英国传统纺织业以毛纺织为主。17世纪，印度棉织品和印花织物大量流入，引起毛纺织业者不满和骚乱。英国议会在 1700—1721 年间颁布多项法令，<b class="v">禁止进口和使用印花棉布</b>。兰开夏毗邻贸易港口利物浦，当地技术工人在市场需求刺激下首先仿造印度棉织品。1735 年，议会将<b class="v">棉麻混合织物排除在禁令外</b>。此后兰开夏棉纺织业迅速发展，19世纪成为英国棉纺织业中心。</p>
+          <p class="src" style="color:var(--ink-dim)">——摘编自高考试题材料</p>
+        </div>
+        <div class="card reveal" style="--d:2;--r:.5deg">
+          <div class="ct">MATERIAL 2 <small>国家的作用</small></div>
+          <p style="font-size:20.5px">在我们作出“在第一次工业革命中，市场是唯一的推动力，与政府丝毫无干”这个结论前，应该记住：使英国地位与别国不同的这个市场环境的特点，绝大部分还是由<b class="v">国家行动</b>所造成的……不列颠国家利用它对法律、社会和政治制度的影响……致力于在几代人的时间里建立起一种能掀起工业革命的<b class="v">社会结构</b>。</p>
+          <div class="src">——摘编自［意］卡洛·M.奇波拉主编《欧洲经济史》</div>
+        </div>
+      </div>
+      <div class="row reveal" style="--d:3;grid-template-columns:1fr 1fr;margin-top:24px">
+        <div class="note"><span class="k">Q1 · 兰开夏成为棉纺织业中心的条件</span><span class="xs">毛纺织业长期的技术积累；殖民扩张提供原料和市场；工人借鉴印度技术；<b class="brass">法律调整</b>有利于棉纺织业；地理位置优越（近利物浦港）。</span></div>
+        <div class="note"><span class="k">Q2 · 英国政府在工业革命中的作用</span><span class="xs">提供政治制度保障；提供经济政策支持（专利、关税、贸易）；培育国内市场；进行基础设施建设；建立相应的社会结构。</span></div>
+      </div>
+      <p class="small reveal" style="--d:4;margin-top:14px;color:var(--chalk-dim)"><b class="brass">迁移：</b>2026 浙江6月卷第12题（1813—1846 年英国政策）同样考查“国家行动”，见第 28 页。</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     07 — THE TEXTILE CHAIN: inventions & the power problem
+     ========================================================= -->
+<section class="slide" data-fs="1.1" data-mod="2">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">二、工业革命的进程</div><h2>（一）第一次工业革命：从棉纺织业开始</h2></div><div class="lk">纲要下 P58</div></div>
+    <div class="body">
+      <p class="small reveal" style="--d:1">起因（教材）：英国公众喜爱棉纺织品 → 价格上涨、获利丰厚 → <b class="brass">市场需求刺激</b>棉纺织业发展，催生新的技术发明。</p>
+      <div class="flow reveal" style="--d:2;grid-template-columns:1fr 46px 1fr 46px 1fr 46px 1fr 46px 1fr;margin-top:14px">
+        <div class="card" style="padding:16px"><div class="ct" style="font-size:30px">1733</div><b>飞梭</b><p class="xs">凯伊<br>织布提速 → <b class="r">纱不够用</b></p><p class="xs" style="margin-top:6px">动力：人力</p></div>
+        <div class="arr">→</div>
+        <div class="card" style="padding:16px"><div class="ct" style="font-size:30px">1765</div><b>珍妮纺纱机</b><p class="xs">哈格里夫斯<br>纱<b class="v">细而易断</b></p><p class="xs" style="margin-top:6px">动力：人力</p></div>
+        <div class="arr">→</div>
+        <div class="card" style="padding:16px"><div class="ct" style="font-size:30px">1769</div><b>水力纺纱机</b><p class="xs">阿克莱特<br>纱<b class="v">粗而结实</b></p><p class="xs" style="margin-top:6px">动力：水力</p></div>
+        <div class="arr">→</div>
+        <div class="card" style="padding:16px"><div class="ct" style="font-size:30px">1779</div><b>骡机</b><p class="xs">克隆普顿<br>纱<b class="v">细而结实</b></p><p class="xs" style="margin-top:6px">动力：水力</p></div>
+        <div class="arr">→</div>
+        <div class="card" style="padding:16px"><div class="ct" style="font-size:30px">1785</div><b>水力织布机</b><p class="xs">卡特赖特<br>织布重新提速</p><p class="xs" style="margin-top:6px">动力：水力</p></div>
+      </div>
+      <div class="row reveal" style="--d:3;grid-template-columns:repeat(3,1fr);margin-top:24px">
+        <div class="note"><span class="k">RESULT · 结果</span><span class="xs">半个多世纪内，棉纺织业<b class="brass">基本实现机械化生产</b>；为提高效益、加强管理，机器和工人被集中起来——<b class="brass">工厂出现</b>（1771）。</span></div>
+        <div class="note"><span class="k">MARK · 开始标志</span><span class="xs">18世纪60年代，以哈格里夫斯发明“珍妮纺纱机”为开端，机器生产开始代替手工劳动，标志着<b class="brass">工业革命开始</b>。</span></div>
+        <div class="note"><span class="k">PROBLEM · 局限</span><span class="xs">水力机器受<b class="brass">地势、季节等自然条件</b>限制，工厂只能建在河边 → 呼唤新的动力：<b class="brass">蒸汽机</b>。</span></div>
+      </div>
+      <p class="small reveal" style="--d:4;margin-top:14px;color:var(--chalk-dim)"><b class="brass">规律：</b>一个环节的突破造成相邻环节的“瓶颈”，又刺激下一项发明——2018 江苏卷：技术革新“着力解决生产中的迫切问题”。</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     08 — STEAM, TRANSPORT, COMPLETION, SPREAD
+     ========================================================= -->
+<section class="slide" data-mod="2">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">二、工业革命的进程</div><h2>（二）蒸汽机：第一次工业革命的“心脏”</h2></div><div class="lk">纲要下 P58 · 选必2 P70</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="col">
+          <div class="card reveal" style="--d:1;--r:-.5deg">
+            <div class="ct">STEAM ENGINE <small>瓦特蒸汽机</small></div>
+            <div class="meta"><span>徒工出身 · 在前人研究基础上改进</span><span>1782 / 1785</span></div>
+            <table class="lg">
+              <tr><td class="n">1712</td><td>纽科门蒸汽机：矿井抽水（前人基础）</td></tr>
+              <tr><td class="n">1782</td><td>瓦特试制出旋转运动的<b class="v">“复动式蒸汽机”</b></td></tr>
+              <tr><td class="n">1785</td><td>改进的瓦特蒸汽机开始在<b class="v">棉纺织工厂</b>使用</td></tr>
+            </table>
+            <p style="font-size:20.5px;margin-top:8px"><b class="r">意义（教材三句话）：</b>①产生巨大动力，解决了生产动力<b class="key">受自然条件限制</b>的问题；②英国工业革命中伟大的技术发明，是<b class="key">第一次工业革命的主要标志</b>，也是生产技术史上的一次飞跃；③催生交通工具革命，人类进入<b class="key">“蒸汽时代”</b>。</p>
+          </div>
+          <div class="note reveal" style="--d:3"><span class="k">MATERIAL · 斯塔夫里阿诺斯</span><span class="xs">蒸汽机结束了人类对畜力、风力和水力由来已久的依赖……19世纪欧洲对世界的支配，与其说以其他任何手段为基础，不如说是以蒸汽机为基础。——［美］斯塔夫里阿诺斯《全球通史》</span></div>
+        </div>
+        <div class="col">
+          <div class="card reveal" style="--d:2;--r:.6deg">
+            <div class="ct">TRANSPORT · DONE · SPREAD <small>交通 · 完成 · 扩展</small></div>
+            <table class="lg">
+              <tr><td class="h">交通革命</td><td>1807 富尔顿<b class="v">汽船</b>（美）；1814 史蒂芬孙改进<b class="v">蒸汽机车</b>（英）；19世纪上半期欧美纷纷修建铁路网</td></tr>
+              <tr><td class="h">完成标志</td><td>19世纪中期，英国的<b class="r">机器制造业实现机械化</b>，英国成为<b class="r">“世界工厂”</b></td></tr>
+              <tr><td class="h">扩展路径</td><td>18世纪后期—19世纪中期，从英国扩展到<b class="v">欧洲大陆和北美</b>，从大西洋两岸逐步深入内陆</td></tr>
+              <tr><td class="h">政府作用</td><td>各国政府通过<b class="v">税收、立法、直接投资</b>等方式推动工业发展</td></tr>
+              <tr><td class="h">英国政策</td><td>1843 年完全废除机械出口禁令；1841—1846 年取消 600 多种关税——推行自由贸易</td></tr>
+            </table>
+          </div>
+          <div class="note reveal" style="--d:4"><span class="k">FEATURES · 第一次工业革命特点</span><span class="xs">首先一国发生、再扩展他国；以<b class="brass">轻工业</b>（棉纺织）为主；发明多来自<b class="brass">工匠的劳动实践</b>，科学与技术尚未紧密结合；以蒸汽为动力。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     09 — SECOND INDUSTRIAL REVOLUTION
+     ========================================================= -->
+<section class="slide" data-fs="1.06" data-mod="2">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">二、工业革命的进程</div><h2>（三）第二次工业革命：进入“电气时代”</h2></div><div class="lk">纲要下 P58–59</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:.72fr 1.28fr">
+        <div class="col">
+          <div class="card reveal" style="--d:1;--r:-.7deg">
+            <div class="ct">BACKGROUND <small>背景</small></div>
+            <ul class="pl" style="font-size:20px">
+              <li><b>政治：</b>19世纪中后期欧美主要国家<b class="v">社会相对稳定</b>——资本主义制度在世界范围确立与巩固（1861 俄国改革、美国内战；1868 明治维新；1870–71 意、德统一）</li>
+              <li><b>经济：</b>第一次工业革命推动经济迅速发展，世界市场初步形成</li>
+              <li><b>科技：</b>自然科学取得一系列<b class="v">突破性成果</b>（如 1831 年法拉第发现电磁感应）</li>
+            </ul>
+          </div>
+          <div class="note reveal" style="--d:3"><span class="k">MATERIAL · 技术进步的制度化</span><span class="xs">19世纪后半期……企业不再满足于接受技术创新，而是通过精心的有计划的试验来追寻创新，开始资助基础研究和应用研究。——《剑桥欧洲经济史》第6卷（纲要下 P59 学思之窗）</span></div>
+        </div>
+        <div class="card reveal" style="--d:2;--r:.4deg">
+          <div class="ct">ACHIEVEMENTS <small>五大表现（教材）</small></div>
+          <table class="lg" style="font-size:19.5px">
+            <tr><th style="width:130px">领域</th><th>代表成就</th><th style="width:260px">地位/意义</th></tr>
+            <tr><td class="h">电力</td><td>1866 西门子发电机（德）；1879 爱迪生电灯（美）</td><td>电力补充、取代蒸汽，进入<b class="r">“电气时代”</b></td></tr>
+            <tr><td class="h">内燃机</td><td>19世纪七八十年代内燃机问世；1885–86 本茨汽车；1903 莱特兄弟飞机</td><td>新式快速交通工具——<b class="r">最具深远影响</b>的成就</td></tr>
+            <tr><td class="h">通讯</td><td>1876 贝尔电话（教材“学习聚焦”图）；电报</td><td>加强世界各地信息交流</td></tr>
+            <tr><td class="h">化学工业</td><td>化学方法加工原料；<b class="v">合成方法</b>制造新材料；石油化工业发展</td><td>丰富人类生活</td></tr>
+            <tr><td class="h">旧产业改造</td><td>炼钢、纺织、采煤、机器制造、铁路运输</td><td>焕发新的活力</td></tr>
+          </table>
+          <div class="stamp" style="--sr:8deg;--sd:1.2s">必背<small>五大表现</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     10 — COMPARING THE TWO REVOLUTIONS
+     ========================================================= -->
+<section class="slide" data-fs="1.08" data-mod="2">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">二、工业革命的进程</div><h2>（四）两次工业革命比较</h2></div><div class="lk">纲要下 P59 思考点</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1.3fr .7fr">
+        <div class="card reveal" style="--d:1;--r:-.3deg;padding:16px 24px">
+          <table class="lg" style="font-size:19.5px">
+            <tr><th style="width:150px">比较项</th><th>第一次（18c60s—19c中期）</th><th>第二次（19c70s—20c初）</th></tr>
+            <tr><td class="h">标志</td><td>珍妮机开始；<b class="v">改良蒸汽机</b>为主要标志</td><td><b class="v">电力</b>的广泛应用</td></tr>
+            <tr><td class="h">动力/能源</td><td>蒸汽机——煤</td><td>发电机、内燃机——电力、石油</td></tr>
+            <tr><td class="h">科技与生产</td><td>多来自<b class="r">工匠实践经验</b>，尚未紧密结合</td><td><b class="r">科学技术与生产紧密结合</b>，有近代科学理论指导</td></tr>
+            <tr><td class="h">发生范围</td><td>英国开始，逐步扩展</td><td>几乎在主要国家<b class="r">同时发生</b>，范围广、规模大、进展快</td></tr>
+            <tr><td class="h">主导国家</td><td>英国（“世界工厂”）</td><td><b class="r">美国、德国</b>最为突出</td></tr>
+            <tr><td class="h">工业部门</td><td>轻工业为主（纺织、煤炭、铁路）</td><td>重工业、新兴工业（电力、石油、化工、汽车）</td></tr>
+            <tr><td class="h">组织形式</td><td>工厂制度确立</td><td>出现<b class="v">垄断组织</b></td></tr>
+            <tr><td class="h">世界市场</td><td>初步形成→进一步发展（商品输出）</td><td><b class="v">最终形成</b>（资本输出）</td></tr>
+          </table>
+        </div>
+        <div class="col">
+          <div class="card reveal" style="--d:2;--r:.8deg;padding:16px 20px">
+            <div class="ct" style="font-size:24px">WHO INVENTED? <small>发明者身份</small></div>
+            <table class="lg" style="font-size:18px">
+              <tr><td>哈格里夫斯</td><td>纺织工</td></tr>
+              <tr><td>瓦特</td><td>徒工/修理工</td></tr>
+              <tr><td>史蒂芬孙</td><td>炉工</td></tr>
+              <tr><td>西门子</td><td>工程师·企业家</td></tr>
+              <tr><td>爱迪生、贝尔</td><td>发明家</td></tr>
+            </table>
+            <p style="font-size:18px;margin-top:6px">→ 从<b class="r">工匠</b>到<b class="v">科学家与工程师</b></p>
+          </div>
+          <div class="note reveal" style="--d:3"><span class="k">KEY SENTENCE · 关键句</span><span class="xs">第二次工业革命<b class="brass">不是第一次的简单延续</b>，而是其深入发展；各国条件不同，进程<b class="brass">各具特色</b>。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     11 — DIFFERENT NATIONAL PATHS
+     ========================================================= -->
+<section class="slide" data-fs="1.2" data-mod="2">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">二、工业革命的进程</div><h2>（五）各国工业化道路：各具特色</h2></div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:repeat(4,1fr);gap:22px">
+        <div class="card reveal" style="--d:1;--r:-1deg;padding:18px"><div class="ct">USA <small>美国</small></div>
+          <ul class="pl" style="font-size:19px"><li>工业集中在北部，分布不平衡</li><li>移民带来劳动力与技术</li><li>与<b class="v">西进运动</b>相互促进</li><li><b class="v">内战</b>扫除最大障碍；19世纪70年代末完成</li></ul></div>
+        <div class="card reveal" style="--d:2;--r:.7deg;padding:18px"><div class="ct">GERMANY <small>德国</small></div>
+          <ul class="pl" style="font-size:19px"><li>19世纪30年代起步，较早转向<b class="v">重工业</b></li><li>引进英国技术、<b class="v">重视教育</b>和科研</li><li><b class="v">铁路</b>带动采矿、冶金、机器制造</li><li>1871 统一+法国赔款，加速发展</li></ul></div>
+        <div class="card reveal" style="--d:3;--r:-.5deg;padding:18px"><div class="ct">FRANCE <small>法国</small></div>
+          <ul class="pl" style="font-size:19px"><li>机器首先在纺织业推广</li><li>19世纪50年代后重心转向重工业</li><li>政府提供贷款、降低关税</li><li>小农经济、资本外流，<b class="v">进程较慢</b></li></ul></div>
+        <div class="card reveal" style="--d:4;--r:.9deg;padding:18px"><div class="ct">RUSSIA <small>俄国</small></div>
+          <ul class="pl" style="font-size:19px"><li>19世纪40年代棉纺业采用机器</li><li><b class="v">1861 农奴制改革</b>后加速</li><li>80年代末基本完成，广度深度落后</li><li>资本原始积累不足，<b class="v">依赖外资</b></li></ul></div>
+      </div>
+      <div class="row reveal" style="--d:5;grid-template-columns:1fr 1fr;margin-top:26px">
+        <div class="note"><span class="k">UNEVEN DEVELOPMENT · 发展不平衡</span><span class="xs">英、法在第一次工业革命中领先，但控制大量殖民地、市场压力小，技术创新不足；美、德在第二次工业革命中<b class="brass">后来居上</b>——实力对比变化加剧列强矛盾，为<b class="brass">第一次世界大战</b>埋下伏笔。</span></div>
+        <div class="note"><span class="k">MODEL ANSWER · 德国迅速发展的原因</span><span class="xs">①积极引进先进技术 ②重视教育、提高国民素质 ③重视科技创新 ④重视铁路建设 ⑤国家统一 ⑥法国割地赔款提供资金与资源。</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     12 — IMPACT OVERVIEW (mind map)
+     ========================================================= -->
+<section class="slide" data-fs="1.25" data-mod="3">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">三、工业革命的影响</div><h2>（一）六个维度总览</h2></div><div class="lk">纲要下 P59–61</div></div>
+    <div class="body">
+      <div class="mm">
+        <div class="card reveal" style="--d:1;--r:-.6deg"><div class="ct">① 生产力 <small>P59</small></div><p class="xs">生产力<b class="v">前所未有的大发展</b>，空前经济繁荣；商业、交通运输业重要性提高；欧美<b class="v">农业变革</b>全面展开</p></div>
+        <div class="card reveal" style="--d:2;--r:.5deg"><div class="ct">② 生产组织与管理 <small>P59</small></div><p class="xs">建立<b class="v">资本主义大工厂制度</b>；科学化管理受重视；生产集中，出现<b class="v">垄断组织</b></p></div>
+        <div class="card reveal" style="--d:3;--r:-.4deg"><div class="ct">③ 阶级结构 <small>P60</small></div><p class="xs"><b class="v">工业资产阶级和工业无产阶级</b>成为两大阶级；中间阶层（技术、管理人员）开始发展</p></div>
+        <div class="card reveal" style="--d:4;--r:.7deg"><div class="ct">④ 社会生活 <small>P60</small></div><p class="xs">以工厂为中心形成城市；物美价廉商品；休闲体育、报刊书籍；女性受教育机会增加；人口增加明显</p></div>
+        <div class="card reveal" style="--d:5;--r:-.5deg"><div class="ct">⑤ 社会问题 <small>P60</small></div><p class="xs">贫富分化、居住恶劣、<b class="r">环境污染</b>、疾病与犯罪 → 在工人运动推动下开始<b class="v">社会立法</b></p></div>
+        <div class="card reveal" style="--d:6;--r:.4deg"><div class="ct">⑥ 世界格局 <small>P61</small></div><p class="xs">世界联系日益紧密；列强凭实力扩张；19世纪末20世纪初<b class="v">资本主义世界经济体系最终形成</b></p></div>
+      </div>
+      <div class="row reveal" style="--d:7;grid-template-columns:1fr 1fr;margin-top:24px">
+        <div class="note"><span class="k">THEORY · 唯物史观</span><span class="xs">生产力（①）→ 生产关系（②③）→ 上层建筑与社会生活（④⑤）→ 世界（⑥）。答影响题按这条逻辑链展开，不易遗漏。</span></div>
+        <div class="note"><span class="k">ALSO · 思想层面（第11课）</span><span class="xs">资本主义弊端凸显 → 工人运动与空想社会主义 → 1848 年《共产党宣言》发表，<b class="brass">马克思主义诞生</b>。</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     13 — PRODUCTION ORGANISATION: workshop → factory → monopoly → scientific management
+     ========================================================= -->
+<section class="slide" data-mod="3">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">三、工业革命的影响</div><h2>（二）生产组织形式的演进</h2></div><div class="lk">选必2 P24–25 · 纲要下 P59</div></div>
+    <div class="body">
+      <div class="flow reveal" style="--d:1;grid-template-columns:1fr 46px 1.25fr 46px 1fr 46px 1fr">
+        <div class="card" style="padding:16px"><div class="ct" style="font-size:22px">工业革命前</div><b>手工工场</b><p class="xs">分散 → 集中；一定程度的生产专业化</p></div>
+        <div class="arr">→</div>
+        <div class="card" style="padding:16px"><div class="ct" style="font-size:22px">第一次工业革命</div><b>工厂制度</b><p class="xs">机器大生产；产业工人在专门化厂房中劳作，彻底改变手工作坊零碎分散的状态</p></div>
+        <div class="arr">→</div>
+        <div class="card" style="padding:16px"><div class="ct" style="font-size:22px">第二次工业革命</div><b>垄断组织</b><p class="xs">技术复杂、投资扩大、竞争激烈 → 生产进一步集中</p></div>
+        <div class="arr">→</div>
+        <div class="card" style="padding:16px"><div class="ct" style="font-size:22px">20世纪初</div><b>科学管理</b><p class="xs">泰罗制：标准操作方法；1913 福特流水装配线（拓展）</p></div>
+      </div>
+      <div class="row" style="grid-template-columns:1.1fr .9fr;margin-top:24px">
+        <div class="card reveal" style="--d:2;--r:-.4deg">
+          <div class="ct">FACTORY SYSTEM <small>工厂制度的特点（选必2）</small></div>
+          <div class="meta"><span>教材原文要点</span><span>P24–25</span></div>
+          <table class="lg" style="font-size:19.5px">
+            <tr><td class="n">①</td><td>保证机器昼夜运行，工人实行<b class="v">倒班制</b></td></tr>
+            <tr><td class="n">②</td><td>严格规章制度，以<b class="v">罚款、体罚和解雇</b>强化纪律意识</td></tr>
+            <tr><td class="n">③</td><td><b class="v">生产流水线</b>广泛应用，各环节协同，工厂主监督管理</td></tr>
+            <tr><td class="n">④</td><td>原料由工厂<b class="v">统一供应、合理调配</b></td></tr>
+          </table>
+          <p style="font-size:19.5px;margin-top:8px"><b class="r">作用：</b>带来生产组织和管理形式的巨变，有利于<b class="key">科学管理、提高生产效率、挖掘工人劳动潜质</b>，产生更大经济效益。</p>
+        </div>
+        <div class="col">
+          <div class="note reveal" style="--d:3"><span class="k">LINK · 中国的工厂</span><span class="xs">19世纪中后期洋务派创办江南制造总局、福州船政局等，<b class="brass">引进西方工厂制度</b>；后来张謇、范旭东等主张实业救国，民族工业初步发展（选必2 P25）。</span></div>
+          <div class="note reveal" style="--d:4"><span class="k">LINK · 标准化生产</span><span class="xs">2024 湖南卷第14题以缝纫机为情境，考查“工业革命对<b class="brass">标准化生产</b>的影响”——与流水线、福特制属同一考点群。</span></div>
+          <div class="note reveal" style="--d:5"><span class="k">NOTE · 范围</span><span class="xs">泰罗制、福特制不在纲要下第10课正文，属拓展；福特 T 型车见选必2 P73。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     14 — MONOPOLY ORGANISATIONS
+     ========================================================= -->
+<section class="slide" data-fs="1.08" data-mod="3">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">三、工业革命的影响</div><h2>（三）垄断组织：概念 · 原因 · 实质 · 评价</h2></div><div class="lk">纲要下 P59</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="card reveal" style="--d:1;--r:-.5deg">
+          <table class="lg" style="font-size:19.5px">
+            <tr><td class="h">概念</td><td>一个或几个部门中居重要地位的大企业之间的联合，控制生产，瓜分市场、原料产地和投资场所，规定垄断价格</td></tr>
+            <tr><td class="h">原因</td><td>教材：技术日益复杂、投资不断扩大、竞争日趋激烈 → <b class="v">生产进一步集中</b><br>根本：生产力发展、社会化大生产的需要</td></tr>
+            <tr><td class="h">形式</td><td>卡特尔（销售协定）· 辛迪加（共同销售和采购）· 托拉斯（完全一体，程度最高）· 康采恩（控股）<span class="xs">（拓展）</span></td></tr>
+            <tr><td class="h">实质</td><td><b class="r">资本主义生产关系的局部调整</b></td></tr>
+          </table>
+          <div class="stamp" style="top:auto;bottom:-16px;--sr:8deg;--sd:1.2s">实质<small>局部调整</small></div>
+        </div>
+        <div class="col">
+          <div class="card reveal" style="--d:2;--r:.6deg">
+            <div class="ct">EVALUATION <small>辩证评价</small></div>
+            <p style="font-size:19.5px"><b class="v">积极：</b>适应大工业生产需要，有利于提高生产力和经营管理；有利于科学与技术结合</p>
+            <p style="font-size:19.5px;margin-top:6px"><b class="r">消极（教材）：</b>获取高额利润，同时<b class="key">阻碍了竞争，导致某些停滞和腐败</b>；干预国家政治；要求瓜分世界、资本输出，加剧国际竞争与战争危险</p>
+          </div>
+          <div class="card q compact reveal" style="--d:3;--r:-.4deg">
+            <div class="from">即时练 · 2024 广西卷</div>
+            <p class="stem">1894 年，美国记者亨利·劳埃德在《财富与国民的对立》中指出，标准石油公司操纵市场，以便消除竞争。他还称“自由创造富裕，但富裕毁灭自由”。这反映了美国（　）</p>
+            <div class="opts"><span>A. 自由资本主义的发展</span><span>B. 垄断资本主义的形成</span><span>C. 国家资本主义的发展</span><span>D. 贸易保护主义的形成</span></div>
+            <div class="ans"><b class="hide">B</b><span class="hide">“操纵市场、消除竞争”是垄断组织的特征。</span> <span class="tip">（点击揭晓）</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     15 — TIME DISCIPLINE (the original angle, kept)
+     ========================================================= -->
+<section class="slide" data-mod="3">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">三、工业革命的影响</div><h2>（四）劳作方式之变：被钟表切割的一天</h2></div><div class="lk">选必2 P24–27</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:.95fr 1.05fr">
+        <div class="col">
+          <div class="card reveal" style="--d:1;--r:-1deg">
+            <div class="ct">TIME CARD <small>伊丽莎白·本特利，1832 年证词</small></div>
+            <table class="lg" style="font-size:19.5px">
+              <tr><td>开始做工</td><td class="f">6 岁</td></tr>
+              <tr><td>忙时 05:00–21:00</td><td class="f">16 h</td></tr>
+              <tr><td>平时 06:00–19:00</td><td class="f">13 h</td></tr>
+            </table>
+            <div class="src">来源：英国议会萨德勒委员会证词（1832 年 6 月 4 日）</div>
+          </div>
+          <div class="card reveal" style="--d:2;--r:.8deg">
+            <div class="ct">FINES <small>泰尔兹利纺纱厂罚款规定（1823）</small></div>
+            <p style="font-size:19.5px">窗户开着、工作时身上脏、洗漱、吹口哨——<b class="r">各罚 1</b>；早上煤气灯用得太久、点灯修理鼓带——<b class="r">各罚 2</b>（首条注明单位为先令）。</p>
+            <div class="src">来源：1823 年罢工期间曼彻斯特出版的小册子</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="note reveal" style="--d:3"><span class="k">TEXTBOOK · 教材怎么说</span><span class="xs">工厂主以<b class="brass">罚款、体罚和解雇</b>强化纪律（选必2 P24）。工厂制度及蒸汽机车出现后，人们必须守时，<b class="brass">准时准点成为现代生活的准则</b>；大本钟是工业革命的产物（选必2 P27）。</span></div>
+          <div class="note reveal" style="--d:4"><span class="k">HISTORIAN · 汤普森</span><span class="xs">工业化带来从“以任务为导向”到“以时间为导向”的劳动方式转变——E. P. Thompson, “Time, Work-Discipline and Industrial Capitalism”, Past &amp; Present 38 (1967)。</span></div>
+          <div class="note reveal" style="--d:5"><span class="k">EXAM LINK · 真题同源</span><span class="xs">2024 甲卷第33题：“是机器迫使工人接受工厂纪律的”→ <b class="brass">生产组织方式发生深刻变革</b>；2025 甘肃卷第15题：工作场所与住所分离 → <b class="brass">生活空间和劳作方式的改变</b>（见第 27 页）。</span></div>
+          <div class="note reveal" style="--d:6"><span class="k">ANSWER KEY · 答题关键词</span><span class="xs">劳作方式：分散→集中；自主→纪律；任务→时间。生活方式：时间观念增强、职住分离、生活节奏加快。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     16 — CLASS STRUCTURE & WORKERS' MOVEMENT
+     ========================================================= -->
+<section class="slide" data-fs="1.06" data-mod="3">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">三、工业革命的影响</div><h2>（五）阶级结构：两大阶级的崛起</h2></div><div class="lk">纲要下 P60, P62–63 · 选必1 P12</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="card reveal" style="--d:1;--r:-.6deg">
+          <div class="ct">BOURGEOISIE <small>工业资产阶级：要权</small></div>
+          <div class="meta"><span>经济实力增长 → 要求更多政治权利</span><span>改革</span></div>
+          <p style="font-size:20px">通过<b class="v">改革</b>进一步巩固统治地位。典型：<b class="v">1832 年英国议会改革</b>——新兴工业城市获得议席。</p>
+          <div class="hrow" style="grid-template-columns:90px 1fr 120px;margin-top:10px"><span class="lab">1831</span><div class="track"><div class="hbar v" style="width:60%;--d:2"></div></div><span class="val" style="font-size:22px">48.8万</span></div>
+          <div class="hrow" style="grid-template-columns:90px 1fr 120px"><span class="lab">1833</span><div class="track"><div class="hbar v" style="width:100%;--d:3"></div></div><span class="val" style="font-size:22px">80.8万</span></div>
+          <p style="font-size:19px">选民占人口比例：约 2% → 3.3%（<b class="r">工人仍无选举权</b>）</p>
+          <div class="src">数据来源：王觉非主编《近代英国史》（纲要下 P55 引）</div>
+        </div>
+        <div class="card reveal" style="--d:2;--r:.6deg">
+          <div class="ct">PROLETARIAT <small>工业无产阶级：要活路、要权利</small></div>
+          <div class="meta"><span>从捣毁机器到争取政治权利</span><span>斗争</span></div>
+          <table class="lg" style="font-size:19px">
+            <tr><td class="n">1811–16</td><td>卢德运动：捣毁机器（自发）</td></tr>
+            <tr><td class="n">1831/1834</td><td>法国<b class="v">里昂工人</b>两次起义</td></tr>
+            <tr><td class="n">1836–48</td><td>英国<b class="v">宪章运动</b>：争取普选权</td></tr>
+            <tr><td class="n">1844</td><td>德意志<b class="v">西里西亚织工</b>起义</td></tr>
+            <tr><td class="n">1848</td><td>《共产党宣言》：马克思主义诞生</td></tr>
+          </table>
+          <p style="font-size:19.5px;margin-top:6px">三大工人运动表明工人阶级<b class="key">开始作为独立的政治力量登上历史舞台</b>，迫切需要科学理论指导。</p>
+        </div>
+      </div>
+      <div class="note reveal" style="--d:4;margin-top:22px"><span class="k">ALSO · 中间阶层与国家治理</span><span class="xs">技术人员、管理人员等<b class="brass">中间阶层</b>开始发展（纲要下 P60）；国家管理职能扩展，推动<b class="brass">文官制度</b>建立（选必1 P35）。</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     17 — SOCIAL LIFE IN NUMBERS
+     ========================================================= -->
+<section class="slide" data-mod="3">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">三、工业革命的影响</div><h2>（六）社会生活之变：用数据说话</h2></div><div class="lk">纲要下 P60 · 选必2 P26–27, P61</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1.1fr .9fr">
+        <div class="col">
+          <div class="card reveal" style="--d:1;--r:-.4deg">
+            <div class="ct">EMPLOYMENT <small>英国就业人口结构</small></div>
+            <div class="meta"><span>工业 / 服务业 / 农业</span><span>纲要下 P60 图</span></div>
+            <div class="typed" style="font-family:var(--f-m);font-size:17px;font-weight:700;margin-top:4px">1841</div>
+            <div class="stack"><span class="s1" style="width:43%">工业 43%</span><span class="s3" style="width:37%">服务业 37%</span><span class="s2" style="width:20%">农业 20%</span></div>
+            <div class="typed" style="font-family:var(--f-m);font-size:17px;font-weight:700;margin-top:12px">1877</div>
+            <div class="stack"><span class="s1" style="width:55%">工业 55%</span><span class="s3" style="width:31%">服务业 31%</span><span class="s2" style="width:14%">农业 14%</span></div>
+            <p style="font-size:19.5px;margin-top:10px">解读：工业比重上升、农业比重下降——英国由农业社会转向<b class="v">工业社会</b>。</p>
+            <div class="src">数据来源：纲要下 P60 插图“英国就业人口结构的变化”</div>
+          </div>
+          <div class="card reveal" style="--d:2;--r:.5deg;padding:16px 24px">
+            <table class="lg" style="font-size:19.5px">
+              <tr><td class="f" style="text-align:left;width:150px">1830</td><td>英国人工运河 <b class="v">4000 多千米</b>（选必2 P26）</td></tr>
+              <tr><td class="f" style="text-align:left">1851</td><td>英国成为世界上第一个<b class="v">城市人口超过 50%</b>的国家（选必2 P61）</td></tr>
+              <tr><td class="f" style="text-align:left">1870</td><td>英国铁路里程 <b class="v">2.5 万千米</b>（选必2 P26）</td></tr>
+              <tr><td class="f" style="text-align:left">19c末</td><td>英格兰 5—12 岁儿童入学率达 <b class="v">80%</b>（选必2 P27）</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="card reveal" style="--d:3;--r:.6deg">
+          <div class="ct">LIFESTYLE <small>生活方式五大变化（选必2）</small></div>
+          <div class="meta"><span>答题按条作答</span><span>P26–27</span></div>
+          <table class="lg" style="font-size:19.5px">
+            <tr><td class="n">①</td><td><b>城市化</b>发展，改变生活空间；20世纪以来建设新城、疏解人口</td></tr>
+            <tr><td class="n">②</td><td><b>交通</b>进步，水陆运输网形成，社会<b class="v">流动性</b>增加</td></tr>
+            <tr><td class="n">③</td><td><b>乡村</b>改变：农业机械普及、大农场、农业现代化</td></tr>
+            <tr><td class="n">④</td><td>生活<b>节奏</b>加快，<b class="v">时间观念</b>增强</td></tr>
+            <tr><td class="n">⑤</td><td>初等<b>教育</b>推广（1802 年第一部《工厂法》后立法推行），文化素质提升</td></tr>
+          </table>
+          <p style="font-size:19.5px;margin-top:8px">纲要补充：休闲娱乐和群众性体育兴起；报刊书籍发行量大增；<b class="v">女性</b>受教育机会增加；人口增加明显。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     18 — SOCIAL PROBLEMS, LEGISLATION & THE STANDARD-OF-LIVING DEBATE
+     ========================================================= -->
+<section class="slide" data-fs="1.06" data-mod="3">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">三、工业革命的影响</div><h2>（七）社会问题、社会立法与“生活水平之争”</h2></div><div class="lk">纲要下 P60 · 选必2 P27</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="col">
+          <div class="card reveal" style="--d:1;--r:-.5deg">
+            <div class="ct">PROBLEMS → LAWS <small>问题与治理</small></div>
+            <p style="font-size:19.5px"><b class="r">问题（教材）：</b>贫富分化加剧、工人居住条件恶劣、环境污染严重、疾病与犯罪；劳动时间过长，传染病与职业病危害健康。</p>
+            <table class="lg" style="font-size:19px;margin-top:6px">
+              <tr><td class="n">1802</td><td>英国第一部《工厂法》（选必2 P27）</td></tr>
+              <tr><td class="n">1833</td><td>《工厂法》：禁雇 9 岁以下童工，设 4 名视察员（拓展）</td></tr>
+              <tr><td class="n">1848</td><td>《公共卫生法》；1878 年《公共卫生条例》</td></tr>
+            </table>
+            <p style="font-size:19.5px;margin-top:6px"><b class="v">规律：</b>在<b class="key">工人运动推动</b>下，欧美各国开始通过<b class="key">社会立法</b>解决问题；产业工人待遇有所改善，最长工时受限、最低工资得到一定保障。</p>
+          </div>
+          <div class="note reveal" style="--d:3"><span class="k">TEXTBOOK MATERIAL · 狄更斯《艰难时世》</span><span class="xs">纲要下 P60 用小说描写工业城镇：高耸的烟囱、长蛇般的浓烟、被染料冲成深紫色的河水——<b class="brass">文学作品可作史料，但需与其他史料互证</b>。</span></div>
+        </div>
+        <div class="col">
+          <div class="card reveal" style="--d:2;--r:.6deg">
+            <div class="ct">DEBATE <small>生活变好了，还是变坏了？</small></div>
+            <div class="meta"><span>史学争论 · 穿插点缀</span><span>拓展</span></div>
+            <div class="hrow" style="grid-template-columns:160px 1fr 70px"><span class="lab">乐观派 1819→1851</span><div class="track"><div class="hbar v" style="width:100%;--d:3"></div></div><span class="val">×2</span></div>
+            <p class="xs">林德特—威廉森：蓝领工人实际工资指数 50 → 100</p>
+            <div class="hrow" style="grid-template-columns:160px 1fr 70px;margin-top:8px"><span class="lab">悲观派 1780s→1850s</span><div class="track"><div class="hbar" style="width:15%;--d:4"></div></div><span class="val">&lt;15%</span></div>
+            <p class="xs">范斯坦：工人家庭生活水平提高不到 15%（计入失业、抚养人口、城市化代价）</p>
+            <div class="src">数据来源：林德特—威廉森实际工资指数；C. Feinstein, Journal of Economic History 58:3 (1998)</div>
+          </div>
+          <div class="note reveal" style="--d:4"><span class="k">TAKEAWAY · 高考怎么用</span><span class="xs">评价类题目：<b class="brass">短期</b>的社会代价与<b class="brass">长期</b>的生活改善要一分为二；结论需有史料支撑——这正是“史料实证”素养。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     19 — WORLD MARKET & THE CAPITALIST WORLD SYSTEM
+     ========================================================= -->
+<section class="slide" data-fs="1.18" data-mod="3">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">三、工业革命的影响</div><h2>（八）世界市场与资本主义世界体系</h2></div><div class="lk">纲要下 P61 · 选必2 P41 · 选必1 P89–90</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1.1fr .9fr">
+        <div class="col">
+          <div class="card reveal" style="--d:1;--r:-.4deg">
+            <div class="ct">WORLD MARKET <small>世界市场的形成阶段</small></div>
+            <table class="lg" style="font-size:19.5px">
+              <tr><th>时期</th><th>途径</th><th>状态</th></tr>
+              <tr><td class="h">新航路开辟后</td><td>西葡殖民掠夺</td><td>开始形成</td></tr>
+              <tr><td class="h">17—18世纪</td><td>荷英法殖民扩张，建立商业联系</td><td><b class="v">初步形成</b></td></tr>
+              <tr><td class="h">第一次工业革命后</td><td>工厂产品增加需要市场、原料；轮船火车；殖民（<b>商品输出</b>）</td><td>进一步发展</td></tr>
+              <tr><td class="h">19c末20c初</td><td>瓜分世界，抢占原料、市场、投资场所（<b>资本输出</b>）</td><td><b class="r">最终形成</b></td></tr>
+            </table>
+          </div>
+          <div class="note reveal" style="--d:3"><span class="k">MATERIAL · 纲要下 P61 问题探究</span><span class="xs">“它的商品的低廉价格，是它用来摧毁一切万里长城……的重炮。”——《共产党宣言》；“不列颠的蒸汽机和科学在印度斯坦全境彻底摧毁了农业和制造业的结合。”——马克思《不列颠在印度的统治》</span></div>
+        </div>
+        <div class="col">
+          <div class="card reveal" style="--d:2;--r:.6deg">
+            <div class="ct">THREE SYSTEMS <small>资本主义世界体系</small></div>
+            <table class="lg" style="font-size:19.5px">
+              <tr><td class="h">政治体系</td><td>资本主义制度在世界范围确立</td></tr>
+              <tr><td class="h">经济体系</td><td>世界市场与国际分工：西欧北美出口制成品，其余地区出口初级产品（选必3 P56）</td></tr>
+              <tr><td class="h">殖民体系</td><td>亚非拉沦为殖民地、半殖民地（纲要下第12课）</td></tr>
+            </table>
+            <p style="font-size:19.5px;margin-top:6px">格局：<b class="r">东方从属于西方，农业国从属于工业国</b>。</p>
+          </div>
+          <div class="card reveal" style="--d:3;--r:-.5deg;padding:16px 22px">
+            <div class="ct" style="font-size:24px">GOLD STANDARD <small>金本位制（选必1 第15课）</small></div>
+            <p class="xs">1816 年英国制定法案实行金本位制，各国相继采用，形成<b class="v">以英镑为中心</b>的国际金本位货币制度；1929 年经济危机后崩溃，形成英镑、法郎、美元货币集团。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     20 — CROSS-BOOK LINKS
+     ========================================================= -->
+<section class="slide" data-fs="1.3" data-mod="3">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">三、工业革命的影响</div><h2>（九）跨册整合：工业革命牵动的五本书</h2></div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:repeat(3,1fr);gap:22px">
+        <div class="card reveal" style="--d:1;--r:-.6deg;padding:18px 22px"><div class="ct" style="font-size:24px">选必1 <small>国家制度与社会治理</small></div>
+          <table class="lg" style="font-size:18.5px">
+            <tr><td class="n">P12</td><td>19世纪英国三次议会改革：工业资产阶级、工人阶级成为重要社会力量</td></tr>
+            <tr><td class="n">P35</td><td>工业革命后国家管理职能扩展 → <b class="v">文官制度</b></td></tr>
+            <tr><td class="n">P89</td><td>1816 年英国实行<b class="v">金本位制</b></td></tr>
+            <tr><td class="n">P105</td><td>城市人口激增、失业贫困 → 社区组织与<b class="v">社会救济</b>新方法</td></tr>
+          </table></div>
+        <div class="card reveal" style="--d:2;--r:.5deg;padding:18px 22px"><div class="ct" style="font-size:24px">选必2 <small>经济与社会生活</small></div>
+          <table class="lg" style="font-size:18.5px">
+            <tr><td class="n">P13</td><td>机器生产推动传统农业向<b class="v">现代农业</b>转变</td></tr>
+            <tr><td class="n">P24</td><td><b class="v">工厂制度</b>与生活方式变化（第5课）</td></tr>
+            <tr><td class="n">P41</td><td>工业革命后<b class="v">世界市场</b>形成</td></tr>
+            <tr><td class="n">P61</td><td>1851 年英国城市人口过半：<b class="v">城市化</b></td></tr>
+            <tr><td class="n">P70</td><td>1814 史蒂芬孙机车，铁路成为陆路交通主干</td></tr>
+          </table></div>
+        <div class="col">
+          <div class="card reveal" style="--d:3;--r:-.4deg;padding:18px 22px"><div class="ct" style="font-size:24px">选必3 <small>文化交流与传播</small></div>
+            <table class="lg" style="font-size:18.5px">
+              <tr><td class="n">P39</td><td>原材料需求增加 → 英国在澳大利亚建立牧场（<b class="v">殖民与人口转移</b>）</td></tr>
+              <tr><td class="n">P56</td><td>制成品—初级产品的<b class="v">国际分工</b>格局</td></tr>
+            </table></div>
+          <div class="card reveal" style="--d:4;--r:.7deg;padding:18px 22px"><div class="ct" style="font-size:24px">纲要上/下 <small>中外历史纲要</small></div>
+            <table class="lg" style="font-size:18.5px">
+              <tr><td class="n">上P90</td><td>工业革命后英国对市场和原料需求强烈 → <b class="v">鸦片战争</b></td></tr>
+              <tr><td class="n">下P69</td><td>工业革命深化 → 殖民扩张，<b class="v">世界殖民体系</b>形成</td></tr>
+            </table></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     21 — THE INDUSTRIAL REVOLUTION AND CHINA
+     ========================================================= -->
+<section class="slide" data-fs="1.35" data-mod="3">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">三、工业革命的影响</div><h2>（十）两次工业革命与近代中国</h2></div><div class="lk">纲要上 P90 · 选必2 P25</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1.3fr .7fr">
+        <div class="card reveal" style="--d:1;--r:-.3deg">
+          <table class="lg" style="font-size:19.5px">
+            <tr><th style="width:90px">维度</th><th>第一次工业革命的影响</th><th>第二次工业革命的影响</th></tr>
+            <tr><td class="h">政治</td><td>鸦片战争爆发，中国开始沦为<b class="v">半殖民地半封建社会</b></td><td>甲午战争、八国联军侵华，民族危机加深，完全沦为半殖民地半封建社会</td></tr>
+            <tr><td class="h">经济</td><td>自然经济开始解体，被迫卷入资本主义世界市场；洋务运动兴起，民族资本主义产生</td><td>自然经济进一步解体；民族资本主义初步发展，但列强资本输出、掠夺原料又阻碍其发展</td></tr>
+            <tr><td class="h">思想</td><td>“师夷长技”“中体西用”：学习<b class="v">器物</b></td><td>“君主立宪”“民主共和”“实业救国”：学习<b class="v">制度</b></td></tr>
+          </table>
+        </div>
+        <div class="col">
+          <div class="card reveal" style="--d:2;--r:.7deg;padding:16px 20px">
+            <div class="ct" style="font-size:24px">FACTORIES <small>中国的工厂</small></div>
+            <table class="lg" style="font-size:18.5px">
+              <tr><td class="n">洋务</td><td>江南制造总局、福州船政局：引进西方工厂制度</td></tr>
+              <tr><td class="n">1890</td><td>张之洞主持修建<b class="v">汉阳铁厂</b></td></tr>
+              <tr><td class="n">1917</td><td>范旭东筹建<b class="v">天津永利碱厂</b></td></tr>
+            </table>
+          </div>
+          <div class="note reveal" style="--d:3"><span class="k">INSIGHT · 启示</span><span class="xs">主动融入世界潮流；坚持对外开放；捍卫国家主权；坚持科技创新（纲要下 P61“学习拓展”：工业革命的启示）。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     22 — SOURCE CRITICISM METHOD
+     ========================================================= -->
+<section class="slide" data-fs="1.4" data-mod="3">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">四、高考链接</div><h2>（一）史料实证：同一段历史，不同类型的史料</h2></div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:repeat(3,1fr);gap:24px">
+        <div class="card reveal" style="--d:1;--r:-.8deg"><div class="ct" style="font-size:24px">档案文献 <small>官方报告</small></div>
+          <p class="xs">例：1842 年《关于劳动居民卫生状况的报告》记录伯明翰工厂事故、机器护栏失修。</p>
+          <p class="xs" style="margin-top:6px"><b class="v">价值：</b>研究劳动状况、社会问题，可信度较高<br><b class="r">注意：</b>调查者的立场与方法</p></div>
+        <div class="card reveal" style="--d:2;--r:.6deg"><div class="ct" style="font-size:24px">报刊漫画 <small>艺术作品</small></div>
+          <p class="xs">例：漫画《沉默的强盗》（1858）：骷髅在泰晤士河上划船，船旁漂浮动物尸体。</p>
+          <p class="xs" style="margin-top:6px"><b class="v">价值：</b>反映时人对环境污染的关注与批判<br><b class="r">注意：</b>夸张手法，需与其他史料互证</p></div>
+        <div class="card reveal" style="--d:3;--r:-.5deg"><div class="ct" style="font-size:24px">实物 · 证词 <small>一手史料</small></div>
+          <p class="xs">例：1840 年“黑便士”邮票；1832 年萨德勒委员会童工证词。</p>
+          <p class="xs" style="margin-top:6px"><b class="v">价值：</b>直接反映当时的通信、劳动状况<br><b class="r">注意：</b>证词收集方式（萨德勒委员会被批评提问带诱导性）</p></div>
+      </div>
+      <div class="card reveal" style="--d:4;--r:.2deg;margin-top:24px;padding:18px 26px">
+        <div class="ct" style="font-size:24px">TEMPLATE <small>“史料价值”题答题模板</small></div>
+        <p style="font-size:20px">史料<b class="v">类型</b>（一手/二手；文献/实物/图像/口述）＋ 作者与<b class="v">时代</b>（是否亲历、立场）＋ 可研究的<b class="v">内容</b>（能说明什么）＋ <b class="r">局限</b>（片面、夸张、需互证）。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     23 — EXAM PRACTICE 1: background & technology
+     ========================================================= -->
+<section class="slide" data-mod="4">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">四、高考链接</div><h2>（二）真题演练①：背景与技术</h2></div><div class="lk">点击答案栏揭晓</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="card q reveal" style="--d:1;--r:-.4deg">
+          <div class="from">2024 · 新课标卷 · 32</div>
+          <p class="stem">17世纪，法国某细布工场雇佣近 1700 人，分属于制作轮子与刀具、清洗、上色、整经等部门。织布分为多道工序，其中压印、绣花等通常由妇女承担。这可用于说明（　）</p>
+          <div class="opts"><span>A. 生产方式变革的条件渐趋成熟</span><span>B. 机器大生产强化对工人管理</span><span>C. 现代工厂制度提高了生产效率</span><span>D. 工业革命促进女性地位提升</span></div>
+          <div class="ans"><b class="hide">A</b><span class="hide">工场规模大、分工细致——正是教材所说“手工工场发展水平较高……为技术改革和机器发明提供了条件”。17世纪尚无机器大生产和现代工厂，B、C 时序错误；D 材料未体现。</span> <span class="tip">（点击揭晓）</span></div>
+        </div>
+        <div class="card q reveal" style="--d:2;--r:.4deg">
+          <div class="from">2019 · 全国Ⅰ卷</div>
+          <p class="stem">工业革命前，英国矿井里使用蒸汽唧筒抽水。1765 年，修理过唧筒的瓦特发明了一种单动式蒸汽机，后在工厂主的合作和资助下，终于改进制成“万能蒸汽机”，并广泛使用到工业领域。该过程表明，第一次工业革命期间生产领域的主要发明创造（　）</p>
+          <div class="opts"><span>A. 源自于劳动实践</span><span>B. 依赖于科学理论的突破</span><span>C. 取决于资金保障</span><span>D. 得益于各阶层广泛参与</span></div>
+          <div class="ans"><b class="hide">A</b><span class="hide">“修理过唧筒的瓦特”——发明源于工匠的生产实践。B 是第二次工业革命的特点；C“取决于”夸大；D 材料未体现。</span> <span class="tip">（点击揭晓）</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     24 — EXAM PRACTICE 2: production & labour
+     ========================================================= -->
+<section class="slide" data-mod="4">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">四、高考链接</div><h2>（三）真题演练②：生产组织与劳资关系</h2></div><div class="lk">点击答案栏揭晓</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="card q reveal" style="--d:1;--r:-.4deg">
+          <div class="from">2024 · 全国甲卷 · 33</div>
+          <p class="stem">有学者评论，当一个手织女工从织机旁站起来休息时，没有其他人等着接她的活去完成下一个工序，但是“在棉纺厂中，所有的机器都是开动着的，时刻都需要有人照看”“是机器迫使工人接受工厂纪律的”。这可以表明工业革命期间（　）</p>
+          <div class="opts"><span>A. 生产组织方式发生深刻变革</span><span>B. 机器大生产推动人身解放</span><span>C. 工厂纪律保障工人劳动权益</span><span>D. 工人劳动自主性极大提高</span></div>
+          <div class="ans"><b class="hide">A</b><span class="hide">从家庭手工劳动到工厂机器生产，劳动受机器和纪律支配——生产组织方式深刻变革。B、C、D 与材料“迫使”相反。</span> <span class="tip">（点击揭晓）</span></div>
+        </div>
+        <div class="card q reveal" style="--d:2;--r:.4deg">
+          <div class="from">2026 · 浙江1月选考 · 14</div>
+          <p class="stem">1851 年英国工程师罗伯茨回忆说，“（1824 年海德纺纱工人）罢工持续了三个月。当时，为了能够让纺纱机自动运转，一整个棉纺业雇主的代表团都亲自等候，他们要求我将注意力转向纺纱”“机器一旦被制造出来，（雇主们）就会认为……他们随时能用机器对工人施以惩罚”。据此可知，雇主们意在（　）</p>
+          <div class="opts"><span>A. 以技术革新应对工人反抗</span><span>B. 组织联盟以镇压工人运动</span><span>C. 通过工厂制提高劳动效率</span><span>D. 用机器发明带动工业革命</span></div>
+          <div class="ans"><b class="hide">A</b><span class="hide">罢工后催促研制自动纺纱机，“用机器对工人施以惩罚”——以技术革新减少对熟练工人的依赖。D 时序错（工业革命早已开始）。</span> <span class="tip">（点击揭晓）</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     25 — EXAM PRACTICE 3: social life
+     ========================================================= -->
+<section class="slide" data-mod="4">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">四、高考链接</div><h2>（四）真题演练③：社会生活</h2></div><div class="lk">点击答案栏揭晓</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="card q reveal" style="--d:1;--r:-.4deg">
+          <div class="from">2025 · 甘肃卷 · 15</div>
+          <p class="stem">工业革命之前，人们的工作场所和家庭住所间没有明显界限，家庭成员往往从事相似的工作。工业革命后，随着工厂的兴起，在许多城市家庭中，丈夫需要早晚往返于工作场所和家庭住所之间，妻儿则待在家里。上述变化反映出（　）</p>
+          <div class="opts"><span>A. 生产技术和专业水平的提高</span><span>B. 居住条件和基础设施的改善</span><span>C. 贫富分化和阶级差异的形成</span><span>D. 生活空间和劳作方式的改变</span></div>
+          <div class="ans"><b class="hide">D</b><span class="hide">“工作场所与住所分离”= 劳作方式与生活空间的改变（选必2 第5课）。其余选项材料未体现。</span> <span class="tip">（点击揭晓）</span></div>
+        </div>
+        <div class="card q reveal" style="--d:2;--r:.4deg">
+          <div class="from">2026 · 湖南卷 · 14</div>
+          <p class="stem">19世纪中叶，英国出现了“比例尺之争”。其中一方主张沿用传统的小比例尺地图，而另一方坚持采用更清晰、详实的大比例尺地图，以满足土地产权登记、道路修建、大型排水工程建设等需求。这一争论是基于当时英国（　）</p>
+          <div class="opts"><span>A. 地方治理模式的转型</span><span>B. 城市发展进程的加快</span><span>C. 地图绘制技术的突破</span><span>D. 道路规划理念的革新</span></div>
+          <div class="ans"><b class="hide">B</b><span class="hide">产权登记、道路、排水工程都是城市扩张带来的需求——结合“1851 年英国城市人口过半”。C、D 是表象，A 材料未体现。</span> <span class="tip">（点击揭晓）</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     26 — EXAM PRACTICE 4: state policy & national paths
+     ========================================================= -->
+<section class="slide" data-mod="4">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">四、高考链接</div><h2>（五）真题演练④：国家政策与工业化道路</h2></div><div class="lk">点击答案栏揭晓</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="card q reveal" style="--d:1;--r:-.4deg">
+          <div class="from">2026 · 浙江6月选考 · 12</div>
+          <p class="stem">19世纪上半叶英国的部分政策措施：1813 年，取消英国东印度公司对印度的贸易垄断权；1843 年，完全废除机械出口禁令；1841—1846 年，先后取消 600 多种关税。其主要目的是（　）</p>
+          <div class="opts"><span>A. 推动工业发展，强化经济优势</span><span>B. 加强技术输出，抢占投资场所</span><span>C. 调整殖民政策，扩大亚洲市场</span><span>D. 削减关税壁垒，降低生产成本</span></div>
+          <div class="ans"><b class="hide">A</b><span class="hide">“世界工厂”推行自由贸易、拓展市场，以巩固经济优势。当时以商品输出为主，B 错；措施面向全球，C 错；D 只是手段。</span> <span class="tip">（点击揭晓）</span></div>
+        </div>
+        <div class="card q reveal" style="--d:2;--r:.4deg">
+          <div class="from">2023 · 河北卷 · 14</div>
+          <p class="stem">有学者研究指出，在19世纪大部分时间里，英国输往法国商品的 60%—70% 为原材料和半成品，包括羊毛、煤、钢铁等。法国出口英国商品的半数以上集中在传统工业部门生产的制成品和食品方面。由此可知，当时（　）</p>
+          <div class="opts"><span>A. 英国对法贸易处于逆差地位</span><span>B. 英国国际贸易垄断地位动摇</span><span>C. 英法工业化的进程各具特色</span><span>D. 欧洲商业格局逐渐发生变化</span></div>
+          <div class="ans"><b class="hide">C</b><span class="hide">两国贸易结构不同，反映工业化道路差异——对应教材“各国……工业革命的进程也各具特色”。</span> <span class="tip">（点击揭晓）</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     27 — EXAM PRACTICE 5: latecomers
+     ========================================================= -->
+<section class="slide" data-mod="4">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">四、高考链接</div><h2>（六）真题演练⑤：后起国家</h2></div><div class="lk">点击答案栏揭晓</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1fr">
+        <div class="card q reveal" style="--d:1;--r:-.4deg">
+          <div class="from">2024 · 江西卷 · 15</div>
+          <p class="stem">1914 年，外国投资大约占到当时俄国 2000 多家公司投资的 1/3。在采矿业中这一比例达到了 90%，在冶金业超过了 40%，在化学工业占 50%，在纺织业占 28%。在银行业外国资本占到 18 家主要银行资产总额的 42.6%。这一现象产生是由于俄国（　）</p>
+          <div class="opts"><span>A. 资本原始积累不足</span><span>B. 新兴工业占据主导地位</span><span>C. 金融主权受到外国控制</span><span>D. 工业垄断组织形成</span></div>
+          <div class="ans"><b class="hide">A</b><span class="hide">1861 年改革不彻底，资本原始积累不足，工业化依赖外资。C“受到外国控制”夸大。</span> <span class="tip">（点击揭晓）</span></div>
+        </div>
+        <div class="card q reveal" style="--d:2;--r:.4deg">
+          <div class="from">2016 · 全国卷</div>
+          <p class="stem">19世纪60年代，总长超过 3 万英里的美国铁路有多种轨距。南部铁路轨距以 5 英尺居多，北部最普遍的轨距是 4.9 英尺，部分地区还采用 6 英尺、5.6 英尺的轨距。这反映出当时美国（　）</p>
+          <div class="opts"><span>A. 尚未形成成熟的统一国内市场</span><span>B. 铁路是经济增长的主导部门</span><span>C. 科技水平限制了制造业的发展</span><span>D. 战争破坏了基础交通设施建设</span></div>
+          <div class="ans"><b class="hide">A</b><span class="hide">轨距不统一，各地铁路难以联通——南北经济分割，统一国内市场尚未成熟（内战的经济根源之一）。</span> <span class="tip">（点击揭晓）</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     28 — COMMON MISTAKES
+     ========================================================= -->
+<section class="slide" data-fs="1.12" data-mod="4">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">四、高考链接</div><h2>（七）易错辨析：判断正误</h2></div></div>
+    <div class="body">
+      <div class="card reveal" style="--d:1;--r:-.2deg;padding:18px 28px">
+        <table class="lg" style="font-size:20.5px">
+          <tr><th style="width:56px">#</th><th>说法</th><th style="width:90px">判断</th><th>辨析</th></tr>
+          <tr><td class="n">01</td><td>工业革命以瓦特改良蒸汽机为开始标志</td><td class="f">✗</td><td>开始：<b class="v">珍妮纺纱机</b>；蒸汽机是<b class="v">主要标志</b></td></tr>
+          <tr><td class="n">02</td><td>手工工场的出现是近代工厂的开端</td><td class="f">✗</td><td><b class="v">1771 年水力纺纱厂</b>是近代工厂开端</td></tr>
+          <tr><td class="n">03</td><td>英国第一次工业革命完成的标志是火车问世</td><td class="f">✗</td><td>完成：<b class="v">机器制造业实现机械化</b>（19世纪中期）</td></tr>
+          <tr><td class="n">04</td><td>第一次工业革命的发明主要依靠科学理论</td><td class="f">✗</td><td>多源于<b class="v">工匠实践</b>；科技紧密结合是第二次的特点</td></tr>
+          <tr><td class="n">05</td><td>第二次工业革命是第一次的简单延续</td><td class="f">✗</td><td>是<b class="v">深入发展</b>，具有显著不同特点</td></tr>
+          <tr><td class="n">06</td><td>垄断组织改变了资本主义制度的性质</td><td class="f">✗</td><td>实质是生产关系的<b class="v">局部调整</b></td></tr>
+          <tr><td class="n">07</td><td>第一次工业革命后资本主义世界市场最终形成</td><td class="f">✗</td><td>最终形成于<b class="v">19世纪末20世纪初</b></td></tr>
+          <tr><td class="n">08</td><td>1832 年议会改革使英国工人获得选举权</td><td class="f">✗</td><td>主要受益者是<b class="v">工业资产阶级</b>，工人仍无选举权</td></tr>
+          <tr><td class="n">09</td><td>工业革命使所有人的生活立即得到改善</td><td class="f">✗</td><td>短期代价与长期改善并存，需<b class="v">辩证看待</b></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     29 — KNOWLEDGE FRAMEWORK & STAGE FEATURES
+     ========================================================= -->
+<section class="slide" data-fs="1.15" data-mod="4">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">四、高考链接</div><h2>（八）知识框架：一张卡记住这一讲</h2></div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:repeat(4,1fr);gap:20px">
+        <div class="card reveal" style="--d:1;--r:-.7deg;padding:18px"><div class="ct" style="font-size:26px">背景</div><p class="xs">政治前提 · 圈地运动（劳动力、市场）· 殖民扩张（资本、原料）· 手工工场与科技 · <b class="r">市场需求</b></p></div>
+        <div class="card reveal" style="--d:2;--r:.5deg;padding:18px"><div class="ct" style="font-size:26px">进程</div><p class="xs">棉纺织业 → 工厂（1771）→ 蒸汽机（1785）→ 交通（汽船、火车）→ 机器制造业机械化 → 扩展；电力 · 内燃机 · 化工</p></div>
+        <div class="card reveal" style="--d:3;--r:-.4deg;padding:18px"><div class="ct" style="font-size:26px">影响</div><p class="xs">生产力 · 工厂制度与垄断 · 两大阶级 · 城市化与生活方式 · 社会问题与立法 · 世界市场与世界体系 · 马克思主义</p></div>
+        <div class="card reveal" style="--d:4;--r:.7deg;padding:18px"><div class="ct" style="font-size:26px">方法</div><p class="xs">唯物史观逻辑链 · 时空坐标中西对照 · 多类型史料互证 · 跨册链接 · 辩证评价</p></div>
+      </div>
+      <div class="card reveal" style="--d:5;--r:-.2deg;margin-top:24px;padding:18px 26px">
+        <div class="ct" style="font-size:24px">STAGE FEATURES <small>阶段特征（18世纪中期—20世纪初）</small></div>
+        <table class="lg" style="font-size:19.5px">
+          <tr><td class="h">经济</td><td>“蒸汽时代”→“电气时代”；工业化与城市化加快；资本主义世界经济体系最终形成；发展不平衡，美、德后来居上</td></tr>
+          <tr><td class="h">政治</td><td>资本主义制度确立统治地位；文官制度形成；世界殖民体系形成</td></tr>
+          <tr><td class="h">思想</td><td>自由主义、科学社会主义、民族主义交织；《共产党宣言》发表标志马克思主义诞生</td></tr>
+        </table>
+      </div>
+      <div class="reveal" style="--d:6;margin-top:26px;display:flex;align-items:center;gap:26px">
+        <div class="stamp" style="--sr:-6deg;--sd:1.4s;font-size:36px;mix-blend-mode:normal;color:var(--brass);border-color:var(--brass);background:transparent">DONE<small>复习完成</small></div>
+        <p style="font-size:26px;font-weight:700">机器改变的不只是生产方式，更是人怎样生活、世界怎样相连。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<!-- Chrome outside the stage -->
+<div class="progress" id="progress"></div>
+<div class="deck-controls" id="counter">01 / 31</div>
+<div class="edit-hotzone" id="editHotzone"></div>
+<button class="edit-toggle" id="editToggle" title="编辑模式 (E)">✎</button>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===========================================
+   FOOTERS — lesson name, module strip, card number
+   =========================================== */
+(function addFooters() {
+    const names = ['导航', '一 背景', '二 进程', '三 影响', '四 高考'];
+    const slides = document.querySelectorAll('.slide');
+    const total = String(slides.length).padStart(2, '0');
+    slides.forEach((slide, i) => {
+        if (i === 0 || slide.querySelector('.foot')) return;
+        const m = Number(slide.dataset.mod || 0);
+        const f = document.createElement('div');
+        f.className = 'foot';
+        f.innerHTML = `<span>高三一轮复习 · 影响世界的工业革命</span>` +
+            `<span class="mods">${names.map((n, k) => `<span class="${k === m ? 'on' : ''}">${n}</span>`).join('')}</span>` +
+            `<span>CARD ${String(i + 1).padStart(2, '0')} / ${total}</span>`;
+        slide.appendChild(f);
+    });
+})();
+
+/* ===========================================
+   TEXT SCALE — slides with data-fs get their body text enlarged
+   to use the free space (sizes are measured first, then applied once)
+   =========================================== */
+document.querySelectorAll('.slide[data-fs]').forEach((slide) => {
+    const k = parseFloat(slide.dataset.fs);
+    const els = [...slide.querySelectorAll('.content .body *')].filter((el) => !el.closest('.stamp') && !el.hasAttribute('data-scaled'));
+    const sizes = els.map((el) => parseFloat(getComputedStyle(el).fontSize));
+    els.forEach((el, i) => { el.style.fontSize = (sizes[i] * k).toFixed(1) + 'px'; el.setAttribute('data-scaled', ''); });
+});
+
+/* ===========================================
+   ANSWER REVEAL — click an answer strip to show it
+   =========================================== */
+document.querySelectorAll('.q .ans').forEach((a) => a.addEventListener('click', (e) => { e.stopPropagation(); a.classList.toggle('shown'); }));
+if (new URLSearchParams(location.search).has('answers')) document.querySelectorAll('.q .ans').forEach((a) => a.classList.add('shown'));
+
+/* ===========================================
+   SLIDE PRESENTATION CONTROLLER
+   =========================================== */
+class SlidePresentation {
+    constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.stage = document.getElementById('deckStage');
+        this.progress = document.getElementById('progress');
+        this.counter = document.getElementById('counter');
+        this.current = 0;
+        this.wheelLock = false;
+        this.setupStageScale();
+        this.setupKeyboardNav();
+        this.setupWheelNav();
+        this.setupTouchNav();
+        const fromHash = parseInt(location.hash.slice(1), 10);
+        this.show(Number.isFinite(fromHash) ? fromHash - 1 : 0);
+    }
+    setupStageScale() {
+        const scale = () => {
+            const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+            this.stage.style.transform = `translate(${(innerWidth - 1920 * k) / 2}px, ${(innerHeight - 1080 * k) / 2}px) scale(${k})`;
+        };
+        scale();
+        addEventListener('resize', scale);
+    }
+    setupKeyboardNav() {
+        document.addEventListener('keydown', (e) => {
+            if (document.body.classList.contains('editing')) return;
+            if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.next(); }
+            if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.prev(); }
+            if (e.key === 'Home') this.show(0);
+            if (e.key === 'End') this.show(this.slides.length - 1);
+        });
+    }
+    setupWheelNav() {
+        addEventListener('wheel', (e) => {
+            if (document.body.classList.contains('editing') || this.wheelLock || Math.abs(e.deltaY) < 20) return;
+            this.wheelLock = true;
+            e.deltaY > 0 ? this.next() : this.prev();
+            setTimeout(() => (this.wheelLock = false), 900);
+        }, { passive: true });
+    }
+    setupTouchNav() {
+        let x0 = null, y0 = null;
+        addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+        addEventListener('touchend', (e) => {
+            if (x0 === null || document.body.classList.contains('editing')) return;
+            const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+            if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) dx < 0 ? this.next() : this.prev();
+            x0 = null;
+        });
+    }
+    next() { this.show(this.current + 1); }
+    prev() { this.show(this.current - 1); }
+    show(i) {
+        this.current = Math.max(0, Math.min(i, this.slides.length - 1));
+        this.slides.forEach((s, n) => {
+            s.classList.toggle('active', n === this.current);
+            s.classList.toggle('visible', n === this.current);
+        });
+        const total = this.slides.length;
+        this.progress.style.width = `${((this.current + 1) / total) * 100}%`;
+        this.counter.textContent = `${String(this.current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+        history.replaceState(null, '', `${location.search}#${this.current + 1}`);
+    }
+}
+const deck = new SlidePresentation();
+// ?export hides window chrome for PDF capture
+if (new URLSearchParams(location.search).has('export')) document.querySelectorAll('.progress, .deck-controls, .edit-toggle').forEach((el) => el.remove());
+
+/* ===========================================
+   INLINE EDITOR — E key or top-left hotzone; Ctrl/Cmd+S downloads the edited HTML
+   =========================================== */
+class InlineEditor {
+    constructor() {
+        this.isActive = false;
+        this.key = 'ir-review-edits-v1';
+        this.btn = document.getElementById('editToggle');
+        this.selector = '.slide h1, .slide h2, .slide p, .slide li, .slide td, .slide th, .slide .ct, .slide .k, .slide .meta span, .slide .opts span, .t-en, .t-tag';
+        this.restore();
+        this.bind();
+    }
+    targets() { return document.querySelectorAll(this.selector); }
+    toggleEditMode() {
+        this.isActive = !this.isActive;
+        document.body.classList.toggle('editing', this.isActive);
+        this.btn.classList.toggle('active', this.isActive);
+        this.targets().forEach((el) => el.setAttribute('contenteditable', this.isActive ? 'true' : 'false'));
+        if (!this.isActive) { this.save(); this.toast('已保存修改'); }
+        else this.toast('编辑模式：点击任意文字修改 · E 退出 · Ctrl+S 导出');
+    }
+    save() { try { localStorage.setItem(this.key, JSON.stringify([...document.querySelectorAll('.slide')].map((s) => s.innerHTML))); } catch (e) { /* storage unavailable */ } }
+    restore() {
+        try {
+            const data = JSON.parse(localStorage.getItem(this.key) || 'null');
+            if (Array.isArray(data)) document.querySelectorAll('.slide').forEach((s, i) => { if (data[i]) s.innerHTML = data[i]; });
+        } catch (e) { /* ignore */ }
+    }
+    download() {
+        this.targets().forEach((el) => el.removeAttribute('contenteditable'));
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob(['<!DOCTYPE html>\n' + document.documentElement.outerHTML], { type: 'text/html' }));
+        a.download = 'industrial-revolution-review.html';
+        a.click();
+        if (this.isActive) this.targets().forEach((el) => el.setAttribute('contenteditable', 'true'));
+        this.toast('已导出 HTML');
+    }
+    toast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg; t.classList.add('show');
+        clearTimeout(this._t); this._t = setTimeout(() => t.classList.remove('show'), 2200);
+    }
+    bind() {
+        const hot = document.getElementById('editHotzone');
+        let hide = null;
+        const showBtn = () => { clearTimeout(hide); this.btn.classList.add('show'); };
+        const hideBtn = () => { hide = setTimeout(() => { if (!this.isActive) this.btn.classList.remove('show'); }, 400); };
+        hot.addEventListener('mouseenter', showBtn); hot.addEventListener('mouseleave', hideBtn);
+        this.btn.addEventListener('mouseenter', showBtn); this.btn.addEventListener('mouseleave', hideBtn);
+        hot.addEventListener('click', () => this.toggleEditMode());
+        this.btn.addEventListener('click', () => this.toggleEditMode());
+        document.addEventListener('input', () => this.save());
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); this.download(); return; }
+            const editingText = e.target.getAttribute && e.target.getAttribute('contenteditable') === 'true';
+            if ((e.key === 'e' || e.key === 'E') && !editingText) this.toggleEditMode();
+            if (e.key === 'Escape' && this.isActive) this.toggleEditMode();
+        });
+    }
+}
+const editor = new InlineEditor();
+</script>
+</body>
+</html>
