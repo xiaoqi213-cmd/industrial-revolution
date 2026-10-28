@@ -202,9 +202,9 @@ svg {
    =========================================== */
 .content { position: absolute; left: 100px; right: 100px; top: 66px; bottom: 112px; display: flex; flex-direction: column; }
 .hd { margin-bottom: 22px; display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; }
-.hd .sec { display: inline-flex; align-items: baseline; gap: 14px; font-weight: 900; font-size: 32px; line-height: 1.2; color: #1f2724; background: var(--brass); padding: 3px 16px 5px; }
-.hd .sec small { font-size: 21px; font-weight: 700; opacity: .75; }
-.hd h2 { font-weight: 900; font-size: 50px; line-height: 1.2; margin-top: 10px; }
+.hd .sec { display: inline-flex; align-items: baseline; gap: 16px; font-weight: 900; font-size: 50px; line-height: 1.15; color: #1f2724; background: var(--brass); padding: 4px 20px 8px; }
+.hd .sec small { font-size: 24px; font-weight: 700; opacity: .75; }
+.hd h2 { font-weight: 900; font-size: 40px; line-height: 1.25; margin-top: 12px; }
 .hd .lk { font-family: var(--f-m); font-size: 18px; color: var(--chalk-dim); text-align: right; line-height: 1.5; white-space: nowrap; }
 .body { flex: 1; min-height: 0; position: relative; }
 .row { display: grid; gap: 28px; align-items: start; }
@@ -296,6 +296,56 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .ansk b.t { color: var(--brass); }
 .mat { font-size: 20.5px; line-height: 1.62; }
 .mat .ct small { font-size: 20px; }
+/* ===========================================
+   MONOPOLY SIMULATION (step-through) — Standard Oil 1870–1911
+   data-step on .sim drives every visual state
+   =========================================== */
+.sim { display: grid; grid-template-columns: 1.05fr .95fr; gap: 30px; height: 100%; }
+.sim-stage { position: relative; background: var(--card); border: 3px solid var(--ink); box-shadow: 0 18px 38px rgba(0,0,0,.38); overflow: hidden; }
+.sim-stage .cap { position: absolute; left: 20px; top: 14px; font-family: var(--f-m); font-weight: 700; font-size: 18px; color: var(--ink-dim); letter-spacing: .08em; z-index: 3; }
+.town { position: absolute; left: 40px; right: 40px; top: 60px; bottom: 40px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px 18px; align-content: center; transition: opacity .8s, transform .8s var(--ease); }
+.rf { position: relative; height: 62px; background: #8a8f84; clip-path: polygon(0 100%, 0 30%, 18% 0, 18% 30%, 40% 0, 40% 30%, 62% 0, 62% 30%, 80% 0, 80% 100%); transition: background .6s, transform .6s, opacity .6s; }
+.rf::after { content: ""; }
+.sim[data-step="1"] .rf.me { background: var(--stamp); }
+.sim:not([data-step="1"]) .rf.s { background: var(--stamp); animation: gulp .6s ease both; animation-delay: calc(var(--i) * 40ms); }
+@keyframes gulp { 0% { transform: scale(1); } 50% { transform: scale(1.25); } 100% { transform: scale(1); } }
+.sim[data-step="3"] .town, .sim[data-step="4"] .town { opacity: .12; transform: scale(.9); }
+.sim[data-step="5"] .town { opacity: 0; }
+.big { position: absolute; left: 50%; top: 52%; width: 520px; height: 300px; margin: -150px 0 0 -260px; background: var(--stamp); color: #f6ead0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--f-d); font-size: 64px; letter-spacing: .04em; clip-path: polygon(0 100%, 0 22%, 12% 0, 12% 22%, 30% 0, 30% 22%, 48% 0, 48% 22%, 66% 0, 66% 22%, 84% 0, 84% 22%, 100% 0, 100% 100%); transform: scale(0); transition: transform .9s cubic-bezier(.3,1.5,.5,1); z-index: 2; }
+.big small { font-family: var(--f-cn); font-size: 30px; font-weight: 900; }
+.sim[data-step="3"] .big, .sim[data-step="4"] .big { transform: scale(1); }
+.cert { position: absolute; right: 26px; bottom: 26px; width: 330px; background: #f6ead0; border: 3px double var(--ink); padding: 12px 16px; font-size: 20px; line-height: 1.45; color: var(--ink); transform: translateY(140%) rotate(-3deg); transition: transform .8s var(--ease); z-index: 4; }
+.cert b { font-family: var(--f-d); font-size: 26px; color: var(--stamp2); display: block; }
+.sim[data-step="4"] .cert { transform: translateY(0) rotate(-3deg); }
+.split { position: absolute; left: 50px; right: 50px; top: 80px; bottom: 50px; display: grid; grid-template-columns: repeat(9, 1fr); gap: 12px; align-content: center; opacity: 0; transition: opacity .5s; }
+.split i { height: 52px; background: var(--stamp2); clip-path: polygon(0 100%, 0 30%, 25% 0, 25% 30%, 50% 0, 50% 30%, 75% 0, 75% 100%); transform: scale(0); transition: transform .5s cubic-bezier(.3,1.5,.5,1); transition-delay: calc(var(--i) * 30ms); }
+.sim[data-step="5"] .split { opacity: 1; }
+.sim[data-step="5"] .split i { transform: scale(1); }
+.split .law { grid-column: 1 / -1; text-align: center; font-family: var(--f-d); font-size: 34px; color: var(--stamp2); }
+.sim-panel { display: flex; flex-direction: column; gap: 14px; }
+.sim-panel .yr { font-family: var(--f-d); font-size: 84px; color: var(--brass); line-height: 1; }
+.stp { display: none; font-size: 29px; line-height: 1.6; }
+.sim[data-step="1"] .stp[data-s="1"], .sim[data-step="2"] .stp[data-s="2"], .sim[data-step="3"] .stp[data-s="3"], .sim[data-step="4"] .stp[data-s="4"], .sim[data-step="5"] .stp[data-s="5"] { display: block; }
+.share { position: relative; height: 46px; border: 3px solid var(--chalk); background: rgba(255,255,255,.06); }
+.share .fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: repeating-linear-gradient(45deg, var(--stamp) 0 6px, rgba(184,50,42,.5) 6px 14px); transition: width 1s var(--ease); }
+.share span { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-family: var(--f-m); font-weight: 700; font-size: 20px; }
+.sim[data-step="1"] .share .fill { width: 3.8%; } .sim[data-step="2"] .share .fill { width: 80.8%; }
+.sim[data-step="3"] .share .fill, .sim[data-step="4"] .share .fill { width: 92%; } .sim[data-step="5"] .share .fill { width: 68%; }
+.dots { display: flex; gap: 10px; }
+.dots i { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--brass); }
+.sim[data-step="1"] .dots i:nth-child(-n+1), .sim[data-step="2"] .dots i:nth-child(-n+2), .sim[data-step="3"] .dots i:nth-child(-n+3), .sim[data-step="4"] .dots i:nth-child(-n+4), .sim[data-step="5"] .dots i:nth-child(-n+5) { background: var(--brass); }
+.ctrl { display: flex; gap: 12px; margin-top: auto; }
+.ctrl button { font-family: var(--f-cn); font-size: 22px; font-weight: 700; padding: 8px 18px; background: transparent; color: var(--brass); border: 2px solid var(--brass); cursor: pointer; }
+.ctrl button:hover { background: rgba(232,196,106,.15); }
+
+/* Four forms of monopoly: looping SVG diagrams */
+.forms { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.forms .card { padding: 14px 16px; }
+.forms svg { width: 100%; height: auto; display: block; background: rgba(0,0,0,.04); border: 1px dashed var(--card-line); }
+.forms svg text { font-family: 'Noto Sans SC', sans-serif; font-weight: 700; }
+.forms .lvl { display: flex; gap: 6px; margin: 8px 0 4px; align-items: center; font-family: var(--f-m); font-size: 15px; color: var(--ink-dim); }
+.forms .lvl i { width: 22px; height: 10px; border: 2px solid var(--stamp); }
+.forms .lvl i.on { background: var(--stamp); }
 /* Footer */
 .foot { position: absolute; left: 100px; right: 100px; bottom: 40px; height: 40px; display: flex; align-items: center; justify-content: space-between; font-family: var(--f-m); font-size: 16px; letter-spacing: .06em; color: var(--chalk-faint); border-top: 1px solid var(--chalk-faint); padding-top: 8px; }
 .foot .mods { display: flex; gap: 5px; }
@@ -1047,12 +1097,95 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   </div>
 </section>
 
+<section class="slide" data-mod="5" data-time="18:40">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">五、下一代工人 <small>垄断 · 动画演示</small></div><h2>（三）一个行业，怎样变成一家公司？</h2></div><div class="lk">点击“下一步”或“自动播放”</div></div>
+    <div class="body">
+      <div class="sim reveal" data-step="1" style="--d:1">
+        <div class="sim-stage">
+          <div class="cap">美国石油炼制业 · 标准石油公司（1870—1911）</div>
+          <div class="town"><div class="rf s me" style="--i:0"></div><div class="rf s" style="--i:1"></div><div class="rf s" style="--i:2"></div><div class="rf s" style="--i:3"></div><div class="rf s" style="--i:4"></div><div class="rf s" style="--i:5"></div><div class="rf s" style="--i:6"></div><div class="rf s" style="--i:7"></div><div class="rf" style="--i:8"></div><div class="rf s" style="--i:9"></div><div class="rf s" style="--i:10"></div><div class="rf s" style="--i:11"></div><div class="rf s" style="--i:12"></div><div class="rf s" style="--i:13"></div><div class="rf" style="--i:14"></div><div class="rf s" style="--i:15"></div><div class="rf s" style="--i:16"></div><div class="rf s" style="--i:17"></div><div class="rf s" style="--i:18"></div><div class="rf" style="--i:19"></div><div class="rf s" style="--i:20"></div><div class="rf s" style="--i:21"></div><div class="rf s" style="--i:22"></div><div class="rf" style="--i:23"></div><div class="rf s" style="--i:24"></div><div class="rf" style="--i:25"></div></div>
+          <div class="big">STANDARD OIL<small>标准石油托拉斯</small></div>
+          <div class="cert"><b>TRUST · 托拉斯协议</b>40 家公司的股票交给 9 名受托人统一管理</div>
+          <div class="split"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i><i style="--i:15"></i><i style="--i:16"></i><i style="--i:17"></i><i style="--i:18"></i><i style="--i:19"></i><i style="--i:20"></i><i style="--i:21"></i><i style="--i:22"></i><i style="--i:23"></i><i style="--i:24"></i><i style="--i:25"></i><i style="--i:26"></i><i style="--i:27"></i><i style="--i:28"></i><i style="--i:29"></i><i style="--i:30"></i><i style="--i:31"></i><i style="--i:32"></i><i style="--i:33"></i><div class="law">1911：最高法院判决拆分</div></div>
+        </div>
+        <div class="sim-panel">
+          <div class="dots"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="stp" data-s="1"><div class="yr">1870</div>克利夫兰有 <b class="brass">26 家</b>炼油厂相互竞争，洛克菲勒的标准石油公司（红色）只是其中之一。<br><span class="dim">想一想：自由竞争会一直“自由”下去吗？</span></div>
+          <div class="stp" data-s="2"><div class="yr">1872</div>通过收购、兼并和铁路运费回扣，标准石油控制了克利夫兰 26 家炼油厂中的 <b class="brass">21 家</b>。<br><span class="dim">竞争的结果，是竞争者越来越少。</span></div>
+          <div class="stp" data-s="3"><div class="yr">1880</div>标准石油控制了全美炼油业的 <b class="brass">90%—95%</b>——一个行业几乎变成了一家公司。</div>
+          <div class="stp" data-s="4"><div class="yr">1882</div>签订“标准石油托拉斯协议”：40 家公司交出股票，由 <b class="brass">9 名受托人</b>统一经营——<b class="brass">托拉斯</b>由此得名。</div>
+          <div class="stp" data-s="5"><div class="yr">1890 → 1911</div>国会通过《谢尔曼反托拉斯法》（1890）；1911 年最高法院判决标准石油解散，拆分为 30 多家公司。此时其炼油份额已降至 <b class="brass">70% 以下</b>。<br><span class="dim">国家开始用法律限制垄断。</span></div>
+          <div class="share"><div class="fill"></div><span>市场份额</span></div>
+          <div class="ctrl"><button type="button" data-act="prev">◀ 上一步</button><button type="button" data-act="next">下一步 ▶</button><button type="button" data-act="play">▶ 自动播放</button></div>
+          <div class="src">资料来源：Encyclopaedia Britannica “Standard Oil”；凯斯西储大学《克利夫兰历史百科》；EBSCO “Standard Oil Trust Organized”；Cato Institute (2025)。1911 年拆分数各来源记为 33 或 34 家；第 1—2 步的份额条表示克利夫兰 26 家中的占比。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-mod="5" data-time="18:50">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">五、下一代工人 <small>垄断 · 图解</small></div><h2>（四）四种垄断组织，各自“联合”到了哪一步？</h2></div><div class="lk">动画循环播放 · 拓展</div></div>
+    <div class="body">
+      <div class="forms">
+        <div class="card kp reveal" style="--d:1;--r:-.5deg"><div class="ct">CARTEL <small>卡特尔</small></div><svg viewBox="0 0 360 210"><path d="M34 180 L34 148 L46 136 L46 148 L58 136 L58 148 L70 136 L70 148 L82 136 L82 180 Z" fill="#6b5a3a"/><path d="M156 180 L156 148 L168 136 L168 148 L180 136 L180 148 L192 136 L192 148 L204 136 L204 180 Z" fill="#6b5a3a"/><path d="M278 180 L278 148 L290 136 L290 148 L302 136 L302 148 L314 136 L314 148 L326 136 L326 180 Z" fill="#6b5a3a"/>
+ <line x1="58" y1="70" x2="302" y2="70" stroke="#4b3b8f" stroke-width="3" stroke-dasharray="8 6"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.35;.45;.9;1" dur="5s" repeatCount="indefinite"/></line>
+ <text x="180" y="58" text-anchor="middle" font-size="18" fill="#4b3b8f">价格 · 产量协定<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.35;.45;.9;1" dur="5s" repeatCount="indefinite"/></text>
+ <g font-size="22" text-anchor="middle" fill="#b8322a">
+  <text x="58" y="112">9<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.35;.45;.9;1" dur="5s" repeatCount="indefinite"/></text>
+  <text x="180" y="112">11<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.35;.45;.9;1" dur="5s" repeatCount="indefinite"/></text>
+  <text x="302" y="112">8<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.35;.45;.9;1" dur="5s" repeatCount="indefinite"/></text>
+  <g><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.35;.45;.9;1" dur="5s" repeatCount="indefinite"/><text x="58" y="112">12</text><text x="180" y="112">12</text><text x="302" y="112">12</text></g>
+ </g>
+ <text x="180" y="30" text-anchor="middle" font-size="15" fill="#6b5a3a">三家仍各自生产、各自销售</text></svg><div class="lvl">联合程度 <i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><p style="font-size:20px">企业就<b class="v">价格、产量、销售市场</b>订立协定；生产、销售、法律上<b class="v">仍各自独立</b>。</p></div>
+        <div class="card kp reveal" style="--d:2;--r:.4deg"><div class="ct">SYNDICATE <small>辛迪加</small></div><svg viewBox="0 0 360 210"><path d="M34 190 L34 158 L46 146 L46 158 L58 146 L58 158 L70 146 L70 158 L82 146 L82 190 Z" fill="#6b5a3a"/><path d="M156 190 L156 158 L168 146 L168 158 L180 146 L180 158 L192 146 L192 158 L204 146 L204 190 Z" fill="#6b5a3a"/><path d="M278 190 L278 158 L290 146 L290 158 L302 146 L302 158 L314 146 L314 158 L326 146 L326 190 Z" fill="#6b5a3a"/>
+ <rect x="110" y="18" width="140" height="42" fill="#4b3b8f"/><text x="180" y="46" text-anchor="middle" font-size="19" fill="#f6ead0">联合销售处</text>
+ <g fill="#b8322a">
+  <circle r="7"><animateMotion dur="2.4s" repeatCount="indefinite" path="M58 140 Q 90 90 160 62"/></circle>
+  <circle r="7"><animateMotion dur="2.4s" begin=".8s" repeatCount="indefinite" path="M180 140 L180 62"/></circle>
+  <circle r="7"><animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite" path="M302 140 Q 270 90 200 62"/></circle>
+ </g>
+ <text x="180" y="110" text-anchor="middle" font-size="15" fill="#6b5a3a">产品统一出售 · 原料统一采购</text></svg><div class="lvl">联合程度 <i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></div><p style="font-size:20px">共同设立机构<b class="v">统一销售商品、采购原料</b>；生产仍独立，<b class="r">商业上失去独立</b>。</p></div>
+        <div class="card kp reveal" style="--d:3;--r:-.4deg"><div class="ct">TRUST <small>托拉斯</small></div><svg viewBox="0 0 360 210">
+ <g><path d="M34 170 L34 138 L46 126 L46 138 L58 126 L58 138 L70 126 L70 138 L82 126 L82 170 Z" fill="#6b5a3a"/><animateTransform attributeName="transform" type="translate" values="0 0;0 0;122 0;122 0;0 0" keyTimes="0;.2;.45;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.4;.5;.9;1" dur="5s" repeatCount="indefinite"/></g>
+ <g><path d="M156 170 L156 138 L168 126 L168 138 L180 126 L180 138 L192 126 L192 138 L204 126 L204 170 Z" fill="#6b5a3a"/><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.4;.5;.9;1" dur="5s" repeatCount="indefinite"/></g>
+ <g><path d="M278 170 L278 138 L290 126 L290 138 L302 126 L302 138 L314 126 L314 138 L326 126 L326 170 Z" fill="#6b5a3a"/><animateTransform attributeName="transform" type="translate" values="0 0;0 0;-122 0;-122 0;0 0" keyTimes="0;.2;.45;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.4;.5;.9;1" dur="5s" repeatCount="indefinite"/></g>
+ <g><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.42;.52;.9;1" dur="5s" repeatCount="indefinite"/>
+  <path d="M90 175 L90 105 L120 80 L120 105 L150 80 L150 105 L180 80 L180 105 L210 80 L210 105 L240 80 L240 105 L270 80 L270 175 Z" fill="#b8322a"/>
+  <text x="180" y="150" text-anchor="middle" font-size="24" fill="#f6ead0">托拉斯</text></g>
+ <text x="180" y="40" text-anchor="middle" font-size="15" fill="#6b5a3a">原企业并为一体，变成股东</text></svg><div class="lvl">联合程度 <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><p style="font-size:20px">生产、销售、财务<b class="v">全部合并</b>，原企业主成为股东，<b class="r">完全失去独立性</b>。例：1882 年标准石油托拉斯。</p></div>
+        <div class="card kp reveal" style="--d:4;--r:.5deg"><div class="ct">KONZERN <small>康采恩</small></div><svg viewBox="0 0 360 210">
+ <rect x="125" y="12" width="110" height="40" fill="#b8322a"/><text x="180" y="39" text-anchor="middle" font-size="19" fill="#f6ead0">控股公司</text>
+ <g stroke="#4b3b8f" stroke-width="3" stroke-dasharray="160" stroke-dashoffset="160" fill="none">
+  <path d="M180 52 L45 148"><animate attributeName="stroke-dashoffset" values="160;0;0;160" keyTimes="0;.3;.85;1" dur="5s" repeatCount="indefinite"/></path>
+  <path d="M180 52 L135 148"><animate attributeName="stroke-dashoffset" values="160;0;0;160" keyTimes="0;.3;.85;1" dur="5s" begin=".3s" repeatCount="indefinite"/></path>
+  <path d="M180 52 L225 148"><animate attributeName="stroke-dashoffset" values="160;0;0;160" keyTimes="0;.3;.85;1" dur="5s" begin=".6s" repeatCount="indefinite"/></path>
+  <path d="M180 52 L315 148"><animate attributeName="stroke-dashoffset" values="160;0;0;160" keyTimes="0;.3;.85;1" dur="5s" begin=".9s" repeatCount="indefinite"/></path>
+ </g>
+ <g fill="#4b3b8f" font-size="17" text-anchor="middle">
+  <rect x="12" y="150" width="66" height="36" fill="#6b5a3a"/><text x="45" y="174" fill="#f6ead0">银行</text>
+  <rect x="102" y="150" width="66" height="36" fill="#6b5a3a"/><text x="135" y="174" fill="#f6ead0">铁路</text>
+  <rect x="192" y="150" width="66" height="36" fill="#6b5a3a"/><text x="225" y="174" fill="#f6ead0">矿山</text>
+  <rect x="282" y="150" width="66" height="36" fill="#6b5a3a"/><text x="315" y="174" fill="#f6ead0">工厂</text>
+ </g>
+ <text x="180" y="112" text-anchor="middle" font-size="15" fill="#6b5a3a">靠持股控制不同行业</text></svg><div class="lvl">联合程度 <i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></div><p style="font-size:20px">以大银行或大企业为核心，通过<b class="v">控股</b>把<b class="r">不同部门</b>的企业联合起来的集团。</p></div>
+      </div>
+      <div class="row reveal" style="--d:5;grid-template-columns:1fr 1fr;margin-top:20px">
+        <div class="guess"><span class="k">GUESS · 先判断</span>从卡特尔到托拉斯，被“联合”掉的是什么？康采恩又“新”在哪里？</div>
+        <div class="hid dark note"><span>从卡特尔到托拉斯，企业的<b class="brass">独立性</b>依次丧失：先是价格与产量，再是销售与采购，最后是生产与所有权。康采恩则突破行业界限，以<b class="brass">金融资本</b>控股，走向<b class="brass">工业资本与银行资本融合</b>。</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- =========================================================
      20 — CH.5 · Assembly lines & monopolies
      ========================================================= -->
 <section class="slide" data-mod="5" data-time="19:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">五、下一代工人 <small>生产组织 · 垄断</small></div><h2>（三）孙辈的老板，还是一个工厂主吗？</h2></div><div class="lk">纲要下 P59</div></div>
+    <div class="hd reveal"><div><div class="sec">五、下一代工人 <small>生产组织 · 垄断</small></div><h2>（五）孙辈的老板，还是一个工厂主吗？</h2></div><div class="lk">纲要下 P59</div></div>
     <div class="body">
       <div class="flow reveal" style="--d:1;grid-template-columns:1fr 46px 1fr 46px 1fr 46px 1fr">
         <div class="card" style="padding:14px 16px"><b>手工工场</b><p style="font-size:19px">工业革命前：分散→集中</p></div>
@@ -1084,12 +1217,44 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   </div>
 </section>
 
+<section class="slide" data-mod="5" data-time="19:15">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">五、下一代工人 <small>史料研读④</small></div><h2>（六）漫画里的“章鱼”，在抓什么？</h2></div><div class="lk">史料研读 · 史论结合</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1.15fr .85fr;gap:24px">
+        <div class="card mat reveal" style="--d:1;--r:-.4deg;padding:14px 16px"><div class="ct">材料一 <small>漫画《下一个！》（1904）</small></div>
+          <img src="https://tile.loc.gov/storage-services/service/pnp/ppmsca/25800/25884v.jpg" alt="1904 年《顽童》杂志漫画：标准石油被画成章鱼，触手缠住钢铁、铜业、航运、州议会大厦和国会大厦，并伸向白宫" style="width:100%;height:300px;object-fit:contain;background:#1f1d19;display:block;border:2px solid var(--ink);margin-top:6px">
+          <p style="font-size:19px;margin-top:8px">画中油罐被画成章鱼，触手缠住<b class="v">钢铁、铜业、航运</b>，缠住<b class="v">州议会大厦和美国国会大厦</b>，另一条触手正伸向<b class="r">白宫</b>。</p>
+          <div class="src">——［美］乌多·开普勒作，《顽童》（Puck）杂志 1904 年 9 月 7 日；美国国会图书馆藏（LC-DIG-ppmsca-25884）</div></div>
+        <div class="col">
+          <div class="card mat reveal" style="--d:2;--r:.5deg"><div class="ct">材料二 <small>美国记者劳埃德（1894）</small></div>
+            <p>标准石油公司操纵市场，以便消除竞争……“<b class="v">自由创造富裕，但富裕毁灭自由</b>”。</p>
+            <div class="src">——2024 年广西卷第 14 题材料</div></div>
+          <div class="card mat reveal" style="--d:3;--r:-.4deg"><div class="ct">材料三 <small>教材</small></div>
+            <p>资本家通过建立垄断组织获取了高额利润，同时也<b class="v">阻碍了竞争，导致某些停滞和腐败</b>。</p>
+            <div class="src">——纲要下 P59</div></div>
+        </div>
+      </div>
+      <div class="row" style="grid-template-columns:.85fr 1.15fr;margin-top:18px">
+        <div class="col reveal" style="--d:4;gap:10px">
+          <div class="task"><span class="lv">Ⅰ · 漫画解读</span>漫画作者对标准石油持什么态度？触手伸向国会和白宫，揭示了什么问题？<span class="sc">（4分）</span></div>
+          <div class="hid dark note ansk"><span><b class="t">态度：</b>批判、警惕。<b class="t">问题：</b>垄断组织不仅控制多个经济部门（钢铁、铜、航运），还试图<b class="t">操纵国家政治</b>（议会、国会乃至总统）——经济垄断走向政治影响。</span></div>
+        </div>
+        <div class="col reveal" style="--d:5;gap:10px">
+          <div class="task"><span class="lv">Ⅱ · 史论结合</span>有人说：“垄断是自由竞争的产物，又是对自由竞争的否定。”结合材料与所学评析。<span class="sc">（8分）</span></div>
+          <div class="hid dark note ansk"><span><b class="t">产物：</b>第二次工业革命使技术复杂、投资扩大、竞争激烈，优胜劣汰导致生产与资本集中（1872 年克利夫兰 26 家炼油厂被控制 21 家，1880 年控制全美 90% 以上）。<b class="t">否定：</b>垄断组织操纵价格、消除竞争，获取高额利润，导致停滞和腐败（材料二、三），并干预政治（材料一）。<b class="t">回应：</b>1890 年《谢尔曼反托拉斯法》、1911 年拆分标准石油，国家开始干预经济。<b class="t">结论：</b>垄断是资本主义生产关系的局部调整，适应了社会化大生产，却未消除资本主义基本矛盾。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- =========================================================
      21 — CH.5 · Which country catches up?
      ========================================================= -->
 <section class="slide" data-mod="5" data-time="19:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">五、下一代工人 <small>各国工业化道路</small></div><h2>（四）如果孙辈移民，去哪个国家机会最多？</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">五、下一代工人 <small>各国工业化道路</small></div><h2>（七）如果孙辈移民，去哪个国家机会最多？</h2></div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:repeat(4,1fr);gap:20px">
         <div class="card kp reveal" style="--d:1;--r:-1deg;padding:16px"><div class="ct">美国</div><ul class="pl" style="font-size:20px"><li>与<b class="v">西进运动</b>相互促进</li><li>移民带来劳动力与技术</li><li><b class="v">内战</b>扫除障碍</li><li>19世纪70年代末完成</li></ul></div>
@@ -1114,7 +1279,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="5" data-time="19:45">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">五、下一代工人 <small>史料研读④</small></div><h2>（五）“谁说工业革命，谁就是说棉花”——对吗？</h2></div><div class="lk">史料研读 · 史论结合</div></div>
+    <div class="hd reveal"><div><div class="sec">五、下一代工人 <small>史料研读⑤</small></div><h2>（八）“谁说工业革命，谁就是说棉花”——对吗？</h2></div><div class="lk">史料研读 · 史论结合</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1fr 1fr 1fr;gap:22px">
         <div class="card mat reveal" style="--d:1;--r:-.6deg"><div class="ct">材料一 <small>霍布斯鲍姆</small></div>
@@ -1241,7 +1406,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="6" data-time="21:15">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">六、世界另一端的劳动者 <small>史料研读⑤</small></div><h2>（四）英国棉布在印度畅通无阻，在中国为什么卖不动？</h2></div><div class="lk">史料研读 · 史论结合</div></div>
+    <div class="hd reveal"><div><div class="sec">六、世界另一端的劳动者 <small>史料研读⑥</small></div><h2>（四）英国棉布在印度畅通无阻，在中国为什么卖不动？</h2></div><div class="lk">史料研读 · 史论结合</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1fr 1fr 1fr;gap:22px">
         <div class="card mat reveal" style="--d:1;--r:-.6deg"><div class="ct">材料一 <small>印度</small></div>
@@ -1418,7 +1583,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <!-- Chrome outside the stage -->
 <div class="progress" id="progress"></div>
-<div class="deck-controls" id="counter">01 / 34</div>
+<div class="deck-controls" id="counter">01 / 37</div>
 <div class="edit-hotzone" id="editHotzone"></div>
 <button class="edit-toggle" id="editToggle" title="编辑模式 (E)">✎</button>
 <div class="toast" id="toast"></div>
@@ -1452,7 +1617,7 @@ function autofit() {
     document.querySelectorAll('.slide').forEach((slide) => {
         const body = slide.querySelector('.content .body');
         if (!body) return;
-        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta'));
+        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg'));
         els.forEach((el) => { if (!el.dataset.fs0) el.dataset.fs0 = parseFloat(getComputedStyle(el).fontSize); });
         const foot = slide.querySelector('.foot');
         const limit = (foot ? foot.offsetTop : 1080) - 26;
@@ -1470,6 +1635,25 @@ function autofit() {
     });
 }
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(autofit);
+
+/* ===========================================
+   MONOPOLY SIMULATION CONTROLS — prev / next / autoplay (5 steps)
+   =========================================== */
+document.querySelectorAll('.sim').forEach((sim) => {
+    let timer = null;
+    const set = (n) => { sim.dataset.step = String(Math.max(1, Math.min(5, n))); };
+    const stop = () => { clearInterval(timer); timer = null; };
+    sim.querySelectorAll('.ctrl button').forEach((b) => b.addEventListener('click', (e) => {
+        e.stopPropagation(); b.blur();
+        const n = Number(sim.dataset.step);
+        if (b.dataset.act === 'prev') { stop(); set(n - 1); }
+        if (b.dataset.act === 'next') { stop(); set(n + 1); }
+        if (b.dataset.act === 'play') {
+            stop(); set(1);
+            timer = setInterval(() => { const k = Number(sim.dataset.step); if (k >= 5) stop(); else set(k + 1); }, 2800);
+        }
+    }));
+});
 
 /* ===========================================
    GUESS-THEN-REVEAL — click any striped block to reveal it;
