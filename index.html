@@ -1504,7 +1504,7 @@ class SlidePresentation {
         document.addEventListener('keydown', (e) => {
             if (document.body.classList.contains('editing')) return;
             if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.step(); }
-            if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.back(); }
+            if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.prev(); }
             if (e.key === 'Home') this.show(0);
             if (e.key === 'End') this.show(this.slides.length - 1);
         });
@@ -1539,10 +1539,6 @@ class SlidePresentation {
     step() {
         const pending = this.slides[this.current].querySelector('.hid:not(.shown)');
         pending ? pending.classList.add('shown') : this.next();
-    }
-    back() {
-        const shown = this.slides[this.current].querySelectorAll('.hid.shown');
-        shown.length ? shown[shown.length - 1].classList.remove('shown') : this.prev();
     }
     next() { this.show(this.current + 1); }
     prev() { this.show(this.current - 1); }
