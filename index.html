@@ -222,14 +222,9 @@ svg {
 .guess .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-top: 10px; font-size: 23px; }
 
 /* Hidden-until-clicked blocks ("先猜后揭") */
-.hid { position: relative; cursor: pointer; }
-.hid:not(.shown) > * { visibility: hidden; }
-.hid:not(.shown)::after {
-    content: "？ 先猜一猜 · 点击揭晓"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-    font-family: var(--f-m); font-weight: 700; font-size: 22px; letter-spacing: .1em; color: var(--ink-dim);
-    background: repeating-linear-gradient(45deg, #e4d1a2 0 12px, #dcc796 12px 24px); border: 2px dashed var(--ink-dim);
-}
-.hid.dark:not(.shown)::after { color: var(--brass); background: repeating-linear-gradient(45deg, rgba(232,196,106,.12) 0 12px, rgba(232,196,106,.05) 12px 24px); border-color: var(--brass); }
+.hid { position: relative; cursor: pointer; transition: opacity .4s ease, transform .55s var(--ease); }
+.hid:not(.shown), .slide.visible .hid.reveal:not(.shown) { opacity: 0; transform: translateX(-90px); }
+.hid.shown, .slide.visible .hid.reveal.shown { opacity: 1; transform: rotate(var(--r, 0deg)); }
 
 ul.pl { list-style: none; }
 ul.pl li { position: relative; padding-left: 28px; margin: 5px 0; }
@@ -387,7 +382,7 @@ body:hover .deck-controls { opacity: 1; }
 body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7); outline-offset: 4px; cursor: text; }
 .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: var(--brass); color: #1f2724; font-family: 'Courier Prime', monospace; font-size: 13px; padding: 8px 16px; z-index: 10002; opacity: 0; transition: opacity .3s; pointer-events: none; }
 .toast.show { opacity: 1; }
-@media print { .hid > * { visibility: visible !important; } .hid::after { display: none !important; } }
+@media print { .hid { opacity: 1 !important; transform: none !important; } }
 </style>
 </head>
 <body>
@@ -418,7 +413,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
       <tr><td class="n">六</td><td><b>不平等联结的世界</b></td><td>世界市场、殖民体系、中国</td></tr>
       <tr><td class="n">七</td><td><b>从史实到史论</b></td><td>考点全景、易错、框架</td></tr>
     </table>
-    <div style="margin-top:auto;font-size:21px;line-height:1.6">斜纹遮挡块 = <b>先猜一猜</b>，点击揭晓。<br><b class="r">红色</b>＝高频考点　<b class="v">紫色</b>＝教材关键表述</div>
+    <div style="margin-top:auto;font-size:21px;line-height:1.6"><b>先猜一猜</b>，再点击：答案从空白处滑出。<br><b class="r">红色</b>＝高频考点　<b class="v">紫色</b>＝教材关键表述</div>
     <div class="stamp" style="top:auto;bottom:150px;right:44px;--sr:-12deg;--sd:1.2s;font-size:40px">05:00<small>汽笛将响</small></div>
   </div>
 </section>
@@ -428,7 +423,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
      ========================================================= -->
 <section class="slide" data-mod="0" data-time="05:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">导入 <small>05:30 的汽笛</small></div><h2>一张工时卡：六岁童工的一天</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">05:30 的汽笛</div><h2>一张工时卡：六岁童工的一天</h2></div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1fr 1fr">
         <div class="card reveal" style="--d:1;--r:-1.2deg">
@@ -458,7 +453,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
      ========================================================= -->
 <section class="slide" data-mod="0" data-time="05:40">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">导入 <small>本课主线</small></div><h2>机器如何改变劳动者的处境：一条主线串起全课</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">人与机器的颠倒</div><h2>六重转折：机器如何改变劳动者的处境</h2></div></div>
     <div class="body">
 <div class="card mat reveal" style="--d:1;--r:-.4deg"><div class="ct">主线史料 <small>马克思</small></div><p style="font-size:26px">在工场手工业中，工人是一个活机构的肢体。在工厂中，死机构独立于工人而存在，工人成为它的<b class="r">活的附属物</b>。</p><div class="src">——马克思《资本论》第一卷第十五章（中文版第十三章）第四节（英译本 marxists.org，本课译；中文版请核对《马克思恩格斯文集》）</div></div><div class="flow reveal" style="--d:2;grid-template-columns:1fr 34px 1fr 34px 1fr 34px 1fr 34px 1fr 34px 1fr;margin-top:20px"><div class="card" style="padding:16px"><div class="ct" style="font-size:36px;color:var(--stamp)">一</div><b>一无所有的自由</b><p style="font-size:20px;color:var(--stamp2);font-weight:700">“双重自由”</p><p style="font-size:18px;margin-top:6px">背景</p></div><div class="arr">→</div><div class="card" style="padding:16px"><div class="ct" style="font-size:36px;color:var(--stamp)">二</div><b>被机器支配的劳动</b><p style="font-size:20px;color:var(--stamp2);font-weight:700">“活的附属物”</p><p style="font-size:18px;margin-top:6px">第一次工业革命 · 工厂制度</p></div><div class="arr">→</div><div class="card" style="padding:16px"><div class="ct" style="font-size:36px;color:var(--stamp)">三</div><b>被重新划分的生活</b><p style="font-size:20px;color:var(--stamp2);font-weight:700">被隔开的世界</p><p style="font-size:18px;margin-top:6px">城市化 · 社会问题</p></div><div class="arr">→</div><div class="card" style="padding:16px"><div class="ct" style="font-size:36px;color:var(--stamp)">四</div><b>由自在到自为的阶级</b><p style="font-size:20px;color:var(--stamp2);font-weight:700">从砸机器到争权利</p><p style="font-size:18px;margin-top:6px">阶级 · 工运 · 马克思主义</p></div><div class="arr">→</div><div class="card" style="padding:16px"><div class="ct" style="font-size:36px;color:var(--stamp)">五</div><b>吞噬竞争的资本</b><p style="font-size:20px;color:var(--stamp2);font-weight:700">竞争走向垄断</p><p style="font-size:18px;margin-top:6px">第二次工业革命 · 垄断</p></div><div class="arr">→</div><div class="card" style="padding:16px"><div class="ct" style="font-size:36px;color:var(--stamp)">六</div><b>不平等联结的世界</b><p style="font-size:20px;color:var(--stamp2);font-weight:700">全球劳动链</p><p style="font-size:18px;margin-top:6px">世界市场 · 中国</p></div></div><div class="row reveal" style="--d:3;grid-template-columns:1fr 1fr;margin-top:20px"><div class="note"><span class="k">HOW · 每节怎么学</span>读史料 → 作判断 → 归纳教材知识 → 做高考题 → 回到主线。</div><div class="note"><span class="k">THESIS · 贯穿全课的论点</span>生产力变革不会自动带来人的解放；制度、斗争和立法决定了成果如何分配。</div></div>
     </div>
@@ -467,7 +462,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="0" data-time="05:45">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">导入 <small>一家人的时间线</small></div><h2>同一时间轴：一个家庭的沉浮与两个世界的分流</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">一个家庭，两个世界</div><h2>同一时间轴：一个家庭的沉浮与两个世界的分流</h2></div></div>
     <div class="body">
       <div class="life reveal" style="--d:1;margin-left:10px">
         <div class="axis"></div>
@@ -1367,7 +1362,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
     <div class="body">
       <div class="card reveal" style="--d:1;--r:-.2deg;padding:16px 26px">
         <table class="lg" style="font-size:21px">
-          <tr><th style="width:56px">#</th><th>说法</th><th>辨析（点击揭晓）</th></tr>
+          <tr><th style="width:56px">#</th><th>说法</th><th>辨析</th></tr>
           <tr><td class="n">01</td><td>工业革命以瓦特改良蒸汽机为开始标志</td><td class="hid"><span><b class="r">✗</b> 开始：珍妮纺纱机；蒸汽机是<b class="v">主要标志</b></span></td></tr>
           <tr><td class="n">02</td><td>手工工场的出现是近代工厂的开端</td><td class="hid"><span><b class="r">✗</b> <b class="v">1771 年水力纺纱厂</b>是近代工厂开端</span></td></tr>
           <tr><td class="n">03</td><td>英国第一次工业革命完成的标志是火车问世</td><td class="hid"><span><b class="r">✗</b> 完成：<b class="v">机器制造业实现机械化</b></span></td></tr>
@@ -1416,7 +1411,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
    FOOTERS — lesson, chapter strip, workday clock, card number
    =========================================== */
 (function addFooters() {
-    const names = ['导入', '一 自由', '二 机器', '三 生活', '四 阶级', '五 资本', '六 世界', '七 史论'];
+    const names = ['汽笛', '一 自由', '二 机器', '三 生活', '四 阶级', '五 资本', '六 世界', '七 史论'];
     const slides = document.querySelectorAll('.slide');
     const total = String(slides.length).padStart(2, '0');
     slides.forEach((slide, i) => {
@@ -1428,7 +1423,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
             `<span class="mods">${names.map((n, k) => `<span class="${k === m ? 'on' : ''}">${n}</span>`).join('')}</span>` +
             `<span>CARD ${String(i + 1).padStart(2, '0')} / ${total}</span>`;
         slide.appendChild(f);
-        const sp = ['主线：机器如何改变劳动者的处境', '处境①　土地上的农民 → “自由”的雇佣劳动者', '处境②　工具的主人 → 机器的“活的附属物”', '处境③　作坊与家庭 → 被隔开的工业城市', '处境④　分散的个人 → 联合的阶级', '处境⑤　工厂主的工人 → 垄断资本下的工人', '处境⑥　英国工人 → 全球劳动链', '主线回望：从史料到考场'][m];
+        const sp = ['机器如何改变劳动者的处境', '处境①　土地上的农民 → “自由”的雇佣劳动者', '处境②　工具的主人 → 机器的“活的附属物”', '处境③　作坊与家庭 → 被隔开的工业城市', '处境④　分散的个人 → 联合的阶级', '处境⑤　工厂主的工人 → 垄断资本下的工人', '处境⑥　英国工人 → 全球劳动链', '主线回望：从史料到考场'][m];
         const hd = slide.querySelector('.hd');
         if (hd && !slide.querySelector('.spine')) { const e = document.createElement('div'); e.className = 'spine'; e.textContent = sp; hd.parentNode.insertBefore(e, hd); }
     });
@@ -1485,7 +1480,6 @@ document.querySelectorAll('.sim').forEach((sim) => {
    GUESS-THEN-REVEAL — click any striped block to reveal it;
    ?answers reveals everything (for printing / teacher copy)
    =========================================== */
-document.querySelectorAll('.hid').forEach((el) => el.addEventListener('click', (e) => { e.stopPropagation(); el.classList.toggle('shown'); }));
 if (new URLSearchParams(location.search).has('answers')) document.querySelectorAll('.hid').forEach((el) => el.classList.add('shown'));
 
 /* ===========================================
@@ -1503,6 +1497,7 @@ class SlidePresentation {
         this.setupKeyboardNav();
         this.setupWheelNav();
         this.setupTouchNav();
+        this.setupClickNav();
         const fromHash = parseInt(location.hash.slice(1), 10);
         this.show(Number.isFinite(fromHash) ? fromHash - 1 : 0);
     }
@@ -1517,8 +1512,8 @@ class SlidePresentation {
     setupKeyboardNav() {
         document.addEventListener('keydown', (e) => {
             if (document.body.classList.contains('editing')) return;
-            if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.next(); }
-            if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.prev(); }
+            if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.step(); }
+            if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.back(); }
             if (e.key === 'Home') this.show(0);
             if (e.key === 'End') this.show(this.slides.length - 1);
         });
@@ -1540,6 +1535,23 @@ class SlidePresentation {
             if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) dx < 0 ? this.next() : this.prev();
             x0 = null;
         });
+    }
+    setupClickNav() {
+        document.addEventListener('click', (e) => {
+            if (document.body.classList.contains('editing') || String(getSelection())) return;
+            if (e.target.closest('button, a, .sim, .edit-toggle, .edit-hotzone, .deck-controls')) return;
+            const hit = e.target.closest('.hid:not(.shown)');
+            hit ? hit.classList.add('shown') : this.step();
+        });
+    }
+    /* PowerPoint-style: each step slides out the next answer, then turns the page */
+    step() {
+        const pending = this.slides[this.current].querySelector('.hid:not(.shown)');
+        pending ? pending.classList.add('shown') : this.next();
+    }
+    back() {
+        const shown = this.slides[this.current].querySelectorAll('.hid.shown');
+        shown.length ? shown[shown.length - 1].classList.remove('shown') : this.prev();
     }
     next() { this.show(this.current + 1); }
     prev() { this.show(this.current - 1); }
@@ -1564,7 +1576,7 @@ if (new URLSearchParams(location.search).has('export')) document.querySelectorAl
 class InlineEditor {
     constructor() {
         this.isActive = false;
-        this.key = 'whistle-review-edits-v1';
+        this.key = 'whistle-review-edits-v2';
         this.btn = document.getElementById('editToggle');
         this.selector = '.slide h1, .slide h2, .slide p, .slide li, .slide td, .slide th, .slide .ct, .slide .k, .slide .meta span, .slide .opts span, .t-en, .t-tag';
         this.restore();
