@@ -274,6 +274,30 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .stack .s3 { background: rgba(255,255,255,.35); }
 
 /* Machine chain */
+/* Slide 8: spinning-weaving seesaw driven by which family card is revealed */
+.seesaw { position: relative; width: 1180px; height: 200px; margin: 6px auto 0; }
+.seesaw .beam { position: absolute; left: 140px; right: 140px; top: 104px; height: 12px; background: var(--brass); border-radius: 6px; transition: transform .8s var(--ease); }
+.seesaw .pan { position: absolute; bottom: 14px; padding: 6px 18px; border: 3px solid var(--brass); background: rgba(232,196,106,.12); font-size: 26px; font-weight: 900; white-space: nowrap; }
+.seesaw .pan-l { left: -70px; } .seesaw .pan-w { right: -70px; }
+.seesaw .fulcrum { position: absolute; left: 50%; top: 116px; margin-left: -34px; border-left: 34px solid transparent; border-right: 34px solid transparent; border-bottom: 46px solid var(--brass); }
+.seesaw .cap { position: absolute; left: 0; right: 0; top: 166px; text-align: center; font-size: 24px; font-weight: 700; color: var(--brass); }
+.seesaw .cap::after { content: "手工纺纱 ≈ 手工织布：大致平衡"; }
+.slide:has(.fam[data-step="1"].shown) .beam { transform: rotate(7deg); }
+.slide:has(.fam[data-step="1"].shown) .cap::after { content: "织布提速 → 纱不够用：瓶颈在纺纱"; }
+.slide:has(.fam[data-step="2"].shown) .beam { transform: rotate(3deg); }
+.slide:has(.fam[data-step="2"].shown) .cap::after { content: "纺纱追上来：一人可同时纺多根纱"; }
+.slide:has(.fam[data-step="3"].shown) .beam { transform: rotate(-5deg); }
+.slide:has(.fam[data-step="3"].shown) .cap::after { content: "纺纱跑到前面：纱粗而结实，产量大增"; }
+.slide:has(.fam[data-step="4"].shown) .beam { transform: rotate(-8deg); }
+.slide:has(.fam[data-step="4"].shown) .cap::after { content: "纱又细又结实 → 织布跟不上：瓶颈在织布"; }
+.slide:has(.fam[data-step="5"].shown) .beam { transform: rotate(0deg); }
+.slide:has(.fam[data-step="5"].shown) .cap::after { content: "织布重新提速：纺与织两端都用上了机器"; }
+.fams { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 12px; }
+.fam { padding: 12px 14px; }
+.fam .ct { font-size: 24px; } .fam .ct span { font-family: var(--f-d); color: var(--stamp); }
+.fam .who { font-family: var(--f-m); font-size: 15px; color: var(--ink-dim); margin: 2px 0 6px; }
+.fam p { font-size: 19px; line-height: 1.5; } .fam p b:first-child { display: block; }
+.fam-note { font-size: 15px; color: var(--chalk-faint); margin-top: 6px; }
 .flow { display: grid; align-items: stretch; }
 .flow .arr { display: flex; align-items: center; justify-content: center; font-family: var(--f-d); font-size: 34px; color: var(--brass); }
 
@@ -443,7 +467,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
           <div class="note hid reveal" data-step="4" style="--d:4"><span class="k">THIS LESSON · 本课主线</span>读懂这张卡，要回答一个问题：<b class="brass">劳动者的处境，为何随机器而改变？</b></div>
         </div>
       </div>
-      <div class="card mat hid reveal" data-step="5" style="--d:5;--r:-.4deg;margin-top:20px"><div class="ct">主线史料</div><p style="font-size:26px">在工场手工业和手工业中，是工人利用工具，在工厂中，是工人服侍机器。……在工场手工业中，工人是一个活机构的肢体。在工厂中，死机构独立于工人而存在，工人被当作<b class="r">活的附属物</b>并入死机构。</p><div class="src">——马克思《资本论》第一卷第十三章第四节（《马克思恩格斯文集》第 5 卷 P486）</div></div>
+      <div class="row" style="grid-template-columns:1.35fr 1fr;margin-top:18px;align-items:stretch"><div class="card mat hid reveal" data-step="5" style="--d:5;--r:-.4deg"><div class="ct">主线史料</div><p style="font-size:26px">在工场手工业和手工业中，是工人利用工具，在工厂中，是工人服侍机器。……在工场手工业中，工人是一个活机构的肢体。在工厂中，死机构独立于工人而存在，工人被当作<b class="r">活的附属物</b>并入死机构。</p><div class="src">——马克思《资本论》第一卷第十三章第四节（《马克思恩格斯文集》第 5 卷 P486）</div></div><div class="note hid" data-step="6"><span class="k">READ · 读懂这句话</span>手工工场：<b class="brass">人用工具</b>，快慢由人决定<br>工厂：<b class="brass">机器“用”人</b>，节奏由机器决定<br><span class="dim">活机构＝工人的分工协作；死机构＝机器体系。人从“肢体”变成“附属物”。</span></div></div>
     </div>
   </div>
 </section>
@@ -571,21 +595,13 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="content">
     <div class="hd reveal"><div><div class="sec">二、被机器支配的劳动 <small>第一次工业革命</small></div><h2>（一）瓶颈与回应：发明链的内在逻辑</h2></div><div class="lk">纲要下 P57–58</div></div>
     <div class="body">
-      <p class="small reveal" style="--d:1">起点：英国公众喜爱棉纺织品 → 价格上涨、获利丰厚 → <b class="brass">市场需求</b>催生技术发明。依次点击，想出每一步的“瓶颈”与“回应”。</p>
-      <div class="flow reveal" style="--d:2;grid-template-columns:1fr 46px 1fr 46px 1fr 46px 1fr 46px 1fr;margin-top:16px">
-        <div class="card" style="padding:16px"><div class="ct" style="font-size:32px">1733</div><b>飞梭</b><p style="font-size:20px">凯伊<br>织布提速</p><p style="font-size:20px;margin-top:6px" class="r">→ 纱不够用</p></div>
-        <div class="arr">→</div>
-        <div class="card hid" style="padding:16px"><div class="ct" style="font-size:32px">1765</div><b>珍妮纺纱机</b><p style="font-size:20px">哈格里夫斯<br>纱<b class="v">细而易断</b></p><p style="font-size:20px;margin-top:6px">动力：人力</p></div>
-        <div class="arr">→</div>
-        <div class="card hid" style="padding:16px"><div class="ct" style="font-size:32px">1769</div><b>水力纺纱机</b><p style="font-size:20px">阿克莱特<br>纱<b class="v">粗而结实</b></p><p style="font-size:20px;margin-top:6px">动力：水力</p></div>
-        <div class="arr">→</div>
-        <div class="card hid" style="padding:16px"><div class="ct" style="font-size:32px">1779</div><b>骡机</b><p style="font-size:20px">克隆普顿<br>纱<b class="v">细而结实</b></p><p style="font-size:20px;margin-top:6px" class="r">→ 织布跟不上</p></div>
-        <div class="arr">→</div>
-        <div class="card hid" style="padding:16px"><div class="ct" style="font-size:32px">1785</div><b>水力织布机</b><p style="font-size:20px">卡特赖特<br>织布重新提速</p><p style="font-size:20px;margin-top:6px">动力：水力</p></div>
-      </div>
-      <div class="row reveal" style="--d:3;grid-template-columns:1fr 1fr 1fr;margin-top:24px">
-        <div class="card kp hid" style="padding:16px 20px"><div class="ct" style="font-size:24px">开始标志</div><p style="font-size:21px">18世纪60年代，以<b class="v">珍妮纺纱机</b>为开端，机器生产开始代替手工劳动</p></div>
-        <div class="card kp hid" style="padding:16px 20px"><div class="ct" style="font-size:24px">结果</div><p style="font-size:21px">棉纺织业<b class="v">基本实现机械化</b>；机器和工人集中起来——<b class="v">工厂出现</b>（1771）</p></div>
+      <p class="small reveal" style="--d:1">起点：英国公众喜爱棉纺织品 → 价格上涨、获利丰厚 → <b class="brass">市场需求</b>催生技术发明。每点击一次：<b class="brass">天平</b>摆向产量更大的一端，<b class="brass">卡片</b>告诉你这家人的活计怎么变。</p>
+      <div class="seesaw reveal" style="--d:2"><div class="beam"><span class="pan pan-l">纺纱 · SPIN</span><span class="pan pan-w">织布 · WEAVE</span></div><div class="fulcrum"></div><div class="cap"></div></div>
+      <div class="fams reveal" style="--d:3"><div class="card fam hid" data-step="1"><div class="ct"><span>1733</span> 飞梭</div><div class="who">凯伊</div><p><b>父亲 · 家庭织工</b>在家用飞梭织布，速度翻倍，却常常停下来<b class="r">等纱</b>。</p></div><div class="card fam hid" data-step="2"><div class="ct"><span>1765</span> 珍妮纺纱机</div><div class="who">哈格里夫斯 · 人力</div><p><b>母亲和姐姐 · 家中纺纱</b>珍妮机放在家里摇，一人同时纺多根纱，<b class="v">还在家里干活</b>。</p></div><div class="card fam hid" data-step="3"><div class="ct"><span>1769</span> 水力纺纱机</div><div class="who">阿克莱特 · 水力</div><p><b>弟弟 · 走进工厂</b>机器靠水车带动，只能建在河边；1771 年他进了纺纱厂，<b class="r">听钟声上下工</b>。</p></div><div class="card fam hid" data-step="4"><div class="ct"><span>1779</span> 骡机</div><div class="who">克隆普顿</div><p><b>姐姐 · 失去家中活计</b>纱又细又结实，纺纱集中到工厂，<b class="r">家庭纺纱渐被淘汰</b>。</p></div><div class="card fam hid" data-step="5"><div class="ct"><span>1785</span> 水力织布机</div><div class="who">卡特赖特 · 水力</div><p><b>父亲 · 被机器追上</b>织布也有了机器；此后几十年，手织工的<b class="r">收入不断下降</b>。</p></div></div>
+      <div class="fam-note reveal" style="--d:3">典型化叙述：这一家人是虚构的，发明与变化依据史实。</div>
+      <div class="row reveal" style="--d:4;grid-template-columns:1fr 1fr 1fr;margin-top:16px">
+        <div class="card kp hid" data-step="6" style="padding:14px 20px"><div class="ct" style="font-size:24px">开始标志</div><p style="font-size:21px">18世纪60年代，以<b class="v">珍妮纺纱机</b>为开端，机器生产开始代替手工劳动</p></div>
+        <div class="card kp hid" data-step="7" style="padding:14px 20px"><div class="ct" style="font-size:24px">结果</div><p style="font-size:21px">棉纺织业<b class="v">基本实现机械化</b>；机器和工人集中起来——<b class="v">工厂出现</b>（1771）</p></div>
         <div class="guess" style="font-size:22px;padding:14px 18px"><span class="k">NEXT · 再思索</span>水力机器有什么局限？工厂主最需要什么？</div>
       </div>
     </div>
