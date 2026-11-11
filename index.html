@@ -302,6 +302,49 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .chain .link .ct { font-size: 26px; } .chain .link .ct small { font-size: 19px; }
 .chain .link p { font-size: 20px; line-height: 1.5; }
 .chain .link .tag { margin-top: 8px; padding-top: 6px; border-top: 1px dashed var(--card-line); font-weight: 900; color: var(--stamp); }
+/* Year slider (slide 16) */
+.yrs .yhead { display: flex; align-items: baseline; gap: 18px; }
+.yrs .yr { font-family: var(--f-d); font-size: 76px; color: var(--stamp); line-height: 1; }
+.yrs .ystage { font-size: 24px; font-weight: 900; color: var(--stamp2); }
+.yrs input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--stamp); height: 28px; cursor: pointer; }
+.yrs .yticks { display: flex; justify-content: space-between; font-family: var(--f-m); font-size: 15px; color: var(--ink-dim); margin-bottom: 8px; }
+.yrs .yfields td { font-size: 21px; padding: 6px 8px; } .yrs .yfields td.h { width: 120px; }
+.yrs .yfields td[data-y] { transition: background .5s; } .yrs .yfields td.flash { background: rgba(232,196,106,.55); }
+/* Interactive pages: Manchester map, 1832 vote check, cotton flows */
+.mapsvg, .flowsvg { width: 100%; height: auto; display: block; }
+.mapsvg .z-rich { fill: #cfe0b8; stroke: #6f8a4f; stroke-width: 3; stroke-dasharray: 10 6; }
+.mapsvg .z-work { fill: #b9a07a; stroke: var(--ink); stroke-width: 2; }
+.mapsvg .z-core { fill: var(--ink); }
+.mapsvg .huts rect { fill: #6b5a3a; }
+.mapsvg .villas path { fill: #fdf6e3; stroke: #6f8a4f; stroke-width: 2; }
+.mapsvg .river { fill: none; stroke: #4a6f8f; stroke-width: 9; stroke-linecap: round; }
+.mapsvg .streets path { stroke: var(--brass); stroke-width: 12; stroke-dasharray: 6 4; }
+.mapsvg text { font-family: var(--f-cn); font-weight: 900; text-anchor: middle; }
+.mapsvg .lbl-core { fill: #f6ead0; font-size: 24px; } .mapsvg .lbl-zone { fill: var(--ink); font-size: 26px; }
+.mapsvg .lbl-zone2 { fill: #3f5a2a; font-size: 20px; } .mapsvg .lbl-river { fill: #2f4f6f; font-size: 18px; text-anchor: start; }
+.hot { cursor: pointer; } .hot circle { fill: var(--stamp); stroke: #f6ead0; stroke-width: 4; transition: transform .3s; }
+.hot text { fill: #fff; font-size: 22px; font-family: var(--f-d); text-anchor: middle; dominant-baseline: central; }
+.hot.on circle { fill: var(--brass); transform: scale(1.25); } .hot.on text { fill: var(--ink); }
+.panes { display: grid; } .pane { grid-area: 1 / 1; visibility: hidden; opacity: 0; transform: translateX(-30px); transition: opacity .35s, transform .45s var(--ease); background: var(--card); color: var(--ink); padding: 16px 20px; font-size: 24px; line-height: 1.55; }
+.pane.on { visibility: visible; opacity: 1; transform: none; } .pane .pt { display: block; font-size: 27px; color: var(--stamp); margin-bottom: 4px; }
+.pane .dim { color: var(--ink-dim); }
+.vote .who { display: flex; gap: 10px; margin: 6px 0 10px; }
+.vote button { font-family: var(--f-cn); font-size: 20px; font-weight: 700; padding: 6px 14px; border: 2px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.vote .who button { border-color: var(--stamp2); color: var(--stamp2); }
+.vote button.on { background: var(--ink); color: #f6ead0; } .vote .who button.on { background: var(--stamp2); color: #fff; }
+.vote .vrow { display: grid; grid-template-columns: 110px 1fr 1fr; gap: 8px; align-items: center; margin: 6px 0; font-size: 20px; font-weight: 700; }
+.vote .vres { margin-top: 10px; padding: 10px 14px; border: 3px solid var(--ink); font-size: 20px; min-height: 76px; }
+.vote .vres b { display: block; font-size: 30px; } .vote .vres.yes { border-color: #3f7a3a; } .vote .vres.yes b { color: #3f7a3a; } .vote .vres.no b { color: var(--stamp); }
+.cls2 td { padding: 5px 9px; }
+.flowsvg .lat path { stroke: rgba(42,38,32,.12); stroke-width: 1; }
+.flowsvg .sea { fill: rgba(42,38,32,.3); font-size: 22px; font-family: var(--f-cn); }
+.flowsvg .node circle { fill: var(--stamp); stroke: #f6ead0; stroke-width: 3; }
+.flowsvg .node text { fill: var(--ink); font-size: 22px; font-weight: 900; font-family: var(--f-cn); text-anchor: middle; }
+.flowsvg .fl { fill: none; stroke: var(--stamp2); stroke-width: 6; stroke-dasharray: 700; stroke-dashoffset: 700; transition: stroke-dashoffset 1.4s var(--ease); }
+.flowsvg .fll { fill: var(--stamp2); font-size: 22px; font-weight: 900; font-family: var(--f-cn); opacity: 0; transition: opacity .6s .8s; }
+.slide:has(.flowcard[data-step="1"].shown) .f1, .slide:has(.flowcard[data-step="2"].shown) .f2, .slide:has(.flowcard[data-step="3"].shown) .f3 { stroke-dashoffset: 0; opacity: 1; }
+.flowcards { display: flex; flex-direction: column; gap: 12px; } .flowcard { padding: 12px 16px; font-size: 20px; line-height: 1.5; }
+.mk { display: none; }
 .flow { display: grid; align-items: stretch; }
 .flow .arr { display: flex; align-items: center; justify-content: center; font-family: var(--f-d); font-size: 34px; color: var(--brass); }
 
@@ -596,9 +639,36 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="3" data-time="14:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>史料研读③</small></div><h2>（二）被隔开的城市：恩格斯与凯笔下的曼彻斯特</h2></div><div class="lk">史料研读 · 史论结合</div></div>
+    <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>史料研读③</small></div><h2>（二）被隔开的城市：走进恩格斯笔下的曼彻斯特</h2></div><div class="lk">史料研读 · 史论结合</div></div>
     <div class="body">
-      <div class="row" style="grid-template-columns:1.1fr 1fr .8fr;gap:20px"><div class="card mat reveal" style="--d:1;--r:-.4deg"><div class="ct">材料一</div><p>在梅德洛克河的一个河湾里，有一块相当深的凹地，四周都是很高的工厂、很高的河堤和盖了房子的河岸。在这块凹地里，密集着两片小宅子，共有两百所左右，大部分都是两所共用一堵后墙，一共约有 <b class="r">4000 人</b>住在这里……平均每幢要住上 <b class="r">20 个人</b>；……大约每 <b class="r">120 人</b>才有一个厕所。</p><p style="margin-top:6px">工人区和资产阶级所占的区域是<b class="v">极严格地分开</b>的……这样费尽心机把一切可能刺激资产阶级的眼睛和神经的东西掩盖起来。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div></div><div class="card mat reveal" style="--d:2;--r:.4deg"><div class="ct">材料二</div><p>狭窄、未经铺砌的街道，成了泥浆、垃圾和粪便的公共堆放处。议会街<b class="r">只有一个厕所，供 380 名居民使用</b>。</p><p style="margin-top:6px">婴儿是这一制度的牺牲品：出生不久就被托付他人，母亲照旧去干活。</p><div class="src">——凯《曼彻斯特棉纺织业工人阶级的道德与身体状况》，本课译。作者任曼彻斯特卫生委员会秘书</div></div><div class="card mat reveal" style="--d:3;--r:-.4deg"><div class="ct">材料三</div><table class="lg" style="font-size:19px"><tr><th></th><th>士绅</th><th>劳工</th></tr><tr><td class="h">曼彻斯特</td><td class="f">38</td><td class="f">17</td></tr><tr><td class="h">拉特兰</td><td class="f">52</td><td class="f">38</td></tr></table><div class="src">——查德威克报告（1842），据 Hanley (2002)；含大量婴幼儿死亡</div></div></div><div class="row" style="grid-template-columns:.85fr 1.15fr;margin-top:16px"><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">Ⅰ · 史料价值</span>恩格斯与凯身份不同，却描述相近。这对判断史料可信度有何意义？</div><div class="hid dark note ansk"><span>一位是革命思想家（且引用过凯的著作），一位是卫生官员，<b class="t">立场不同而事实相近</b>，互证增强可信度；但两人都着眼问题区，不能代表城市全貌，恩格斯也并非完全独立于凯。</span></div></div><div class="col reveal" style="--d:5;gap:10px"><div class="task"><span class="lv">Ⅱ · 史论结合</span>有人说：“工业城市的空间，是阶级关系的投影。”结合材料与所学评析。</div><div class="hid dark note ansk"><span><b class="t">依据：</b>工人区拥挤肮脏且与中产住区隔离（材料一）；卫生与寿命差异悬殊（材料二、三）；根源是工厂集中、人口激增、规划滞后、贫富分化。<b class="t">补充：</b>问题也有技术与管理因素；社会压力推动 1848 年《公共卫生法》，城市逐步改善。<b class="t">结论：</b>城市化既是工业化的成果，也是社会矛盾的显影。</span></div></div></div>
+      <div class="row ix mapx reveal" style="--d:1;grid-template-columns:.78fr 1fr;gap:22px;align-items:start">
+        <div class="card" style="padding:10px 12px"><svg viewBox="0 0 800 470" class="mapsvg" role="img" aria-label="曼彻斯特城市布局示意图">
+  <ellipse cx="400" cy="235" rx="390" ry="225" class="z-rich"/>
+  <ellipse cx="400" cy="235" rx="250" ry="150" class="z-work"/>
+  <g class="huts"><rect x="190" y="150" width="14" height="10"/><rect x="210" y="165" width="14" height="10"/><rect x="185" y="300" width="14" height="10"/><rect x="215" y="320" width="14" height="10"/><rect x="240" y="345" width="14" height="10"/><rect x="560" y="140" width="14" height="10"/><rect x="585" y="160" width="14" height="10"/><rect x="600" y="300" width="14" height="10"/><rect x="575" y="330" width="14" height="10"/><rect x="270" y="110" width="14" height="10"/><rect x="520" y="105" width="14" height="10"/><rect x="300" y="370" width="14" height="10"/><rect x="500" y="375" width="14" height="10"/><rect x="230" y="230" width="14" height="10"/><rect x="570" y="235" width="14" height="10"/></g>
+  <g class="villas"><path d="M60 230l12-10 12 10v12h-24z"/><path d="M90 120l12-10 12 10v12h-24z"/><path d="M700 120l12-10 12 10v12h-24z"/><path d="M730 250l12-10 12 10v12h-24z"/><path d="M680 380l12-10 12 10v12h-24z"/><path d="M110 370l12-10 12 10v12h-24z"/><path d="M400 30l12-10 12 10v12h-24z"/><path d="M260 40l12-10 12 10v12h-24z"/><path d="M540 40l12-10 12 10v12h-24z"/></g>
+  <path d="M90 420 C 230 380, 300 330, 330 300 S 300 250, 360 230" class="river"/>
+  <text x="120" y="408" class="lbl-river">梅德洛克河</text>
+  <g class="streets"><path d="M400 235 L400 12"/><path d="M400 235 L790 235"/><path d="M400 235 L120 440"/><path d="M400 235 L680 440"/></g>
+  <rect x="345" y="200" width="110" height="70" class="z-core"/>
+  <text x="400" y="242" class="lbl-core">商业区</text>
+  <text x="400" y="90" class="lbl-zone">工人区</text>
+  <text x="400" y="460" class="lbl-zone2">资产阶级住区（郊外 · 高地）</text>
+  <g class="hot" data-k="core" transform="translate(470 205)"><circle r="20"/><text>1</text></g>
+  <g class="hot" data-k="street" transform="translate(620 235)"><circle r="20"/><text>2</text></g>
+  <g class="hot" data-k="slum" transform="translate(330 315)"><circle r="20"/><text>3</text></g>
+  <g class="hot" data-k="villa" transform="translate(705 105)"><circle r="20"/><text>4</text></g>
+</svg><div class="src" style="margin-top:4px">示意图：据恩格斯的描述绘制，表示布局，非实测地图。</div></div>
+        <div class="panes">
+          <div class="pane on" data-k=""><p class="dim">点击地图上的 1—4，看恩格斯怎样描述这座城市的每一块。</p></div>
+          <div class="pane" data-k="core"><b class="pt">① 城市中心：商业区</b><p>在曼彻斯特的中心有一个相当广阔的长宽各为半英里的商业区，几乎全区都是<b class="v">营业所和货栈</b>。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div></div>
+          <div class="pane" data-k="street"><b class="pt">② 通往郊外的大街</b><p>这些富有的金钱贵族为了走近路到城市中心的营业所去，竟可以通过整个工人区而<b class="r">看不到</b>左右两旁的极其肮脏贫困的地方。因为从交易所向四面八方通往城郊的大街都是由两排几乎毫无间断的<b class="v">商店</b>所组成的。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div></div>
+          <div class="pane" data-k="slum"><b class="pt">③ 河湾里的“小爱尔兰”</b><p>在这块凹地里，密集着两片小宅子……一共约有 <b class="r">4000 人</b>住在这里……平均每幢要住上 <b class="r">20 个人</b>；……大约每 <b class="r">120 人</b>才有一个厕所。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div><p style="margin-top:8px">议会街<b class="r">只有一个厕所，供 380 名居民使用</b>。婴儿出生不久就被托付他人，母亲照旧去干活。</p><div class="src">——凯《曼彻斯特棉纺织业工人阶级的道德与身体状况》，本课译</div></div>
+          <div class="pane" data-k="villa"><b class="pt">④ 郊外的别墅</b><p>高等的资产阶级就住得更远……住在空气流通的高地上，——在新鲜的对健康有益的乡村空气里，在<b class="v">华丽舒适的住宅</b>里。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div><table class="lg" style="margin-top:8px"><tr><th>平均死亡年龄（1842）</th><th>士绅</th><th>劳工</th></tr><tr><td class="h">曼彻斯特</td><td class="f">38</td><td class="f">17</td></tr></table><div class="src">——查德威克报告（1842），据 Hanley (2002)；含大量婴幼儿死亡</div></div>
+        </div>
+        <i class="hid mk" data-step="1" data-k="core"></i><i class="hid mk" data-step="2" data-k="street"></i><i class="hid mk" data-step="3" data-k="slum"></i><i class="hid mk" data-step="4" data-k="villa"></i>
+      </div>
+      <div class="row" style="grid-template-columns:.85fr 1.15fr;margin-top:16px"><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">Ⅰ · 史料价值</span>恩格斯与凯身份不同，却描述相近。这对判断史料可信度有何意义？</div><div class="hid dark note ansk" data-step="5"><span>一位是革命思想家（且引用过凯的著作），一位是卫生官员，<b class="t">立场不同而事实相近</b>，互证增强可信度；但两人都着眼问题区，不能代表城市全貌，恩格斯也并非完全独立于凯。</span></div></div><div class="col reveal" style="--d:5;gap:10px"><div class="task"><span class="lv">Ⅱ · 史论结合</span>有人说：“工业城市的空间，是阶级关系的投影。”结合材料与所学评析。</div><div class="hid dark note ansk" data-step="6"><span><b class="t">依据：</b>工人区拥挤肮脏且与资产阶级住区隔离（地图 ③④）；大街两旁的商店把贫困遮挡起来（地图 ②）；卫生与寿命差异悬殊（凯、查德威克）；根源是工厂集中、人口激增、规划滞后、贫富分化。<b class="t">补充：</b>问题也有技术与管理因素；社会压力推动 1848 年《公共卫生法》，城市逐步改善。<b class="t">结论：</b>城市化既是工业化的成果，也是社会矛盾的显影。</span></div></div></div>
       <div class="bridge hid" data-step="99">同一座城市，有人致富，有人短命。怎样评价这场变化？</div>
     </div>
   </div>
@@ -637,27 +707,29 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="content">
     <div class="hd reveal"><div><div class="sec">四、由自在到自为的阶级 <small>阶级结构</small></div><h2>（一）改革的受益者：1832 年议会改革与两大阶级</h2></div><div class="lk">纲要下 P55, P60 · 选必1 P12</div></div>
     <div class="body">
-      <div class="row" style="grid-template-columns:1fr 1fr">
+      <div class="row" style="grid-template-columns:1fr 1.1fr;gap:24px">
         <div class="col">
           <div class="guess reveal" style="--d:1"><span class="k">想一想</span>1832 年改革后，英国选民占人口的比例大约是——<div class="opts"><span>A. 3%</span><span>B. 15%</span><span>C. 30%</span><span>D. 全体成年男子</span></div></div>
-          <div class="card hid reveal" style="--d:2;--r:-.4deg">
-            <div class="ct">英国选民人数</div>
-            <div class="hrow" style="grid-template-columns:90px 1fr 120px"><span class="lab">1831</span><div class="track"><div class="hbar v" style="width:60%;--d:2"></div></div><span class="val" style="font-size:24px">48.8万</span></div>
-            <div class="hrow" style="grid-template-columns:90px 1fr 120px"><span class="lab">1833</span><div class="track"><div class="hbar v" style="width:100%;--d:3"></div></div><span class="val" style="font-size:24px">80.8万</span></div>
-            <p style="font-size:21px">答案 <b class="r">A</b>：约 2% → 3.3%。受益的是新兴<b class="v">工业资产阶级</b>，工人仍无选举权。</p>
-            <div class="src">数据来源：王觉非主编《近代英国史》（纲要下 P55 引）</div>
-          </div>
+          <div class="card hid reveal" data-step="4" style="--d:2;--r:-.4deg"><p style="font-size:22px">答案 <b class="r">A</b>：选民从约 48.8 万增至 80.8 万，占人口约 2% → 3.3%。受益的是新兴<b class="v">工业资产阶级</b>，工人仍无选举权。</p><div class="src">数据来源：王觉非主编《近代英国史》（纲要下 P55 引）</div></div>
         </div>
-        <div class="card kp reveal" style="--d:3;--r:.5deg">
-          <div class="ct">社会阶级结构的变化</div>
-          <table class="lg" style="font-size:21px">
-            <tr><td class="h">两大阶级</td><td><b class="v">工业资产阶级</b>和<b class="v">工业无产阶级</b>逐渐成为社会的两大阶级</td></tr>
-            <tr><td class="h">资产阶级</td><td>经济实力增长 → 要求更多政治权利 → 通过<b class="r">改革</b>巩固统治地位（1832 议会改革）</td></tr>
-            <tr><td class="h">工人阶级</td><td>迅速崛起，为争取自己的权利展开<b class="r">斗争</b></td></tr>
-            <tr><td class="h">中间阶层</td><td>技术人员、管理人员开始发展</td></tr>
-            <tr><td class="h">国家治理（拓展）</td><td>管理职能扩展 → <b class="v">文官制度</b>（选必1 P35）；社会救济新方法（选必1 P105）</td></tr>
-          </table>
+        <div class="card ix vote reveal" style="--d:2;--r:.4deg">
+          <div class="ct">1832 年，谁有选票？</div>
+          <div class="who"><button data-preset="女,成年,低">伊丽莎白</button><button data-preset="男,成年,低">男工</button><button data-preset="男,成年,高">厂主</button></div>
+          <div class="vrow"><span>性别</span><button data-f="sex" data-v="男">男</button><button data-f="sex" data-v="女">女</button></div>
+          <div class="vrow"><span>年龄</span><button data-f="age" data-v="成年">21 岁以上</button><button data-f="age" data-v="未成年">不满 21 岁</button></div>
+          <div class="vrow"><span>住房年值</span><button data-f="val" data-v="高">10 英镑以上</button><button data-f="val" data-v="低">不到 10 英镑</button></div>
+          <div class="vres"><b>请选择条件</b><span></span></div>
+          <div class="src">简化：只列 1832 年改革法对城镇选民的主要条件（成年男子、所住房屋年值 10 英镑以上）；乡村另有规定。</div>
+          <i class="hid mk" data-step="1" data-preset="女,成年,低"></i><i class="hid mk" data-step="2" data-preset="男,成年,低"></i><i class="hid mk" data-step="3" data-preset="男,成年,高"></i>
         </div>
+      </div>
+      <div class="card kp reveal" style="--d:3;--r:.2deg;margin-top:16px;padding:12px 20px">
+        <div class="ct">社会阶级结构的变化</div>
+        <table class="lg cls2" style="font-size:20px">
+          <tr><td class="h">两大阶级</td><td><b class="v">工业资产阶级</b>和<b class="v">工业无产阶级</b>逐渐成为社会的两大阶级</td><td class="h">中间阶层</td><td>技术人员、管理人员开始发展</td></tr>
+          <tr><td class="h">资产阶级</td><td>经济实力增长 → 要求政治权利 → 通过<b class="r">改革</b>巩固地位</td><td class="h">工人阶级</td><td>迅速崛起，为争取权利展开<b class="r">斗争</b></td></tr>
+          <tr><td class="h">国家治理（拓展）</td><td colspan="3">管理职能扩展 → <b class="v">文官制度</b>（选必1 P35）；社会救济新方法（选必1 P105）</td></tr>
+        </table>
       </div>
       <div class="bridge hid" data-step="99">1832 年，选票给了工厂主，没有给工人——工人们怎样争取自己的权利？</div>
     </div>
@@ -706,21 +778,17 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="content">
     <div class="hd reveal"><div><div class="sec">五、科学走进工厂 <small>两次工业革命比较</small></div><h2>（二）从工匠到科学家：两次工业革命的比较</h2></div><div class="lk">纲要下 P59</div></div>
     <div class="body">
-      <div class="row" style="grid-template-columns:.6fr 1.4fr">
-        <div class="col">
-          <div class="card reveal" style="--d:1;--r:-.8deg;padding:18px 22px">
-            <div class="ct" style="font-size:24px">发明者身份</div>
-            <table class="lg" style="font-size:20px">
-              <tr><td>哈格里夫斯</td><td>纺织工</td></tr>
-              <tr><td>瓦特</td><td>徒工</td></tr>
-              <tr><td>史蒂芬孙</td><td>炉工</td></tr>
-              <tr><td>西门子</td><td class="hid"><span>工程师·企业家</span></td></tr>
-              <tr><td>爱迪生、贝尔</td><td class="hid"><span>发明家</span></td></tr>
-            </table>
-          </div>
+      <div class="row" style="grid-template-columns:1fr 1.05fr;gap:22px;align-items:start">
+        <div class="card ix yrs reveal" style="--d:1;--r:-.4deg;padding:16px 22px">
+          <div class="yhead"><b class="yr">1769</b><span class="ystage"></span></div>
+          <input type="range" min="1765" max="1900" step="1" value="1769" autocomplete="off" aria-label="拖动选择年份">
+          <div class="yticks"><span>1765</span><span>1785</span><span>1840</span><span>1870</span><span>1900</span></div>
+          <table class="lg yfields"><tr><td class="h">动力</td><td data-y="dl"></td></tr><tr><td class="h">代表发明</td><td data-y="inv"></td></tr><tr><td class="h">发明者</td><td data-y="who"></td></tr><tr><td class="h">领跑国家</td><td data-y="lead"></td></tr><tr><td class="h">主导部门</td><td data-y="sec"></td></tr><tr><td class="h">科技与生产</td><td data-y="sci"></td></tr><tr><td class="h">生产组织</td><td data-y="org"></td></tr></table>
+          <div class="src">拖动滑块，看各项特征随年份变化；按 → 依次跳到 1769、1800、1851、1885 年。</div>
+          <i class="hid mk" data-step="1" data-year="1769"></i><i class="hid mk" data-step="2" data-year="1800"></i><i class="hid mk" data-step="3" data-year="1851"></i><i class="hid mk" data-step="4" data-year="1885"></i>
         </div>
-        <div class="card kp reveal" style="--d:3;--r:.3deg;padding:16px 24px">
-          <table class="lg" style="font-size:20.5px">
+        <div class="card kp hid" data-step="5" style="--r:.3deg;padding:14px 20px">
+          <table class="lg" style="font-size:19px">
             <tr><th style="width:140px">比较</th><th>第一次（18c60s—19c中期）</th><th>第二次（19c70s—20c初）</th></tr>
             <tr><td class="h">标志</td><td>珍妮机开始；<b class="v">改良蒸汽机</b></td><td><b class="v">电力</b>的广泛应用</td></tr>
             <tr><td class="h">能源</td><td>蒸汽——煤</td><td>电力、石油</td></tr>
@@ -778,21 +846,31 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="content">
     <div class="hd reveal"><div><div class="sec">六、被重塑的世界 <small>世界市场</small></div><h2>（二）一件棉衣的全球链条：奴隶、织工与童工</h2></div></div>
     <div class="body">
-      <div class="guess reveal" style="--d:1;margin-bottom:22px"><span class="k">想一想</span>19世纪中期，英国进口的棉花主要来自——　A. 印度　B. 埃及　C. 美国南方　D. 中国</div>
-      <div class="row" style="grid-template-columns:repeat(3,1fr);gap:26px">
-        <div class="card hid reveal" style="--d:2;--r:-1deg;padding:20px 22px">
+      <div class="guess reveal" style="--d:1;margin-bottom:14px"><span class="k">想一想</span>19世纪中期，英国进口的棉花主要来自——　A. 印度　B. 埃及　C. 美国南方　D. 中国</div>
+      <div class="row" style="grid-template-columns:1fr 1fr;gap:22px;align-items:start">
+        <div class="col" style="gap:14px"><div class="card reveal" style="--d:2;padding:10px 12px"><svg viewBox="0 55 820 285" class="flowsvg" role="img" aria-label="棉花全球流向示意图">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4b3b8f"/></marker></defs>
+  <g class="lat"><path d="M0 100H820"/><path d="M0 200H820"/><path d="M0 300H820"/></g>
+  <text x="230" y="250" class="sea">大西洋</text><text x="520" y="330" class="sea">印度洋</text>
+  <path class="fl f1" d="M150 255 C 230 120, 330 90, 420 110" marker-end="url(#ah)"/>
+  <path class="fl f2" d="M440 125 C 520 190, 580 230, 620 268" marker-end="url(#ah)"/>
+  <path class="fl f3" d="M450 110 C 560 70, 680 120, 735 170" marker-end="url(#ah)"/>
+  <text x="250" y="140" class="fll f1">原棉</text><text x="560" y="212" class="fll f2">机制棉布</text><text x="610" y="96" class="fll f3">棉布与工厂</text>
+  <g class="node"><circle cx="140" cy="265" r="11"/><text x="140" y="298">美国南方</text></g>
+  <g class="node"><circle cx="430" cy="110" r="11"/><text x="430" y="88">英国 · 兰开夏</text></g>
+  <g class="node"><circle cx="630" cy="278" r="11"/><text x="630" y="312">印度 · 孟加拉</text></g>
+  <g class="node"><circle cx="745" cy="180" r="11"/><text x="745" y="215">中国 · 上海</text></g>
+</svg><div class="src" style="margin-top:4px">示意图：表示流向，非实际地理比例。</div></div><div class="reveal" style="--d:5"><div class="card q" style="padding:12px 16px" style="padding:14px 18px"><div class="from">真题同源 · 2025 河南卷 · 14</div><p class="stem" style="font-size:19.5px">19世纪，英法等西方国家越来越倾向于使用自由劳动力，先后废除了奴隶制。但在 1811 年到 1870 年间，仍有将近 190 万名奴隶输入巴西，55 万名输入古巴。这反映出（　）A.拉美经济停滞不前 B.列强瓜分非洲 C.世界经济发展的不平衡性加剧 D.拉美工业化需要大量劳动力</p><div class="ans hid" data-step="4" style="font-size:19px"><span><b class="big">C</b></span></div></div></div></div>
+        <div class="flowcards"><div class="card hid flowcard" data-step="1">
           <div class="ct">美国南方 · 种植园奴隶</div>
-          <p style="font-size:21px">答案 <b class="r">C</b>：1820年代后半期起，美国棉花占英国棉花进口 <b class="r">70% 以上</b>；1840—1858 年从未低于 73.4%。被奴役者查尔斯·鲍尔回忆：第一天摘棉花 38 磅，同龄人摘了 58 和 59 磅。</p>
+          <p >答案 <b class="r">C</b>：1820年代后半期起，美国棉花占英国棉花进口 <b class="r">70% 以上</b>；1840—1858 年从未低于 73.4%。被奴役者查尔斯·鲍尔回忆：第一天摘棉花 38 磅，同龄人摘了 58 和 59 磅。</p>
           <div class="src">来源：D. Olusoga, Black and British (2016)；Charles Ball, Slavery in the United States (1836)</div>
-        </div>
-        <div class="card reveal" style="--d:3;--r:.7deg;padding:20px 22px"><div class="ct">孟加拉 · 手工织工</div><p style="font-size:21px">1834—1835 年东印度总督确认：“这种灾难在商业史上几乎是绝无仅有的。<b class="r">织布工人的尸骨把印度的平原漂白了</b>。”</p><div class="src">——转引自马克思《资本论》第一卷第十三章第五节</div></div>
-        <div class="card reveal" style="--d:4;--r:-.6deg;padding:20px 22px">
+        </div><div class="card hid flowcard" data-step="2"><div class="ct">孟加拉 · 手工织工</div><p >1834—1835 年东印度总督确认：“这种灾难在商业史上几乎是绝无仅有的。<b class="r">织布工人的尸骨把印度的平原漂白了</b>。”</p><div class="src">——转引自马克思《资本论》第一卷第十三章第五节</div></div><div class="card hid flowcard" data-step="3">
           <div class="ct">上海 · 纱厂童工</div>
-          <p style="font-size:21px">工业化在中国来得更晚。1929 年上海社会局的纺织业统计显示：棉纺业男女童工每日须工作 <b class="r">11 小时</b>，工资低的每天只有两角五分。</p>
+          <p >工业化在中国来得更晚。1929 年上海社会局的纺织业统计显示：棉纺业男女童工每日须工作 <b class="r">11 小时</b>，工资低的每天只有两角五分。</p>
           <div class="src">来源：恽代英 1929 年文章所引上海社会局统计</div>
-        </div>
+        </div><div class="reveal" style="--d:5"><div class="guess" style="font-size:20px"><span class="k">连到主线</span>英国工厂里的“自由”劳动，与美洲种植园的奴隶劳动，是对立的，还是同一条棉花链上的两环？</div></div></div>
       </div>
-      <div class="row reveal" style="--d:5;grid-template-columns:1.2fr .8fr;margin-top:16px"><div class="card q" style="padding:14px 18px"><div class="from">真题同源 · 2025 河南卷 · 14</div><p class="stem" style="font-size:19.5px">19世纪，英法等西方国家越来越倾向于使用自由劳动力，先后废除了奴隶制。但在 1811 年到 1870 年间，仍有将近 190 万名奴隶输入巴西，55 万名输入古巴。这反映出（　）A.拉美经济停滞不前 B.列强瓜分非洲 C.世界经济发展的不平衡性加剧 D.拉美工业化需要大量劳动力</p><div class="ans hid" style="font-size:19px"><span><b class="big">C</b></span></div></div><div class="guess" style="font-size:20px"><span class="k">连到主线</span>英国工厂里的“自由”劳动，与美洲种植园的奴隶劳动，是对立的，还是同一条棉花链上的两环？</div></div>
       <div class="bridge hid" data-step="99">这样的链条，是怎样织成一张世界市场的网？</div>
     </div>
   </div>
@@ -1042,7 +1120,7 @@ class SlidePresentation {
     setupClickNav() {
         document.addEventListener('click', (e) => {
             if (document.body.classList.contains('editing') || String(getSelection())) return;
-            if (e.target.closest('button, a, .sim, .edit-toggle, .edit-hotzone, .deck-controls')) return;
+            if (e.target.closest('button, a, .sim, .ix, .edit-toggle, .edit-hotzone, .deck-controls')) return;
             let hit = e.target.closest('.hid:not(.shown)');
             while (hit && hit.parentElement.closest('.hid:not(.shown)')) hit = hit.parentElement.closest('.hid:not(.shown)');
             hit ? hit.classList.add('shown') : this.step();
@@ -1067,6 +1145,61 @@ class SlidePresentation {
         history.replaceState(null, '', `${location.search}#${this.current + 1}`);
     }
 }
+
+/* Interactive pages: clicking drives them directly; the arrow keys reach them through hidden .mk step markers */
+function mapGo(root, k) {
+    root.querySelectorAll('.hot').forEach((h) => h.classList.toggle('on', h.dataset.k === k));
+    root.querySelectorAll('.pane').forEach((p) => p.classList.toggle('on', p.dataset.k === k));
+}
+document.querySelectorAll('.mapx').forEach((root) => {
+    root.querySelectorAll('.hot').forEach((h) => h.addEventListener('click', () => mapGo(root, h.dataset.k)));
+});
+function voteSet(root, sex, age, val) {
+    const st = root.vst = { sex, age, val };
+    root.querySelectorAll('[data-f]').forEach((b) => b.classList.toggle('on', st[b.dataset.f] === b.dataset.v));
+    root.querySelectorAll('.who button').forEach((b) => b.classList.toggle('on', b.dataset.preset === [sex, age, val].join(',')));
+    const res = root.querySelector('.vres');
+    if (!sex || !age || !val) { res.className = 'vres'; res.innerHTML = '<b>请选择条件</b><span></span>'; return; }
+    const why = sex === '女' ? '1832 年改革法规定选民须为男性' : age === '未成年' ? '须年满 21 岁' : val === '低' ? '所住房屋年值不到 10 英镑' : '成年男子，房屋年值超过 10 英镑';
+    const yes = sex === '男' && age === '成年' && val === '高';
+    res.className = 'vres ' + (yes ? 'yes' : 'no');
+    res.innerHTML = `<b>${yes ? '有选票' : '没有选票'}</b><span>${why}</span>`;
+}
+document.querySelectorAll('.vote').forEach((root) => {
+    root.vst = {};
+    root.querySelectorAll('[data-f]').forEach((b) => b.addEventListener('click', () => { const st = { ...root.vst, [b.dataset.f]: b.dataset.v }; voteSet(root, st.sex, st.age, st.val); }));
+    root.querySelectorAll('.who button').forEach((b) => b.addEventListener('click', () => voteSet(root, ...b.dataset.preset.split(','))));
+});
+const YEARS = [
+    { from: 1765, stage: '第一次工业革命开始', dl: '人力 → 水力', inv: '1765 珍妮纺纱机；1769 水力纺纱机；1771 第一家工厂', who: '哈格里夫斯（纺织工）、阿克莱特', lead: '英国', sec: '棉纺织业（轻工业）', sci: '多源于工匠实践', org: '工厂出现（1771）' },
+    { from: 1785, stage: '蒸汽机进厂', dl: '蒸汽（煤）', inv: '1785 瓦特蒸汽机进入棉纺织厂；1807 汽船；1814 蒸汽机车', who: '瓦特（徒工）、史蒂芬孙（炉工）', lead: '英国', sec: '轻工业为主', sci: '多源于工匠实践', org: '工厂制度确立' },
+    { from: 1840, stage: '19 世纪中期：第一次工业革命完成', dl: '蒸汽（煤）——“蒸汽时代”', inv: '机器制造业实现机械化；1866 西门子发电机', who: '工匠为主，工程师登场（西门子）', lead: '英国（“世界工厂”）', sec: '机器制造业', sci: '工匠实践为主，科学开始介入', org: '工厂制度' },
+    { from: 1870, stage: '第二次工业革命', dl: '电力、内燃机（石油）——“电气时代”', inv: '1876 贝尔电话；1879 爱迪生电灯；1885—86 本茨汽车', who: '爱迪生、贝尔（发明家）', lead: '美国、德国最为突出', sec: '重工业、新兴工业', sci: '科学技术与生产紧密结合', org: '出现垄断组织' },
+];
+function yrSet(root, y) {
+    y = Number(y);
+    const era = YEARS.filter((e) => y >= e.from).pop();
+    root.querySelector('input').value = y;
+    root.querySelector('.yr').textContent = y;
+    root.querySelector('.ystage').textContent = era.stage;
+    root.querySelectorAll('[data-y]').forEach((td) => {
+        if (td.textContent === era[td.dataset.y]) return;
+        td.textContent = era[td.dataset.y];
+        td.classList.remove('flash'); void td.offsetWidth; td.classList.add('flash');
+        setTimeout(() => td.classList.remove('flash'), 600);
+    });
+}
+document.querySelectorAll('.yrs').forEach((root) => {
+    yrSet(root, root.querySelector('input').value);
+    root.querySelector('input').addEventListener('input', (e) => yrSet(root, e.target.value));
+});
+const mkObserver = new MutationObserver((list) => list.forEach(({ target: m }) => {
+    if (!m.classList.contains('shown')) return;
+    if (m.dataset.k) mapGo(m.closest('.mapx'), m.dataset.k);
+    if (m.dataset.preset) voteSet(m.closest('.vote'), ...m.dataset.preset.split(','));
+    if (m.dataset.year) yrSet(m.closest('.yrs'), m.dataset.year);
+}));
+document.querySelectorAll('.mk').forEach((m) => mkObserver.observe(m, { attributes: true, attributeFilter: ['class'] }));
 const deck = new SlidePresentation();
 if (new URLSearchParams(location.search).has('export')) document.querySelectorAll('.progress, .deck-controls, .edit-toggle').forEach((el) => el.remove());
 
