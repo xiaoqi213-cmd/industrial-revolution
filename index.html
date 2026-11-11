@@ -220,7 +220,7 @@ svg {
 /* Guess prompt: the question students answer before the reveal */
 .guess { border: 3px solid var(--brass); background: rgba(232,196,106,.1); padding: 18px 24px; font-size: 25px; line-height: 1.55; }
 .guess .k { font-family: var(--f-m); font-size: 18px; letter-spacing: .16em; color: var(--brass); display: block; margin-bottom: 6px; }
-.guess .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; margin-top: 10px; font-size: 23px; }
+.guess .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 36px; margin-top: 12px; font-size: 23px; }
 
 /* Hidden-until-clicked blocks ("先猜后揭") */
 .hid { position: relative; cursor: pointer; transition: opacity .4s ease, transform .55s var(--ease); }
@@ -367,7 +367,7 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 /* Exam question (inside chapters) */
 .q .from { font-family: var(--f-m); font-size: 18px; color: var(--stamp2); font-weight: 700; }
 .q .stem { font-size: 23px; line-height: 1.6; }
-.q .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 22px; margin-top: 8px; font-size: 22px; }
+.q .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 36px; margin-top: 12px; font-size: 22px; line-height: 1.45; }
 .q .ans { margin-top: 12px; padding: 10px 12px; font-size: 21px; line-height: 1.55; }
 .q .ans b.big { font-family: var(--f-d); font-size: 30px; color: var(--stamp); margin-right: 10px; }
 
@@ -616,7 +616,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
       <div class="flow chain reveal" style="--d:2;grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr;margin-top:14px"><div class="card link hid" data-step="1"><div class="ct">① 动力 <small>瓦特蒸汽机</small></div><p>1712 纽科门：矿井抽水<br>1782 瓦特<b class="v">“复动式蒸汽机”</b><br>1785 进入<b class="v">棉纺织工厂</b></p><p class="tag">第一次工业革命的主要标志</p></div><div class="arr">→</div><div class="card link hid" data-step="2"><div class="ct">② 地点 <small>工厂离开河边</small></div><p>动力不再受<b class="key">地势、季节等自然条件</b>限制，工厂可以建到城市和煤矿附近。</p><p class="tag">工厂集中到曼彻斯特、利兹等城市</p></div><div class="arr">→</div><div class="card link hid" data-step="3"><div class="ct">③ 交通 <small>煤和棉要运进来</small></div><p>1807 富尔顿<b class="v">汽船</b><br>1814 史蒂芬孙改进<b class="v">蒸汽机车</b></p><p class="tag">人类进入“蒸汽时代”</p></div><div class="arr">→</div><div class="card link hid" data-step="4"><div class="ct">④ 完成 <small>用机器造机器</small></div><p>19世纪中期<b class="r">机器制造业实现机械化</b></p><p class="tag">英国成为“世界工厂”</p></div></div>
       <div class="row reveal" style="--d:3;grid-template-columns:1fr 1fr;margin-top:18px">
         <div class="card kp hid" data-step="5" style="padding:14px 20px"><div class="ct" style="font-size:24px">扩展与特点</div><p style="font-size:21px"><b class="r">意义：</b>解决生产动力<b class="key">受自然条件限制</b>的问题；催生交通革命<br><b class="r">扩展：</b>欧洲大陆和北美；各国以<b class="v">税收、立法、直接投资</b>推动<br><b class="r">特点：</b>一国开始再扩展；<b class="v">轻工业</b>为主；发明多源于<b class="v">工匠实践</b></p></div>
-        <div class="card q" style="padding:14px 20px"><div class="from">真题同源 · 2025 黑吉辽蒙卷 · 14</div><p class="stem" style="font-size:20px">1837 年，惠斯通和库克获首个实用性电报专利。1839 年电报首次用于帕丁顿至德莱顿的铁路，随后在全英铁路系统普及。该技术的应用有助于（　）A.专利制度的确立 B.技术进步的制度化 C.产业革命的深入 D.动力装置的电气化</p><div class="ans hid" data-step="6" style="font-size:20px"><span><b class="big">C</b>新技术进入铁路调度，产业革命走向深入。电报并非动力装置（D 错）。</span></div></div>
+        <div class="card q" style="padding:14px 20px"><div class="from">真题同源 · 2025 黑吉辽蒙卷 · 14</div><p class="stem" style="font-size:20px">1837 年，惠斯通和库克获首个实用性电报专利。1839 年电报首次用于帕丁顿至德莱顿的铁路，随后在全英铁路系统普及。该技术的应用有助于（　）</p><div class="opts"><span>A. 专利制度的确立</span><span>B. 技术进步的制度化</span><span>C. 产业革命的深入</span><span>D. 动力装置的电气化</span></div><div class="ans hid" data-step="6" style="font-size:20px"><span><b class="big">C</b>新技术进入铁路调度，产业革命走向深入。电报并非动力装置（D 错）。</span></div></div>
       </div>
       <div class="bridge hid" data-step="99">工厂进了城。像伊丽莎白这样的孩子，每天听着钟声进厂——在厂里，要守什么规矩？</div>
     </div>
@@ -686,7 +686,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
           <div class="note reveal" style="--d:3"><span class="k">狄更斯《艰难时世》</span>纲要下 P60 的工业城镇：高耸的烟囱、长蛇般的浓烟、被染料冲成深紫色的河水。<b class="brass">文学作品可作史料，但需互证。</b></div>
           <div class="card q reveal" style="--d:4;--r:-.3deg;padding:16px 22px">
             <div class="from">真题同源 · 2026 湖南卷 · 14</div>
-            <p class="stem" style="font-size:21px">19世纪中叶，英国出现“比例尺之争”，一方坚持采用更详实的大比例尺地图，以满足土地产权登记、道路修建、大型排水工程建设等需求。这一争论是基于当时英国（　）A. 地方治理模式转型 B. 城市发展进程加快 C. 地图绘制技术突破 D. 道路规划理念革新</p>
+            <p class="stem" style="font-size:21px">19世纪中叶，英国出现“比例尺之争”，一方坚持采用更详实的大比例尺地图，以满足土地产权登记、道路修建、大型排水工程建设等需求。这一争论是基于当时英国（　）</p><div class="opts"><span>A. 地方治理模式转型</span><span>B. 城市发展进程加快</span><span>C. 地图绘制技术突破</span><span>D. 道路规划理念革新</span></div>
             <div class="ans hid" style="font-size:20px"><span><b class="big">B</b>产权、道路、排水都是城市扩张带来的需求。</span></div>
           </div>
         </div>
@@ -756,7 +756,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
         <div class="col">
           <div class="guess reveal" style="--d:1"><span class="k">先想一想</span>第一次工业革命只在英国率先发生，第二次却几乎在多国<b>同时</b>发生。为什么？</div>
           <div class="hid dark note pop reveal" style="--d:2"><span>①资本主义制度在欧美确立与巩固，社会相对稳定；②<b class="brass">科学技术与生产紧密结合</b>，科学成果可以跨国传播与应用；③第一次工业革命积累了资本、市场与工业基础；④各国政府推动、竞争加剧。</span></div>
-          <div class="card q reveal" style="--d:3;--r:-.3deg;padding:14px 18px"><div class="from">真题同源 · 2026 陕晋宁青卷 · 14</div><p class="stem" style="font-size:19px">1736 年法兰西科学院开始研究天然橡胶；1839 年固特异研制出克服其缺陷的新技术；19世纪后期橡胶大量用于绝缘材料，助益电力等产业。这直接说明科技突破（　）A.改善社会生活 B.推动生产方式变革 C.提升基础研究 D.加强世界联系</p><div class="ans hid" style="font-size:19px"><span><b class="big">B</b>从科研到电力产业：科学与生产结合。</span></div></div>
+          <div class="card q reveal" style="--d:3;--r:-.3deg;padding:14px 18px"><div class="from">真题同源 · 2026 陕晋宁青卷 · 14</div><p class="stem" style="font-size:19px">1736 年法兰西科学院开始研究天然橡胶；1839 年固特异研制出克服其缺陷的新技术；19世纪后期橡胶大量用于绝缘材料，助益电力等产业。这直接说明科技突破（　）</p><div class="opts"><span>A. 改善社会生活</span><span>B. 推动生产方式变革</span><span>C. 提升基础研究</span><span>D. 加强世界联系</span></div><div class="ans hid" style="font-size:19px"><span><b class="big">B</b>从科研到电力产业：科学与生产结合。</span></div></div>
         </div>
         <div class="card kp reveal" style="--d:4;--r:.4deg">
           <div class="ct">五大表现</div>
@@ -848,7 +848,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="content">
     <div class="hd reveal"><div><div class="sec">六、被重塑的世界 <small>世界市场</small></div><h2>（二）一件棉衣的全球链条：奴隶、织工与童工</h2></div></div>
     <div class="body">
-      <div class="guess reveal" data-ans="ans-cotton" style="--d:1;margin-bottom:14px"><span class="k">想一想</span>19世纪中期，英国进口的棉花主要来自——　A. 印度　B. 埃及　C. 美国南方　D. 中国</div>
+      <div class="guess reveal" data-ans="ans-cotton" style="--d:1;margin-bottom:14px"><span class="k">想一想</span>19世纪中期，英国进口的棉花主要来自——<div class="opts" style="grid-template-columns:repeat(4,1fr)"><span>A. 印度</span><span>B. 埃及</span><span>C. 美国南方</span><span>D. 中国</span></div></div>
       <div class="row" style="grid-template-columns:.78fr 1.22fr;gap:22px;align-items:start">
         <div class="col" style="gap:14px"><div class="card reveal" style="--d:2;padding:10px 12px"><svg viewBox="0 55 820 285" class="flowsvg" role="img" aria-label="棉花全球流向示意图">
   <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4b3b8f"/></marker></defs>
@@ -871,7 +871,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
           <div class="ct">上海 · 纱厂童工</div>
           <p >工业化在中国来得更晚。1929 年上海社会局的纺织业统计显示：棉纺业男女童工每日须工作 <b class="r">11 小时</b>，工资低的每天只有两角五分。</p>
           <div class="src">来源：恽代英 1929 年文章所引上海社会局统计</div>
-        </div><div class="reveal" style="--d:5"><div class="guess" style="font-size:20px"><span class="k">连到主线</span>英国工厂里的“自由”劳动，与美洲种植园的奴隶劳动，是对立的，还是同一条棉花链上的两环？</div></div><div class="reveal" style="--d:5"><div class="card q" style="padding:12px 16px" style="padding:14px 18px"><div class="from">真题同源 · 2025 河南卷 · 14</div><p class="stem" style="font-size:19.5px">19世纪，英法等西方国家越来越倾向于使用自由劳动力，先后废除了奴隶制。但在 1811 年到 1870 年间，仍有将近 190 万名奴隶输入巴西，55 万名输入古巴。这反映出（　）A.拉美经济停滞不前 B.列强瓜分非洲 C.世界经济发展的不平衡性加剧 D.拉美工业化需要大量劳动力</p><div class="ans hid" data-step="4" style="font-size:19px"><span><b class="big">C</b></span></div></div></div></div>
+        </div><div class="reveal" style="--d:5"><div class="guess" style="font-size:20px"><span class="k">连到主线</span>英国工厂里的“自由”劳动，与美洲种植园的奴隶劳动，是对立的，还是同一条棉花链上的两环？</div></div><div class="reveal" style="--d:5"><div class="card q" style="padding:12px 16px" style="padding:14px 18px"><div class="from">真题同源 · 2025 河南卷 · 14</div><p class="stem" style="font-size:19.5px">19世纪，英法等西方国家越来越倾向于使用自由劳动力，先后废除了奴隶制。但在 1811 年到 1870 年间，仍有将近 190 万名奴隶输入巴西，55 万名输入古巴。这反映出（　）</p><div class="opts"><span>A. 拉美经济停滞不前</span><span>B. 列强瓜分非洲</span><span>C. 世界经济发展的不平衡性加剧</span><span>D. 拉美工业化需要大量劳动力</span></div><div class="ans hid" data-step="4" style="font-size:19px"><span><b class="big">C</b></span></div></div></div></div>
       </div>
       <div class="bridge hid" data-step="99">这样的链条，是怎样织成一张世界市场的网？</div>
     </div>
@@ -894,7 +894,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
               <tr><td class="h">19c末20c初</td><td>瓜分世界；<b>资本输出</b></td><td><b class="r">最终形成</b></td></tr>
             </table>
           </div>
-          <div class="card q reveal" style="--d:3;--r:-.3deg;padding:14px 20px"><div class="from">真题同源 · 2025 陕晋宁青卷 · 14</div><p class="stem" style="font-size:20px">1812 年，英国格拉斯哥商会感谢从事美洲贸易的商人，因其不仅扩展了烟草、棉花等贸易，而且“不惜花费大量时间支持创办我们这个城市的制造业”。这表明（　）A.新型特许公司促进美洲贸易 B.英国制造业与大西洋贸易联系密切 C.依托制造业成为“世界工厂” D.资本输出成为主要形式</p><div class="ans hid" style="font-size:19px"><span><b class="big">B</b>贸易资本反哺制造业；1812 年尚非资本输出时代。</span></div></div>
+          <div class="card q reveal" style="--d:3;--r:-.3deg;padding:14px 20px"><div class="from">真题同源 · 2025 陕晋宁青卷 · 14</div><p class="stem" style="font-size:20px">1812 年，英国格拉斯哥商会感谢从事美洲贸易的商人，因其不仅扩展了烟草、棉花等贸易，而且“不惜花费大量时间支持创办我们这个城市的制造业”。这表明（　）</p><div class="opts"><span>A. 新型特许公司促进美洲贸易</span><span>B. 英国制造业与大西洋贸易联系密切</span><span>C. 依托制造业成为“世界工厂”</span><span>D. 资本输出成为主要形式</span></div><div class="ans hid" style="font-size:19px"><span><b class="big">B</b>贸易资本反哺制造业；1812 年尚非资本输出时代。</span></div></div>
         </div>
         <div class="col">
           <div class="guess reveal" style="--d:2"><span class="k">想一想</span>工业革命后，世界形成了怎样的分工格局？</div>
