@@ -309,6 +309,10 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .pop *, .pop span { font-size: inherit !important; }
 .pop::before { content: "参考答案 · 点击收起"; display: block; font-family: var(--f-m); font-size: 18px; letter-spacing: .14em; color: var(--brass); margin-bottom: 8px; }
 .pop:not(.shown), .pop.tucked { pointer-events: none; opacity: 0 !important; }
+/* Last slide: then / now rows */
+.tn { display: grid; grid-template-columns: 90px 1fr 44px 1fr; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--card-line); font-size: 22px; line-height: 1.5; }
+.tn:last-child { border-bottom: 0; } .tnh { font-size: 20px; color: var(--stamp2); padding-top: 0; } .tn .tl { font-size: 24px; color: var(--stamp); }
+.tn .arr { font-family: var(--f-d); font-size: 30px; color: var(--stamp); text-align: center; }
 /* Year slider (slide 16) */
 .yrs .yhead { display: flex; align-items: baseline; gap: 18px; }
 .yrs .yr { font-family: var(--f-d); font-size: 76px; color: var(--stamp); line-height: 1; }
@@ -489,10 +493,10 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="t-meta reveal" style="--d:5">纲要下 第10、11课 · 选必2 第5课 · 跨册整合</div>
   <div class="card bigcard reveal" style="--d:2">
     <div class="hole"></div>
-    <div class="ct" style="text-align:center;font-size:60px;margin-top:20px">一生卡</div>
+    <div class="ct" style="text-align:center;font-size:60px;margin-top:20px">LIFE CARD · 一生卡</div>
     <div class="meta"><span>主角：伊丽莎白·本特利</span><span>1760—1900</span></div>
     <table class="lg" style="font-size:26px">
-      <tr><th>章</th><th>处境之变</th><th>复习考点</th></tr>
+      <tr><th>CH.</th><th>处境之变</th><th>复习考点</th></tr>
       <tr><td class="n">一</td><td><b>一无所有的自由</b></td><td>工业革命的背景</td></tr>
       <tr><td class="n">二</td><td><b>被机器支配的劳动</b></td><td>第一次工业革命、工厂制度</td></tr>
       <tr><td class="n">三</td><td><b>被重新划分的生活</b></td><td>城市化、生活方式、社会问题</td></tr>
@@ -966,15 +970,18 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="7" data-time="22:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">七、从史实到史论 <small>知识框架</small></div><h2>（二）主线回望：劳动者处境与知识框架</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">七、从史实到史论 <small>联系今天</small></div><h2>（二）从汽笛到算法：工业革命照进 AI 时代</h2></div></div>
     <div class="body">
-      <div class="card reveal" style="--d:1;--r:-.2deg;padding:16px 26px">
-        <table class="lg" style="font-size:21px"><tr><th style="width:230px">主线节点</th><th style="width:400px">劳动者的处境</th><th>对应知识</th></tr><tr><td class="h">一、一无所有的自由</td><td>失去土地，成为“双重自由”的劳动者</td><td>背景：圈地运动 · 殖民扩张 · 手工工场 · 科技 · <b class="r">市场需求</b></td></tr><tr><td class="h">二、被机器支配的劳动</td><td>成为机器“活的附属物”</td><td>第一次工业革命：珍妮机 → 1771 工厂 → 1785 蒸汽机 → 交通 → 机器制造业机械化；工厂制度</td></tr><tr><td class="h">三、被重新划分的生活</td><td>被隔开的城市与家庭</td><td>城市化（1851 过半）· 生活方式五变化 · 社会问题</td></tr><tr><td class="h">四、由自在到自为的阶级</td><td>从砸机器到争取权利</td><td>两大阶级 · 1832 改革 · 三大工人运动 · 马克思主义 · 社会立法</td></tr><tr><td class="h">五、科学走进工厂</td><td>面对科学化的大生产</td><td>第二次工业革命 · 科技与生产结合 · 美德突出</td></tr><tr><td class="h">六、被重塑的世界</td><td>垄断资本与全球劳动链</td><td>垄断（局部调整）· 世界市场 · 商品输出→资本输出 · 近代中国</td></tr></table>
+      <div class="card reveal tnwrap" style="--d:1;--r:-.2deg;padding:14px 24px">
+        <div class="tn tnh"><span></span><b>1830 年代 · 伊丽莎白的工厂</b><span></span><b>今天 · AI 与算法</b></div>
+        <div class="tn hid" data-step="1"><b class="tl">机器</b><div class="then">珍妮机、水力纺纱机取代<b class="r">手工纺纱</b>，家庭织工、纺工失去活计</div><div class="arr">→</div><div class="now">生成式人工智能开始替代部分<b class="r">写作、翻译、绘图</b>等脑力劳动</div></div><div class="tn hid" data-step="2"><b class="tl">节奏</b><div class="then"><b class="r">专制的钟声</b>、拿着<b class="r">罚款簿</b>的监工决定工人的作息</div><div class="arr">→</div><div class="now"><b class="r">算法</b>派单、计时、评分，决定外卖骑手等劳动者的节奏</div></div><div class="tn hid" data-step="3"><b class="tl">回应</b><div class="then">从捣毁机器到<b class="v">联合</b>；1833 年《工厂法》限制童工、设工厂视察员</div><div class="arr">→</div><div class="now">为新技术立规则，保障<b class="v">新就业形态劳动者</b>权益，学习新技能</div></div>
       </div>
-      <div class="row reveal" style="--d:2;grid-template-columns:1fr 1fr;margin-top:22px">
-        <div class="note"><span class="k">唯物史观</span>生产力（机器）→ 生产关系（工厂、阶级）→ 社会生活与上层建筑（城市、立法、思想）→ 世界格局。<b class="brass">答影响题按这条链展开。</b></div>
-        <div class="guess"><span class="k">下课前</span>马克思说工人要学会把“机器和机器的资本主义应用”区别开来。面对今天的 AI，这句话还有效吗？</div>
+      <div class="row reveal" style="--d:2;grid-template-columns:.9fr 1.1fr;margin-top:18px">
+        <div class="card mat" style="padding:14px 20px"><div class="ct">主线史料</div><p>工人要学会把<b class="v">机器和机器的资本主义应用</b>区别开来，从而学会把自己的攻击从物质生产资料本身转向物质生产资料的社会使用形式，是需要时间和经验的。</p><div class="src">——马克思《资本论》第一卷第十三章第五节</div></div>
+        <div class="task"><span class="lv">史论结合 · 下课前</span>AI 会让今天的劳动者成为新的“活的附属物”吗？运用本课史实，谈谈你的看法。</div>
+        <div class="hid dark note pop" data-step="4"><span><b class="t">观点示例：</b>技术本身不必然支配人，关键在于技术怎样被使用、由什么规则约束。<b class="t">以史为证：</b>①工业革命中机器提高了生产力，但在资本主义使用下，工时延长、童工增多，工人成为机器的“活的附属物”；②工人从捣毁机器走向联合，1833 年《工厂法》等社会立法逐步设限，说明制度能调节技术的后果。<b class="t">联系今天：</b>AI 提升效率，也可能带来岗位替代、算法控制等问题，同样需要规则保障与技能培训。<b class="t">结论：</b>技术进步与人的发展并不自动同步，需要社会主动调节。</span></div>
       </div>
+      <div class="bridge hid" data-step="99">汽笛响起时，人追着机器跑；算法运行时，我们能否让技术为人服务？</div>
     </div>
   </div>
 </section>
