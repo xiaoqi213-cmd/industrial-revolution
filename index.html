@@ -322,6 +322,11 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .mapsvg text { font-family: var(--f-cn); font-weight: 900; text-anchor: middle; }
 .mapsvg .lbl-core { fill: #f6ead0; font-size: 24px; } .mapsvg .lbl-zone { fill: var(--ink); font-size: 26px; }
 .mapsvg .lbl-zone2 { fill: #3f5a2a; font-size: 20px; } .mapsvg .lbl-river { fill: #2f4f6f; font-size: 18px; text-anchor: start; }
+.mapimg { position: relative; } .mapimg img { width: 100%; display: block; border: 2px solid var(--ink); }
+.hotb { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.hotb b { width: 40px; height: 40px; border-radius: 50%; background: var(--stamp); color: #fff; border: 3px solid #f6ead0; display: flex; align-items: center; justify-content: center; font-family: var(--f-d); font-size: 22px; font-weight: 400; box-shadow: 0 3px 8px rgba(0,0,0,.45); transition: transform .3s, background .3s; }
+.hotb i { font-style: normal; font-weight: 900; font-size: 18px; color: var(--ink); background: rgba(246,234,208,.92); padding: 1px 6px; border: 1px solid var(--ink); white-space: nowrap; }
+.hotb.on b { background: var(--brass); color: var(--ink); transform: scale(1.2); }
 .hot { cursor: pointer; } .hot circle { fill: var(--stamp); stroke: #f6ead0; stroke-width: 4; transition: transform .3s; }
 .hot text { fill: #fff; font-size: 22px; font-family: var(--f-d); text-anchor: middle; dominant-baseline: central; }
 .hot.on circle { fill: var(--brass); transform: scale(1.25); } .hot.on text { fill: var(--ink); }
@@ -641,30 +646,14 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="content">
     <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>史料研读③</small></div><h2>（二）被隔开的城市：走进恩格斯笔下的曼彻斯特</h2></div><div class="lk">史料研读 · 史论结合</div></div>
     <div class="body">
-      <div class="row ix mapx reveal" style="--d:1;grid-template-columns:.78fr 1fr;gap:22px;align-items:start">
-        <div class="card" style="padding:10px 12px"><svg viewBox="0 0 800 470" class="mapsvg" role="img" aria-label="曼彻斯特城市布局示意图">
-  <ellipse cx="400" cy="235" rx="390" ry="225" class="z-rich"/>
-  <ellipse cx="400" cy="235" rx="250" ry="150" class="z-work"/>
-  <g class="huts"><rect x="190" y="150" width="14" height="10"/><rect x="210" y="165" width="14" height="10"/><rect x="185" y="300" width="14" height="10"/><rect x="215" y="320" width="14" height="10"/><rect x="240" y="345" width="14" height="10"/><rect x="560" y="140" width="14" height="10"/><rect x="585" y="160" width="14" height="10"/><rect x="600" y="300" width="14" height="10"/><rect x="575" y="330" width="14" height="10"/><rect x="270" y="110" width="14" height="10"/><rect x="520" y="105" width="14" height="10"/><rect x="300" y="370" width="14" height="10"/><rect x="500" y="375" width="14" height="10"/><rect x="230" y="230" width="14" height="10"/><rect x="570" y="235" width="14" height="10"/></g>
-  <g class="villas"><path d="M60 230l12-10 12 10v12h-24z"/><path d="M90 120l12-10 12 10v12h-24z"/><path d="M700 120l12-10 12 10v12h-24z"/><path d="M730 250l12-10 12 10v12h-24z"/><path d="M680 380l12-10 12 10v12h-24z"/><path d="M110 370l12-10 12 10v12h-24z"/><path d="M400 30l12-10 12 10v12h-24z"/><path d="M260 40l12-10 12 10v12h-24z"/><path d="M540 40l12-10 12 10v12h-24z"/></g>
-  <path d="M90 420 C 230 380, 300 330, 330 300 S 300 250, 360 230" class="river"/>
-  <text x="120" y="408" class="lbl-river">梅德洛克河</text>
-  <g class="streets"><path d="M400 235 L400 12"/><path d="M400 235 L790 235"/><path d="M400 235 L120 440"/><path d="M400 235 L680 440"/></g>
-  <rect x="345" y="200" width="110" height="70" class="z-core"/>
-  <text x="400" y="242" class="lbl-core">商业区</text>
-  <text x="400" y="90" class="lbl-zone">工人区</text>
-  <text x="400" y="460" class="lbl-zone2">资产阶级住区（郊外 · 高地）</text>
-  <g class="hot" data-k="core" transform="translate(470 205)"><circle r="20"/><text>1</text></g>
-  <g class="hot" data-k="street" transform="translate(620 235)"><circle r="20"/><text>2</text></g>
-  <g class="hot" data-k="slum" transform="translate(330 315)"><circle r="20"/><text>3</text></g>
-  <g class="hot" data-k="villa" transform="translate(705 105)"><circle r="20"/><text>4</text></g>
-</svg><div class="src" style="margin-top:4px">示意图：据恩格斯的描述绘制，表示布局，非实测地图。</div></div>
+      <div class="row ix mapx reveal" style="--d:1;grid-template-columns:.7fr 1fr;gap:22px;align-items:start">
+        <div class="card" style="padding:10px 12px"><div class="mapimg"><img src="assets/manchester-1854-bradshaw.jpg" alt="1854 年布拉德肖《英国工业区手册》所附曼彻斯特地图局部：市中心、伦敦路、梅德洛克河与阿德威克一带"><span class="hot hotb" data-k="core" style="left:27.7%;top:16.3%"><b>1</b><i>交易所</i></span><span class="hot hotb" data-k="street" style="left:60.8%;top:45%"><b>2</b><i>伦敦路</i></span><span class="hot hotb" data-k="slum" style="left:36.2%;top:76.9%"><b>3</b><i>小爱尔兰</i></span><span class="hot hotb" data-k="villa" style="left:84%;top:86%"><b>4</b><i>阿德威克</i></span></div><div class="src" style="margin-top:4px">布拉德肖《英国工业区手册》（1854）地图局部，大英图书馆藏，公有领域；③ 为大致位置。</div></div>
         <div class="panes">
-          <div class="pane on" data-k=""><p class="dim">点击地图上的 1—4，看恩格斯怎样描述这座城市的每一块。</p></div>
-          <div class="pane" data-k="core"><b class="pt">① 城市中心：商业区</b><p>在曼彻斯特的中心有一个相当广阔的长宽各为半英里的商业区，几乎全区都是<b class="v">营业所和货栈</b>。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div></div>
-          <div class="pane" data-k="street"><b class="pt">② 通往郊外的大街</b><p>这些富有的金钱贵族为了走近路到城市中心的营业所去，竟可以通过整个工人区而<b class="r">看不到</b>左右两旁的极其肮脏贫困的地方。因为从交易所向四面八方通往城郊的大街都是由两排几乎毫无间断的<b class="v">商店</b>所组成的。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div></div>
+          <div class="pane on" data-k=""><p class="dim">这是 1854 年的曼彻斯特。点击地图上的 1—4，看恩格斯怎样描述这座城市的每一块。</p></div>
+          <div class="pane" data-k="core"><b class="pt">① 交易所一带：商业区</b><p>在曼彻斯特的中心有一个相当广阔的长宽各为半英里的商业区，几乎全区都是<b class="v">营业所和货栈</b>。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div></div>
+          <div class="pane" data-k="street"><b class="pt">② 伦敦路：通往郊外的大街</b><p>这些富有的金钱贵族为了走近路到城市中心的营业所去，竟可以通过整个工人区而<b class="r">看不到</b>左右两旁的极其肮脏贫困的地方。因为从交易所向四面八方通往城郊的大街都是由两排几乎毫无间断的<b class="v">商店</b>所组成的。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div></div>
           <div class="pane" data-k="slum"><b class="pt">③ 河湾里的“小爱尔兰”</b><p>在这块凹地里，密集着两片小宅子……一共约有 <b class="r">4000 人</b>住在这里……平均每幢要住上 <b class="r">20 个人</b>；……大约每 <b class="r">120 人</b>才有一个厕所。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div><p style="margin-top:8px">议会街<b class="r">只有一个厕所，供 380 名居民使用</b>。婴儿出生不久就被托付他人，母亲照旧去干活。</p><div class="src">——凯《曼彻斯特棉纺织业工人阶级的道德与身体状况》，本课译</div></div>
-          <div class="pane" data-k="villa"><b class="pt">④ 郊外的别墅</b><p>高等的资产阶级就住得更远……住在空气流通的高地上，——在新鲜的对健康有益的乡村空气里，在<b class="v">华丽舒适的住宅</b>里。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div><table class="lg" style="margin-top:8px"><tr><th>平均死亡年龄（1842）</th><th>士绅</th><th>劳工</th></tr><tr><td class="h">曼彻斯特</td><td class="f">38</td><td class="f">17</td></tr></table><div class="src">——查德威克报告（1842），据 Hanley (2002)；含大量婴幼儿死亡</div></div>
+          <div class="pane" data-k="villa"><b class="pt">④ 阿德威克：郊外的别墅</b><p>高等的资产阶级就住得更远，他们住在却尔顿和<b class="v">阿德威克</b>的郊外房屋或别墅里……在新鲜的对健康有益的乡村空气里，在<b class="v">华丽舒适的住宅</b>里。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“大城市”</div><table class="lg" style="margin-top:8px"><tr><th>平均死亡年龄（1842）</th><th>士绅</th><th>劳工</th></tr><tr><td class="h">曼彻斯特</td><td class="f">38</td><td class="f">17</td></tr></table><div class="src">——查德威克报告（1842），据 Hanley (2002)；含大量婴幼儿死亡</div></div>
         </div>
         <i class="hid mk" data-step="1" data-k="core"></i><i class="hid mk" data-step="2" data-k="street"></i><i class="hid mk" data-step="3" data-k="slum"></i><i class="hid mk" data-step="4" data-k="villa"></i>
       </div>
@@ -988,6 +977,9 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 <div class="toast" id="toast"></div>
 
 <script>
+/* Fingerprint of the deck as published, taken before any script touches it; saved edits only come back for the same deck */
+const DECK_STAMP = (() => { let h = 5381; const s = document.getElementById('deckStage').innerHTML; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return String(h >>> 0); })();
+
 /* ===========================================
    FOOTERS — lesson, chapter strip, workday clock, card number
    =========================================== */
@@ -1225,11 +1217,11 @@ class InlineEditor {
         if (!this.isActive) { this.save(); this.toast('已保存修改'); }
         else this.toast('编辑模式：点击任意文字修改 · E 退出 · Ctrl+S 导出');
     }
-    save() { try { localStorage.setItem(this.key, JSON.stringify([...document.querySelectorAll('.slide')].map((s) => s.innerHTML))); } catch (e) { /* storage unavailable */ } }
+    save() { try { localStorage.setItem(this.key, JSON.stringify({ stamp: DECK_STAMP, slides: [...document.querySelectorAll('.slide')].map((s) => s.innerHTML) })); } catch (e) { /* storage unavailable */ } }
     restore() {
         try {
             const data = JSON.parse(localStorage.getItem(this.key) || 'null');
-            if (Array.isArray(data)) document.querySelectorAll('.slide').forEach((s, i) => { if (data[i]) s.innerHTML = data[i]; });
+            if (data && data.stamp === DECK_STAMP) document.querySelectorAll('.slide').forEach((s, i) => { if (data.slides[i]) s.innerHTML = data.slides[i]; });
         } catch (e) { /* ignore */ }
     }
     download() {
