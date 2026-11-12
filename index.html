@@ -326,6 +326,19 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .fig img { display: block; width: 100%; height: var(--h, 320px); object-fit: cover; object-position: var(--op, center); filter: sepia(.12) contrast(1.03); }
 .fig figcaption { font-family: var(--f-cn); font-size: 16px; line-height: 1.4; color: #b9b3a3; margin-top: 7px; }
 .thumb { display: block; width: 100%; height: var(--h, 96px); object-fit: contain; mix-blend-mode: multiply; margin: 6px 0; }
+/* Flip cards (page: two sides of social life) */
+.flips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.flipc { perspective: 1400px; height: 215px; cursor: pointer; }
+.flipc .in { position: relative; height: 100%; transition: transform .8s var(--ease); transform-style: preserve-3d; }
+.flipc.on .in { transform: rotateY(180deg); }
+.flipc .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; padding: 14px 20px; display: flex; flex-direction: column; box-shadow: 0 10px 26px rgba(0,0,0,.4); }
+.flipc .front { background: var(--card); color: var(--ink); border-top: 8px solid #3f7d5a; }
+.flipc .back { background: #2b211c; color: var(--chalk); border-top: 8px solid var(--stamp); transform: rotateY(180deg); }
+.flipc .fl { font-weight: 900; font-size: 22px; letter-spacing: .06em; margin-bottom: 6px; }
+.flipc .front .fl { color: #3f7d5a; } .flipc .back .fl { color: #f08a7c; }
+.flipc p { font-size: 29px; font-weight: 700; line-height: 1.5; flex: 1; }
+.flipc .front p b { color: #2f6b49; } .flipc .back p b { color: var(--brass); }
+.flipc .fs { font-size: 19px; line-height: 1.4; opacity: .8; }
 /* Zhejiang exam-trend pages */
 .zjhot { display: inline-block; margin-left: 18px; padding: 3px 14px; background: var(--stamp); color: #fff; font-weight: 900; font-size: 22px; letter-spacing: .08em; transform: rotate(-3deg); vertical-align: middle; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
 .zbar { display: grid; grid-template-columns: 1fr 1.1fr 40px; gap: 10px; align-items: center; width: 100%; margin: 10px 0; padding: 8px 10px; border: 2px solid transparent; background: transparent; font-family: var(--f-cn); font-size: 21px; font-weight: 700; color: var(--ink); text-align: left; cursor: pointer; }
@@ -337,6 +350,7 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .pop .zjq td { font-size: 21px !important; padding: 3px 10px; } .pop .zjq td { color: var(--chalk); border-color: rgba(238,240,232,.2); } .pop .zjq td.h { color: var(--brass); }
 .stmts { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 18px; font-size: 18px; line-height: 1.45; margin: 4px 0 6px; }
 .zjt td, .zjt th { padding: 4px 8px; }
+.zj2 tr { display: inline-flex; width: 50%; vertical-align: top; } .zj2 tbody { display: block; } .zj2 td.h { white-space: nowrap; }
 .rulec p { font-size: 22px; line-height: 1.55; } .focus { font-size: 24px; line-height: 1.6; }
 /* Year slider (slide 16) */
 .yrs .yhead { display: flex; align-items: baseline; gap: 18px; }
@@ -556,24 +570,24 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
     <div class="body">
       <div class="row" style="grid-template-columns:1fr .95fr .85fr;align-items:start">
         <div class="card reveal" style="--d:1;--r:-1.2deg">
-          <div class="ct" style="font-size:40px;text-align:center">工时卡</div>
+          <div class="ct" style="font-size:52px;text-align:center">工时卡</div>
           <div class="meta"><span>利兹 · 亚麻纺纱厂</span><span>工种：落纱工</span></div>
           <table class="lg" style="font-size:24px">
             <tr><th>时段</th><th>进厂</th><th>出厂</th><th>工时</th></tr>
             <tr><td>忙时</td><td class="n">05:00</td><td class="n">21:00</td><td class="f">16</td></tr>
             <tr><td>平时</td><td class="n">06:00</td><td class="n">19:00</td><td class="f">13</td></tr>
           </table>
-          <div class="hid" id="ans-age" data-step="2" style="margin-top:12px"><p>开始做工时只有 <b class="r" style="font-family:var(--f-d);font-size:56px">6</b> 岁——伊丽莎白·本特利，1832 年在议会作证。</p></div>
+          <div class="hid" id="ans-age" data-step="2" style="margin-top:12px"><p>开始做工时只有 <b class="r" style="font-family:var(--f-d);font-size:72px">6</b> 岁——伊丽莎白·本特利，1832 年在议会作证。</p></div>
           <div class="src">来源：英国议会萨德勒委员会证词（1832 年 6 月 4 日）</div>
         </div>
-        <figure class="fig reveal" style="--d:2;--r:1deg;--h:400px;--op:center 30%"><img src="assets/img/child-1840.jpg" alt="工厂童工版画"><figcaption>工厂里的童工。1840 年小说《迈克尔·阿姆斯特朗》插图，埃尔维厄绘，公有领域</figcaption></figure>
+        <figure class="fig reveal" style="--d:2;--r:1deg;--h:430px;--op:center 30%"><img src="assets/img/child-1840.jpg" alt="工厂童工版画"><figcaption>工厂里的童工。1840 年小说《迈克尔·阿姆斯特朗》插图，埃尔维厄绘，公有领域</figcaption></figure>
         <div class="col">
           <div class="guess hid reveal" data-step="1" data-ans="ans-age" style="--d:3"><span class="k">想一想</span>她进厂时几岁？<div class="opts"><span>A. 6 岁</span><span>B. 10 岁</span><span>C. 14 岁</span><span>D. 18 岁</span></div></div>
-          <div class="note hid" data-step="3"><span class="k">本课主线</span><b class="brass">劳动者的处境，为何随机器而改变？</b></div>
+          <div class="note hid" data-step="3"><b class="brass" style="font-size:28px">劳动者的处境，为何随机器而改变？</b></div>
         </div>
       </div>
-      <div class="row" style="grid-template-columns:1fr;margin-top:18px"><div class="card mat hid" data-step="4" style="--r:-.4deg"><div class="ct">主线史料</div><p>在工场手工业和手工业中，是工人利用工具，在工厂中，是工人服侍机器。……工人被当作<b class="r">活的附属物</b>并入死机构。</p><div class="src">——马克思《资本论》第一卷第十三章（《马克思恩格斯文集》第 5 卷 P486）</div></div><div class="hid dark note pop" data-step="5"><span>手工工场：<b class="t">人用工具</b>，快慢由人决定；工厂：<b class="t">机器“用”人</b>，节奏由机器决定。活机构＝工人的分工协作，死机构＝机器体系——人从“肢体”变成“附属物”。</span></div></div>
-    </div>
+      <div class="row" style="grid-template-columns:1fr;margin-top:18px"><div class="card mat hid" data-step="4" style="--r:-.4deg"><p style="font-size:26px">在工场手工业和手工业中，是工人利用工具，在工厂中，是工人服侍机器。……工人被当作<b class="r">活的附属物</b>并入死机构。</p><div class="src">——马克思《资本论》第一卷第十三章（《马克思恩格斯文集》第 5 卷 P486）</div></div><div class="hid dark note pop" data-step="5"><span>手工工场：<b class="t">人用工具</b>，快慢由人决定；工厂：<b class="t">机器“用”人</b>，节奏由机器决定。活机构＝工人的分工协作，死机构＝机器体系——人从“肢体”变成“附属物”。</span></div></div>
+          </div>
   </div>
 </section>
 
@@ -680,7 +694,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
         <i class="hid mk" data-step="1" data-k="core"></i><i class="hid mk" data-step="2" data-k="street"></i><i class="hid mk" data-step="3" data-k="slum"></i><i class="hid mk" data-step="4" data-k="villa"></i><i class="hid mk" data-step="5" data-k="a1"></i><i class="hid mk" data-step="6" data-k="a2"></i>
       </div>
       <div class="row s11q" style="grid-template-columns:1fr 1fr;margin-top:16px"><div class="col reveal" style="--d:4;gap:10px"><div class="task ix qa" data-show="a1"><span class="lv">Ⅰ · 史料价值</span>恩格斯与凯身份不同，描述却相近。这对判断可信度有何意义？</div></div><div class="col reveal" style="--d:5;gap:10px"><div class="task ix qa" data-show="a2"><span class="lv">Ⅱ · 史论结合</span>评析：“工业城市的空间，是阶级关系的投影。”</div></div></div>
-      <div class="bridge hid" data-step="99">财富与苦难并存于同一座城市：如何评价这场变迁？</div>
+      <div class="bridge hid" data-step="99">空间的分化，折射出社会生活的两面。</div>
     </div>
   </div>
 </section>
@@ -689,28 +703,17 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="content">
     <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>城市化与社会生活</small><span class="zjhot">★ 浙江高频</span></div><h2>（三）繁荣的另一面：社会生活的两面与社会立法</h2></div><div class="lk">纲要下 P60 · 选必2 P26–28</div></div>
     <div class="body">
-      <div class="row" style="grid-template-columns:.8fr 1.2fr;align-items:start">
-        <div class="col">
-          <figure class="fig reveal" style="--d:1;--r:-.8deg;--h:350px;--op:center 35%"><img src="assets/img/thames.jpg" alt="法拉第向泰晤士老爹递名片"><figcaption>《笨拙》杂志漫画（1855）：科学家法拉第向浑浊的“泰晤士老爹”递名片，讽刺河水污染。约翰·利奇绘，公有领域</figcaption></figure>
-          <div class="note reveal" style="--d:3"><span class="k">狄更斯《艰难时世》</span>高耸的烟囱、长蛇般的浓烟、深紫色的河水（纲要下 P60）</div>
-        </div>
-        <div class="col">
-          <div class="card kp reveal" style="--d:2;--r:.5deg">
-            <div class="ct">社会生活的变化<span class="pg">纲要下 P60 · 选必2 P26—28</span></div>
-            <table class="lg">
-              <tr><td class="h">城市化</td><td>1851 年英国城市人口<b class="key">超过 50%</b></td></tr>
-              <tr><td class="h">改善</td><td>商品丰富、休闲体育、报刊普及、教育推广</td></tr>
-              <tr><td class="h">问题</td><td>贫富分化、居住恶劣、<b class="r">环境污染</b>、疾病</td></tr>
-              <tr><td class="h">治理</td><td><b class="key">社会立法</b>：1802《工厂法》、1848《公共卫生法》</td></tr>
-            </table>
-          </div>
-          <div class="card q reveal" style="--d:4;margin-top:14px;--r:-.3deg;padding:14px 20px">
-            <div class="from">浙江真题 · 2025 年 6 月 · 16</div>
-            <p class="stem" style="font-size:20px">下为19世纪中后期英国社会对煤烟影响环境等的看法。材料反映了（　）</p>
-            <table class="lg zjt"><tr><td class="h">某制造商</td><td>煤烟中的碳对人的健康不产生任何有害影响，完全能够遏制、消除有害气体</td></tr><tr><td class="h">《柳叶刀》</td><td>死亡不是与（由）浓雾相伴的寒冷气温引起的，而是浓雾中包含的化学物质引起的</td></tr><tr><td class="h">伦敦市长</td><td>大工厂的烟囱竖起之后，疟疾就不再侵扰生活在周边的居民了</td></tr><tr><td class="h">流行刊物</td><td>强健的胸腔无法形成可以抵御煤烟攻击的保护，空气某种程度上已经不再适合呼吸了</td></tr></table>
-            <div class="opts"><span>A. 环境污染问题严峻已成共识</span><span>B. 社会医疗水平随工业化提升</span><span>C. 城市化必然会带来公共卫生危机</span><span>D. 工业化城市化过程中存在的问题</span></div>
-          </div><div class="hid dark note pop"><span><b class="big">D</b>四种看法有分歧（制造商、市长否认危害），说明并未形成“共识”；材料呈现的是工业化、城市化带来的环境与健康问题。</span></div>
-        </div>
+      <p class="small reveal" style="--d:1;margin-bottom:10px">“这是最好的时候，这是最坏的时候……”<span class="dim">——狄更斯《双城记》（选必2 P27 史料阅读）</span></p>
+      <div class="flips reveal" style="--d:2"><div class="flipc ix" data-n="1"><div class="in"><div class="face front"><div class="fl">改善 · 城市</div><p>以工厂为中心形成了许多城市</p><div class="fs">1851 年，英国城市人口超过总人口 50%（选必2 P61）</div></div><div class="face back"><div class="fl">问题 · 城市</div><p>工人居住条件恶劣</p><div class="fs">例：“小爱尔兰”每 120 人一个厕所（恩格斯）</div></div></div></div><div class="flipc ix" data-n="2"><div class="in"><div class="face front"><div class="fl">改善 · 生活</div><p>商品物美价廉，人们的生活有所改善</p><div class="fs">纲要下 P60</div></div><div class="face back"><div class="fl">问题 · 生活</div><p>社会贫富分化加剧</p><div class="fs">例：1842 年曼彻斯特，士绅平均 38 岁去世，劳工 17 岁</div></div></div></div><div class="flipc ix" data-n="3"><div class="in"><div class="face front"><div class="fl">改善 · 节奏</div><p>生活节奏加快，时间观念增强</p><div class="fs">准时准点成为现代生活的准则（选必2 P27）</div></div><div class="face back"><div class="fl">问题 · 节奏</div><p>工人劳动时间过长</p><div class="fs">例：童工忙时每天做工 16 小时（1832 年证词）</div></div></div></div><div class="flipc ix" data-n="4"><div class="in"><div class="face front"><div class="fl">改善 · 文化</div><p>报刊书籍发行量大增，初等教育推广</p><div class="fs">19 世纪末英格兰 5—12 岁儿童入学率达 80%（选必2 P27）</div></div><div class="face back"><div class="fl">问题 · 文化</div><p>环境污染严重，疾病与犯罪</p><div class="fs">例：被染料染成深紫色的河（狄更斯，纲要下 P60）</div></div></div></div><i class="hid mk" data-step="1" data-flip="1"></i><i class="hid mk" data-step="2" data-flip="2"></i><i class="hid mk" data-step="3" data-flip="3"></i><i class="hid mk" data-step="4" data-flip="4"></i></div>
+      <div class="row" style="grid-template-columns:.3fr 1fr;margin-top:14px;align-items:start;gap:20px">
+        <div class="col" style="gap:12px"><div class="note hid gov" data-step="5" style="margin:0"><span class="k">治理</span>工人运动推动<b class="brass">社会立法</b>（纲要下 P60），如 1802 年英国第一部《工厂法》（选必2 P27）</div><div class="note reveal" style="--d:4;margin:0"><span class="k">知识归纳</span><b class="term brass" data-ans="sh-pop">社会生活的变化</b><br><span class="pg" style="margin-left:0">纲要下 P60 · 选必2 P26—28</span></div></div>
+        <div class="dark note pop kppop" id="sh-pop"><span><b class="t">改善：</b>工厂城市兴起；商品物美价廉，生活有所改善；休闲娱乐、群众性体育兴起，报刊书籍大增，文化素养提高；女性受教育机会增多；人口明显增加（纲要下 P60）。生活节奏加快，时间观念增强；初等教育推广（选必2 P27）<br><b class="t">问题：</b>贫富分化加剧、工人居住条件恶劣、环境污染严重、疾病与犯罪（纲要下 P60）；劳动时间过长，传染病与职业病危害工人健康（选必2 P27）<br><b class="t">治理：</b>工人运动推动欧美各国通过社会立法解决问题</span></div>
+        <div class="card q reveal" style="--d:5;--r:-.2deg;padding:14px 22px">
+          <div class="from">浙江真题 · 2025 年 6 月 · 16</div>
+          <p class="stem">下为19世纪中后期英国社会对煤烟影响环境等的看法。材料反映了（　）</p>
+          <table class="lg zjt zj2"><tr><td class="h">某制造商</td><td>煤烟中的碳对人的健康不产生任何有害影响，完全能够遏制、消除有害气体</td></tr><tr><td class="h">《柳叶刀》</td><td>死亡不是与（由）浓雾相伴的寒冷气温引起的，而是浓雾中包含的化学物质引起的</td></tr><tr><td class="h">伦敦市长</td><td>大工厂的烟囱竖起之后，疟疾就不再侵扰生活在周边的居民了</td></tr><tr><td class="h">流行刊物</td><td>强健的胸腔无法形成可以抵御煤烟攻击的保护，空气某种程度上已经不再适合呼吸了</td></tr></table>
+          <div class="opts"><span>A. 环境污染问题严峻已成共识</span><span>B. 社会医疗水平随工业化提升</span><span>C. 城市化必然会带来公共卫生危机</span><span>D. 工业化城市化过程中存在的问题</span></div>
+        </div><div class="hid dark note pop" data-step="6"><span><b class="big">D</b>四种看法有分歧（制造商、市长否认危害），说明并未形成“共识”；材料呈现的是工业化、城市化带来的环境与健康问题。</span></div>
       </div>
       <div class="bridge hid" data-step="99">社会分化催生政治诉求：谁来代表劳动者？</div>
     </div>
@@ -1025,7 +1028,7 @@ function autofit() {
     document.querySelectorAll('.slide').forEach((slide) => {
         const body = slide.querySelector('.content .body');
         if (!body) return;
-        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg, .pop, .fig, .arrx, .pane, .mapimg'));
+        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg, .pop, .fig, .arrx, .pane, .mapimg, .flipc'));
         els.forEach((el) => { if (!el.dataset.fs0) el.dataset.fs0 = parseFloat(getComputedStyle(el).fontSize); });
         const foot = slide.querySelector('.foot');
         const limit = (foot ? foot.offsetTop : 1080) - 26;
@@ -1232,12 +1235,14 @@ function tabGo(root, k) {
     root.querySelectorAll('.tabpane').forEach((p) => p.classList.toggle('on', p.dataset.tab === k));
 }
 document.querySelectorAll('.tabx').forEach((root) => root.querySelectorAll('.zbar').forEach((b) => b.addEventListener('click', () => tabGo(root, b.dataset.tab))));
+document.querySelectorAll('.flipc').forEach((c) => c.addEventListener('click', () => c.classList.toggle('on')));
 const mkObserver = new MutationObserver((list) => list.forEach(({ target: m }) => {
     if (!m.classList.contains('shown')) return;
     if (m.dataset.k) mapGo(m.closest('.mapx'), m.dataset.k);
     if (m.dataset.preset) voteSet(m.closest('.vote'), ...m.dataset.preset.split(','));
     if (m.dataset.year) yrSet(m.closest('.yrs'), m.dataset.year);
     if (m.dataset.tab) tabGo(m.closest('.tabx'), m.dataset.tab);
+    if (m.dataset.flip) { const c = m.closest('.flips').querySelector('.flipc[data-n="' + m.dataset.flip + '"]'); if (c) c.classList.add('on'); }
 }));
 document.querySelectorAll('.mk').forEach((m) => mkObserver.observe(m, { attributes: true, attributeFilter: ['class'] }));
 const deck = new SlidePresentation();
