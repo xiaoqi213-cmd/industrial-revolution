@@ -360,14 +360,15 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .mapsvg .lbl-zone2 { fill: #3f5a2a; font-size: 20px; } .mapsvg .lbl-river { fill: #2f4f6f; font-size: 18px; text-anchor: start; }
 .mapimg { position: relative; } .mapimg img { width: 100%; display: block; border: 2px solid var(--ink); }
 .hotb { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 6px; cursor: pointer; }
-.hotb b { width: 40px; height: 40px; border-radius: 50%; background: var(--stamp); color: #fff; border: 3px solid #f6ead0; display: flex; align-items: center; justify-content: center; font-family: var(--f-d); font-size: 22px; font-weight: 400; box-shadow: 0 3px 8px rgba(0,0,0,.45); transition: transform .3s, background .3s; }
-.hotb i { font-style: normal; font-weight: 900; font-size: 18px; color: var(--ink); background: rgba(246,234,208,.92); padding: 1px 6px; border: 1px solid var(--ink); white-space: nowrap; }
+.hotb b { width: 46px; height: 46px; border-radius: 50%; background: var(--stamp); color: #fff; border: 3px solid #f6ead0; display: flex; align-items: center; justify-content: center; font-family: var(--f-d); font-size: 26px; font-weight: 400; box-shadow: 0 3px 8px rgba(0,0,0,.45); transition: transform .3s, background .3s; }
+.hotb i { font-style: normal; font-weight: 900; font-size: 25px; color: var(--ink); background: rgba(246,234,208,.92); padding: 1px 6px; border: 1px solid var(--ink); white-space: nowrap; }
 .hotb.on b { background: var(--brass); color: var(--ink); transform: scale(1.2); }
 .hot { cursor: pointer; } .hot circle { fill: var(--stamp); stroke: #f6ead0; stroke-width: 4; transition: transform .3s; }
 .hot text { fill: #fff; font-size: 22px; font-family: var(--f-d); text-anchor: middle; dominant-baseline: central; }
 .hot.on circle { fill: var(--brass); transform: scale(1.25); } .hot.on text { fill: var(--ink); }
-.panes { display: grid; } .pane { grid-area: 1 / 1; visibility: hidden; opacity: 0; transform: translateX(-30px); transition: opacity .35s, transform .45s var(--ease); background: var(--card); color: var(--ink); padding: 16px 20px; font-size: 24px; line-height: 1.55; }
-.pane.on { visibility: visible; opacity: 1; transform: none; } .pane .pt { display: block; font-size: 27px; color: var(--stamp); margin-bottom: 4px; }
+.panes { display: grid; align-self: stretch; } .pane { grid-area: 1 / 1; visibility: hidden; opacity: 0; transform: translateX(-30px); transition: opacity .35s, transform .45s var(--ease); background: var(--card); color: var(--ink); padding: 22px 28px; font-size: 31px; line-height: 1.6; }
+.pane .src { font-size: 18px; margin-top: 6px; } .pane .lg { font-size: 24px; }
+.pane.on { visibility: visible; opacity: 1; transform: none; } .pane .pt { display: block; font-size: 33px; color: var(--stamp); margin-bottom: 4px; }
 .pane .dim { color: var(--ink-dim); }
 .pane .src { color: var(--ink-dim); }
 .s11q .task { font-size: 26px; cursor: pointer; } .s11q .task:hover { background: rgba(232,196,106,.18); } .s11q .task .lv { font-size: 18px; }
@@ -528,7 +529,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
       <tr><td class="n">四</td><td><b>由自在到自为的阶级</b></td><td>阶级结构、工人运动、社会立法</td></tr>
       <tr><td class="n">五</td><td><b>科学走进工厂</b></td><td>第二次工业革命</td></tr>
       <tr><td class="n">六</td><td><b>被重塑的世界</b></td><td>垄断、世界市场、中国</td></tr>
-      <tr><td class="n">七</td><td><b>从史实到史论</b></td><td>考点全景、易错、框架</td></tr>
+      <tr><td class="n">七</td><td><b>历史照进现实</b></td><td>工业革命与 AI 时代</td></tr>
     </table>
     <div class="stamp" style="top:auto;bottom:36px;right:44px;--sr:-12deg;--sd:1.2s;font-size:68px">05:00<small style="font-size:30px">汽笛将响</small></div>
   </div>
@@ -675,13 +676,13 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="content">
     <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>史料研读①</small><span class="zjhot">★ 浙江高频</span></div><h2>（二）被隔开的城市：走进恩格斯笔下的曼彻斯特</h2></div><div class="lk">史料研读 · 史论结合</div></div>
     <div class="body">
-      <div class="row ix mapx reveal" style="--d:1;grid-template-columns:.7fr 1fr;gap:22px;align-items:start">
+      <div class="row ix mapx reveal" style="--d:1;grid-template-columns:.72fr 1fr;gap:24px;align-items:stretch">
         <div class="card" style="padding:10px 12px"><div class="mapimg"><img src="assets/manchester-1854-bradshaw.jpg" alt="1854 年布拉德肖《英国工业区手册》所附曼彻斯特地图局部：市中心、伦敦路、梅德洛克河与阿德威克一带"><span class="hot hotb" data-k="core" style="left:27.7%;top:16.3%"><b>1</b><i>交易所</i></span><span class="hot hotb" data-k="street" style="left:60.8%;top:45%"><b>2</b><i>伦敦路</i></span><span class="hot hotb" data-k="slum" style="left:36.2%;top:76.9%"><b>3</b><i>小爱尔兰</i></span><span class="hot hotb" data-k="villa" style="left:84%;top:86%"><b>4</b><i>阿德威克</i></span></div><div class="src" style="margin-top:4px">布拉德肖《英国工业区手册》（1854）地图局部，大英图书馆藏，公有领域；③ 为大致位置。</div></div>
         <div class="panes">
           <div class="pane on" data-k=""><p class="dim">1854 年的曼彻斯特。</p></div>
           <div class="pane" data-k="core"><b class="pt">① 交易所一带：商业区</b><p>曼彻斯特的中心有一个相当广阔的……商业区，几乎全区都是<b class="v">营业所和货栈</b>。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）</div></div>
           <div class="pane" data-k="street"><b class="pt">② 伦敦路：通往郊外的大街</b><p>这些富有的金钱贵族……竟可以通过整个工人区而<b class="r">看不到</b>左右两旁的极其肮脏贫困的地方。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）</div></div>
-          <div class="pane" data-k="slum"><b class="pt">③ 河湾里的“小爱尔兰”</b><p>约 <b class="r">4000 人</b>住在这里……大约每 <b class="r">120 人</b>才有一个厕所。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）</div><p style="margin-top:8px">议会街<b class="r">只有一个厕所，供 380 名居民使用</b>。</p><div class="src">——凯《曼彻斯特棉纺织业工人阶级的道德与身体状况》（1832），本课译</div></div>
+          <div class="pane" data-k="slum"><b class="pt">③ 河湾里的“小爱尔兰”</b><p>约 <b class="r">4000 人</b>住在这里……大约每 <b class="r">120 人</b>才有一个厕所。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）</div><p style="margin-top:8px">议会街<b class="r">只有一个厕所，供 380 名居民使用</b>。</p><div class="src">——［英］詹姆斯·凯（医生，曼彻斯特卫生委员会成员）《曼彻斯特棉纺织业工人阶级的道德与身体状况》（1832），本课译</div></div>
           <div class="pane" data-k="villa"><b class="pt">④ 阿德威克：郊外的别墅</b><p>高等的资产阶级……住在却尔顿和<b class="v">阿德威克</b>的郊外房屋或别墅里……在新鲜的对健康有益的乡村空气里。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）</div><table class="lg" style="margin-top:8px"><tr><th>平均死亡年龄（1842）</th><th>士绅</th><th>劳工</th></tr><tr><td class="h">曼彻斯特</td><td class="f">38</td><td class="f">17</td></tr></table><div class="src">——查德威克报告（1842），据 Hanley (2002)；含大量婴幼儿死亡</div></div>
           <div class="pane" data-k="a1"><b class="pt">Ⅰ · 史料价值 · 参考答案</b><p>一位是革命思想家（且引用过凯的著作），一位是卫生官员，<b class="r">立场不同而事实相近</b>，互证增强可信度；但两人都着眼问题区，不能代表城市全貌，恩格斯也并非完全独立于凯。</p></div>
           <div class="pane" data-k="a2"><b class="pt">Ⅱ · 史论结合 · 参考答案</b><p><b class="r">依据：</b>工人区拥挤肮脏且与资产阶级住区隔离（地图 ③④）；大街两旁的商店把贫困遮挡起来（地图 ②）；卫生与寿命差异悬殊（凯、查德威克）；根源是工厂集中、人口激增、规划滞后、贫富分化。<b class="r">补充：</b>问题也有技术与管理因素；社会压力推动 1848 年《公共卫生法》，城市逐步改善。<b class="r">结论：</b>城市化既是工业化的成果，也是社会矛盾的显影。</p></div>
@@ -966,24 +967,6 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
           <figure class="fig reveal" style="--d:3;--r:-.6deg;--h:200px;--op:center 75%"><img src="assets/img/hanyang.jpg" alt="汉阳铁厂"><figcaption>汉阳铁厂（1890 年张之洞主持修建）。1908 年《二十世纪香港、上海及中国其他通商口岸印象记》插页，公有领域</figcaption></figure>
         </div>
       </div>
-      <div class="bridge hid" data-step="99">主线既明，以一道浙江式材料题检验重点。</div>
-    </div>
-  </div>
-</section>
-
-<section class="slide" data-mod="7" data-time="22:00">
-  <div class="content">
-    <div class="hd reveal"><div><div class="sec">七、从史实到史论 <small>重点突破</small><span class="zjhot">★ 浙江高频</span></div><h2>（一）重点突破：浙江式材料题</h2></div><div class="lk">本课原创练习</div></div>
-    <div class="body">
-      <div class="row reveal" style="--d:1;grid-template-columns:1fr 1fr;gap:22px">
-        <div class="card mat"><div class="ct">材料一</div><p>不列颠入侵者打碎了印度的手织机，毁掉了它的手纺车。英国起先是把印度的棉织品挤出了欧洲市场，然后是向印度斯坦输入棉纱，最后就使英国棉织品<b class="v">泛滥于这个棉织品的故乡</b>。</p><div class="src">——马克思《不列颠在印度的统治》（纲要下 P61）</div></div>
-        <div class="card mat"><div class="ct">材料二 · 人均国民生产总值（美元）</div><table class="lg zjt"><tr><th>年份</th><th>发达国家</th><th>第三世界国家</th></tr><tr><td class="n">1750</td><td>182</td><td>188</td></tr><tr><td class="n">1830</td><td>237</td><td>183</td></tr><tr><td class="n">1880</td><td>406</td><td>176</td></tr><tr><td class="n">1913</td><td>662</td><td>192</td></tr></table><div class="src">——引自巴里·布赞等《全球转型》，2025 年 6 月浙江卷第 14 题材料（节选）</div></div>
-      </div>
-      <div class="row reveal" style="--d:2;grid-template-columns:1fr 1fr;margin-top:16px">
-        <div class="col" style="gap:10px"><div class="task"><span class="lv">问题一</span>根据材料一，结合所学，说明英国工业革命对印度传统经济的冲击及其原因。</div><div class="hid dark note pop"><span><b class="t">冲击：</b>印度的手工纺织业被摧毁，棉织品出口地变成英国棉纱、棉布的倾销市场，自然经济逐步解体，沦为原料产地和商品市场。<b class="t">原因：</b>工业革命使英国成为“世界工厂”，机器生产的商品价廉量大；英国需要原料和市场；殖民统治与自由贸易为倾销开路。</span></div></div>
-        <div class="col" style="gap:10px"><div class="task"><span class="lv">问题二</span>根据材料二，概括 1750—1913 年两类国家的经济变化，结合所学，说明工业革命对世界格局的影响。</div><div class="hid dark note pop"><span><b class="t">变化：</b>1750 年两者大体相当；此后发达国家人均快速增长，第三世界停滞甚至下降，差距不断扩大。<b class="t">影响：</b>促进世界市场形成，世界日益连为一体；确立欧美（英国）的经济优势，形成西方先进、东方落后、东方从属于西方的格局；殖民掠夺和不合理的国际分工加剧了发展不平衡。</span></div></div>
-      </div>
-      <div class="note reveal" style="--d:3;margin-top:14px"><span class="k">易错提醒</span>开始标志是珍妮纺纱机，蒸汽机是主要标志；1771 年水力纺纱厂是近代工厂的开端；世界市场最终形成于 19 世纪末 20 世纪初。</div>
       <div class="bridge hid" data-step="99">回望十九世纪，审视当下。</div>
     </div>
   </div>
@@ -991,7 +974,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="7" data-time="22:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">七、从史实到史论 <small>联系今天</small></div><h2>（二）从汽笛到算法：工业革命照进 AI 时代</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">七、历史照进现实 <small>联系今天</small></div><h2>从汽笛到算法：工业革命照进 AI 时代</h2></div></div>
     <div class="body">
       <div class="card reveal tnwrap" style="--d:1;--r:-.2deg;padding:14px 24px">
         <div class="tn tnh"><span></span><b>1830 年代 · 伊丽莎白的工厂</b><span></span><b>今天 · AI 与算法</b></div>
@@ -1025,7 +1008,7 @@ const DECK_STAMP = (() => { let h = 5381; const s = document.getElementById('dec
    FOOTERS — lesson, chapter strip, workday clock, card number
    =========================================== */
 (function addFooters() {
-    const names = ['汽笛', '一 自由', '二 机器', '三 生活', '四 阶级', '五 科学', '六 影响', '七 史论'];
+    const names = ['汽笛', '一 自由', '二 机器', '三 生活', '四 阶级', '五 科学', '六 影响', '七 现实'];
     const slides = document.querySelectorAll('.slide');
     const total = String(slides.length).padStart(2, '0');
     slides.forEach((slide, i) => {
@@ -1037,7 +1020,7 @@ const DECK_STAMP = (() => { let h = 5381; const s = document.getElementById('dec
             `<span class="mods">${names.map((n, k) => `<span class="${k === m ? 'on' : ''}">${n}</span>`).join('')}</span>` +
             `<span>第 ${String(i + 1).padStart(2, '0')} / ${total} 页</span>`;
         slide.appendChild(f);
-        const sp = ['机器如何改变劳动者的处境', '处境①　土地上的农民 → “自由”的雇佣劳动者', '处境②　工具的主人 → 机器的“活的附属物”', '处境③　作坊与家庭 → 被隔开的工业城市', '处境④　分散的个人 → 联合的阶级', '处境⑤　工匠的经验 → 科学化的大生产', '处境⑥　工厂里的工人 → 垄断资本与全球劳动链', '主线回望：从史料到考场'][m];
+        const sp = ['机器如何改变劳动者的处境', '处境①　土地上的农民 → “自由”的雇佣劳动者', '处境②　工具的主人 → 机器的“活的附属物”', '处境③　作坊与家庭 → 被隔开的工业城市', '处境④　分散的个人 → 联合的阶级', '处境⑤　工匠的经验 → 科学化的大生产', '处境⑥　工厂里的工人 → 垄断资本与全球劳动链', '主线回望：从汽笛到算法'][m];
         const hd = slide.querySelector('.hd');
         if (hd && !slide.querySelector('.spine')) { const e = document.createElement('div'); e.className = 'spine'; e.textContent = sp; hd.parentNode.insertBefore(e, hd); }
     });
@@ -1052,7 +1035,7 @@ function autofit() {
     document.querySelectorAll('.slide').forEach((slide) => {
         const body = slide.querySelector('.content .body');
         if (!body) return;
-        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg, .pop, .fig, .arrx'));
+        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg, .pop, .fig, .arrx, .pane, .mapimg'));
         els.forEach((el) => { if (!el.dataset.fs0) el.dataset.fs0 = parseFloat(getComputedStyle(el).fontSize); });
         const foot = slide.querySelector('.foot');
         const limit = (foot ? foot.offsetTop : 1080) - 26;
