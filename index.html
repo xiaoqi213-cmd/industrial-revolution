@@ -313,6 +313,18 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .tn { display: grid; grid-template-columns: 90px 1fr 44px 1fr; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--card-line); font-size: 22px; line-height: 1.5; }
 .tn:last-child { border-bottom: 0; } .tnh { font-size: 20px; color: var(--stamp2); padding-top: 0; } .tn .tl { font-size: 24px; color: var(--stamp); }
 .tn .arr { font-family: var(--f-d); font-size: 30px; color: var(--stamp); text-align: center; }
+/* Zhejiang exam-trend pages */
+.zjhot { display: inline-block; margin-left: 18px; padding: 3px 14px; background: var(--stamp); color: #fff; font-weight: 900; font-size: 22px; letter-spacing: .08em; transform: rotate(-3deg); vertical-align: middle; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+.zbar { display: grid; grid-template-columns: 1fr 1.1fr 40px; gap: 10px; align-items: center; width: 100%; margin: 10px 0; padding: 8px 10px; border: 2px solid transparent; background: transparent; font-family: var(--f-cn); font-size: 21px; font-weight: 700; color: var(--ink); text-align: left; cursor: pointer; }
+.zbar .zt { height: 26px; border-left: 3px solid var(--ink); } .zbar .zt i { display: block; height: 100%; background: repeating-linear-gradient(45deg, var(--stamp) 0 4px, rgba(184,50,42,.35) 4px 10px); }
+.zbar b { font-family: var(--f-d); font-size: 30px; color: var(--stamp); } .zbar.on { border-color: var(--stamp); background: rgba(184,50,42,.08); }
+.tabpanes { display: grid; } .tabpane { grid-area: 1 / 1; visibility: hidden; opacity: 0; transition: opacity .35s; background: var(--card); color: var(--ink); padding: 16px 20px; font-size: 21px; }
+.tabpane.on { visibility: visible; opacity: 1; } .tabpane .pt { display: block; font-size: 24px; color: var(--stamp); margin-bottom: 6px; } .tabpane .dim { color: var(--ink-dim); }
+.zjq td { font-size: inherit; padding: 6px 8px; }
+.pop .zjq td { font-size: 21px !important; padding: 3px 10px; } .pop .zjq td { color: var(--chalk); border-color: rgba(238,240,232,.2); } .pop .zjq td.h { color: var(--brass); }
+.stmts { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 18px; font-size: 18px; line-height: 1.45; margin: 4px 0 6px; }
+.zjt td, .zjt th { padding: 4px 8px; }
+.rulec p { font-size: 22px; line-height: 1.55; } .focus { font-size: 24px; line-height: 1.6; }
 /* Year slider (slide 16) */
 .yrs .yhead { display: flex; align-items: baseline; gap: 18px; }
 .yrs .yr { font-family: var(--f-d); font-size: 76px; color: var(--stamp); line-height: 1; }
@@ -536,6 +548,35 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   </div>
 </section>
 
+<section class="slide" data-mod="0" data-time="05:40">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">考情 <small>浙江卷 2024—2026</small></div><h2>六套浙江卷，11 道题：工业革命怎么考</h2></div></div>
+    <div class="body">
+      <div class="row ix tabx reveal" style="--d:1;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:start">
+        <div class="card" style="padding:16px 20px"><div class="ct">按考查角度统计</div><button class="zbar" data-tab="world"><span class="zl">工业革命与世界市场、世界格局</span><span class="zt"><i style="width:100%"></i></span><b>5</b></button><button class="zbar" data-tab="city"><span class="zl">城市化与社会生活</span><span class="zt"><i style="width:60%"></i></span><b>3</b></button><button class="zbar" data-tab="labor"><span class="zl">生产方式与劳资关系</span><span class="zt"><i style="width:20%"></i></span><b>1</b></button><button class="zbar" data-tab="tech"><span class="zl">科技与生产</span><span class="zt"><i style="width:20%"></i></span><b>1</b></button><button class="zbar" data-tab="method"><span class="zl">史学方法</span><span class="zt"><i style="width:20%"></i></span><b>1</b></button><div class="src">统计范围：浙江卷 2024 年 1 月至 2026 年 6 月，共 6 套；外省题不计入。</div></div>
+        <div class="tabpanes"><div class="tabpane on" data-tab=""><p class="dim">点左边的柱子，看每一类具体考了哪几道题。</p></div><div class="tabpane" data-tab="world"><b class="pt">工业革命与世界市场、世界格局 · 5 题</b><table class="lg zjq"><tr><td class="n">2024.1</td><td class="n">第 12 题</td><td class="h">选择</td><td>咖啡的传播与生产 → 不合理国际分工</td></tr><tr><td class="n">2024.1</td><td class="n">第 24 题</td><td class="h">材料 20 分</td><td>英国工业革命与帝国重建、自由贸易 → 英国全球经济霸权</td></tr><tr><td class="n">2025.6</td><td class="n">第 14 题</td><td class="h">选择</td><td>1750—1913 年发达国家与第三世界经济 → 殖民掠夺和工业革命</td></tr><tr><td class="n">2026.1</td><td class="n">第 20 题</td><td class="h">材料 16 分</td><td>葡萄牙据点、东印度公司 → 世界市场形成、“世界工厂”</td></tr><tr><td class="n">2026.6</td><td class="n">第 14 题</td><td class="h">选择</td><td>英国取消贸易垄断、削减关税 → 推动工业发展，强化经济优势</td></tr></table></div><div class="tabpane" data-tab="city"><b class="pt">城市化与社会生活 · 3 题</b><table class="lg zjq"><tr><td class="n">2024.6</td><td class="n">第 12 题</td><td class="h">选择</td><td>1854 年伦敦交通拥堵 → 开启地下铁路建设</td></tr><tr><td class="n">2025.6</td><td class="n">第 16 题</td><td class="h">选择</td><td>19 世纪英国社会对煤烟的看法 → 工业化城市化的问题</td></tr><tr><td class="n">2026.6</td><td class="n">第 4 题</td><td class="h">选择</td><td>18 世纪巴黎各阶层服装增加 → 资本主义的发展</td></tr></table></div><div class="tabpane" data-tab="labor"><b class="pt">生产方式与劳资关系 · 1 题</b><table class="lg zjq"><tr><td class="n">2026.1</td><td class="n">第 14 题</td><td class="h">选择</td><td>1824 年罢工后研制自动纺纱机 → 以技术革新应对工人反抗</td></tr></table></div><div class="tabpane" data-tab="tech"><b class="pt">科技与生产 · 1 题</b><table class="lg zjq"><tr><td class="n">2025.1</td><td class="n">第 21 题</td><td class="h">材料题</td><td>“16 世纪以来的科技革命”项目化学习 → 蒸汽机、内燃机</td></tr></table></div><div class="tabpane" data-tab="method"><b class="pt">史学方法 · 1 题</b><table class="lg zjq"><tr><td class="n">2025.6</td><td class="n">第 18 题</td><td class="h">选择</td><td>米兰技术进步却没有发生工业革命 → 建构历史解释</td></tr></table></div></div>
+        <i class="hid mk" data-step="1" data-tab="world"></i><i class="hid mk" data-step="2" data-tab="city"></i><i class="hid mk" data-step="3" data-tab="labor"></i>
+      </div>
+      <div class="row reveal" style="--d:2;grid-template-columns:1fr;margin-top:16px">
+        <div class="task" data-step="4"><span class="lv">外省真题 · 只作参考</span>2024—2026 年外省卷另有 19 道工业革命题，以“生产方式与生产组织”最多。</div>
+        <div class="hid dark note pop" data-step="4"><table class="lg zjq"><tr><td class="n">2026</td><td class="h">陕晋宁青 14</td><td>橡胶研究与硫化技术</td><td>科技突破推动生产方式变革</td></tr><tr><td class="n">2026</td><td class="h">黑吉辽蒙 14</td><td>英国赛马场开设临时电报局</td><td>工业革命成果融入社会生活</td></tr><tr><td class="n">2026</td><td class="h">江苏 13</td><td>日本各类棉布需求变化</td><td>手工劳动与机器生产并存</td></tr><tr><td class="n">2026</td><td class="h">河南 14</td><td>海外商会的活动</td><td>生产组织与管理方式变革</td></tr><tr><td class="n">2026</td><td class="h">湖南 14</td><td>英国“比例尺之争”</td><td>城市发展进程加快</td></tr><tr><td class="n">2025</td><td class="h">黑吉辽蒙 14</td><td>电报专利首次用于铁路</td><td>产业革命的深入</td></tr><tr><td class="n">2025</td><td class="h">陕晋宁青 14</td><td>格拉斯哥商会感谢美洲贸易商人</td><td>制造业与大西洋贸易联系密切</td></tr><tr><td class="n">2025</td><td class="h">甘肃 15</td><td>丈夫往返于工作场所与住所</td><td>生活空间和劳作方式的改变</td></tr><tr><td class="n">2025</td><td class="h">四川 14</td><td>英国棉花进口数据</td><td>工业革命后英美经济的特征</td></tr><tr><td class="n">2025</td><td class="h">河南 14</td><td>废奴后巴西、古巴仍输入奴隶</td><td>世界经济发展的不平衡性加剧</td></tr><tr><td class="n">2025</td><td class="h">山东 8</td><td>英国在华公司比重变化</td><td>垄断资本主义的形成</td></tr><tr><td class="n">2025</td><td class="h">新课标</td><td>移民造出牛仔裤</td><td>文化交融影响生活方式</td></tr><tr><td class="n">2025</td><td class="h">北京</td><td>1903 年江西乡试题与 AI 作答</td><td>工业实力与贸易政策</td></tr><tr><td class="n">2024</td><td class="h">新课标 32</td><td>法国细布工场雇佣近 1700 人</td><td>生产方式变革的条件渐趋成熟</td></tr><tr><td class="n">2024</td><td class="h">全国甲 33</td><td>“机器迫使工人接受工厂纪律”</td><td>生产组织方式发生深刻变革</td></tr><tr><td class="n">2024</td><td class="h">安徽 15</td><td>德意志制造同盟成立</td><td>文化创新助力工业发展</td></tr><tr><td class="n">2024</td><td class="h">江西 15</td><td>外资约占俄国公司投资 1/3</td><td>资本原始积累不足</td></tr><tr><td class="n">2024</td><td class="h">湖南 14</td><td>缝纫机的生产</td><td>标准化生产</td></tr><tr><td class="n">2024</td><td class="h">广西</td><td>标准石油公司操纵市场</td><td>垄断资本主义的形成</td></tr></table></div>
+      </div>
+      <div class="bridge hid" data-step="99">数据摆在这里：浙江最常考什么？据此，我们来预测 2027 年。</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-mod="0" data-time="05:45">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">预测 <small>2027 年浙江卷</small></div><h2>从考频推断：今天的重点在哪里</h2></div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:repeat(3,1fr);gap:20px"><div class="card hid rulec" data-step="1"><div class="ct">规律 1 · 套套都有</div><p>六套浙江卷，每一套都有工业革命题：这一块是必考内容。</p></div><div class="card hid rulec" data-step="2"><div class="ct">规律 2 · 世界市场与格局最多</div><p>11 题中有 5 题，其中 2 道是 16—20 分的材料大题，2024 年、2026 年反复出现。</p></div><div class="card hid rulec" data-step="3"><div class="ct">规律 3 · 城市化与社会生活紧随其后</div><p>3 题，都用陌生情境：伦敦地铁、煤烟、巴黎服装。</p></div></div>
+      <div class="card kp hid" data-step="4" style="margin-top:20px;padding:18px 24px"><div class="ct">本课重点</div><p class="focus">★ <b class="r">工业革命如何重塑世界</b>：世界市场的形成、“世界工厂”与自由贸易、殖民扩张、发达地区与落后地区差距拉大。</p><p class="focus" style="margin-top:8px">次重点：<b class="v">工业化、城市化带来的问题与治理</b>（环境、交通、公共卫生）。</p><p style="margin-top:8px">看到右上角 <b class="r">★ 浙江高频</b> 的页面，要格外留意。</p><div class="src">依据：浙江卷 2024.1—2026.6 共 11 道相关题。样本不大，这是根据规律做的推断，不是保证。</div></div>
+      <div class="bridge hid" data-step="99">重点找到了。我们从头梳理：一个劳动者，是怎样一步步被卷进这个被重塑的世界的？</div>
+    </div>
+  </div>
+</section>
+
 <section class="slide" data-mod="1" data-time="06:00">
   <div class="content">
     <div class="hd reveal"><div><div class="sec">一、一无所有的自由 <small>工业革命的背景</small></div><h2>（一）“羊吃人”与“双重自由”：雇佣劳动者的诞生</h2></div><div class="lk">纲要下 P57 · 选必2 P22–24</div></div>
@@ -659,7 +700,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="3" data-time="14:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>史料研读③</small></div><h2>（二）被隔开的城市：走进恩格斯笔下的曼彻斯特</h2></div><div class="lk">史料研读 · 史论结合</div></div>
+    <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>史料研读③</small><span class="zjhot">★ 浙江高频</span></div><h2>（二）被隔开的城市：走进恩格斯笔下的曼彻斯特</h2></div><div class="lk">史料研读 · 史论结合</div></div>
     <div class="body">
       <div class="row ix mapx reveal" style="--d:1;grid-template-columns:.7fr 1fr;gap:22px;align-items:start">
         <div class="card" style="padding:10px 12px"><div class="mapimg"><img src="assets/manchester-1854-bradshaw.jpg" alt="1854 年布拉德肖《英国工业区手册》所附曼彻斯特地图局部：市中心、伦敦路、梅德洛克河与阿德威克一带"><span class="hot hotb" data-k="core" style="left:27.7%;top:16.3%"><b>1</b><i>交易所</i></span><span class="hot hotb" data-k="street" style="left:60.8%;top:45%"><b>2</b><i>伦敦路</i></span><span class="hot hotb" data-k="slum" style="left:36.2%;top:76.9%"><b>3</b><i>小爱尔兰</i></span><span class="hot hotb" data-k="villa" style="left:84%;top:86%"><b>4</b><i>阿德威克</i></span></div><div class="src" style="margin-top:4px">布拉德肖《英国工业区手册》（1854）地图局部，大英图书馆藏，公有领域；③ 为大致位置。</div></div>
@@ -682,17 +723,13 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="3" data-time="14:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>城市化与社会生活</small></div><h2>（三）繁荣的另一面：社会生活的两面与社会立法</h2></div><div class="lk">纲要下 P60 · 选必2 P26–28</div></div>
+    <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>城市化与社会生活</small><span class="zjhot">★ 浙江高频</span></div><h2>（三）繁荣的另一面：社会生活的两面与社会立法</h2></div><div class="lk">纲要下 P60 · 选必2 P26–28</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1fr 1fr">
         <div class="col">
           <div class="note reveal" style="--d:1"><span class="k">回看</span>同在曼彻斯特，1842 年士绅平均 <b class="brass">38</b> 岁去世，劳工只有 <b class="brass">17</b> 岁（上一页材料三）。繁荣属于谁？</div>
           <div class="note reveal" style="--d:3"><span class="k">狄更斯《艰难时世》</span>纲要下 P60 的工业城镇：高耸的烟囱、长蛇般的浓烟、被染料冲成深紫色的河水。<b class="brass">文学作品可作史料，但需互证。</b></div>
-          <div class="card q reveal" style="--d:4;--r:-.3deg;padding:16px 22px">
-            <div class="from">真题同源 · 2026 湖南卷 · 14</div>
-            <p class="stem" style="font-size:21px">19世纪中叶，英国出现“比例尺之争”，一方坚持采用更详实的大比例尺地图，以满足土地产权登记、道路修建、大型排水工程建设等需求。这一争论是基于当时英国（　）</p><div class="opts"><span>A. 地方治理模式转型</span><span>B. 城市发展进程加快</span><span>C. 地图绘制技术突破</span><span>D. 道路规划理念革新</span></div>
-            <div class="ans hid" style="font-size:20px"><span><b class="big">B</b>产权、道路、排水都是城市扩张带来的需求。</span></div>
-          </div>
+          
         </div>
         <div class="col">
           <div class="card kp reveal" style="--d:2;--r:.5deg">
@@ -702,6 +739,13 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
             <p style="font-size:20.5px;margin-top:8px"><b class="r">问题：</b>贫富分化加剧、居住恶劣、<b class="r">环境污染</b>、疾病与犯罪；劳动时间过长，传染病与职业病</p>
             <p style="font-size:20.5px;margin-top:8px"><b class="key">治理：</b>在工人运动推动下开始<b class="key">社会立法</b>——1802 第一部《工厂法》、1848《公共卫生法》</p>
           </div>
+          <div class="card q reveal" style="--d:4;margin-top:14px;--r:-.3deg;padding:14px 20px">
+            <div class="from">浙江真题 · 2025 年 6 月 · 16</div>
+            <p class="stem" style="font-size:20px">下为19世纪中后期英国社会对煤烟影响环境等的看法。材料反映了（　）</p>
+            <table class="lg zjt"><tr><td class="h">某制造商</td><td>煤烟中的碳对人的健康不产生任何有害影响，完全能够遏制、消除有害气体</td></tr><tr><td class="h">《柳叶刀》</td><td>死亡不是与（由）浓雾相伴的寒冷气温引起的，而是浓雾中包含的化学物质引起的</td></tr><tr><td class="h">伦敦市长</td><td>大工厂的烟囱竖起之后，疟疾就不再侵扰生活在周边的居民了</td></tr><tr><td class="h">流行刊物</td><td>强健的胸腔无法形成可以抵御煤烟攻击的保护，空气某种程度上已经不再适合呼吸了</td></tr></table>
+            <div class="opts"><span>A. 环境污染问题严峻已成共识</span><span>B. 社会医疗水平随工业化提升</span><span>C. 城市化必然会带来公共卫生危机</span><span>D. 工业化城市化过程中存在的问题</span></div>
+            
+          </div><div class="hid dark note pop"><span><b class="big">D</b>四种看法有分歧（制造商、市长否认危害），说明并未形成“共识”；材料呈现的是工业化、城市化带来的环境与健康问题。</span></div>
         </div>
       </div>
       <div class="bridge hid" data-step="99">住在被隔开的城区里，工人们开始问：谁来替我们说话？</div>
@@ -850,7 +894,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="6" data-time="20:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">六、被重塑的世界 <small>世界市场</small></div><h2>（二）一件棉衣的全球链条：奴隶、织工与童工</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">六、被重塑的世界 <small>世界市场</small><span class="zjhot">★ 浙江高频</span></div><h2>（二）一件棉衣的全球链条：奴隶、织工与童工</h2></div></div>
     <div class="body">
       <div class="guess reveal" data-ans="ans-cotton" style="--d:1;margin-bottom:14px"><span class="k">想一想</span>19世纪中期，英国进口的棉花主要来自——<div class="opts" style="grid-template-columns:repeat(4,1fr)"><span>A. 印度</span><span>B. 埃及</span><span>C. 美国南方</span><span>D. 中国</span></div></div>
       <div class="row" style="grid-template-columns:.78fr 1.22fr;gap:22px;align-items:start">
@@ -866,7 +910,8 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <g class="node"><circle cx="430" cy="110" r="11"/><text x="430" y="88">英国 · 兰开夏</text></g>
   <g class="node"><circle cx="630" cy="278" r="11"/><text x="630" y="312">印度 · 孟加拉</text></g>
   <g class="node"><circle cx="745" cy="180" r="11"/><text x="745" y="215">中国 · 上海</text></g>
-</svg><div class="src" style="margin-top:4px">示意图：表示流向，非实际地理比例。</div></div></div>
+</svg><div class="src" style="margin-top:4px">示意图：表示流向，非实际地理比例。</div></div>
+        </div>
         <div class="flowcards"><div class="card hid flowcard" id="ans-cotton" data-step="1">
           <div class="ct">美国南方 · 种植园奴隶</div>
           <p >答案 <b class="r">C</b>：1820年代后半期起，美国棉花占英国棉花进口 <b class="r">70% 以上</b>；1840—1858 年从未低于 73.4%。被奴役者查尔斯·鲍尔回忆：第一天摘棉花 38 磅，同龄人摘了 58 和 59 磅。</p>
@@ -875,7 +920,8 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
           <div class="ct">上海 · 纱厂童工</div>
           <p >工业化在中国来得更晚。1929 年上海社会局的纺织业统计显示：棉纺业男女童工每日须工作 <b class="r">11 小时</b>，工资低的每天只有两角五分。</p>
           <div class="src">来源：恽代英 1929 年文章所引上海社会局统计</div>
-        </div><div class="reveal" style="--d:5"><div class="guess" style="font-size:20px"><span class="k">连到主线</span>英国工厂里的“自由”劳动，与美洲种植园的奴隶劳动，是对立的，还是同一条棉花链上的两环？</div></div><div class="reveal" style="--d:5"><div class="card q" style="padding:12px 16px" style="padding:14px 18px"><div class="from">真题同源 · 2025 河南卷 · 14</div><p class="stem" style="font-size:19.5px">19世纪，英法等西方国家越来越倾向于使用自由劳动力，先后废除了奴隶制。但在 1811 年到 1870 年间，仍有将近 190 万名奴隶输入巴西，55 万名输入古巴。这反映出（　）</p><div class="opts"><span>A. 拉美经济停滞不前</span><span>B. 列强瓜分非洲</span><span>C. 世界经济发展的不平衡性加剧</span><span>D. 拉美工业化需要大量劳动力</span></div><div class="ans hid" data-step="4" style="font-size:19px"><span><b class="big">C</b></span></div></div></div></div>
+        </div><div class="reveal" style="--d:5"><div class="guess" style="font-size:20px"><span class="k">连到主线</span>英国工厂里的“自由”劳动，与美洲种植园的奴隶劳动，是对立的，还是同一条棉花链上的两环？</div></div><div class="reveal" style="--d:5"><div class="card q" style="padding:12px 16px"><div class="from">浙江真题 · 2024 年 1 月 · 12</div><p class="stem" style="font-size:19.5px">咖啡原产于非洲，6世纪传入阿拉伯半岛，15世纪后传播到欧洲。17世纪初，威尼斯商人开设了欧洲第一家咖啡馆，之后咖啡馆逐渐风行欧洲。与此同时，欧洲人也有计划地在殖民地生产咖啡。1882年，第一家国际性的咖啡交易所在纽约开张。到20世纪初，拉丁美洲成了全世界咖啡生产的中心，美国成了全世界最大的咖啡市场。据此判断，下列说法正确的是（　）</p><div class="stmts"><span>①咖啡传入亚洲是在世界市场初步建立之后</span><span>②咖啡传入欧洲源于启蒙思想家的大力宣传</span><span>③拉丁美洲成为全世界咖啡生产中心与近代不合理国际分工密切相关</span><span>④美国成为全世界最大的咖啡市场得益于近代世界贸易与文化的交流</span></div><div class="opts" style="grid-template-columns:repeat(4,1fr)"><span>A. ①④</span><span>B. ②③</span><span>C. ②④</span><span>D. ③④</span></div></div><div class="hid dark note pop" data-step="4"><span><b class="big">D</b>拉美沦为殖民国家的原料产地（单一种植），体现不合理的国际分工；咖啡传入亚洲早在6世纪，传入欧洲与启蒙思想家无关。</span></div></div>
+        </div>
       </div>
       <div class="bridge hid" data-step="99">这样的链条，是怎样织成一张世界市场的网？</div>
     </div>
@@ -884,7 +930,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="6" data-time="20:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">六、被重塑的世界 <small>世界市场与世界体系</small></div><h2>（三）世界市场的形成：从商品输出到资本输出</h2></div><div class="lk">纲要下 P61 · 选必2 P41 · 选必1 P89</div></div>
+    <div class="hd reveal"><div><div class="sec">六、被重塑的世界 <small>世界市场与世界体系</small><span class="zjhot">★ 浙江高频</span></div><h2>（三）世界市场的形成：从商品输出到资本输出</h2></div><div class="lk">纲要下 P61 · 选必2 P41 · 选必1 P89</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1.1fr .9fr">
         <div class="col">
@@ -898,7 +944,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
               <tr><td class="h">19c末20c初</td><td>瓜分世界；<b>资本输出</b></td><td><b class="r">最终形成</b></td></tr>
             </table>
           </div>
-          <div class="card q reveal" style="--d:3;--r:-.3deg;padding:14px 20px"><div class="from">真题同源 · 2025 陕晋宁青卷 · 14</div><p class="stem" style="font-size:20px">1812 年，英国格拉斯哥商会感谢从事美洲贸易的商人，因其不仅扩展了烟草、棉花等贸易，而且“不惜花费大量时间支持创办我们这个城市的制造业”。这表明（　）</p><div class="opts"><span>A. 新型特许公司促进美洲贸易</span><span>B. 英国制造业与大西洋贸易联系密切</span><span>C. 依托制造业成为“世界工厂”</span><span>D. 资本输出成为主要形式</span></div><div class="ans hid" style="font-size:19px"><span><b class="big">B</b>贸易资本反哺制造业；1812 年尚非资本输出时代。</span></div></div>
+          <div class="card q reveal" style="--d:3;--r:-.3deg;padding:14px 20px"><div class="from">浙江真题 · 2026 年 6 月 · 14</div><p class="stem" style="font-size:20px">下表为19世纪上半叶英国的部分政策措施，其主要目的是（　）</p><table class="lg zjt"><tr><td class="h">1813</td><td>取消英国东印度公司对印度的贸易垄断权</td></tr><tr><td class="h">1843</td><td>完全废除机械出口禁令</td></tr><tr><td class="h">1841—1846</td><td>先后取消600多种关税</td></tr></table><div class="opts"><span>A. 推动工业发展，强化经济优势</span><span>B. 加强技术输出，抢占投资场所</span><span>C. 调整殖民政策，扩大亚洲市场</span><span>D. 削减关税壁垒，降低生产成本</span></div><div class="ans hid" style="font-size:19px"><span><b class="big">A</b>“世界工厂”凭工业优势推行自由贸易，拓展市场、巩固优势；当时以商品输出为主（B 错），措施面向全球（C 错），D 只是手段。</span></div></div>
         </div>
         <div class="col">
           <div class="guess reveal" style="--d:2"><span class="k">想一想</span>工业革命后，世界形成了怎样的分工格局？</div>
@@ -941,29 +987,25 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
           <div class="hid dark note pop reveal" style="--d:4"><span>主动融入世界潮流；坚持对外开放；捍卫国家主权；坚持科技创新。</span></div>
         </div>
       </div>
-      <div class="bridge hid" data-step="99">从一张工时卡走到世界市场，主线走完了。回到考场，先辨一辨易错点。</div>
+      <div class="bridge hid" data-step="99">从一张工时卡走到世界市场，主线走完了。回到考场，用一道浙江式材料题检验今天的重点。</div>
     </div>
   </div>
 </section>
 
 <section class="slide" data-mod="7" data-time="22:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">七、从史实到史论 <small>易错辨析</small></div><h2>（一）易错辨析：先判断，后辨析</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">七、从史实到史论 <small>重点突破</small><span class="zjhot">★ 浙江高频</span></div><h2>（一）重点突破：浙江式材料题</h2></div><div class="lk">本课原创练习</div></div>
     <div class="body">
-      <div class="card reveal" style="--d:1;--r:-.2deg;padding:16px 26px">
-        <table class="lg" style="font-size:21px">
-          <tr><th style="width:56px">#</th><th>说法</th><th>辨析</th></tr>
-          <tr><td class="n">01</td><td>工业革命以瓦特改良蒸汽机为开始标志</td><td class="hid"><span><b class="r">✗</b> 开始：珍妮纺纱机；蒸汽机是<b class="v">主要标志</b></span></td></tr>
-          <tr><td class="n">02</td><td>手工工场的出现是近代工厂的开端</td><td class="hid"><span><b class="r">✗</b> <b class="v">1771 年水力纺纱厂</b>是近代工厂开端</span></td></tr>
-          <tr><td class="n">03</td><td>英国第一次工业革命完成的标志是火车问世</td><td class="hid"><span><b class="r">✗</b> 完成：<b class="v">机器制造业实现机械化</b></span></td></tr>
-          <tr><td class="n">04</td><td>第一次工业革命的发明主要依靠科学理论</td><td class="hid"><span><b class="r">✗</b> 多源于<b class="v">工匠实践</b></span></td></tr>
-          <tr><td class="n">05</td><td>垄断组织改变了资本主义制度的性质</td><td class="hid"><span><b class="r">✗</b> 实质是<b class="v">局部调整</b></span></td></tr>
-          <tr><td class="n">06</td><td>第一次工业革命后资本主义世界市场最终形成</td><td class="hid"><span><b class="r">✗</b> 最终形成于<b class="v">19世纪末20世纪初</b></span></td></tr>
-          <tr><td class="n">07</td><td>1832 年议会改革使英国工人获得选举权</td><td class="hid"><span><b class="r">✗</b> 受益者是<b class="v">工业资产阶级</b></span></td></tr>
-          <tr><td class="n">08</td><td>圈地运动是英国资本原始积累的重要手段之一</td><td class="hid"><span><b style="color:#2f6b4f">✓</b> 教材原话</span></td></tr>
-          <tr><td class="n">09</td><td>第二次工业革命几乎在主要资本主义国家同时发生</td><td class="hid"><span><b style="color:#2f6b4f">✓</b> 美国与德国最为突出</span></td></tr>
-        </table>
+      <div class="row reveal" style="--d:1;grid-template-columns:1fr 1fr;gap:22px">
+        <div class="card mat"><div class="ct">材料一</div><p>不列颠入侵者打碎了印度的手织机，毁掉了它的手纺车。英国起先是把印度的棉织品挤出了欧洲市场，然后是向印度斯坦输入棉纱，最后就使英国棉织品<b class="v">泛滥于这个棉织品的故乡</b>。</p><div class="src">——马克思《不列颠在印度的统治》（纲要下 P61）</div></div>
+        <div class="card mat"><div class="ct">材料二 · 人均国民生产总值（美元）</div><table class="lg zjt"><tr><th>年份</th><th>发达国家</th><th>第三世界国家</th></tr><tr><td class="n">1750</td><td>182</td><td>188</td></tr><tr><td class="n">1830</td><td>237</td><td>183</td></tr><tr><td class="n">1880</td><td>406</td><td>176</td></tr><tr><td class="n">1913</td><td>662</td><td>192</td></tr></table><div class="src">——引自巴里·布赞等《全球转型》，2025 年 6 月浙江卷第 14 题材料（节选）</div></div>
       </div>
+      <div class="row reveal" style="--d:2;grid-template-columns:1fr 1fr;margin-top:16px">
+        <div class="col" style="gap:10px"><div class="task"><span class="lv">问题一</span>根据材料一，结合所学，说明英国工业革命对印度传统经济的冲击及其原因。</div><div class="hid dark note pop"><span><b class="t">冲击：</b>印度的手工纺织业被摧毁，棉织品出口地变成英国棉纱、棉布的倾销市场，自然经济逐步解体，沦为原料产地和商品市场。<b class="t">原因：</b>工业革命使英国成为“世界工厂”，机器生产的商品价廉量大；英国需要原料和市场；殖民统治与自由贸易为倾销开路。</span></div></div>
+        <div class="col" style="gap:10px"><div class="task"><span class="lv">问题二</span>根据材料二，概括 1750—1913 年两类国家的经济变化，结合所学，说明工业革命对世界格局的影响。</div><div class="hid dark note pop"><span><b class="t">变化：</b>1750 年两者大体相当；此后发达国家人均快速增长，第三世界停滞甚至下降，差距不断扩大。<b class="t">影响：</b>促进世界市场形成，世界日益连为一体；确立欧美（英国）的经济优势，形成西方先进、东方落后、东方从属于西方的格局；殖民掠夺和不合理的国际分工加剧了发展不平衡。</span></div></div>
+      </div>
+      <div class="note reveal" style="--d:3;margin-top:14px"><span class="k">易错提醒</span>开始标志是珍妮纺纱机，蒸汽机是主要标志；1771 年水力纺纱厂是近代工厂的开端；世界市场最终形成于 19 世纪末 20 世纪初。</div>
+      <div class="bridge hid" data-step="99">最后，把目光从 1830 年代拉回今天。</div>
     </div>
   </div>
 </section>
@@ -1233,11 +1275,17 @@ function tuckOthers(pop) { pop.closest('.slide').querySelectorAll('.pop.shown').
 const popObserver = new MutationObserver((list) => list.forEach(({ target: p }) => { if (p.classList.contains('shown') && !p.classList.contains('tucked')) tuckOthers(p); }));
 document.querySelectorAll('.pop').forEach((p) => popObserver.observe(p, { attributes: true, attributeFilter: ['class'] }));
 document.querySelectorAll('.slide').forEach((s) => { const open = [...s.querySelectorAll('.pop.shown')]; open.slice(0, -1).forEach((p) => p.classList.add('tucked')); });
+function tabGo(root, k) {
+    root.querySelectorAll('.zbar').forEach((b) => b.classList.toggle('on', b.dataset.tab === k));
+    root.querySelectorAll('.tabpane').forEach((p) => p.classList.toggle('on', p.dataset.tab === k));
+}
+document.querySelectorAll('.tabx').forEach((root) => root.querySelectorAll('.zbar').forEach((b) => b.addEventListener('click', () => tabGo(root, b.dataset.tab))));
 const mkObserver = new MutationObserver((list) => list.forEach(({ target: m }) => {
     if (!m.classList.contains('shown')) return;
     if (m.dataset.k) mapGo(m.closest('.mapx'), m.dataset.k);
     if (m.dataset.preset) voteSet(m.closest('.vote'), ...m.dataset.preset.split(','));
     if (m.dataset.year) yrSet(m.closest('.yrs'), m.dataset.year);
+    if (m.dataset.tab) tabGo(m.closest('.tabx'), m.dataset.tab);
 }));
 document.querySelectorAll('.mk').forEach((m) => mkObserver.observe(m, { attributes: true, attributeFilter: ['class'] }));
 const deck = new SlidePresentation();
