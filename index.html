@@ -205,7 +205,7 @@ svg {
 .hd .sec { display: inline-flex; align-items: baseline; gap: 16px; font-weight: 900; font-size: 50px; line-height: 1.15; color: #1f2724; background: var(--brass); padding: 4px 20px 8px; }
 .hd .sec small { font-size: 24px; font-weight: 700; opacity: .75; }
 .hd h2 { font-weight: 900; font-size: 40px; line-height: 1.25; margin-top: 12px; }
-.hd .lk { font-family: var(--f-m); font-size: 18px; color: var(--chalk-dim); text-align: right; line-height: 1.5; white-space: nowrap; }
+.hd .lk { font-family: var(--f-cn); font-size: 26px; font-weight: 700; color: var(--brass); text-align: right; line-height: 1.5; white-space: nowrap; }
 .body { flex: 1; min-height: 0; position: relative; }
 .row { display: grid; gap: 28px; align-items: start; }
 .col { display: flex; flex-direction: column; gap: 20px; }
@@ -275,12 +275,12 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 
 /* Machine chain */
 /* Slide 8: spinning-weaving seesaw driven by which family card is revealed */
-.seesaw { position: relative; width: 1180px; height: 200px; margin: 6px auto 0; }
+.seesaw { position: relative; width: 1180px; height: 230px; margin: 6px auto 18px; }
 .seesaw .beam { position: absolute; left: 140px; right: 140px; top: 104px; height: 12px; background: var(--brass); border-radius: 6px; transition: transform .8s var(--ease); }
-.seesaw .pan { position: absolute; bottom: 14px; padding: 6px 18px; border: 3px solid var(--brass); background: rgba(232,196,106,.12); font-size: 26px; font-weight: 900; white-space: nowrap; }
+.seesaw .pan { position: absolute; bottom: 14px; padding: 6px 18px; border: 3px solid var(--brass); background: rgba(232,196,106,.12); font-size: 46px; font-weight: 900; white-space: nowrap; padding: 10px 30px; }
 .seesaw .pan-l { left: -70px; } .seesaw .pan-w { right: -70px; }
 .seesaw .fulcrum { position: absolute; left: 50%; top: 116px; margin-left: -34px; border-left: 34px solid transparent; border-right: 34px solid transparent; border-bottom: 46px solid var(--brass); }
-.seesaw .cap { position: absolute; left: 0; right: 0; top: 166px; text-align: center; font-size: 24px; font-weight: 700; color: var(--brass); }
+.seesaw .cap { position: absolute; left: 0; right: 0; top: 168px; text-align: center; font-size: 40px; font-weight: 700; color: var(--brass); }
 .seesaw .cap::after { content: "手工纺纱 ≈ 手工织布：大致平衡"; }
 .slide:has(.fam[data-step="1"].shown) .beam { transform: rotate(7deg); }
 .slide:has(.fam[data-step="1"].shown) .cap::after { content: "织布提速 → 纱不够用：瓶颈在纺纱"; }
@@ -312,9 +312,13 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .pg { margin-left: 14px; font-family: var(--f-m); font-size: 18px; font-weight: 400; color: var(--ink-dim); letter-spacing: 0; }
 .note .pg { color: var(--chalk-dim, #b9b3a3); }
 .gloss { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--card-line); font-size: 20px; line-height: 1.5; color: var(--ink-dim); } .gloss b { color: var(--stamp); }
+.ct.big2 { font-size: 40px !important; font-weight: 900; color: var(--stamp); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; } .tags span { font-size: 24px; font-weight: 700; padding: 2px 10px; border: 2px solid var(--ink); background: rgba(255,255,255,.35); }
+.chart { background: rgba(255,255,255,.35); padding: 8px 12px; margin: 6px 0 8px; } .cht { font-weight: 900; font-size: 26px; color: var(--stamp); }
+.q2 { font-size: 25px; line-height: 1.6; }
 .term { border-bottom: 3px dashed currentColor; cursor: pointer; }
 .qa { cursor: pointer; } .qa:hover { filter: brightness(1.08); }
-.pop { position: absolute; left: 0; right: 0; top: 0; z-index: 6; max-height: 100%; overflow: auto; font-size: 30px !important; line-height: 1.6; padding: 22px 30px !important; background: #23201b !important; border: 3px solid var(--brass) !important; box-shadow: 0 24px 60px rgba(0,0,0,.6); cursor: pointer; }
+.pop { position: absolute; left: 0; right: 0; top: 0; z-index: 6; max-height: 100%; overflow: auto; font-weight: 700; font-size: 36px !important; line-height: 1.7; padding: 22px 30px !important; background: #23201b !important; border: 3px solid var(--brass) !important; box-shadow: 0 24px 60px rgba(0,0,0,.6); cursor: pointer; }
 .pop *, .pop span { font-size: inherit !important; }
 .pop::before { content: none; display: block; font-family: var(--f-m); font-size: 18px; letter-spacing: .14em; color: var(--brass); margin-bottom: 8px; }
 .pop:not(.shown), .pop.tucked { pointer-events: none; opacity: 0 !important; }
@@ -340,6 +344,33 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .flipc p { font-size: 29px; font-weight: 700; line-height: 1.5; flex: 1; }
 .flipc .front p b { color: #2f6b49; } .flipc .back p b { color: var(--brass); }
 .flipc .fs { font-size: 19px; line-height: 1.4; opacity: .8; }
+/* Exam answers: big red tick on the correct option */
+.card.q .stem, .card.q .opts, .card.q .zjt td, .card.q .stmts, .card.q .lg td { font-weight: 700; }
+.card.q .opts span.right { position: relative; }
+.card.q:has(.ansmark.shown) .opts span.right { color: #c4161c; }
+.card.q:has(.ansmark.shown) .opts span.right::after { content: "✔"; position: absolute; left: -.15em; top: 50%; transform: translateY(-58%) rotate(-6deg); font-size: 2.6em; line-height: 1; color: #d0141a; font-weight: 900; text-shadow: 0 2px 0 rgba(255,255,255,.6); pointer-events: none; }
+.ansmark { display: none; }
+/* Image wipe comparison */
+.wipe { position: relative; height: 600px; overflow: hidden; box-shadow: 0 12px 32px rgba(0,0,0,.5); background: #111; user-select: none; }
+.wipe > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.wipe > img.w-top { clip-path: inset(0 calc(100% - var(--x, 50%)) 0 0); filter: sepia(.15); transition: clip-path .6s var(--ease); }
+.wipe .w-bar { position: absolute; top: 0; bottom: 0; left: var(--x, 50%); width: 6px; margin-left: -3px; background: var(--brass); transition: left .6s var(--ease); pointer-events: none; }
+.wipe .w-bar i { position: absolute; top: 50%; left: 50%; width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; background: var(--brass); box-shadow: 0 3px 10px rgba(0,0,0,.5); }
+.wipe .w-bar i::before { content: "◀ ▶"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #1f2724; font-style: normal; font-weight: 900; }
+.wipe .w-lab { position: absolute; top: 16px; padding: 6px 16px; font-size: 30px; font-weight: 900; color: #fff; background: rgba(0,0,0,.6); pointer-events: none; }
+.wipe .w-lab.l { left: 16px; } .wipe .w-lab.r { right: 16px; }
+.wipe input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.wipe.dragging > img.w-top, .wipe.dragging .w-bar { transition: none; }
+/* Knowledge summaries as sticky notes */
+.card.kp { background: #f7e38a; border-left: none; color: #2a2620; transform: rotate(var(--r, -.6deg)); box-shadow: 0 16px 34px rgba(0,0,0,.45); }
+.card.kp::after { content: ""; position: absolute; top: -14px; left: 50%; width: 150px; height: 30px; margin-left: -75px; background: rgba(255,255,255,.5); transform: rotate(-3deg); box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.card.kp .ct::before { content: "知识归纳"; display: inline-block; margin-right: 12px; padding: 1px 12px; background: #b8322a; color: #fff; font-size: 22px; }
+.card.kp td.h, .card.kp .h { font-weight: 900; color: #8a1f17; }
+.card.kp .v { color: #1f4fa0; } .card.kp .r, .card.kp .key { color: #c4161c; }
+.pop.kppop { background: #f7e38a repeating-linear-gradient(0deg, transparent 0 calc(1.75em - 2px), rgba(140,110,60,.3) calc(1.75em - 2px) 1.75em) !important; background-attachment: local !important; background-position: 0 22px !important; color: #2a2620 !important; border: none !important; font-size: 36px !important; line-height: 1.75; box-shadow: 0 24px 50px rgba(0,0,0,.55); }
+.pop.kppop::before { content: "知识归纳" !important; display: table !important; padding: 2px 14px; background: #b8322a; color: #fff; font-family: var(--f-cn); font-size: 24px; letter-spacing: .12em; margin-bottom: 12px; }
+.pop.kppop .t { color: #8a1f17; font-weight: 900; } .pop.kppop .r { color: #c4161c; } .pop.kppop .v { color: #1f4fa0; }
+.pop.kppop b { font-weight: 900; }
 /* Zhejiang exam-trend pages */
 .zjhot { display: inline-block; margin-left: 18px; padding: 3px 14px; background: var(--stamp); color: #fff; font-weight: 900; font-size: 22px; letter-spacing: .08em; transform: rotate(-3deg); vertical-align: middle; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
 .zbar { display: grid; grid-template-columns: 1fr 1.1fr 40px; gap: 10px; align-items: center; width: 100%; margin: 10px 0; padding: 8px 10px; border: 2px solid transparent; background: transparent; font-family: var(--f-cn); font-size: 21px; font-weight: 700; color: var(--ink); text-align: left; cursor: pointer; }
@@ -355,12 +386,12 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .rulec p { font-size: 22px; line-height: 1.55; } .focus { font-size: 24px; line-height: 1.6; }
 /* Year slider (slide 16) */
 .yrs .yhead { display: flex; align-items: baseline; gap: 18px; }
-.yrs .yr { font-family: var(--f-d); font-size: 76px; color: var(--stamp); line-height: 1; }
-.yrs .ystage { font-size: 24px; font-weight: 900; color: var(--stamp2); }
+.yrs .yr { white-space: nowrap; font-family: var(--f-cn); font-weight: 900; font-size: 50px; color: var(--stamp); line-height: 1; }
+.yrs .ystage { white-space: nowrap; font-size: 26px; font-weight: 900; color: var(--stamp2); }
 .yrs input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--stamp); height: 28px; cursor: pointer; }
-.yrs .yticks { display: flex; justify-content: space-between; font-family: var(--f-m); font-size: 15px; color: var(--ink-dim); margin-bottom: 8px; }
-.yrs .yfields td { font-size: 21px; padding: 6px 8px; } .yrs .yfields td.h { width: 120px; }
-.yrs .yfields td[data-y] { transition: background .5s; } .yrs .yfields td.flash { background: rgba(232,196,106,.55); }
+.yrs .yticks { display: flex; justify-content: space-between; font-family: var(--f-m); font-size: 22px; font-weight: 700; color: var(--ink-dim); margin-bottom: 8px; }
+.yrs .yfields td { font-size: 24px; padding: 6px 10px; } .yrs .yfields td.h { width: 120px; }
+
 /* Interactive pages: Manchester map, 1832 vote check, cotton flows */
 .mapsvg, .flowsvg { width: 100%; height: auto; display: block; }
 .mapsvg .z-rich { fill: #cfe0b8; stroke: #6f8a4f; stroke-width: 3; stroke-dasharray: 10 6; }
@@ -381,7 +412,7 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .hot { cursor: pointer; } .hot circle { fill: var(--stamp); stroke: #f6ead0; stroke-width: 4; transition: transform .3s; }
 .hot text { fill: #fff; font-size: 22px; font-family: var(--f-d); text-anchor: middle; dominant-baseline: central; }
 .hot.on circle { fill: var(--brass); transform: scale(1.25); } .hot.on text { fill: var(--ink); }
-.panes { display: grid; align-self: stretch; } .pane { grid-area: 1 / 1; visibility: hidden; opacity: 0; transform: translateX(-30px); transition: opacity .35s, transform .45s var(--ease); background: var(--card); color: var(--ink); padding: 22px 28px; font-size: 31px; line-height: 1.6; }
+.panes { display: grid; align-self: stretch; } .pane { grid-area: 1 / 1; visibility: hidden; opacity: 0; transform: translateX(-30px); transition: opacity .35s, transform .45s var(--ease); background: var(--card); color: var(--ink); padding: 22px 28px; font-size: 31px; line-height: 1.6; } .pane[data-k^="a"] p { font-weight: 700; }
 .pane .src { font-size: 18px; margin-top: 6px; } .pane .lg { font-size: 24px; }
 .pane.on { visibility: visible; opacity: 1; transform: none; } .pane .pt { display: block; font-size: 33px; color: var(--stamp); margin-bottom: 4px; }
 .pane .dim { color: var(--ink-dim); }
@@ -584,7 +615,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
         <figure class="fig reveal" style="--d:2;--r:1deg;--h:430px;--op:center 30%"><img src="assets/img/child-1840.jpg" alt="工厂童工版画"><figcaption>工厂里的童工。1840 年小说《迈克尔·阿姆斯特朗》插图，埃尔维厄绘，公有领域</figcaption></figure>
         <div class="card mat reveal" style="--d:3;--r:.5deg"><div class="ct">材料</div><p style="font-size:24px">在工场手工业和手工业中，是工人利用工具，在工厂中，是工人<b class="r">服侍机器</b>。在前一种场合，劳动资料的运动从工人出发，在后一种场合，则是工人跟随劳动资料的运动。在工场手工业中，工人是一个活机构的肢体。在工厂中，死机构独立于工人而存在，工人被当作<b class="r">活的附属物</b>并入死机构。</p><div class="src">——马克思《资本论》第一卷第十三章（《马克思恩格斯文集》第 5 卷 P486）</div></div>
       </div>
-      <div class="row" style="grid-template-columns:1fr;margin-top:18px"><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>伊丽莎白的父辈在家中纺纱织布，她却 6 岁进厂、每天做工 13—16 小时。结合材料，从“工人利用工具”到“工人服侍机器”，劳动者的处境发生了哪些变化？为何会发生这些变化？</div><div class="hid dark note ansk pop" data-step="3"><span><b class="t">变化：</b>①劳动场所：从家庭、作坊走进工厂；②劳动节奏：手工工场中快慢由人决定，工厂中节奏由机器和钟声决定；③劳动者：妇女儿童被大量雇用，工时延长，人从活机构的“肢体”变成机器的“附属物”。<b class="t">原因：</b>机器大生产和工厂制度确立，资本追求利润；工人失去生产资料，只能出卖劳动力。<b class="t">本课主线：</b>劳动者的处境，随机器与生产方式而改变。</span></div></div></div>
+      <div class="row" style="grid-template-columns:1fr;margin-top:18px"><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>伊丽莎白的父辈在家中纺纱织布，她却 6 岁进厂、每天做工 13—16 小时。结合材料，从“工人利用工具”到“工人服侍机器”，劳动者的处境发生了哪些变化？为何会发生这些变化？</div><div class="hid dark note ansk pop" data-step="3"><span><b class="t">变化：</b>①劳动场所：从家庭、作坊走进工厂；<br>②劳动节奏：手工工场中快慢由人决定，工厂中节奏由机器和钟声决定；<br>③劳动者：妇女儿童被大量雇用，工时延长，人从活机构的“肢体”变成机器的“附属物”。<br><b class="t">原因：</b>机器大生产和工厂制度确立，资本追求利润；工人失去生产资料，只能出卖劳动力。<br><b class="t">本课主线：</b>劳动者的处境，随机器与生产方式而改变。</span></div></div></div>
     </div>
   </div>
 </section>
@@ -593,7 +624,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="content">
     <div class="hd reveal"><div><div class="sec">一、离开土地 <small>工业革命的背景</small></div><h2>（一）“羊吃人”与“双重自由”：雇佣劳动者的诞生</h2></div><div class="lk">纲要下 P57 · 选必2 P22–24</div></div>
     <div class="body">
-      <div class="row" style="grid-template-columns:1.15fr 1fr"><div class="col"><div class="card mat reveal" style="--d:1;--r:-.4deg"><div class="ct">材料一</div><p>这里所说的自由，具有<b class="r">双重意义</b>：一方面，工人是自由人，能够把自己的劳动力当作自己的商品来支配，另一方面，他没有别的商品可以出卖，<b class="r">自由得一无所有</b>……</p><div class="src">——马克思《资本论》第一卷第四章</div></div><div class="card mat reveal" style="--d:2;--r:.4deg"><div class="ct">材料二</div><p>盗窃公有地……为城市工业造成了<b class="r">不受法律保护的无产阶级</b>的必要供给。</p><div class="src">——马克思《资本论》第一卷第二十四章</div><p class="gloss"><b>注 · 公有地：</b>村庄共同使用的牧场、荒地和林地，贫苦农民靠它放牧、拾柴。圈地运动将其圈为私产，农民由此失去生计。</p></div></div><div class="col"><div class="card kp reveal" style="--d:3;--r:.3deg"><div class="ct">圈地运动</div><div class="meta"><span>约从15世纪开始</span><span>纲要下 P57</span></div><table class="lg"><tr><td class="h">主体</td><td>新贵族、新兴资产阶级</td></tr><tr><td class="h">动因</td><td>养羊获利（“羊吃人”）</td></tr><tr><td class="h">结果</td><td>农民→<b class="v">雇佣劳动者</b></td></tr><tr><td class="h">定性</td><td><b class="r">资本原始积累</b>的重要手段</td></tr></table></div><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>工人为何“自由得一无所有”？圈地运动与工业革命有何关系？</div><div class="hid dark note ansk pop"><span><b class="t">“自由”的含义：</b>人身自由是真实的，但失去了生产资料，“自由”实际上是只能出卖劳动力。<b class="t">关系：</b>圈地运动提供雇佣劳动力与国内市场，促进资本原始积累和农业资本主义发展，是工业革命的前提；但这一过程伴随暴力与农民的苦难——<b class="t">工人的处境，从进厂之前就已决定</b>。</span></div></div></div></div>
+      <div class="row" style="grid-template-columns:1.15fr 1fr"><div class="col"><div class="card mat reveal" style="--d:1;--r:-.4deg"><div class="ct">材料一</div><p>这里所说的自由，具有<b class="r">双重意义</b>：一方面，工人是自由人，能够把自己的劳动力当作自己的商品来支配，另一方面，他没有别的商品可以出卖，<b class="r">自由得一无所有</b>……</p><div class="src">——马克思《资本论》第一卷第四章</div></div><div class="card mat reveal" style="--d:2;--r:.4deg"><div class="ct">材料二</div><p>盗窃公有地……为城市工业造成了<b class="r">不受法律保护的无产阶级</b>的必要供给。</p><div class="src">——马克思《资本论》第一卷第二十四章</div><p class="gloss"><b>注 · 公有地：</b>村庄共同使用的牧场、荒地和林地，贫苦农民靠它放牧、拾柴。圈地运动将其圈为私产，农民由此失去生计。</p></div></div><div class="col"><div class="card kp reveal" style="--d:3;--r:.3deg"><div class="ct">圈地运动</div><div class="meta"><span>约从15世纪开始</span><span>纲要下 P57</span></div><table class="lg"><tr><td class="h">主体</td><td>新贵族、新兴资产阶级</td></tr><tr><td class="h">动因</td><td>养羊获利（“羊吃人”）</td></tr><tr><td class="h">结果</td><td>农民→<b class="v">雇佣劳动者</b></td></tr><tr><td class="h">定性</td><td><b class="r">资本原始积累</b>的重要手段</td></tr></table></div><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>工人为何“自由得一无所有”？圈地运动与工业革命有何关系？</div><div class="hid dark note ansk pop"><span><b class="t">“自由”的含义：</b>人身自由是真实的，但失去了生产资料，“自由”实际上是只能出卖劳动力。<br><b class="t">关系：</b>圈地运动提供雇佣劳动力与国内市场，促进资本原始积累和农业资本主义发展，是工业革命的前提；但这一过程伴随暴力与农民的苦难——<b class="t">工人的处境，从进厂之前就已决定</b>。</span></div></div></div></div>
       <div class="bridge hid">雇佣劳动力之外，工业革命还需哪些条件？</div>
     </div>
   </div>
@@ -601,27 +632,20 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="1" data-time="06:45">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">一、离开土地 <small>工业革命的背景</small></div><h2>（二）条件的叠加：英国率先的可能性与必要性</h2></div><div class="lk">纲要下 P57</div></div>
+    <div class="hd reveal"><div><div class="sec">一、离开土地 <small>工业革命的背景</small></div><h2>（二）条件的叠加：英国率先的可能性与必要性</h2></div><div class="lk"><div class="note reveal" style="--d:3;margin:0;display:inline-block;text-align:left"><span class="k">知识归纳</span><b class="term brass" data-ans="why-pop">英国率先的条件</b></div><div style="margin-top:6px">纲要下 P57</div></div></div>
     <div class="body">
-      <div class="row" style="grid-template-columns:.9fr 1.1fr;align-items:start">
-        <div class="col">
-          <figure class="fig reveal" style="--d:1;--r:-.8deg;--h:330px"><img src="assets/img/coalbrookdale.jpg" alt="夜色中的科尔布鲁克代尔"><figcaption>卢泰尔堡《夜色中的科尔布鲁克代尔》（1801），英国什罗普郡的炼铁炉，伦敦科学博物馆藏，公有领域</figcaption></figure>
-          <div class="guess reveal" data-ans="ans-why" style="--d:2"><span class="k">想一想</span>18 世纪，英国有哪些法国、中国没有的条件？<br><span class="dim">法国专制 · 德意分裂 · 中国闭关</span></div><div class="dark note pop termpop" id="term-agri"><span><b class="t">含义：</b>资本主义生产方式进入农业。地主出租土地 → <b class="t">租地农场主</b>投资经营 → 雇佣<b class="t">农业工人</b>，为市场而生产、追求利润。<br><b class="t">与工业革命：</b>①粮食增产，养活城市人口；②农民离开土地，提供<b class="t">自由劳动力</b>；③农村购买力上升，扩大<b class="t">国内市场</b>；④积累资本。</span></div>
+      <div class="row" style="grid-template-columns:1fr 1fr;gap:24px;align-items:stretch">
+        <div class="card mat reveal" style="--d:1;--r:-.3deg"><div class="ct big2">可能性</div>
+          <figure class="fig" style="--h:400px;--op:center 78%;margin:6px 0 8px"><img src="assets/img/scott-wharf.jpg" alt="塞缪尔·斯科特《泰晤士河码头》"><figcaption>塞缪尔·斯科特《泰晤士河码头》（1757）：伦敦码头商船云集，货桶、货包堆满岸边，公有领域</figcaption></figure>
+          <div class="task" style="margin-top:10px;font-size:30px">画中码头上的货物从哪里来？这反映出英国具备什么条件？英国还具备哪些条件？</div><div class="hid dark note pop" data-step="1"><span><b class="t">海外贸易与殖民扩张：</b>来自殖民地的原料、商品汇聚伦敦，英国获得廉价原料和广阔海外市场，促进资本原始积累。<br><b class="t">其他条件：</b>光荣革命后政局稳定、政府鼓励经济；农业资本主义提供农产品、自由劳动力和国内市场；手工工场分工细致、工具专门化，英国是欧洲科学技术中心之一。——这些是英国率先的<b class="t">可能性</b>。</span></div>
         </div>
-        <div id="ans-why" class="card kp hid reveal" style="--d:3;--r:-.3deg">
-          <div class="ct">英国率先的条件<span class="pg">纲要下 P57</span></div>
-          <table class="lg">
-            <tr><td class="h">政治</td><td class="hid">光荣革命后<b class="v">政局稳定</b></td></tr>
-            <tr><td class="h">劳动力·市场</td><td class="hid">圈地运动、<b class="v term" data-ans="term-agri">农业资本主义</b></td></tr>
-            <tr><td class="h">资本·原料</td><td class="hid"><b class="v">殖民扩张</b>、原始积累</td></tr>
-            <tr><td class="h">技术</td><td class="hid"><b class="v">手工工场</b>发达、科学中心之一</td></tr>
-            <tr><td class="h">自然</td><td class="hid">煤铁丰富、岛国海运便利</td></tr>
-            <tr><td class="h">直接原因</td><td class="hid"><b class="r">市场扩大、需求增长</b></td></tr>
-          </table>
-          <p class="hid" style="margin-top:10px"><b class="r">可能性</b> ＋ <b class="r">必要性</b>：根本动力是<b class="key">生产力与市场需求的矛盾</b></p>
+        <div class="card mat reveal" style="--d:2;--r:.3deg"><div class="ct big2">必要性</div>
+          <div class="chart"><div class="cht">英国原棉进口量（百万磅）</div><svg viewBox="0 -24 520 290" style="width:100%;height:300px;display:block"><line x1="36" y1="220" x2="510" y2="220" stroke="#2b211c" stroke-width="2"/><rect x="50" y="210" width="56" height="10" fill="#c98a6a"/><text x="78" y="202" text-anchor="middle" font-size="32" font-weight="700" fill="#2b211c">2.98</text><text x="78" y="246" text-anchor="middle" font-size="28" fill="#5a4a3a">1751</text><rect x="142" y="207" width="56" height="13" fill="#c98a6a"/><text x="170" y="199" text-anchor="middle" font-size="32" font-weight="700" fill="#2b211c">3.87</text><text x="170" y="246" text-anchor="middle" font-size="28" fill="#5a4a3a">1764</text><rect x="234" y="197" width="56" height="23" fill="#c98a6a"/><text x="262" y="189" text-anchor="middle" font-size="32" font-weight="700" fill="#2b211c">6.8</text><text x="262" y="246" text-anchor="middle" font-size="28" fill="#5a4a3a">1780</text><rect x="326" y="113" width="56" height="107" fill="#b8322a"/><text x="354" y="105" text-anchor="middle" font-size="32" font-weight="700" fill="#2b211c">31.4</text><text x="354" y="246" text-anchor="middle" font-size="28" fill="#5a4a3a">1790</text><rect x="418" y="30" width="56" height="190" fill="#b8322a"/><text x="446" y="22" text-anchor="middle" font-size="32" font-weight="700" fill="#2b211c">56</text><text x="446" y="246" text-anchor="middle" font-size="28" fill="#5a4a3a">1800</text><line x1="284" y1="60" x2="284" y2="220" stroke="#2b211c" stroke-dasharray="6 6" stroke-width="1.5"/><text x="276" y="72" text-anchor="end" font-size="24" fill="#5a4a3a">手工时期</text><text x="292" y="72" font-size="24" fill="#5a4a3a">机器普及</text></svg><div class="src">据贝恩斯《棉纺织业史》（1835）统计整理</div></div>
+          <p class="q2">“市场总是在扩大，需求总是在增加。甚至工场手工业也不再能满足需要了。于是，蒸汽和机器引起了工业生产的革命。”</p><div class="src">——马克思、恩格斯《共产党宣言》（纲要下 P57 史料阅读）</div>
+          <div class="task" style="margin-top:10px;font-size:30px">结合图表与材料，英国为什么“必须”提高生产力？</div><div class="hid dark note pop" data-step="2"><span>国内外<b class="t">市场扩大、需求增长</b>，手工生产已不能满足需要，提高生产力成为当务之急；机器出现后原棉进口量猛增，说明需求早已存在，瓶颈在生产。——这是英国率先的<b class="t">必要性</b>。</span></div>
         </div>
       </div>
-      <div class="bridge hid" data-step="99">条件既备，市场需求催生技术发明。</div>
+            <div class="dark note pop kppop" id="why-pop"><span><b class="t">政治</b>　“光荣革命”后<b class="r">政局稳定</b>，政府鼓励经济发展<br><b class="t">劳动力·市场</b>　<b class="v">农业资本主义</b>发展：农产品、<b class="r">自由劳动力</b>、国内市场<br><b class="t">资本·原料</b>　<b class="v">殖民扩张</b> → <b class="r">资本原始积累</b>、原料与海外市场<br><b class="t">技术</b>　<b class="v">手工工场</b>分工细致；欧洲<b class="v">科学技术中心</b>之一<br><b class="t">直接原因</b>　<b class="r">市场扩大、需求增长</b>，手工生产不能满足</span></div>
     </div>
   </div>
 </section>
@@ -632,8 +656,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
     <div class="body">
       <p class="small reveal" style="--d:1">棉纺织品畅销 → 获利丰厚 → <b class="brass">市场需求</b>催生技术发明。</p>
       <div class="seesaw reveal" style="--d:2"><div class="beam"><span class="pan pan-l">纺纱</span><span class="pan pan-w">织布</span></div><div class="fulcrum"></div><div class="cap"></div></div>
-      <div class="fams reveal" style="--d:3;--h:230px"><div class="card fam hid" data-step="1"><div class="ct"><span>1733</span> 飞梭</div><div class="who">凯伊</div><img class="thumb" src="assets/img/shuttle.jpg" alt="飞梭"><p><b>织布快了，纱不够了</b></p></div><div class="card fam hid" data-step="2"><div class="ct"><span>1765</span> 珍妮机</div><div class="who">哈格里夫斯 · 人力</div><img class="thumb" src="assets/img/jenny.jpg" alt="珍妮纺纱机"><p><b>纺纱追上，仍在家中</b></p></div><div class="card fam hid" data-step="3"><div class="ct"><span>1769</span> 水力纺纱机</div><div class="who">阿克莱特 · 水力</div><img class="thumb" src="assets/img/waterframe.jpg?v=2" alt="水力纺纱机"><p><b>纺纱走进工厂</b></p></div><div class="card fam hid" data-step="4"><div class="ct"><span>1779</span> 骡机</div><div class="who">克隆普顿</div><img class="thumb" src="assets/img/mulejenny.jpg" alt="骡机"><p><b>家庭纺纱被淘汰</b></p></div><div class="card fam hid" data-step="5"><div class="ct"><span>1785</span> 水力织布机</div><div class="who">卡特赖特 · 水力</div><img class="thumb" src="assets/img/loom.jpg" alt="动力织布机"><p><b>织布追上，妇孺进厂</b></p></div></div>
-      <div class="bridge hid" data-step="8">水力受制于河道，动力突破势在必行。</div>
+      <div class="fams reveal" style="--d:3;--h:230px"><div class="card fam hid" data-step="1"><div class="ct"><span>1733</span> 飞梭</div><div class="who">凯伊</div><img class="thumb" src="assets/img/shuttle.jpg" alt="飞梭"></div><div class="card fam hid" data-step="2"><div class="ct"><span>1765</span> 珍妮机</div><div class="who">哈格里夫斯 · 人力</div><img class="thumb" src="assets/img/jenny.jpg" alt="珍妮纺纱机"></div><div class="card fam hid" data-step="3"><div class="ct"><span>1769</span> 水力纺纱机</div><div class="who">阿克莱特 · 水力</div><img class="thumb" src="assets/img/waterframe.jpg?v=2" alt="水力纺纱机"></div><div class="card fam hid" data-step="4"><div class="ct"><span>1779</span> 骡机</div><div class="who">克隆普顿</div><img class="thumb" src="assets/img/mulejenny.jpg" alt="骡机"></div><div class="card fam hid" data-step="5"><div class="ct"><span>1785</span> 水力织布机</div><div class="who">卡特赖特 · 水力</div><img class="thumb" src="assets/img/loom.jpg" alt="动力织布机"></div></div>
       <div class="src" style="margin-top:8px">图：飞梭（Pearson Scott Foresman）、珍妮机与水力纺纱机（1884 年版画）、骡机（贝恩斯《棉纺织业史》1835）、早期动力织布机（1892 年版画），均为公有领域。</div>
     </div>
   </div>
@@ -646,7 +669,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
       <p class="small reveal" style="--d:1">一项动力突破，引发一连串变化：<b class="brass">动力 → 地点 → 交通 → 完成</b></p>
       <div class="flow chain reveal" style="--d:2;grid-template-columns:1fr 140px 1fr 140px 1fr 140px 1fr;margin-top:14px"><div class="card link hid" data-step="1"><div class="ct">① 动力</div><p class="lead">瓦特改良蒸汽机</p><p>1785 年用于棉纺织厂</p><p class="tag">动力摆脱水力</p></div><div class="arr arrx"><small>不必傍河</small>→</div><div class="card link hid" data-step="2"><div class="ct">② 地点</div><p class="lead">工厂进城</p><p>建到城市、煤矿附近；曼彻斯特、利兹兴起</p><p class="tag">工厂集中，规模扩大</p></div><div class="arr arrx"><small>煤棉需运输</small>→</div><div class="card link hid" data-step="3"><div class="ct">③ 交通</div><p class="lead">汽船、火车</p><p>1807 汽船　1814 机车<br>1825 第一条铁路</p><p class="tag">进入“蒸汽时代”</p></div><div class="arr arrx"><small>机器需求增</small>→</div><div class="card link hid" data-step="4"><div class="ct">④ 完成</div><p class="lead">用机器制造机器</p><p>19 世纪中期机器制造业机械化</p><p class="tag">英国成为“世界工厂”</p></div></div>
       <div class="row reveal" style="--d:3;grid-template-columns:1fr;margin-top:18px">
-        <div class="card q" style="padding:16px 22px"><div class="from">浙江真题 · 2020 年 1 月 · 20</div><p class="stem">英国女演员弗朗丝·金伯尔对幼年（1830年）搭乘的一种新式交通工具，曾有如下描述：“现在我们以它的最高速度——每小时30英里（48公里）——出发，它比鸟的飞翔速度还要快。你难以想象切开空气向前奔跑的感觉是怎样的——它的运动也十分平稳。”据此判断，这种新式交通工具是（　）</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><span>A. 帆船</span><span>B. 蒸汽机车</span><span>C. 飞机</span><span>D. 汽车</span></div><div class="ans hid" data-step="5"><span><b class="big">B</b>1830 年正值铁路兴起（1825 年第一条铁路），蒸汽机车是第一次工业革命的成果；飞机（1903）、汽车属第二次工业革命，帆船并非新式交通工具。</span></div></div>
+        <div class="card q" style="padding:16px 22px"><div class="from">浙江真题 · 2020 年 1 月 · 20</div><p class="stem">英国女演员弗朗丝·金伯尔对幼年（1830年）搭乘的一种新式交通工具，曾有如下描述：“现在我们以它的最高速度——每小时30英里（48公里）——出发，它比鸟的飞翔速度还要快。你难以想象切开空气向前奔跑的感觉是怎样的——它的运动也十分平稳。”据此判断，这种新式交通工具是（　）</p><div class="opts" style="grid-template-columns:repeat(4,1fr)"><span>A. 帆船</span><span class="right">B. 蒸汽机车</span><span>C. 飞机</span><span>D. 汽车</span></div><i class="hid ansmark" data-step="5"></i></div>
       </div>
       <div class="bridge hid" data-step="99">工厂迁入城市，劳动从此受制于钟声与纪律。</div>
     </div>
@@ -658,7 +681,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
     <div class="hd reveal"><div><div class="sec">二、走进工厂 <small>两次工业革命与工厂制度</small></div><h2>（三）铃声与罚款：工厂纪律重塑劳动</h2></div><div class="lk">选必2 P24–25, P27</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1fr;align-items:start"><div class="card mat reveal" style="--d:2;--r:.4deg"><div class="ct">材料一</div><p>资产阶级用来束缚无产阶级的<b class="v">奴隶制</b>的锁链，无论在哪里也不像在工厂制度上这样原形毕露。……<b class="r">专制的钟声</b>经常把他从睡梦中唤走，把他从早餐和午餐中唤走。</p><p style="margin-top:6px">工厂规则通常是怎样的呢，请看吧：……在工作时和别人说话、<b class="r">唱歌或吹口哨</b>，即罚 6 辨士。……只要他喘一口气，拿着<b class="r">罚款簿</b>的监工就会立刻在他背后出现。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“工厂工人”</div></div></div>
-      <div class="row" style="grid-template-columns:.9fr 1fr 1fr;margin-top:16px;align-items:start"><figure class="fig reveal" style="--d:2;--r:-.6deg;--h:230px"><img src="assets/img/powerloom.jpg" alt="1835年动力织布车间"><figcaption>1835 年英国动力织布车间：女工看管机器，监工巡视。阿洛姆绘，公有领域</figcaption></figure><div class="card mat reveal" style="--d:3;--r:.4deg"><div class="ct">材料二 · 工厂主的辩护</div><p>（机器）几乎不让看管者做什么，<b class="v">绝无肌肉疲劳</b>，却给他稳定的好工资，外加一间免费的卫生车间。</p><div class="src">——［英］尤尔《制造业的哲学》（1835），本课译</div></div><div class="col" style="gap:12px"><div class="note reveal" style="--d:4;margin:0"><span class="k">知识归纳</span><b class="term brass" data-ans="fz-pop">工厂制度</b><span class="pg">选必2 P24—25、P27</span></div><div class="dark note pop kppop" id="fz-pop"><span><b class="t">①倒班制：</b>机器昼夜运行<br><b class="t">②严格规章：</b>罚款、体罚和解雇强化纪律<br><b class="t">③流水线：</b>广泛应用，工厂主监督管理<br><b class="t">④原料：</b>统一供应、合理调配<br><b class="t">作用：</b>利于科学管理、提高生产效率、挖掘劳动潜质；时间观念增强，准时准点成为现代生活准则（选必2 P24—27）</span></div><div class="task reveal" style="--d:5"><span class="lv">思考</span>尤尔说工厂“绝无肌肉疲劳”，恩格斯却称之为“奴隶制”。如何看待？</div><div class="hid dark note ansk pop"><span><b class="t">视角不同：</b>尤尔站在<b class="t">工厂主</b>立场，强调机器省力、效率高；恩格斯从<b class="t">劳动者处境与生产关系</b>评价，纪律与罚款的代价由工人承担（材料一）。两者都有立场，但钟声、罚款等可与工厂规章、议会证词互证。<b class="t">结论：</b>工厂制度适应机器大生产、提高效率（教材），也以严酷纪律压迫工人；评价历史现象要区分生产力标准与人的处境。</span></div></div></div>
+      <div class="row" style="grid-template-columns:.9fr 1fr 1fr;margin-top:16px;align-items:start"><figure class="fig reveal" style="--d:2;--r:-.6deg;--h:230px"><img src="assets/img/powerloom.jpg" alt="1835年动力织布车间"><figcaption>1835 年英国动力织布车间：女工看管机器，监工巡视。阿洛姆绘，公有领域</figcaption></figure><div class="card mat reveal" style="--d:3;--r:.4deg"><div class="ct">材料二 · 工厂主的辩护</div><p>（机器）几乎不让看管者做什么，<b class="v">绝无肌肉疲劳</b>，却给他稳定的好工资，外加一间免费的卫生车间。</p><div class="src">——［英］尤尔《制造业的哲学》（1835），本课译</div></div><div class="col" style="gap:12px"><div class="note reveal" style="--d:4;margin:0"><span class="k">知识归纳</span><b class="term brass" data-ans="fz-pop">工厂制度</b><span class="pg">选必2 P24—25、P27</span></div><div class="dark note pop kppop" id="fz-pop"><span><b class="t">① 倒班制</b>　机器<b class="r">昼夜运行</b><br><b class="t">② 严格规章</b>　<b class="r">罚款、体罚、解雇</b>强化纪律<br><b class="t">③ 流水线</b>　广泛应用，工厂主监督管理<br><b class="t">④ 原料</b>　统一供应、合理调配<br><b class="t">作用</b>　<b class="v">科学管理、提高效率</b>；<b class="v">时间观念</b>增强</span></div><div class="task reveal" style="--d:5"><span class="lv">思考</span>尤尔说工厂“绝无肌肉疲劳”，恩格斯却称之为“奴隶制”。如何看待？</div><div class="hid dark note ansk pop"><span><b class="t">视角不同：</b>尤尔站在<b class="t">工厂主</b>立场，强调机器省力、效率高；恩格斯从<b class="t">劳动者处境与生产关系</b>评价，纪律与罚款的代价由工人承担（材料一）。两者都有立场，但钟声、罚款等可与工厂规章、议会证词互证。<br><b class="t">结论：</b>工厂制度适应机器大生产、提高效率（教材），也以严酷纪律压迫工人；评价历史现象要区分生产力标准与人的处境。</span></div></div></div>
       <div class="bridge hid" data-step="99">蒸汽时代之后，科学走进工厂：电力与内燃机登场。</div>
     </div>
   </div>
@@ -666,33 +689,28 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="2" data-time="18:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">二、走进工厂 <small>两次工业革命与工厂制度</small></div><h2>（四）电力与内燃机：第二次工业革命的新动力</h2></div><div class="lk">纲要下 P58–59</div></div>
+    <div class="hd reveal"><div><div class="sec">二、走进工厂 <small>两次工业革命与工厂制度</small></div><h2>（四）电力与内燃机：第二次工业革命的新动力</h2></div><div class="lk"><div class="note reveal" style="--d:3;margin:0;display:inline-block;text-align:left"><span class="k">知识归纳</span><b class="term brass" data-ans="p9-kp">五大表现</b></div><div style="margin-top:6px">纲要下 P58–59</div></div></div>
     <div class="body">
-      <div class="row" style="grid-template-columns:.85fr 1.15fr">
-        <div class="col">
-          <div class="guess reveal" style="--d:1"><span class="k">先想一想</span>第一次工业革命英国率先，第二次为何多国<b>同时</b>发生？</div>
-          <div class="hid dark note pop reveal" style="--d:2"><span>①资本主义制度在欧美确立与巩固，社会相对稳定；②<b class="brass">科学技术与生产紧密结合</b>，科学成果可以跨国传播与应用；③第一次工业革命积累了资本、市场与工业基础；④各国政府推动、竞争加剧。</span></div>
-          <div class="card q reveal" style="--d:3;--r:-.3deg;padding:14px 18px"><div class="from">真题同源 · 2026 陕晋宁青卷 · 14</div><p class="stem" style="font-size:19px">1736 年法兰西科学院开始研究天然橡胶；1839 年固特异研制出克服其缺陷的新技术；19世纪后期橡胶大量用于绝缘材料，助益电力等产业。这直接说明科技突破（　）</p><div class="opts"><span>A. 改善社会生活</span><span>B. 推动生产方式变革</span><span>C. 提升基础研究</span><span>D. 加强世界联系</span></div><div class="ans hid" style="font-size:19px"><span><b class="big">B</b>从科研到电力产业：科学与生产结合。</span></div></div>
+      <div class="row" style="grid-template-columns:1.55fr 1fr;gap:26px;align-items:start">
+        <div class="col" style="gap:10px">
+          <div class="wipe ix reveal" style="--d:1;--x:50%">
+            <img src="assets/img/ford1913.jpg" alt="1913年福特流水线">
+            <img class="w-top" src="assets/img/powerloom.jpg" alt="1835年动力织布车间">
+            <div class="w-bar"><i></i></div>
+            <span class="w-lab l">1835 · 蒸汽时代</span><span class="w-lab r">1913 · 电气时代</span>
+            <input type="range" min="0" max="100" value="50" aria-label="拖动对比">
+            <i class="hid mk" data-step="1" data-wipe="100"></i><i class="hid mk" data-step="2" data-wipe="0"></i><i class="hid mk" data-step="3" data-wipe="50"></i>
+          </div>
+          <div class="row" style="grid-template-columns:1fr 1fr;gap:16px"><div class="src">左：英国动力织布车间（1835），阿洛姆绘，公有领域</div><div class="src" style="text-align:right">右：美国福特海兰帕克工厂磁电机流水线（1913），公有领域</div></div>
         </div>
-        <div class="col">
-          <div class="row" style="grid-template-columns:1fr 1fr;gap:16px">
-            <figure class="fig reveal" style="--d:2;--r:-.6deg;--h:190px"><img src="assets/img/edison.jpg" alt="爱迪生白炽灯"><figcaption>爱迪生早期白炽灯（1879—1880），公有领域</figcaption></figure>
-            <figure class="fig reveal" style="--d:3;--r:.6deg;--h:190px"><img src="assets/img/benz.jpg" alt="奔驰专利汽车"><figcaption>本茨专利汽车（1886）。图：DaimlerChrysler AG，CC BY-SA 3.0</figcaption></figure>
-          </div>
-          <div class="card kp reveal" style="--d:4;--r:.4deg">
-            <div class="ct">五大表现<span class="pg">纲要下 P58—59</span></div>
-            <table class="lg">
-              <tr><td class="h">电力</td><td>发电机、电灯</td><td><b class="r">“电气时代”</b></td></tr>
-              <tr><td class="h">内燃机</td><td>汽车、飞机</td><td><b class="r">影响最深远</b></td></tr>
-              <tr><td class="h">通讯</td><td>电话、电报</td><td>信息交流</td></tr>
-              <tr><td class="h">化工</td><td><b class="v">合成</b>新材料</td><td>丰富生活</td></tr>
-              <tr><td class="h">旧产业</td><td>炼钢、纺织、铁路</td><td>焕发活力</td></tr>
-            </table>
-            <div class="stamp" style="--sr:8deg;--sd:1.2s">必背<small>五大表现</small></div>
-          </div>
+        <div class="col" style="gap:14px">
+          <div class="task reveal" style="--d:2;font-size:28px"><span class="lv">思考</span>对比两座工厂：工人干活的方式发生了哪些变化？这和新动力有什么关系？</div>
+          <div class="hid dark note pop" data-step="4"><span><b class="t">1835：</b>一台蒸汽机经长轴、皮带带动整个车间，工人守着机器看管多道工序，工厂要靠近煤和水。<br><b class="t">1913：</b>电力驱动机器，工件沿流水线移动，每个工人只重复一道工序，分工更细、节奏由流水线决定，效率大增。<br><b class="t">关系：</b>电力可以远距离输送、灵活分配，内燃机让动力可以移动——新动力推动生产组织变革，工人进一步成为流水线上的一环。</span></div>
+          <div class="guess reveal" style="--d:3;font-size:28px"><span class="k">再思索</span>第一次工业革命英国率先，第二次为何多国<b>同时</b>发生？</div>
+          <div class="hid dark note pop" data-step="5"><span>①资本主义制度在欧美确立与巩固，社会相对稳定；<br>②<b class="brass">科学技术与生产紧密结合</b>，科学成果可以跨国传播与应用；<br>③第一次工业革命积累了资本、市场与工业基础；<br>④各国政府推动、竞争加剧。</span></div>
         </div>
       </div>
-      <div class="bridge hid" data-step="99">两次工业革命，异同何在？</div>
+      <div class="dark note pop kppop" id="p9-kp"><span><b class="t">电力</b>　发电机、电灯 → <b class="r">“电气时代”</b><br><b class="t">内燃机</b>　汽车、飞机 → <b class="r">影响最深远</b><br><b class="t">通讯</b>　电话、电报 → 信息交流加强<br><b class="t">化学工业</b>　<b class="v">合成方法</b>制造新材料，石油化工<br><b class="t">旧产业</b>　炼钢、纺织、铁路等<b class="v">焕发新活力</b></span></div>
     </div>
   </div>
 </section>
@@ -703,13 +721,13 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
     <div class="body">
       <div class="row" style="grid-template-columns:1fr 1.05fr;gap:22px;align-items:start">
         <div class="card ix yrs reveal" style="--d:1;--r:-.4deg;padding:16px 22px">
-          <div class="yhead"><b class="yr">1769</b><span class="ystage"></span></div>
-          <input type="range" min="1765" max="1900" step="1" value="1769" autocomplete="off" aria-label="拖动选择年份">
-          <div class="yticks"><span>1765</span><span>1785</span><span>1840</span><span>1870</span><span>1900</span></div>
+          <div class="yhead"><b class="yr">第一次工业革命</b><span class="ystage"></span></div>
+          <input type="range" min="1" max="2" step="1" value="1" autocomplete="off" aria-label="切换两次工业革命">
+          <div class="yticks"><span>第一次工业革命</span><span>第二次工业革命</span></div>
           <table class="lg yfields"><tr><td class="h">动力</td><td data-y="dl"></td></tr><tr><td class="h">代表发明</td><td data-y="inv"></td></tr><tr><td class="h">发明者</td><td data-y="who"></td></tr><tr><td class="h">领跑国家</td><td data-y="lead"></td></tr><tr><td class="h">主导部门</td><td data-y="sec"></td></tr><tr><td class="h">科技与生产</td><td data-y="sci"></td></tr><tr><td class="h">生产组织</td><td data-y="org"></td></tr></table>
-          <i class="hid mk" data-step="1" data-year="1769"></i><i class="hid mk" data-step="2" data-year="1800"></i><i class="hid mk" data-step="3" data-year="1851"></i><i class="hid mk" data-step="4" data-year="1885"></i>
+          <i class="hid mk" data-step="1" data-year="1"></i><i class="hid mk" data-step="2" data-year="2"></i>
         </div>
-        <div class="card kp hid" data-step="5" style="--r:.3deg;padding:14px 20px">
+        <div class="card kp hid" data-step="3" style="--r:.3deg;padding:14px 20px">
           <table class="lg" style="font-size:19px">
             <tr><th style="width:140px">比较</th><th>第一次（18c60s—19c中期）</th><th>第二次（19c70s—20c初）</th></tr>
             <tr><td class="h">标志</td><td>珍妮机开始；<b class="v">改良蒸汽机</b></td><td><b class="v">电力</b>的广泛应用</td></tr>
@@ -724,7 +742,6 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
           <p style="font-size:20.5px;margin-top:8px">关键句：第二次工业革命<b class="key">不是第一次的简单延续</b>；各国进程<b class="key">各具特色</b>。</p>
         </div>
       </div>
-      <div class="bridge hid" data-step="99">生产规模扩大，资本走向集中与垄断。</div>
     </div>
   </div>
 </section>
@@ -755,9 +772,9 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
         <div class="card q reveal" style="--d:4;--r:.4deg">
           <div class="from">真题同源 · 2024 广西卷</div>
           <p class="stem" style="font-size:21px">1894 年，美国记者劳埃德指出，标准石油公司操纵市场，以便消除竞争。他还称“自由创造富裕，但富裕毁灭自由”。这反映了美国（　）</p>
-          <div class="opts"><span>A. 自由资本主义的发展</span><span>B. 垄断资本主义的形成</span><span>C. 国家资本主义的发展</span><span>D. 贸易保护主义的形成</span></div>
-          <div class="ans hid" style="font-size:20px"><span><b class="big">B</b>“操纵市场、消除竞争”是垄断组织的特征。</span></div>
-        </div>
+          <div class="opts"><span>A. 自由资本主义的发展</span><span class="right">B. 垄断资本主义的形成</span><span>C. 国家资本主义的发展</span><span>D. 贸易保护主义的形成</span></div>
+          
+        <i class="hid ansmark"></i></div>
       </div>
       <div class="bridge hid" data-step="99">从工厂走向城市：劳动者的生活随之改变。</div>
     </div>
@@ -768,7 +785,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="content">
     <div class="hd reveal"><div><div class="sec">三、搬进城市 <small>城市化与社会生活</small></div><h2>（一）职住分离：工作与家庭的重新划界</h2></div><div class="lk">选必2 P26–27</div></div>
     <div class="body">
-      <div class="row" style="grid-template-columns:1.2fr 1fr;align-items:start"><div class="card q reveal" style="--d:1;--r:-.3deg"><div class="from">真题同源 · 2025 甘肃卷 · 15</div><p class="stem">工业革命之前，人们的工作场所和家庭住所间没有明显界限，家庭成员往往从事相似的工作。工业革命后，随着工厂的兴起，在许多城市家庭中，丈夫需要早晚往返于工作场所和家庭住所之间，妻儿则待在家里。上述变化反映出（　）</p><div class="opts"><span>A.生产技术和专业水平的提高</span><span>B.居住条件和基础设施的改善</span><span>C.贫富分化和阶级差异的形成</span><span>D.生活空间和劳作方式的改变</span></div><div class="ans hid"><span><b class="big">D</b>职住分离＝劳作方式与生活空间的改变。</span></div></div><figure class="fig reveal" style="--d:2;--r:.8deg;--h:360px;--op:center 40%"><img src="assets/img/dore.jpg" alt="多雷《乘火车俯瞰伦敦》"><figcaption>多雷《乘火车俯瞰伦敦》（1872）：铁路高架旁挤满工人住宅，公有领域</figcaption></figure></div><div class="row" style="grid-template-columns:1fr 1fr;margin-top:16px"><div class="card mat reveal" style="--d:3;--r:.4deg"><div class="ct">材料</div><p>在许多家庭里，<b class="r">妻子和丈夫一样地出外工作</b>，结果孩子就完全没有人照顾……</p><div class="src">——恩格斯《英国工人阶级状况》（1845）</div></div><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>真题说“妻儿则待在家里”，恩格斯却说妻子也外出做工。两则史料矛盾吗？</div><div class="hid dark note ansk pop"><span><b class="t">不一定矛盾：</b>题干说的是“<b class="t">许多</b>城市家庭”，较符合收入较高的家庭；恩格斯观察的是<b class="t">曼彻斯特工人家庭</b>。说明工业化对不同阶层家庭影响不同。<b class="t">方法：</b>读史料要问“说的是谁”。生活方式变化：城市化、流动性、时间观念、教育（选必2 P26—27）。</span></div></div></div>
+      <div class="row" style="grid-template-columns:1.2fr 1fr;align-items:start"><div class="card q reveal" style="--d:1;--r:-.3deg"><div class="from">真题同源 · 2025 甘肃卷 · 15</div><p class="stem">工业革命之前，人们的工作场所和家庭住所间没有明显界限，家庭成员往往从事相似的工作。工业革命后，随着工厂的兴起，在许多城市家庭中，丈夫需要早晚往返于工作场所和家庭住所之间，妻儿则待在家里。上述变化反映出（　）</p><div class="opts"><span>A.生产技术和专业水平的提高</span><span>B.居住条件和基础设施的改善</span><span>C.贫富分化和阶级差异的形成</span><span class="right">D.生活空间和劳作方式的改变</span></div><i class="hid ansmark"></i></div><figure class="fig reveal" style="--d:2;--r:.8deg;--h:360px;--op:center 40%"><img src="assets/img/dore.jpg" alt="多雷《乘火车俯瞰伦敦》"><figcaption>多雷《乘火车俯瞰伦敦》（1872）：铁路高架旁挤满工人住宅，公有领域</figcaption></figure></div><div class="row" style="grid-template-columns:1fr 1fr;margin-top:16px"><div class="card mat reveal" style="--d:3;--r:.4deg"><div class="ct">材料</div><p>在许多家庭里，<b class="r">妻子和丈夫一样地出外工作</b>，结果孩子就完全没有人照顾……</p><div class="src">——恩格斯《英国工人阶级状况》（1845）</div></div><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>真题说“妻儿则待在家里”，恩格斯却说妻子也外出做工。两则史料矛盾吗？</div><div class="hid dark note ansk pop"><span><b class="t">不一定矛盾：</b>题干说的是“<b class="t">许多</b>城市家庭”，较符合收入较高的家庭；恩格斯观察的是<b class="t">曼彻斯特工人家庭</b>。说明工业化对不同阶层家庭影响不同。<br><b class="t">方法：</b>读史料要问“说的是谁”。生活方式变化：城市化、流动性、时间观念、教育（选必2 P26—27）。</span></div></div></div>
       <div class="bridge hid" data-step="99">家庭一分为二，城市空间亦随之分化。</div>
     </div>
   </div>
@@ -805,13 +822,13 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
       <div class="flips reveal" style="--d:2"><div class="flipc ix" data-n="1"><div class="in"><div class="face front"><div class="fl">改善 · 城市</div><p>以工厂为中心形成了许多城市</p><div class="fs">1851 年，英国城市人口超过总人口 50%（选必2 P61）</div></div><div class="face back"><div class="fl">问题 · 城市</div><p>工人居住条件恶劣</p><div class="fs">例：“小爱尔兰”每 120 人一个厕所（恩格斯）</div></div></div></div><div class="flipc ix" data-n="2"><div class="in"><div class="face front"><div class="fl">改善 · 生活</div><p>商品物美价廉，人们的生活有所改善</p><div class="fs">纲要下 P60</div></div><div class="face back"><div class="fl">问题 · 生活</div><p>社会贫富分化加剧</p><div class="fs">例：1842 年曼彻斯特，士绅平均 38 岁去世，劳工 17 岁</div></div></div></div><div class="flipc ix" data-n="3"><div class="in"><div class="face front"><div class="fl">改善 · 节奏</div><p>生活节奏加快，时间观念增强</p><div class="fs">准时准点成为现代生活的准则（选必2 P27）</div></div><div class="face back"><div class="fl">问题 · 节奏</div><p>工人劳动时间过长</p><div class="fs">例：童工忙时每天做工 16 小时（1832 年证词）</div></div></div></div><div class="flipc ix" data-n="4"><div class="in"><div class="face front"><div class="fl">改善 · 文化</div><p>报刊书籍发行量大增，初等教育推广</p><div class="fs">19 世纪末英格兰 5—12 岁儿童入学率达 80%（选必2 P27）</div></div><div class="face back"><div class="fl">问题 · 文化</div><p>环境污染严重，疾病与犯罪</p><div class="fs">例：被染料染成深紫色的河（狄更斯，纲要下 P60）</div></div></div></div><i class="hid mk" data-step="1" data-flip="1"></i><i class="hid mk" data-step="2" data-flip="2"></i><i class="hid mk" data-step="3" data-flip="3"></i><i class="hid mk" data-step="4" data-flip="4"></i></div>
       <div class="row" style="grid-template-columns:.3fr 1fr;margin-top:14px;align-items:start;gap:20px">
         <div class="col" style="gap:12px"><div class="note hid gov" data-step="5" style="margin:0"><span class="k">治理</span>工人运动推动<b class="brass">社会立法</b>（纲要下 P60），如 1802 年英国第一部《工厂法》（选必2 P27）</div><div class="note reveal" style="--d:4;margin:0"><span class="k">知识归纳</span><b class="term brass" data-ans="sh-pop">社会生活的变化</b><br><span class="pg" style="margin-left:0">纲要下 P60 · 选必2 P26—28</span></div></div>
-        <div class="dark note pop kppop" id="sh-pop"><span><b class="t">改善：</b>工厂城市兴起；商品物美价廉，生活有所改善；休闲娱乐、群众性体育兴起，报刊书籍大增，文化素养提高；女性受教育机会增多；人口明显增加（纲要下 P60）。生活节奏加快，时间观念增强；初等教育推广（选必2 P27）<br><b class="t">问题：</b>贫富分化加剧、工人居住条件恶劣、环境污染严重、疾病与犯罪（纲要下 P60）；劳动时间过长，传染病与职业病危害工人健康（选必2 P27）<br><b class="t">治理：</b>工人运动推动欧美各国通过社会立法解决问题</span></div>
+        <div class="dark note pop kppop" id="sh-pop"><span><b class="t">改善</b>　工厂城市兴起；商品<b class="v">物美价廉</b>；休闲娱乐、群众性体育；报刊书籍大增；<b class="v">初等教育</b>推广；<b class="v">时间观念</b>增强<br><b class="t">问题</b>　<b class="r">贫富分化</b>、居住恶劣、<b class="r">环境污染</b>、疾病与犯罪；劳动时间过长<br><b class="t">治理</b>　工人运动推动<b class="r">社会立法</b></span></div>
         <div class="card q reveal" style="--d:5;--r:-.2deg;padding:14px 22px">
           <div class="from">浙江真题 · 2025 年 6 月 · 16</div>
           <p class="stem">下为19世纪中后期英国社会对煤烟影响环境等的看法。材料反映了（　）</p>
           <table class="lg zjt zj2"><tr><td class="h">某制造商</td><td>煤烟中的碳对人的健康不产生任何有害影响，完全能够遏制、消除有害气体</td></tr><tr><td class="h">《柳叶刀》</td><td>死亡不是与（由）浓雾相伴的寒冷气温引起的，而是浓雾中包含的化学物质引起的</td></tr><tr><td class="h">伦敦市长</td><td>大工厂的烟囱竖起之后，疟疾就不再侵扰生活在周边的居民了</td></tr><tr><td class="h">流行刊物</td><td>强健的胸腔无法形成可以抵御煤烟攻击的保护，空气某种程度上已经不再适合呼吸了</td></tr></table>
-          <div class="opts"><span>A. 环境污染问题严峻已成共识</span><span>B. 社会医疗水平随工业化提升</span><span>C. 城市化必然会带来公共卫生危机</span><span>D. 工业化城市化过程中存在的问题</span></div>
-        </div><div class="hid dark note pop" data-step="6"><span><b class="big">D</b>四种看法有分歧（制造商、市长否认危害），说明并未形成“共识”；材料呈现的是工业化、城市化带来的环境与健康问题。</span></div>
+          <div class="opts"><span>A. 环境污染问题严峻已成共识</span><span>B. 社会医疗水平随工业化提升</span><span>C. 城市化必然会带来公共卫生危机</span><span class="right">D. 工业化城市化过程中存在的问题</span></div>
+        <i class="hid ansmark" data-step="6"></i></div>
       </div>
       <div class="bridge hid" data-step="99">社会分化催生政治诉求：谁来代表劳动者？</div>
     </div>
@@ -863,7 +880,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
         <figure class="fig reveal" style="--d:2;--r:.8deg;--h:330px"><img src="assets/img/chartist.jpg" alt="1848年宪章运动集会"><figcaption>1848 年 4 月 10 日，伦敦肯宁顿公地的宪章运动大集会。基尔伯恩摄，英国皇家收藏，公有领域</figcaption></figure>
         <div class="card kp reveal" style="--d:3;--r:.4deg"><div class="ct">从捣毁机器到政治斗争<span class="pg">纲要下 P62—63</span></div><table class="lg"><tr><td class="n">1811–16</td><td>卢德运动</td></tr><tr><td class="n">1831/34</td><td><b class="v">里昂工人</b>起义</td></tr><tr><td class="n">1836–48</td><td><b class="v">宪章运动</b></td></tr><tr><td class="n">1844</td><td><b class="v">西里西亚织工</b>起义</td></tr><tr><td class="n">1848</td><td><b class="r">马克思主义诞生</b></td></tr></table><p style="margin-top:8px">工人阶级<b class="key">登上政治舞台</b>（纲要下 P63）</p></div>
       </div>
-      <div class="row" style="grid-template-columns:1fr 1fr;margin-top:16px"><div class="card mat reveal" style="--d:4;--r:-.4deg"><div class="ct">材料</div><p>他们……<b class="r">捣毁机器</b>，烧毁工厂……斗争的真正成果……是<b class="r">工人的越来越扩大的联合</b>。</p><div class="src">——马克思、恩格斯《共产党宣言》（1848）</div></div><div class="col reveal" style="--d:5;gap:10px"><div class="task"><span class="lv">思考</span>对比两幅图，概括工人斗争目标与形式的变化，并分析原因。</div><div class="hid dark note ansk pop"><span><b class="t">变化：</b>自发破坏机器 → 成立工会 → 争取普选权等政治权利；从分散的个人走向阶级联合。<b class="t">条件：</b>工厂把工人集中起来；城市提供联络空间；矛盾激化；1832 年改革未给工人选举权；马克思主义提供理论。<b class="t">认识：</b>工人逐渐认识到问题不在机器，而在其使用方式与政治制度。<b class="t">成果：</b>工时受限、最低工资得到一定保障。</span></div></div></div>
+      <div class="row" style="grid-template-columns:1fr 1fr;margin-top:16px"><div class="card mat reveal" style="--d:4;--r:-.4deg"><div class="ct">材料</div><p>他们……<b class="r">捣毁机器</b>，烧毁工厂……斗争的真正成果……是<b class="r">工人的越来越扩大的联合</b>。</p><div class="src">——马克思、恩格斯《共产党宣言》（1848）</div></div><div class="col reveal" style="--d:5;gap:10px"><div class="task"><span class="lv">思考</span>对比两幅图，概括工人斗争目标与形式的变化，并分析原因。</div><div class="hid dark note ansk pop"><span><b class="t">变化：</b>自发破坏机器 → 成立工会 → 争取普选权等政治权利；从分散的个人走向阶级联合。<br><b class="t">条件：</b>工厂把工人集中起来；城市提供联络空间；矛盾激化；1832 年改革未给工人选举权；马克思主义提供理论。<br><b class="t">认识：</b>工人逐渐认识到问题不在机器，而在其使用方式与政治制度。<br><b class="t">成果：</b>工时受限、最低工资得到一定保障。</span></div></div></div>
       <div class="bridge hid" data-step="99">大工业向全球索取原料与市场：一件棉衣背后，连着谁？</div>
     </div>
   </div>
@@ -897,9 +914,10 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
           <div class="ct">上海 · 纱厂童工</div>
           <p >工业化在中国来得更晚。1929 年上海社会局的纺织业统计显示：棉纺业男女童工每日须工作 <b class="r">11 小时</b>，工资低的每天只有两角五分。</p>
           <div class="src">来源：恽代英 1929 年文章所引上海社会局统计</div>
-        </div><div class="reveal" style="--d:5"><div class="guess" style="font-size:20px"><span class="k">连到主线</span>英国工厂里的“自由”劳动，与美洲种植园的奴隶劳动，是对立的，还是同一条棉花链上的两环？</div></div><div class="reveal" style="--d:5"><div class="card q" style="padding:12px 16px"><div class="from">浙江真题 · 2024 年 1 月 · 12</div><p class="stem" style="font-size:19.5px">咖啡原产于非洲，6世纪传入阿拉伯半岛，15世纪后传播到欧洲。17世纪初，威尼斯商人开设了欧洲第一家咖啡馆，之后咖啡馆逐渐风行欧洲。与此同时，欧洲人也有计划地在殖民地生产咖啡。1882年，第一家国际性的咖啡交易所在纽约开张。到20世纪初，拉丁美洲成了全世界咖啡生产的中心，美国成了全世界最大的咖啡市场。据此判断，下列说法正确的是（　）</p><div class="stmts"><span>①咖啡传入亚洲是在世界市场初步建立之后</span><span>②咖啡传入欧洲源于启蒙思想家的大力宣传</span><span>③拉丁美洲成为全世界咖啡生产中心与近代不合理国际分工密切相关</span><span>④美国成为全世界最大的咖啡市场得益于近代世界贸易与文化的交流</span></div><div class="opts" style="grid-template-columns:repeat(4,1fr)"><span>A. ①④</span><span>B. ②③</span><span>C. ②④</span><span>D. ③④</span></div></div><div class="hid dark note pop" data-step="4"><span><b class="big">D</b>拉美沦为殖民国家的原料产地（单一种植），体现不合理的国际分工；咖啡传入亚洲早在6世纪，传入欧洲与启蒙思想家无关。</span></div></div>
+        </div><div class="reveal" style="--d:5"><div class="guess" style="font-size:20px"><span class="k">连到主线</span>英国工厂里的“自由”劳动，与美洲种植园的奴隶劳动，是对立的，还是同一条棉花链上的两环？</div></div>
         </div>
       </div>
+      <div class="reveal" style="--d:5;margin-top:14px"><div class="card q" style="padding:12px 16px"><div class="from">浙江真题 · 2024 年 1 月 · 12</div><p class="stem" style="font-size:19.5px">咖啡原产于非洲，6世纪传入阿拉伯半岛，15世纪后传播到欧洲。17世纪初，威尼斯商人开设了欧洲第一家咖啡馆，之后咖啡馆逐渐风行欧洲。与此同时，欧洲人也有计划地在殖民地生产咖啡。1882年，第一家国际性的咖啡交易所在纽约开张。到20世纪初，拉丁美洲成了全世界咖啡生产的中心，美国成了全世界最大的咖啡市场。据此判断，下列说法正确的是（　）</p><div class="stmts"><span>①咖啡传入亚洲是在世界市场初步建立之后</span><span>②咖啡传入欧洲源于启蒙思想家的大力宣传</span><span>③拉丁美洲成为全世界咖啡生产中心与近代不合理国际分工密切相关</span><span>④美国成为全世界最大的咖啡市场得益于近代世界贸易与文化的交流</span></div><div class="opts" style="grid-template-columns:repeat(4,1fr)"><span>A. ①④</span><span>B. ②③</span><span>C. ②④</span><span class="right">D. ③④</span></div><i class="hid ansmark" data-step="4"></i></div></div>
       <div class="bridge hid" data-step="99">无数链条交织，世界市场由此形成。</div>
     </div>
   </div>
@@ -920,7 +938,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
               <tr><td class="h">19c 末 20c 初</td><td><b>资本输出</b>，<b class="r">最终形成</b></td></tr>
             </table>
           </div>
-          <div class="card q reveal" style="--d:3;--r:-.3deg;padding:14px 20px"><div class="from">浙江真题 · 2026 年 6 月 · 14</div><p class="stem" style="font-size:20px">下表为19世纪上半叶英国的部分政策措施，其主要目的是（　）</p><table class="lg zjt"><tr><td class="h">1813</td><td>取消英国东印度公司对印度的贸易垄断权</td></tr><tr><td class="h">1843</td><td>完全废除机械出口禁令</td></tr><tr><td class="h">1841—1846</td><td>先后取消600多种关税</td></tr></table><div class="opts"><span>A. 推动工业发展，强化经济优势</span><span>B. 加强技术输出，抢占投资场所</span><span>C. 调整殖民政策，扩大亚洲市场</span><span>D. 削减关税壁垒，降低生产成本</span></div><div class="ans hid" style="font-size:19px"><span><b class="big">A</b>“世界工厂”凭工业优势推行自由贸易，拓展市场、巩固优势；当时以商品输出为主（B 错），措施面向全球（C 错），D 只是手段。</span></div></div>
+          <div class="card q reveal" style="--d:3;--r:-.3deg;padding:14px 20px"><div class="from">浙江真题 · 2026 年 6 月 · 14</div><p class="stem" style="font-size:20px">下表为19世纪上半叶英国的部分政策措施，其主要目的是（　）</p><table class="lg zjt"><tr><td class="h">1813</td><td>取消英国东印度公司对印度的贸易垄断权</td></tr><tr><td class="h">1843</td><td>完全废除机械出口禁令</td></tr><tr><td class="h">1841—1846</td><td>先后取消600多种关税</td></tr></table><div class="opts"><span class="right">A. 推动工业发展，强化经济优势</span><span>B. 加强技术输出，抢占投资场所</span><span>C. 调整殖民政策，扩大亚洲市场</span><span>D. 削减关税壁垒，降低生产成本</span></div><i class="hid ansmark"></i></div>
         </div>
         <div class="col">
           <figure class="fig reveal" style="--d:2;--r:.8deg;--h:200px"><img src="assets/img/crystal.jpg" alt="1851年水晶宫万国博览会"><figcaption>1851 年伦敦水晶宫万国工业博览会内景：“世界工厂”的展示，公有领域</figcaption></figure>
@@ -974,7 +992,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
       <div class="row reveal" style="--d:2;grid-template-columns:.9fr 1.1fr;margin-top:18px">
         <div class="card mat" style="padding:14px 20px"><div class="ct">主线史料</div><p>工人要学会把<b class="v">机器和机器的资本主义应用</b>区别开来，从而学会把自己的攻击从物质生产资料本身转向物质生产资料的社会使用形式，是需要时间和经验的。</p><div class="src">——马克思《资本论》第一卷第十三章第五节</div></div>
         <div class="task"><span class="lv">史论结合 · 下课前</span>AI 会让今天的劳动者成为新的“活的附属物”吗？运用本课史实，谈谈你的看法。</div>
-        <div class="hid dark note pop" data-step="4"><span><b class="t">观点示例：</b>技术本身不必然支配人，关键在于技术怎样被使用、由什么规则约束。<b class="t">以史为证：</b>①工业革命中机器提高了生产力，但在资本主义使用下，工时延长、童工增多，工人成为机器的“活的附属物”；②工人从捣毁机器走向联合，1833 年《工厂法》等社会立法逐步设限，说明制度能调节技术的后果。<b class="t">联系今天：</b>AI 提升效率，也可能带来岗位替代、算法控制等问题，同样需要规则保障与技能培训。<b class="t">结论：</b>技术进步与人的发展并不自动同步，需要社会主动调节。</span></div>
+        <div class="hid dark note pop" data-step="4"><span><b class="t">观点示例：</b>技术本身不必然支配人，关键在于技术怎样被使用、由什么规则约束。<br><b class="t">以史为证：</b>①工业革命中机器提高了生产力，但在资本主义使用下，工时延长、童工增多，工人成为机器的“活的附属物”；<br>②工人从捣毁机器走向联合，1833 年《工厂法》等社会立法逐步设限，说明制度能调节技术的后果。<br><b class="t">联系今天：</b>AI 提升效率，也可能带来岗位替代、算法控制等问题，同样需要规则保障与技能培训。<br><b class="t">结论：</b>技术进步与人的发展并不自动同步，需要社会主动调节。</span></div>
       </div>
       <div class="bridge hid" data-step="99">汽笛时代，人追随机器；算法时代，技术能否服务于人？</div>
     </div>
@@ -1026,7 +1044,7 @@ function autofit() {
     document.querySelectorAll('.slide').forEach((slide) => {
         const body = slide.querySelector('.content .body');
         if (!body) return;
-        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg, .pop, .fig, .arrx, .pane, .mapimg, .flipc'));
+        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg, .pop, .fig, .arrx, .pane, .mapimg, .flipc, .seesaw, .wipe'));
         els.forEach((el) => { if (!el.dataset.fs0) el.dataset.fs0 = parseFloat(getComputedStyle(el).fontSize); });
         const foot = slide.querySelector('.foot');
         const limit = 1036;
@@ -1037,8 +1055,9 @@ function autofit() {
             els.forEach((el) => { const r = el.getBoundingClientRect(); if (r.height) m = Math.max(m, (r.bottom - top) / u); });
             return m;
         };
-        for (let k = 1.9; k >= 0.85; k -= 0.05) {
-            els.forEach((el) => { el.style.fontSize = (el.dataset.fs0 * k).toFixed(1) + 'px'; });
+        const minSet = new Set(body.querySelectorAll('.task, .task *, .guess, .guess *, .note:has(.term), .note:has(.term) *'));
+        for (let k = 1.9; k >= 0.6; k -= 0.05) {
+            els.forEach((el) => { const f = el.dataset.fs0 * k; el.style.fontSize = (minSet.has(el) ? Math.max(f, 24) : f).toFixed(1) + 'px'; });
             if (bottom() <= limit) break;
         }
     });
@@ -1133,6 +1152,7 @@ class SlidePresentation {
             const q = e.target.closest('.qa');
             if (q && q.qaAnswer && !q.closest('.hid:not(.shown)')) { const a = q.qaAnswer; if (a.classList.contains('shown')) a.classList.remove('tucked'); else a.classList.add('shown'); return; }
             let hit = e.target.closest('.hid:not(.shown)');
+            if (hit && hit.dataset.step) hit = null;
             while (hit && hit.parentElement.closest('.hid:not(.shown)')) hit = hit.parentElement.closest('.hid:not(.shown)');
             hit ? hit.classList.add('shown') : this.step();
         });
@@ -1190,23 +1210,16 @@ document.querySelectorAll('.vote').forEach((root) => {
     root.querySelectorAll('.who button').forEach((b) => b.addEventListener('click', () => voteSet(root, ...b.dataset.preset.split(','))));
 });
 const YEARS = [
-    { from: 1765, stage: '第一次工业革命开始', dl: '人力 → 水力', inv: '1765 珍妮纺纱机；1769 水力纺纱机；1771 第一家工厂', who: '哈格里夫斯（纺织工）、阿克莱特', lead: '英国', sec: '棉纺织业（轻工业）', sci: '多源于工匠实践', org: '工厂出现（1771）' },
-    { from: 1785, stage: '蒸汽机进厂', dl: '蒸汽（煤）', inv: '1785 瓦特蒸汽机进入棉纺织厂；1807 汽船；1814 蒸汽机车', who: '瓦特（徒工）、史蒂芬孙（炉工）', lead: '英国', sec: '轻工业为主', sci: '多源于工匠实践', org: '工厂制度确立' },
-    { from: 1840, stage: '19 世纪中期：第一次工业革命完成', dl: '蒸汽（煤）——“蒸汽时代”', inv: '机器制造业实现机械化；1866 西门子发电机', who: '工匠为主，工程师登场（西门子）', lead: '英国（“世界工厂”）', sec: '机器制造业', sci: '工匠实践为主，科学开始介入', org: '工厂制度' },
-    { from: 1870, stage: '第二次工业革命', dl: '电力、内燃机（石油）——“电气时代”', inv: '1876 贝尔电话；1879 爱迪生电灯；1885—86 本茨汽车', who: '爱迪生、贝尔（发明家）', lead: '美国、德国最为突出', sec: '重工业、新兴工业', sci: '科学技术与生产紧密结合', org: '出现垄断组织' },
+    { from: 1, label: '第一次工业革命', stage: '18c60s—19c中期', dl: '蒸汽（煤）——“蒸汽时代”', inv: '珍妮纺纱机、改良蒸汽机、汽船、蒸汽机车', who: '工匠（哈格里夫斯、瓦特、史蒂芬孙）', lead: '英国（“世界工厂”）', sec: '轻工业为主', sci: '多源于工匠实践', org: '工厂制度确立' },
+    { from: 2, label: '第二次工业革命', stage: '19c70s—20c初', dl: '电力、内燃机（石油）——“电气时代”', inv: '发电机、电灯、电话、汽车、飞机', who: '科学家、发明家（西门子、爱迪生、贝尔）', lead: '美国、德国最为突出', sec: '重工业、新兴工业', sci: '科学技术与生产紧密结合', org: '出现垄断组织' },
 ];
 function yrSet(root, y) {
     y = Number(y);
-    const era = YEARS.filter((e) => y >= e.from).pop();
-    root.querySelector('input').value = y;
-    root.querySelector('.yr').textContent = y;
+    const era = YEARS.filter((e) => y >= e.from).pop() || YEARS[0];
+    root.querySelector('input').value = era.from;
+    root.querySelector('.yr').textContent = era.label;
     root.querySelector('.ystage').textContent = era.stage;
-    root.querySelectorAll('[data-y]').forEach((td) => {
-        if (td.textContent === era[td.dataset.y]) return;
-        td.textContent = era[td.dataset.y];
-        td.classList.remove('flash'); void td.offsetWidth; td.classList.add('flash');
-        setTimeout(() => td.classList.remove('flash'), 600);
-    });
+    root.querySelectorAll('[data-y]').forEach((td) => { td.textContent = era[td.dataset.y]; });
 }
 document.querySelectorAll('.yrs').forEach((root) => {
     yrSet(root, root.querySelector('input').value);
@@ -1234,12 +1247,19 @@ function tabGo(root, k) {
 }
 document.querySelectorAll('.tabx').forEach((root) => root.querySelectorAll('.zbar').forEach((b) => b.addEventListener('click', () => tabGo(root, b.dataset.tab))));
 document.querySelectorAll('.flipc').forEach((c) => c.addEventListener('click', () => c.classList.toggle('on')));
+function wipeSet(root, x) { root.style.setProperty('--x', x + '%'); const r = root.querySelector('input'); if (r) r.value = x; }
+document.querySelectorAll('.wipe').forEach((root) => {
+    const r = root.querySelector('input');
+    r.addEventListener('input', () => { root.classList.add('dragging'); wipeSet(root, r.value); });
+    r.addEventListener('change', () => root.classList.remove('dragging'));
+});
 const mkObserver = new MutationObserver((list) => list.forEach(({ target: m }) => {
     if (!m.classList.contains('shown')) return;
     if (m.dataset.k) mapGo(m.closest('.mapx'), m.dataset.k);
     if (m.dataset.preset) voteSet(m.closest('.vote'), ...m.dataset.preset.split(','));
     if (m.dataset.year) yrSet(m.closest('.yrs'), m.dataset.year);
     if (m.dataset.tab) tabGo(m.closest('.tabx'), m.dataset.tab);
+    if (m.dataset.wipe) wipeSet(m.closest('.wipe'), m.dataset.wipe);
     if (m.dataset.flip) { const c = m.closest('.flips').querySelector('.flipc[data-n="' + m.dataset.flip + '"]'); if (c) c.classList.add('on'); }
 }));
 document.querySelectorAll('.mk').forEach((m) => mkObserver.observe(m, { attributes: true, attributeFilter: ['class'] }));
@@ -1252,7 +1272,7 @@ if (new URLSearchParams(location.search).has('export')) document.querySelectorAl
 class InlineEditor {
     constructor() {
         this.isActive = false;
-        this.key = 'whistle-review-edits-v2';
+        this.key = 'whistle-review-edits-v3';
         this.btn = document.getElementById('editToggle');
         this.selector = '.slide h1, .slide h2, .slide p, .slide li, .slide td, .slide th, .slide .ct, .slide .k, .slide .meta span, .slide .opts span, .t-en, .t-tag';
         this.restore();
@@ -1268,11 +1288,14 @@ class InlineEditor {
         if (!this.isActive) { this.save(); this.toast('已保存修改'); }
         else this.toast('编辑模式：点击任意文字修改 · E 退出 · Ctrl+S 导出');
     }
-    save() { try { localStorage.setItem(this.key, JSON.stringify({ stamp: DECK_STAMP, slides: [...document.querySelectorAll('.slide')].map((s) => s.innerHTML) })); } catch (e) { /* storage unavailable */ } }
+    /* Only the edited text is stored, never the live page state, so sliders and buttons keep working */
+    texts() { return [...this.targets()].filter((el) => !el.closest('[data-y]')); }
+    save() { try { localStorage.setItem(this.key, JSON.stringify({ stamp: DECK_STAMP, texts: this.texts().map((el) => el.innerHTML) })); } catch (e) { /* storage unavailable */ } }
     restore() {
         try {
             const data = JSON.parse(localStorage.getItem(this.key) || 'null');
-            if (data && data.stamp === DECK_STAMP) document.querySelectorAll('.slide').forEach((s, i) => { if (data.slides[i]) s.innerHTML = data.slides[i]; });
+            if (data && data.stamp === DECK_STAMP && Array.isArray(data.texts)) { const els = this.texts(); if (els.length === data.texts.length) els.forEach((el, i) => { if (el.innerHTML !== data.texts[i]) el.innerHTML = data.texts[i]; }); }
+            localStorage.removeItem('whistle-review-edits-v2');
         } catch (e) { /* ignore */ }
     }
     download() {
