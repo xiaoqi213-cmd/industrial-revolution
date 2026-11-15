@@ -307,15 +307,16 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .flow .arrx { opacity: 0; transition: opacity .4s; } .flow .arrx:has(+ .shown) { opacity: 1; }
 .chain .link .tag { margin-top: 8px; padding-top: 6px; border-top: 1px dashed var(--card-line); font-weight: 900; color: var(--stamp); }
 /* Click a question to see its answer: answers in dark boxes float over the upper part of the slide */
-.pop.termpop::before { content: "概念解读"; }
-.pop.kppop::before { content: "知识归纳"; }
+.pop.termpop::before { content: "概念解读"; display: block; }
+.pop.kppop::before { content: "知识归纳"; display: block; }
 .pg { margin-left: 14px; font-family: var(--f-m); font-size: 18px; font-weight: 400; color: var(--ink-dim); letter-spacing: 0; }
 .note .pg { color: var(--chalk-dim, #b9b3a3); }
+.gloss { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--card-line); font-size: 20px; line-height: 1.5; color: var(--ink-dim); } .gloss b { color: var(--stamp); }
 .term { border-bottom: 3px dashed currentColor; cursor: pointer; }
 .qa { cursor: pointer; } .qa:hover { filter: brightness(1.08); }
 .pop { position: absolute; left: 0; right: 0; top: 0; z-index: 6; max-height: 100%; overflow: auto; font-size: 30px !important; line-height: 1.6; padding: 22px 30px !important; background: #23201b !important; border: 3px solid var(--brass) !important; box-shadow: 0 24px 60px rgba(0,0,0,.6); cursor: pointer; }
 .pop *, .pop span { font-size: inherit !important; }
-.pop::before { content: "参考答案"; display: block; font-family: var(--f-m); font-size: 18px; letter-spacing: .14em; color: var(--brass); margin-bottom: 8px; }
+.pop::before { content: none; display: block; font-family: var(--f-m); font-size: 18px; letter-spacing: .14em; color: var(--brass); margin-bottom: 8px; }
 .pop:not(.shown), .pop.tucked { pointer-events: none; opacity: 0 !important; }
 /* Last slide: then / now rows */
 .tn { display: grid; grid-template-columns: 90px 1fr 44px 1fr; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--card-line); font-size: 22px; line-height: 1.5; }
@@ -472,6 +473,7 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .forms .lvl { display: flex; gap: 6px; margin: 8px 0 4px; align-items: center; font-family: var(--f-m); font-size: 15px; color: var(--ink-dim); }
 .forms .lvl i { width: 22px; height: 10px; border: 2px solid var(--stamp); }
 .forms .lvl i.on { background: var(--stamp); }
+.spine, .foot { display: none !important; }
 .spine { position: absolute; right: 0; top: 8px; font-size: 22px; font-weight: 700; color: var(--brass); border-bottom: 2px solid var(--brass); padding-bottom: 2px; }
 /* Footer */
 .foot { position: absolute; left: 100px; right: 100px; bottom: 40px; height: 40px; display: flex; align-items: center; justify-content: space-between; font-family: var(--f-m); font-size: 16px; letter-spacing: .06em; color: var(--chalk-faint); border-top: 1px solid var(--chalk-faint); padding-top: 8px; }
@@ -537,13 +539,12 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
     <div class="meta"><span>主角：伊丽莎白·本特利</span><span>1760—1900</span></div>
     <table class="lg" style="font-size:26px">
       <tr><th>CH.</th><th>处境之变</th><th>复习考点</th></tr>
-      <tr><td class="n">一</td><td><b>一无所有的自由</b></td><td>工业革命的背景</td></tr>
-      <tr><td class="n">二</td><td><b>被机器支配的劳动</b></td><td>第一次工业革命、工厂制度</td></tr>
-      <tr><td class="n">三</td><td><b>被重新划分的生活</b></td><td>城市化、生活方式、社会问题</td></tr>
-      <tr><td class="n">四</td><td><b>由自在到自为的阶级</b></td><td>阶级结构、工人运动、社会立法</td></tr>
-      <tr><td class="n">五</td><td><b>科学走进工厂</b></td><td>第二次工业革命</td></tr>
-      <tr><td class="n">六</td><td><b>被重塑的世界</b></td><td>垄断、世界市场、中国</td></tr>
-      <tr><td class="n">七</td><td><b>历史照进现实</b></td><td>工业革命与 AI 时代</td></tr>
+      <tr><td class="n">一</td><td><b>离开土地</b></td><td>工业革命的背景</td></tr>
+      <tr><td class="n">二</td><td><b>走进工厂</b></td><td>两次工业革命与工厂制度</td></tr>
+      <tr><td class="n">三</td><td><b>搬进城市</b></td><td>城市化与社会生活</td></tr>
+      <tr><td class="n">四</td><td><b>联合起来</b></td><td>阶级结构与工人运动</td></tr>
+      <tr><td class="n">五</td><td><b>卷入世界</b></td><td>世界市场与近代中国</td></tr>
+      <tr><td class="n">尾声</td><td><b>从汽笛到算法</b></td><td>工业革命与 AI 时代</td></tr>
     </table>
     <div class="stamp" style="top:auto;bottom:36px;right:44px;--sr:-12deg;--sd:1.2s;font-size:68px">05:00<small style="font-size:30px">汽笛将响</small></div>
   </div>
@@ -551,7 +552,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="0" data-time="05:10">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">考情 <small>浙江卷 2024—2026</small></div><h2>六套浙江卷，11 道题：工业革命怎么考</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">考情 <small>浙江卷 2024—2026</small></div></div></div>
     <div class="body">
       <div class="row ix tabx reveal" style="--d:1;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:start">
         <div class="card" style="padding:16px 20px"><div class="ct">按考查角度统计</div><button class="zbar" data-tab="world"><span class="zl">工业革命与世界市场、世界格局</span><span class="zt"><i style="width:100%"></i></span><b>5</b></button><button class="zbar" data-tab="city"><span class="zl">城市化与社会生活</span><span class="zt"><i style="width:60%"></i></span><b>3</b></button><button class="zbar" data-tab="labor"><span class="zl">生产方式与劳资关系</span><span class="zt"><i style="width:20%"></i></span><b>1</b></button><button class="zbar" data-tab="tech"><span class="zl">科技与生产</span><span class="zt"><i style="width:20%"></i></span><b>1</b></button><button class="zbar" data-tab="method"><span class="zl">史学方法</span><span class="zt"><i style="width:20%"></i></span><b>1</b></button><div class="src">统计范围：浙江卷 2024 年 1 月至 2026 年 6 月，共 6 套。</div></div>
@@ -568,7 +569,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   <div class="content">
     <div class="hd reveal"><div><div class="sec">05:30 的汽笛</div><h2>一张工时卡：童工的一天</h2></div></div>
     <div class="body">
-      <div class="row" style="grid-template-columns:1fr .95fr .85fr;align-items:start">
+      <div class="row" style="grid-template-columns:.95fr .8fr 1.25fr;align-items:start">
         <div class="card reveal" style="--d:1;--r:-1.2deg">
           <div class="ct" style="font-size:52px;text-align:center">工时卡</div>
           <div class="meta"><span>利兹 · 亚麻纺纱厂</span><span>工种：落纱工</span></div>
@@ -577,25 +578,22 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
             <tr><td>忙时</td><td class="n">05:00</td><td class="n">21:00</td><td class="f">16</td></tr>
             <tr><td>平时</td><td class="n">06:00</td><td class="n">19:00</td><td class="f">13</td></tr>
           </table>
-          <div class="hid" id="ans-age" data-step="2" style="margin-top:12px"><p>开始做工时只有 <b class="r" style="font-family:var(--f-d);font-size:72px">6</b> 岁——伊丽莎白·本特利，1832 年在议会作证。</p></div>
+          <div class="hid" id="ans-age" data-step="1" style="margin-top:12px"><p>开始做工时只有 <b class="r" style="font-family:var(--f-d);font-size:72px">6</b> 岁——伊丽莎白·本特利，1832 年在议会作证。</p></div>
           <div class="src">来源：英国议会萨德勒委员会证词（1832 年 6 月 4 日）</div>
         </div>
         <figure class="fig reveal" style="--d:2;--r:1deg;--h:430px;--op:center 30%"><img src="assets/img/child-1840.jpg" alt="工厂童工版画"><figcaption>工厂里的童工。1840 年小说《迈克尔·阿姆斯特朗》插图，埃尔维厄绘，公有领域</figcaption></figure>
-        <div class="col">
-          <div class="guess hid reveal" data-step="1" data-ans="ans-age" style="--d:3"><span class="k">想一想</span>她进厂时几岁？<div class="opts"><span>A. 6 岁</span><span>B. 10 岁</span><span>C. 14 岁</span><span>D. 18 岁</span></div></div>
-          <div class="note hid" data-step="3"><b class="brass" style="font-size:28px">劳动者的处境，为何随机器而改变？</b></div>
-        </div>
+        <div class="card mat reveal" style="--d:3;--r:.5deg"><div class="ct">材料</div><p style="font-size:24px">在工场手工业和手工业中，是工人利用工具，在工厂中，是工人<b class="r">服侍机器</b>。在前一种场合，劳动资料的运动从工人出发，在后一种场合，则是工人跟随劳动资料的运动。在工场手工业中，工人是一个活机构的肢体。在工厂中，死机构独立于工人而存在，工人被当作<b class="r">活的附属物</b>并入死机构。</p><div class="src">——马克思《资本论》第一卷第十三章（《马克思恩格斯文集》第 5 卷 P486）</div></div>
       </div>
-      <div class="row" style="grid-template-columns:1fr;margin-top:18px"><div class="card mat hid" data-step="4" style="--r:-.4deg"><p style="font-size:26px">在工场手工业和手工业中，是工人利用工具，在工厂中，是工人服侍机器。……工人被当作<b class="r">活的附属物</b>并入死机构。</p><div class="src">——马克思《资本论》第一卷第十三章（《马克思恩格斯文集》第 5 卷 P486）</div></div><div class="hid dark note pop" data-step="5"><span>手工工场：<b class="t">人用工具</b>，快慢由人决定；工厂：<b class="t">机器“用”人</b>，节奏由机器决定。活机构＝工人的分工协作，死机构＝机器体系——人从“肢体”变成“附属物”。</span></div></div>
-          </div>
+      <div class="row" style="grid-template-columns:1fr;margin-top:18px"><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>伊丽莎白的父辈在家中纺纱织布，她却 6 岁进厂、每天做工 13—16 小时。结合材料，从“工人利用工具”到“工人服侍机器”，劳动者的处境发生了哪些变化？为何会发生这些变化？</div><div class="hid dark note ansk pop" data-step="3"><span><b class="t">变化：</b>①劳动场所：从家庭、作坊走进工厂；②劳动节奏：手工工场中快慢由人决定，工厂中节奏由机器和钟声决定；③劳动者：妇女儿童被大量雇用，工时延长，人从活机构的“肢体”变成机器的“附属物”。<b class="t">原因：</b>机器大生产和工厂制度确立，资本追求利润；工人失去生产资料，只能出卖劳动力。<b class="t">本课主线：</b>劳动者的处境，随机器与生产方式而改变。</span></div></div></div>
+    </div>
   </div>
 </section>
 
 <section class="slide" data-mod="1" data-time="06:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">一、一无所有的自由 <small>工业革命的背景</small></div><h2>（一）“羊吃人”与“双重自由”：雇佣劳动者的诞生</h2></div><div class="lk">纲要下 P57 · 选必2 P22–24</div></div>
+    <div class="hd reveal"><div><div class="sec">一、离开土地 <small>工业革命的背景</small></div><h2>（一）“羊吃人”与“双重自由”：雇佣劳动者的诞生</h2></div><div class="lk">纲要下 P57 · 选必2 P22–24</div></div>
     <div class="body">
-      <div class="row" style="grid-template-columns:1.15fr 1fr"><div class="col"><div class="card mat reveal" style="--d:1;--r:-.4deg"><div class="ct">材料一</div><p>这里所说的自由，具有<b class="r">双重意义</b>：一方面，工人是自由人，能够把自己的劳动力当作自己的商品来支配，另一方面，他没有别的商品可以出卖，<b class="r">自由得一无所有</b>……</p><div class="src">——马克思《资本论》第一卷第四章</div></div><div class="card mat reveal" style="--d:2;--r:.4deg"><div class="ct">材料二</div><p>盗窃公有地……为城市工业造成了<b class="r">不受法律保护的无产阶级</b>的必要供给。</p><div class="src">——马克思《资本论》第一卷第二十四章</div></div></div><div class="card kp reveal" style="--d:3;--r:.3deg"><div class="ct">圈地运动</div><div class="meta"><span>约从15世纪开始</span><span>纲要下 P57</span></div><table class="lg"><tr><td class="h">主体</td><td>新贵族、新兴资产阶级</td></tr><tr><td class="h">动因</td><td>养羊获利（“羊吃人”）</td></tr><tr><td class="h">结果</td><td>农民→<b class="v">雇佣劳动者</b></td></tr><tr><td class="h">定性</td><td><b class="r">资本原始积累</b>的重要手段</td></tr></table></div></div><div class="row" style="grid-template-columns:1fr;margin-top:16px"><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>工人为何“自由得一无所有”？圈地运动与工业革命有何关系？</div><div class="hid dark note ansk pop"><span><b class="t">“自由”的含义：</b>人身自由是真实的，但失去了生产资料，“自由”实际上是只能出卖劳动力。<b class="t">关系：</b>圈地运动提供雇佣劳动力与国内市场，促进资本原始积累和农业资本主义发展，是工业革命的前提；但这一过程伴随暴力与农民的苦难——<b class="t">工人的处境，从进厂之前就已决定</b>。</span></div></div></div>
+      <div class="row" style="grid-template-columns:1.15fr 1fr"><div class="col"><div class="card mat reveal" style="--d:1;--r:-.4deg"><div class="ct">材料一</div><p>这里所说的自由，具有<b class="r">双重意义</b>：一方面，工人是自由人，能够把自己的劳动力当作自己的商品来支配，另一方面，他没有别的商品可以出卖，<b class="r">自由得一无所有</b>……</p><div class="src">——马克思《资本论》第一卷第四章</div></div><div class="card mat reveal" style="--d:2;--r:.4deg"><div class="ct">材料二</div><p>盗窃公有地……为城市工业造成了<b class="r">不受法律保护的无产阶级</b>的必要供给。</p><div class="src">——马克思《资本论》第一卷第二十四章</div><p class="gloss"><b>注 · 公有地：</b>村庄共同使用的牧场、荒地和林地，贫苦农民靠它放牧、拾柴。圈地运动将其圈为私产，农民由此失去生计。</p></div></div><div class="col"><div class="card kp reveal" style="--d:3;--r:.3deg"><div class="ct">圈地运动</div><div class="meta"><span>约从15世纪开始</span><span>纲要下 P57</span></div><table class="lg"><tr><td class="h">主体</td><td>新贵族、新兴资产阶级</td></tr><tr><td class="h">动因</td><td>养羊获利（“羊吃人”）</td></tr><tr><td class="h">结果</td><td>农民→<b class="v">雇佣劳动者</b></td></tr><tr><td class="h">定性</td><td><b class="r">资本原始积累</b>的重要手段</td></tr></table></div><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>工人为何“自由得一无所有”？圈地运动与工业革命有何关系？</div><div class="hid dark note ansk pop"><span><b class="t">“自由”的含义：</b>人身自由是真实的，但失去了生产资料，“自由”实际上是只能出卖劳动力。<b class="t">关系：</b>圈地运动提供雇佣劳动力与国内市场，促进资本原始积累和农业资本主义发展，是工业革命的前提；但这一过程伴随暴力与农民的苦难——<b class="t">工人的处境，从进厂之前就已决定</b>。</span></div></div></div></div>
       <div class="bridge hid">雇佣劳动力之外，工业革命还需哪些条件？</div>
     </div>
   </div>
@@ -603,7 +601,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="1" data-time="06:45">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">一、一无所有的自由 <small>工业革命的背景</small></div><h2>（二）条件的叠加：英国率先的可能性与必要性</h2></div><div class="lk">纲要下 P57</div></div>
+    <div class="hd reveal"><div><div class="sec">一、离开土地 <small>工业革命的背景</small></div><h2>（二）条件的叠加：英国率先的可能性与必要性</h2></div><div class="lk">纲要下 P57</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:.9fr 1.1fr;align-items:start">
         <div class="col">
@@ -630,7 +628,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="2" data-time="07:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">二、被机器支配的劳动 <small>第一次工业革命</small></div><h2>（一）瓶颈与回应：发明链的内在逻辑</h2></div><div class="lk">纲要下 P57–58</div></div>
+    <div class="hd reveal"><div><div class="sec">二、走进工厂 <small>两次工业革命与工厂制度</small></div><h2>（一）瓶颈与回应：发明链的内在逻辑</h2></div><div class="lk">纲要下 P57–58</div></div>
     <div class="body">
       <p class="small reveal" style="--d:1">棉纺织品畅销 → 获利丰厚 → <b class="brass">市场需求</b>催生技术发明。</p>
       <div class="seesaw reveal" style="--d:2"><div class="beam"><span class="pan pan-l">纺纱</span><span class="pan pan-w">织布</span></div><div class="fulcrum"></div><div class="cap"></div></div>
@@ -643,7 +641,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="2" data-time="07:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">二、被机器支配的劳动 <small>第一次工业革命</small></div><h2>（二）动力革命：工厂离开河边</h2></div><div class="lk">纲要下 P58 · 选必2 P70</div></div>
+    <div class="hd reveal"><div><div class="sec">二、走进工厂 <small>两次工业革命与工厂制度</small></div><h2>（二）动力革命：工厂离开河边</h2></div><div class="lk">纲要下 P58 · 选必2 P70</div></div>
     <div class="body">
       <p class="small reveal" style="--d:1">一项动力突破，引发一连串变化：<b class="brass">动力 → 地点 → 交通 → 完成</b></p>
       <div class="flow chain reveal" style="--d:2;grid-template-columns:1fr 140px 1fr 140px 1fr 140px 1fr;margin-top:14px"><div class="card link hid" data-step="1"><div class="ct">① 动力</div><p class="lead">瓦特改良蒸汽机</p><p>1785 年用于棉纺织厂</p><p class="tag">动力摆脱水力</p></div><div class="arr arrx"><small>不必傍河</small>→</div><div class="card link hid" data-step="2"><div class="ct">② 地点</div><p class="lead">工厂进城</p><p>建到城市、煤矿附近；曼彻斯特、利兹兴起</p><p class="tag">工厂集中，规模扩大</p></div><div class="arr arrx"><small>煤棉需运输</small>→</div><div class="card link hid" data-step="3"><div class="ct">③ 交通</div><p class="lead">汽船、火车</p><p>1807 汽船　1814 机车<br>1825 第一条铁路</p><p class="tag">进入“蒸汽时代”</p></div><div class="arr arrx"><small>机器需求增</small>→</div><div class="card link hid" data-step="4"><div class="ct">④ 完成</div><p class="lead">用机器制造机器</p><p>19 世纪中期机器制造业机械化</p><p class="tag">英国成为“世界工厂”</p></div></div>
@@ -657,18 +655,118 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="2" data-time="08:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">二、被机器支配的劳动 <small>工厂制度</small></div><h2>（三）铃声与罚款：工厂纪律重塑劳动</h2></div><div class="lk">选必2 P24–25, P27</div></div>
+    <div class="hd reveal"><div><div class="sec">二、走进工厂 <small>两次工业革命与工厂制度</small></div><h2>（三）铃声与罚款：工厂纪律重塑劳动</h2></div><div class="lk">选必2 P24–25, P27</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1fr;align-items:start"><div class="card mat reveal" style="--d:2;--r:.4deg"><div class="ct">材料一</div><p>资产阶级用来束缚无产阶级的<b class="v">奴隶制</b>的锁链，无论在哪里也不像在工厂制度上这样原形毕露。……<b class="r">专制的钟声</b>经常把他从睡梦中唤走，把他从早餐和午餐中唤走。</p><p style="margin-top:6px">工厂规则通常是怎样的呢，请看吧：……在工作时和别人说话、<b class="r">唱歌或吹口哨</b>，即罚 6 辨士。……只要他喘一口气，拿着<b class="r">罚款簿</b>的监工就会立刻在他背后出现。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“工厂工人”</div></div></div>
       <div class="row" style="grid-template-columns:.9fr 1fr 1fr;margin-top:16px;align-items:start"><figure class="fig reveal" style="--d:2;--r:-.6deg;--h:230px"><img src="assets/img/powerloom.jpg" alt="1835年动力织布车间"><figcaption>1835 年英国动力织布车间：女工看管机器，监工巡视。阿洛姆绘，公有领域</figcaption></figure><div class="card mat reveal" style="--d:3;--r:.4deg"><div class="ct">材料二 · 工厂主的辩护</div><p>（机器）几乎不让看管者做什么，<b class="v">绝无肌肉疲劳</b>，却给他稳定的好工资，外加一间免费的卫生车间。</p><div class="src">——［英］尤尔《制造业的哲学》（1835），本课译</div></div><div class="col" style="gap:12px"><div class="note reveal" style="--d:4;margin:0"><span class="k">知识归纳</span><b class="term brass" data-ans="fz-pop">工厂制度</b><span class="pg">选必2 P24—25、P27</span></div><div class="dark note pop kppop" id="fz-pop"><span><b class="t">①倒班制：</b>机器昼夜运行<br><b class="t">②严格规章：</b>罚款、体罚和解雇强化纪律<br><b class="t">③流水线：</b>广泛应用，工厂主监督管理<br><b class="t">④原料：</b>统一供应、合理调配<br><b class="t">作用：</b>利于科学管理、提高生产效率、挖掘劳动潜质；时间观念增强，准时准点成为现代生活准则（选必2 P24—27）</span></div><div class="task reveal" style="--d:5"><span class="lv">思考</span>尤尔说工厂“绝无肌肉疲劳”，恩格斯却称之为“奴隶制”。如何看待？</div><div class="hid dark note ansk pop"><span><b class="t">视角不同：</b>尤尔站在<b class="t">工厂主</b>立场，强调机器省力、效率高；恩格斯从<b class="t">劳动者处境与生产关系</b>评价，纪律与罚款的代价由工人承担（材料一）。两者都有立场，但钟声、罚款等可与工厂规章、议会证词互证。<b class="t">结论：</b>工厂制度适应机器大生产、提高效率（教材），也以严酷纪律压迫工人；评价历史现象要区分生产力标准与人的处境。</span></div></div></div>
-      <div class="bridge hid" data-step="99">工厂聚于城市，劳动者的家庭随之重组。</div>
+      <div class="bridge hid" data-step="99">蒸汽时代之后，科学走进工厂：电力与内燃机登场。</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-mod="2" data-time="18:00">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">二、走进工厂 <small>两次工业革命与工厂制度</small></div><h2>（四）电力与内燃机：第二次工业革命的新动力</h2></div><div class="lk">纲要下 P58–59</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:.85fr 1.15fr">
+        <div class="col">
+          <div class="guess reveal" style="--d:1"><span class="k">先想一想</span>第一次工业革命英国率先，第二次为何多国<b>同时</b>发生？</div>
+          <div class="hid dark note pop reveal" style="--d:2"><span>①资本主义制度在欧美确立与巩固，社会相对稳定；②<b class="brass">科学技术与生产紧密结合</b>，科学成果可以跨国传播与应用；③第一次工业革命积累了资本、市场与工业基础；④各国政府推动、竞争加剧。</span></div>
+          <div class="card q reveal" style="--d:3;--r:-.3deg;padding:14px 18px"><div class="from">真题同源 · 2026 陕晋宁青卷 · 14</div><p class="stem" style="font-size:19px">1736 年法兰西科学院开始研究天然橡胶；1839 年固特异研制出克服其缺陷的新技术；19世纪后期橡胶大量用于绝缘材料，助益电力等产业。这直接说明科技突破（　）</p><div class="opts"><span>A. 改善社会生活</span><span>B. 推动生产方式变革</span><span>C. 提升基础研究</span><span>D. 加强世界联系</span></div><div class="ans hid" style="font-size:19px"><span><b class="big">B</b>从科研到电力产业：科学与生产结合。</span></div></div>
+        </div>
+        <div class="col">
+          <div class="row" style="grid-template-columns:1fr 1fr;gap:16px">
+            <figure class="fig reveal" style="--d:2;--r:-.6deg;--h:190px"><img src="assets/img/edison.jpg" alt="爱迪生白炽灯"><figcaption>爱迪生早期白炽灯（1879—1880），公有领域</figcaption></figure>
+            <figure class="fig reveal" style="--d:3;--r:.6deg;--h:190px"><img src="assets/img/benz.jpg" alt="奔驰专利汽车"><figcaption>本茨专利汽车（1886）。图：DaimlerChrysler AG，CC BY-SA 3.0</figcaption></figure>
+          </div>
+          <div class="card kp reveal" style="--d:4;--r:.4deg">
+            <div class="ct">五大表现<span class="pg">纲要下 P58—59</span></div>
+            <table class="lg">
+              <tr><td class="h">电力</td><td>发电机、电灯</td><td><b class="r">“电气时代”</b></td></tr>
+              <tr><td class="h">内燃机</td><td>汽车、飞机</td><td><b class="r">影响最深远</b></td></tr>
+              <tr><td class="h">通讯</td><td>电话、电报</td><td>信息交流</td></tr>
+              <tr><td class="h">化工</td><td><b class="v">合成</b>新材料</td><td>丰富生活</td></tr>
+              <tr><td class="h">旧产业</td><td>炼钢、纺织、铁路</td><td>焕发活力</td></tr>
+            </table>
+            <div class="stamp" style="--sr:8deg;--sd:1.2s">必背<small>五大表现</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="bridge hid" data-step="99">两次工业革命，异同何在？</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-mod="2" data-time="18:30">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">二、走进工厂 <small>两次工业革命与工厂制度</small></div><h2>（五）从工匠到科学家：两次工业革命的比较</h2></div><div class="lk">纲要下 P59</div></div>
+    <div class="body">
+      <div class="row" style="grid-template-columns:1fr 1.05fr;gap:22px;align-items:start">
+        <div class="card ix yrs reveal" style="--d:1;--r:-.4deg;padding:16px 22px">
+          <div class="yhead"><b class="yr">1769</b><span class="ystage"></span></div>
+          <input type="range" min="1765" max="1900" step="1" value="1769" autocomplete="off" aria-label="拖动选择年份">
+          <div class="yticks"><span>1765</span><span>1785</span><span>1840</span><span>1870</span><span>1900</span></div>
+          <table class="lg yfields"><tr><td class="h">动力</td><td data-y="dl"></td></tr><tr><td class="h">代表发明</td><td data-y="inv"></td></tr><tr><td class="h">发明者</td><td data-y="who"></td></tr><tr><td class="h">领跑国家</td><td data-y="lead"></td></tr><tr><td class="h">主导部门</td><td data-y="sec"></td></tr><tr><td class="h">科技与生产</td><td data-y="sci"></td></tr><tr><td class="h">生产组织</td><td data-y="org"></td></tr></table>
+          <i class="hid mk" data-step="1" data-year="1769"></i><i class="hid mk" data-step="2" data-year="1800"></i><i class="hid mk" data-step="3" data-year="1851"></i><i class="hid mk" data-step="4" data-year="1885"></i>
+        </div>
+        <div class="card kp hid" data-step="5" style="--r:.3deg;padding:14px 20px">
+          <table class="lg" style="font-size:19px">
+            <tr><th style="width:140px">比较</th><th>第一次（18c60s—19c中期）</th><th>第二次（19c70s—20c初）</th></tr>
+            <tr><td class="h">标志</td><td>珍妮机开始；<b class="v">改良蒸汽机</b></td><td><b class="v">电力</b>的广泛应用</td></tr>
+            <tr><td class="h">能源</td><td>蒸汽——煤</td><td>电力、石油</td></tr>
+            <tr><td class="h">科技与生产</td><td>多源于<b class="r">工匠实践</b></td><td><b class="r">科学技术与生产紧密结合</b></td></tr>
+            <tr><td class="h">范围</td><td>英国开始，逐步扩展</td><td>主要国家<b class="r">同时发生</b>，范围广、进展快</td></tr>
+            <tr><td class="h">主导</td><td>英国（“世界工厂”）</td><td><b class="r">美国、德国</b>最为突出</td></tr>
+            <tr><td class="h">部门</td><td>轻工业为主</td><td>重工业、新兴工业</td></tr>
+            <tr><td class="h">组织</td><td>工厂制度确立</td><td>出现<b class="v">垄断组织</b></td></tr>
+            <tr><td class="h">世界市场</td><td>初步形成→发展（商品输出）</td><td><b class="v">最终形成</b>（资本输出）</td></tr>
+          </table>
+          <p style="font-size:20.5px;margin-top:8px">关键句：第二次工业革命<b class="key">不是第一次的简单延续</b>；各国进程<b class="key">各具特色</b>。</p>
+        </div>
+      </div>
+      <div class="bridge hid" data-step="99">生产规模扩大，资本走向集中与垄断。</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-mod="2" data-time="19:45">
+  <div class="content">
+    <div class="hd reveal"><div><div class="sec">二、走进工厂 <small>两次工业革命与工厂制度</small></div><h2>（六）垄断的实质：资本主义生产关系的局部调整</h2></div><div class="lk">纲要下 P59</div></div>
+    <div class="body">
+      <div class="flow reveal" style="--d:1;grid-template-columns:1fr 46px 1fr 46px 1fr 46px 1fr">
+        <div class="card" style="padding:12px 16px"><b>手工工场</b></div>
+        <div class="arr">→</div>
+        <div class="card" style="padding:12px 16px"><b>工厂制度</b></div>
+        <div class="arr">→</div>
+        <div class="card hid" style="padding:12px 16px"><b>垄断组织</b></div>
+        <div class="arr">→</div>
+        <div class="card hid" style="padding:12px 16px"><b>科学管理</b></div>
+      </div>
+      <div class="row" style="grid-template-columns:1fr .75fr 1fr;margin-top:22px;align-items:start">
+        <div class="card kp reveal" style="--d:2;--r:-.4deg">
+          <div class="ct">垄断组织<span class="pg">纲要下 P59</span></div>
+          <table class="lg">
+            <tr><td class="h">原因</td><td><b class="v">生产进一步集中</b></td></tr>
+            <tr><td class="h">实质</td><td><b class="r">生产关系的局部调整</b></td></tr>
+            <tr><td class="h">评价</td><td>适应大生产；<b class="key">阻碍竞争</b>、推动瓜分世界</td></tr>
+          </table>
+        </div>
+        <figure class="fig reveal" style="--d:3;--r:.8deg;--h:330px;--op:center 20%"><img src="assets/next-1904-keppler.jpg" alt="开普勒漫画《下一个！》"><figcaption>开普勒漫画《下一个！》（1904）：标准石油公司化身章鱼，缠住国会与州议会，公有领域</figcaption></figure>
+        <div class="card q reveal" style="--d:4;--r:.4deg">
+          <div class="from">真题同源 · 2024 广西卷</div>
+          <p class="stem" style="font-size:21px">1894 年，美国记者劳埃德指出，标准石油公司操纵市场，以便消除竞争。他还称“自由创造富裕，但富裕毁灭自由”。这反映了美国（　）</p>
+          <div class="opts"><span>A. 自由资本主义的发展</span><span>B. 垄断资本主义的形成</span><span>C. 国家资本主义的发展</span><span>D. 贸易保护主义的形成</span></div>
+          <div class="ans hid" style="font-size:20px"><span><b class="big">B</b>“操纵市场、消除竞争”是垄断组织的特征。</span></div>
+        </div>
+      </div>
+      <div class="bridge hid" data-step="99">从工厂走向城市：劳动者的生活随之改变。</div>
     </div>
   </div>
 </section>
 
 <section class="slide" data-mod="3" data-time="13:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>劳作方式与生活方式</small></div><h2>（一）职住分离：工作与家庭的重新划界</h2></div><div class="lk">选必2 P26–27</div></div>
+    <div class="hd reveal"><div><div class="sec">三、搬进城市 <small>城市化与社会生活</small></div><h2>（一）职住分离：工作与家庭的重新划界</h2></div><div class="lk">选必2 P26–27</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1.2fr 1fr;align-items:start"><div class="card q reveal" style="--d:1;--r:-.3deg"><div class="from">真题同源 · 2025 甘肃卷 · 15</div><p class="stem">工业革命之前，人们的工作场所和家庭住所间没有明显界限，家庭成员往往从事相似的工作。工业革命后，随着工厂的兴起，在许多城市家庭中，丈夫需要早晚往返于工作场所和家庭住所之间，妻儿则待在家里。上述变化反映出（　）</p><div class="opts"><span>A.生产技术和专业水平的提高</span><span>B.居住条件和基础设施的改善</span><span>C.贫富分化和阶级差异的形成</span><span>D.生活空间和劳作方式的改变</span></div><div class="ans hid"><span><b class="big">D</b>职住分离＝劳作方式与生活空间的改变。</span></div></div><figure class="fig reveal" style="--d:2;--r:.8deg;--h:360px;--op:center 40%"><img src="assets/img/dore.jpg" alt="多雷《乘火车俯瞰伦敦》"><figcaption>多雷《乘火车俯瞰伦敦》（1872）：铁路高架旁挤满工人住宅，公有领域</figcaption></figure></div><div class="row" style="grid-template-columns:1fr 1fr;margin-top:16px"><div class="card mat reveal" style="--d:3;--r:.4deg"><div class="ct">材料</div><p>在许多家庭里，<b class="r">妻子和丈夫一样地出外工作</b>，结果孩子就完全没有人照顾……</p><div class="src">——恩格斯《英国工人阶级状况》（1845）</div></div><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>真题说“妻儿则待在家里”，恩格斯却说妻子也外出做工。两则史料矛盾吗？</div><div class="hid dark note ansk pop"><span><b class="t">不一定矛盾：</b>题干说的是“<b class="t">许多</b>城市家庭”，较符合收入较高的家庭；恩格斯观察的是<b class="t">曼彻斯特工人家庭</b>。说明工业化对不同阶层家庭影响不同。<b class="t">方法：</b>读史料要问“说的是谁”。生活方式变化：城市化、流动性、时间观念、教育（选必2 P26—27）。</span></div></div></div>
       <div class="bridge hid" data-step="99">家庭一分为二，城市空间亦随之分化。</div>
@@ -678,7 +776,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="3" data-time="14:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>史料研读①</small><span class="zjhot">★ 浙江高频</span></div><h2>（二）被隔开的城市：走进恩格斯笔下的曼彻斯特</h2></div><div class="lk">史料研读 · 史论结合</div></div>
+    <div class="hd reveal"><div><div class="sec">三、搬进城市 <small>城市化与社会生活</small><span class="zjhot">★ 浙江高频</span></div><h2>（二）被隔开的城市：走进恩格斯笔下的曼彻斯特</h2></div><div class="lk">史料研读 · 史论结合</div></div>
     <div class="body">
       <div class="row ix mapx reveal" style="--d:1;grid-template-columns:.72fr 1fr;gap:24px;align-items:stretch">
         <div class="card" style="padding:10px 12px"><div class="mapimg"><img src="assets/manchester-1854-bradshaw.jpg" alt="1854 年布拉德肖《英国工业区手册》所附曼彻斯特地图局部：市中心、伦敦路、梅德洛克河与阿德威克一带"><span class="hot hotb" data-k="core" style="left:27.7%;top:16.3%"><b>1</b><i>交易所</i></span><span class="hot hotb" data-k="street" style="left:60.8%;top:45%"><b>2</b><i>伦敦路</i></span><span class="hot hotb" data-k="slum" style="left:36.2%;top:76.9%"><b>3</b><i>小爱尔兰</i></span><span class="hot hotb" data-k="villa" style="left:84%;top:86%"><b>4</b><i>阿德威克</i></span></div><div class="src" style="margin-top:4px">布拉德肖《英国工业区手册》（1854）地图局部，大英图书馆藏，公有领域；③ 为大致位置。</div></div>
@@ -688,8 +786,8 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
           <div class="pane" data-k="street"><b class="pt">② 伦敦路：通往郊外的大街</b><p>这些富有的金钱贵族……竟可以通过整个工人区而<b class="r">看不到</b>左右两旁的极其肮脏贫困的地方。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）</div></div>
           <div class="pane" data-k="slum"><b class="pt">③ 河湾里的“小爱尔兰”</b><p>约 <b class="r">4000 人</b>住在这里……大约每 <b class="r">120 人</b>才有一个厕所。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）</div><p style="margin-top:8px">议会街<b class="r">只有一个厕所，供 380 名居民使用</b>。</p><div class="src">——［英］詹姆斯·凯（医生，曼彻斯特卫生委员会成员）《曼彻斯特棉纺织业工人阶级的道德与身体状况》（1832），本课译</div></div>
           <div class="pane" data-k="villa"><b class="pt">④ 阿德威克：郊外的别墅</b><p>高等的资产阶级……住在却尔顿和<b class="v">阿德威克</b>的郊外房屋或别墅里……在新鲜的对健康有益的乡村空气里。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）</div><table class="lg" style="margin-top:8px"><tr><th>平均死亡年龄（1842）</th><th>士绅</th><th>劳工</th></tr><tr><td class="h">曼彻斯特</td><td class="f">38</td><td class="f">17</td></tr></table><div class="src">——查德威克报告（1842），据 Hanley (2002)；含大量婴幼儿死亡</div></div>
-          <div class="pane" data-k="a1"><b class="pt">Ⅰ · 史料价值 · 参考答案</b><p>一位是革命思想家（且引用过凯的著作），一位是卫生官员，<b class="r">立场不同而事实相近</b>，互证增强可信度；但两人都着眼问题区，不能代表城市全貌，恩格斯也并非完全独立于凯。</p></div>
-          <div class="pane" data-k="a2"><b class="pt">Ⅱ · 史论结合 · 参考答案</b><p><b class="r">依据：</b>工人区拥挤肮脏且与资产阶级住区隔离（地图 ③④）；大街两旁的商店把贫困遮挡起来（地图 ②）；卫生与寿命差异悬殊（凯、查德威克）；根源是工厂集中、人口激增、规划滞后、贫富分化。<b class="r">补充：</b>问题也有技术与管理因素；社会压力推动 1848 年《公共卫生法》，城市逐步改善。<b class="r">结论：</b>城市化既是工业化的成果，也是社会矛盾的显影。</p></div>
+          <div class="pane" data-k="a1"><b class="pt">Ⅰ · 史料价值</b><p>一位是革命思想家（且引用过凯的著作），一位是卫生官员，<b class="r">立场不同而事实相近</b>，互证增强可信度；但两人都着眼问题区，不能代表城市全貌，恩格斯也并非完全独立于凯。</p></div>
+          <div class="pane" data-k="a2"><b class="pt">Ⅱ · 史论结合</b><p><b class="r">依据：</b>工人区拥挤肮脏且与资产阶级住区隔离（地图 ③④）；大街两旁的商店把贫困遮挡起来（地图 ②）；卫生与寿命差异悬殊（凯、查德威克）；根源是工厂集中、人口激增、规划滞后、贫富分化。<b class="r">补充：</b>问题也有技术与管理因素；社会压力推动 1848 年《公共卫生法》，城市逐步改善。<b class="r">结论：</b>城市化既是工业化的成果，也是社会矛盾的显影。</p></div>
         </div>
         <i class="hid mk" data-step="1" data-k="core"></i><i class="hid mk" data-step="2" data-k="street"></i><i class="hid mk" data-step="3" data-k="slum"></i><i class="hid mk" data-step="4" data-k="villa"></i><i class="hid mk" data-step="5" data-k="a1"></i><i class="hid mk" data-step="6" data-k="a2"></i>
       </div>
@@ -701,7 +799,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="3" data-time="14:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">三、被重新划分的生活 <small>城市化与社会生活</small><span class="zjhot">★ 浙江高频</span></div><h2>（三）繁荣的另一面：社会生活的两面与社会立法</h2></div><div class="lk">纲要下 P60 · 选必2 P26–28</div></div>
+    <div class="hd reveal"><div><div class="sec">三、搬进城市 <small>城市化与社会生活</small><span class="zjhot">★ 浙江高频</span></div><h2>（三）繁荣的另一面：社会生活的两面与社会立法</h2></div><div class="lk">纲要下 P60 · 选必2 P26–28</div></div>
     <div class="body">
       <p class="small reveal" style="--d:1;margin-bottom:10px">“这是最好的时候，这是最坏的时候……”<span class="dim">——狄更斯《双城记》（选必2 P27 史料阅读）</span></p>
       <div class="flips reveal" style="--d:2"><div class="flipc ix" data-n="1"><div class="in"><div class="face front"><div class="fl">改善 · 城市</div><p>以工厂为中心形成了许多城市</p><div class="fs">1851 年，英国城市人口超过总人口 50%（选必2 P61）</div></div><div class="face back"><div class="fl">问题 · 城市</div><p>工人居住条件恶劣</p><div class="fs">例：“小爱尔兰”每 120 人一个厕所（恩格斯）</div></div></div></div><div class="flipc ix" data-n="2"><div class="in"><div class="face front"><div class="fl">改善 · 生活</div><p>商品物美价廉，人们的生活有所改善</p><div class="fs">纲要下 P60</div></div><div class="face back"><div class="fl">问题 · 生活</div><p>社会贫富分化加剧</p><div class="fs">例：1842 年曼彻斯特，士绅平均 38 岁去世，劳工 17 岁</div></div></div></div><div class="flipc ix" data-n="3"><div class="in"><div class="face front"><div class="fl">改善 · 节奏</div><p>生活节奏加快，时间观念增强</p><div class="fs">准时准点成为现代生活的准则（选必2 P27）</div></div><div class="face back"><div class="fl">问题 · 节奏</div><p>工人劳动时间过长</p><div class="fs">例：童工忙时每天做工 16 小时（1832 年证词）</div></div></div></div><div class="flipc ix" data-n="4"><div class="in"><div class="face front"><div class="fl">改善 · 文化</div><p>报刊书籍发行量大增，初等教育推广</p><div class="fs">19 世纪末英格兰 5—12 岁儿童入学率达 80%（选必2 P27）</div></div><div class="face back"><div class="fl">问题 · 文化</div><p>环境污染严重，疾病与犯罪</p><div class="fs">例：被染料染成深紫色的河（狄更斯，纲要下 P60）</div></div></div></div><i class="hid mk" data-step="1" data-flip="1"></i><i class="hid mk" data-step="2" data-flip="2"></i><i class="hid mk" data-step="3" data-flip="3"></i><i class="hid mk" data-step="4" data-flip="4"></i></div>
@@ -722,7 +820,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="4" data-time="15:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">四、由自在到自为的阶级 <small>阶级结构</small></div><h2>（一）改革的受益者：1832 年议会改革与两大阶级</h2></div><div class="lk">纲要下 P55, P60 · 选必1 P12</div></div>
+    <div class="hd reveal"><div><div class="sec">四、联合起来 <small>阶级结构与工人运动</small></div><h2>（一）改革的受益者：1832 年议会改革与两大阶级</h2></div><div class="lk">纲要下 P55, P60 · 选必1 P12</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1fr 1.1fr;gap:24px">
         <div class="col">
@@ -758,7 +856,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="4" data-time="16:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">四、由自在到自为的阶级 <small>工人运动与马克思主义</small></div><h2>（二）从砸机器到联合：工人斗争的升级</h2></div><div class="lk">纲要下 P62–63 · 选必2 P27–28</div></div>
+    <div class="hd reveal"><div><div class="sec">四、联合起来 <small>阶级结构与工人运动</small></div><h2>（二）从砸机器到联合：工人斗争的升级</h2></div><div class="lk">纲要下 P62–63 · 选必2 P27–28</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:.7fr 1.15fr 1fr;align-items:start;gap:20px">
         <figure class="fig reveal" style="--d:1;--r:-1deg;--h:330px;--op:center 30%"><img src="assets/img/luddite.jpg" alt="卢德派首领"><figcaption>《卢德派首领》（1812）版画，公有领域</figcaption></figure>
@@ -766,114 +864,14 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
         <div class="card kp reveal" style="--d:3;--r:.4deg"><div class="ct">从捣毁机器到政治斗争<span class="pg">纲要下 P62—63</span></div><table class="lg"><tr><td class="n">1811–16</td><td>卢德运动</td></tr><tr><td class="n">1831/34</td><td><b class="v">里昂工人</b>起义</td></tr><tr><td class="n">1836–48</td><td><b class="v">宪章运动</b></td></tr><tr><td class="n">1844</td><td><b class="v">西里西亚织工</b>起义</td></tr><tr><td class="n">1848</td><td><b class="r">马克思主义诞生</b></td></tr></table><p style="margin-top:8px">工人阶级<b class="key">登上政治舞台</b>（纲要下 P63）</p></div>
       </div>
       <div class="row" style="grid-template-columns:1fr 1fr;margin-top:16px"><div class="card mat reveal" style="--d:4;--r:-.4deg"><div class="ct">材料</div><p>他们……<b class="r">捣毁机器</b>，烧毁工厂……斗争的真正成果……是<b class="r">工人的越来越扩大的联合</b>。</p><div class="src">——马克思、恩格斯《共产党宣言》（1848）</div></div><div class="col reveal" style="--d:5;gap:10px"><div class="task"><span class="lv">思考</span>对比两幅图，概括工人斗争目标与形式的变化，并分析原因。</div><div class="hid dark note ansk pop"><span><b class="t">变化：</b>自发破坏机器 → 成立工会 → 争取普选权等政治权利；从分散的个人走向阶级联合。<b class="t">条件：</b>工厂把工人集中起来；城市提供联络空间；矛盾激化；1832 年改革未给工人选举权；马克思主义提供理论。<b class="t">认识：</b>工人逐渐认识到问题不在机器，而在其使用方式与政治制度。<b class="t">成果：</b>工时受限、最低工资得到一定保障。</span></div></div></div>
-      <div class="bridge hid" data-step="99">斗争未已，技术再变：电力与内燃机登场。</div>
-    </div>
-  </div>
-</section>
-
-<section class="slide" data-mod="5" data-time="18:00">
-  <div class="content">
-    <div class="hd reveal"><div><div class="sec">五、科学走进工厂 <small>第二次工业革命</small></div><h2>（一）电力与内燃机：第二次工业革命的新动力</h2></div><div class="lk">纲要下 P58–59</div></div>
-    <div class="body">
-      <div class="row" style="grid-template-columns:.85fr 1.15fr">
-        <div class="col">
-          <div class="guess reveal" style="--d:1"><span class="k">先想一想</span>第一次工业革命英国率先，第二次为何多国<b>同时</b>发生？</div>
-          <div class="hid dark note pop reveal" style="--d:2"><span>①资本主义制度在欧美确立与巩固，社会相对稳定；②<b class="brass">科学技术与生产紧密结合</b>，科学成果可以跨国传播与应用；③第一次工业革命积累了资本、市场与工业基础；④各国政府推动、竞争加剧。</span></div>
-          <div class="card q reveal" style="--d:3;--r:-.3deg;padding:14px 18px"><div class="from">真题同源 · 2026 陕晋宁青卷 · 14</div><p class="stem" style="font-size:19px">1736 年法兰西科学院开始研究天然橡胶；1839 年固特异研制出克服其缺陷的新技术；19世纪后期橡胶大量用于绝缘材料，助益电力等产业。这直接说明科技突破（　）</p><div class="opts"><span>A. 改善社会生活</span><span>B. 推动生产方式变革</span><span>C. 提升基础研究</span><span>D. 加强世界联系</span></div><div class="ans hid" style="font-size:19px"><span><b class="big">B</b>从科研到电力产业：科学与生产结合。</span></div></div>
-        </div>
-        <div class="col">
-          <div class="row" style="grid-template-columns:1fr 1fr;gap:16px">
-            <figure class="fig reveal" style="--d:2;--r:-.6deg;--h:190px"><img src="assets/img/edison.jpg" alt="爱迪生白炽灯"><figcaption>爱迪生早期白炽灯（1879—1880），公有领域</figcaption></figure>
-            <figure class="fig reveal" style="--d:3;--r:.6deg;--h:190px"><img src="assets/img/benz.jpg" alt="奔驰专利汽车"><figcaption>本茨专利汽车（1886）。图：DaimlerChrysler AG，CC BY-SA 3.0</figcaption></figure>
-          </div>
-          <div class="card kp reveal" style="--d:4;--r:.4deg">
-            <div class="ct">五大表现<span class="pg">纲要下 P58—59</span></div>
-            <table class="lg">
-              <tr><td class="h">电力</td><td>发电机、电灯</td><td><b class="r">“电气时代”</b></td></tr>
-              <tr><td class="h">内燃机</td><td>汽车、飞机</td><td><b class="r">影响最深远</b></td></tr>
-              <tr><td class="h">通讯</td><td>电话、电报</td><td>信息交流</td></tr>
-              <tr><td class="h">化工</td><td><b class="v">合成</b>新材料</td><td>丰富生活</td></tr>
-              <tr><td class="h">旧产业</td><td>炼钢、纺织、铁路</td><td>焕发活力</td></tr>
-            </table>
-            <div class="stamp" style="--sr:8deg;--sd:1.2s">必背<small>五大表现</small></div>
-          </div>
-        </div>
-      </div>
-      <div class="bridge hid" data-step="99">两次工业革命，异同何在？</div>
-    </div>
-  </div>
-</section>
-
-<section class="slide" data-mod="5" data-time="18:30">
-  <div class="content">
-    <div class="hd reveal"><div><div class="sec">五、科学走进工厂 <small>两次工业革命比较</small></div><h2>（二）从工匠到科学家：两次工业革命的比较</h2></div><div class="lk">纲要下 P59</div></div>
-    <div class="body">
-      <div class="row" style="grid-template-columns:1fr 1.05fr;gap:22px;align-items:start">
-        <div class="card ix yrs reveal" style="--d:1;--r:-.4deg;padding:16px 22px">
-          <div class="yhead"><b class="yr">1769</b><span class="ystage"></span></div>
-          <input type="range" min="1765" max="1900" step="1" value="1769" autocomplete="off" aria-label="拖动选择年份">
-          <div class="yticks"><span>1765</span><span>1785</span><span>1840</span><span>1870</span><span>1900</span></div>
-          <table class="lg yfields"><tr><td class="h">动力</td><td data-y="dl"></td></tr><tr><td class="h">代表发明</td><td data-y="inv"></td></tr><tr><td class="h">发明者</td><td data-y="who"></td></tr><tr><td class="h">领跑国家</td><td data-y="lead"></td></tr><tr><td class="h">主导部门</td><td data-y="sec"></td></tr><tr><td class="h">科技与生产</td><td data-y="sci"></td></tr><tr><td class="h">生产组织</td><td data-y="org"></td></tr></table>
-          <i class="hid mk" data-step="1" data-year="1769"></i><i class="hid mk" data-step="2" data-year="1800"></i><i class="hid mk" data-step="3" data-year="1851"></i><i class="hid mk" data-step="4" data-year="1885"></i>
-        </div>
-        <div class="card kp hid" data-step="5" style="--r:.3deg;padding:14px 20px">
-          <table class="lg" style="font-size:19px">
-            <tr><th style="width:140px">比较</th><th>第一次（18c60s—19c中期）</th><th>第二次（19c70s—20c初）</th></tr>
-            <tr><td class="h">标志</td><td>珍妮机开始；<b class="v">改良蒸汽机</b></td><td><b class="v">电力</b>的广泛应用</td></tr>
-            <tr><td class="h">能源</td><td>蒸汽——煤</td><td>电力、石油</td></tr>
-            <tr><td class="h">科技与生产</td><td>多源于<b class="r">工匠实践</b></td><td><b class="r">科学技术与生产紧密结合</b></td></tr>
-            <tr><td class="h">范围</td><td>英国开始，逐步扩展</td><td>主要国家<b class="r">同时发生</b>，范围广、进展快</td></tr>
-            <tr><td class="h">主导</td><td>英国（“世界工厂”）</td><td><b class="r">美国、德国</b>最为突出</td></tr>
-            <tr><td class="h">部门</td><td>轻工业为主</td><td>重工业、新兴工业</td></tr>
-            <tr><td class="h">组织</td><td>工厂制度确立</td><td>出现<b class="v">垄断组织</b></td></tr>
-            <tr><td class="h">世界市场</td><td>初步形成→发展（商品输出）</td><td><b class="v">最终形成</b>（资本输出）</td></tr>
-          </table>
-          <p style="font-size:20.5px;margin-top:8px">关键句：第二次工业革命<b class="key">不是第一次的简单延续</b>；各国进程<b class="key">各具特色</b>。</p>
-        </div>
-      </div>
-      <div class="bridge hid" data-step="99">生产规模扩大，资本走向集中与垄断。</div>
-    </div>
-  </div>
-</section>
-
-<section class="slide" data-mod="6" data-time="19:45">
-  <div class="content">
-    <div class="hd reveal"><div><div class="sec">六、被重塑的世界 <small>工业革命的影响</small></div><h2>（一）垄断的实质：资本主义生产关系的局部调整</h2></div><div class="lk">纲要下 P59</div></div>
-    <div class="body">
-      <div class="flow reveal" style="--d:1;grid-template-columns:1fr 46px 1fr 46px 1fr 46px 1fr">
-        <div class="card" style="padding:12px 16px"><b>手工工场</b></div>
-        <div class="arr">→</div>
-        <div class="card" style="padding:12px 16px"><b>工厂制度</b></div>
-        <div class="arr">→</div>
-        <div class="card hid" style="padding:12px 16px"><b>垄断组织</b></div>
-        <div class="arr">→</div>
-        <div class="card hid" style="padding:12px 16px"><b>科学管理</b></div>
-      </div>
-      <div class="row" style="grid-template-columns:1fr .75fr 1fr;margin-top:22px;align-items:start">
-        <div class="card kp reveal" style="--d:2;--r:-.4deg">
-          <div class="ct">垄断组织<span class="pg">纲要下 P59</span></div>
-          <table class="lg">
-            <tr><td class="h">原因</td><td><b class="v">生产进一步集中</b></td></tr>
-            <tr><td class="h">实质</td><td><b class="r">生产关系的局部调整</b></td></tr>
-            <tr><td class="h">评价</td><td>适应大生产；<b class="key">阻碍竞争</b>、推动瓜分世界</td></tr>
-          </table>
-        </div>
-        <figure class="fig reveal" style="--d:3;--r:.8deg;--h:330px;--op:center 20%"><img src="assets/next-1904-keppler.jpg" alt="开普勒漫画《下一个！》"><figcaption>开普勒漫画《下一个！》（1904）：标准石油公司化身章鱼，缠住国会与州议会，公有领域</figcaption></figure>
-        <div class="card q reveal" style="--d:4;--r:.4deg">
-          <div class="from">真题同源 · 2024 广西卷</div>
-          <p class="stem" style="font-size:21px">1894 年，美国记者劳埃德指出，标准石油公司操纵市场，以便消除竞争。他还称“自由创造富裕，但富裕毁灭自由”。这反映了美国（　）</p>
-          <div class="opts"><span>A. 自由资本主义的发展</span><span>B. 垄断资本主义的形成</span><span>C. 国家资本主义的发展</span><span>D. 贸易保护主义的形成</span></div>
-          <div class="ans hid" style="font-size:20px"><span><b class="big">B</b>“操纵市场、消除竞争”是垄断组织的特征。</span></div>
-        </div>
-      </div>
       <div class="bridge hid" data-step="99">大工业向全球索取原料与市场：一件棉衣背后，连着谁？</div>
     </div>
   </div>
 </section>
 
-<section class="slide" data-mod="6" data-time="20:00">
+<section class="slide" data-mod="5" data-time="20:00">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">六、被重塑的世界 <small>世界市场</small><span class="zjhot">★ 浙江高频</span></div><h2>（二）一件棉衣的全球链条：奴隶、织工与童工</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">五、卷入世界 <small>世界市场与近代中国</small><span class="zjhot">★ 浙江高频</span></div><h2>（一）一件棉衣的全球链条：奴隶、织工与童工</h2></div></div>
     <div class="body">
       <div class="guess reveal" data-ans="ans-cotton" style="--d:1;margin-bottom:14px"><span class="k">想一想</span>19世纪中期，英国进口的棉花主要来自——<div class="opts" style="grid-template-columns:repeat(4,1fr)"><span>A. 印度</span><span>B. 埃及</span><span>C. 美国南方</span><span>D. 中国</span></div></div>
       <div class="row" style="grid-template-columns:.78fr 1.22fr;gap:22px;align-items:start">
@@ -907,9 +905,9 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   </div>
 </section>
 
-<section class="slide" data-mod="6" data-time="20:30">
+<section class="slide" data-mod="5" data-time="20:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">六、被重塑的世界 <small>世界市场与世界体系</small><span class="zjhot">★ 浙江高频</span></div><h2>（三）世界市场的形成：从商品输出到资本输出</h2></div><div class="lk">纲要下 P61 · 选必2 P41 · 选必1 P89</div></div>
+    <div class="hd reveal"><div><div class="sec">五、卷入世界 <small>世界市场与近代中国</small><span class="zjhot">★ 浙江高频</span></div><h2>（二）世界市场的形成：从商品输出到资本输出</h2></div><div class="lk">纲要下 P61 · 选必2 P41 · 选必1 P89</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1.1fr .9fr;align-items:start">
         <div class="col">
@@ -938,9 +936,9 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   </div>
 </section>
 
-<section class="slide" data-mod="6" data-time="21:30">
+<section class="slide" data-mod="5" data-time="21:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">六、被重塑的世界 <small>工业革命与近代中国</small></div><h2>（四）器物、制度与实业：近代中国的回应</h2></div><div class="lk">纲要上 P90 · 选必2 P25</div></div>
+    <div class="hd reveal"><div><div class="sec">五、卷入世界 <small>世界市场与近代中国</small></div><h2>（三）器物、制度与实业：近代中国的回应</h2></div><div class="lk">纲要上 P90 · 选必2 P25</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1.2fr .8fr;align-items:start">
         <div class="col">
@@ -965,9 +963,9 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
   </div>
 </section>
 
-<section class="slide" data-mod="7" data-time="22:30">
+<section class="slide" data-mod="5" data-time="22:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">七、历史照进现实 <small>联系今天</small></div><h2>从汽笛到算法：工业革命照进 AI 时代</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">尾声 <small>历史照进现实</small></div><h2>从汽笛到算法：工业革命照进 AI 时代</h2></div></div>
     <div class="body">
       <div class="card reveal tnwrap" style="--d:1;--r:-.2deg;padding:14px 24px">
         <div class="tn tnh"><span></span><b>1830 年代 · 伊丽莎白的工厂</b><span></span><b>今天 · AI 与算法</b></div>
@@ -1031,7 +1029,7 @@ function autofit() {
         const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg, .pop, .fig, .arrx, .pane, .mapimg, .flipc'));
         els.forEach((el) => { if (!el.dataset.fs0) el.dataset.fs0 = parseFloat(getComputedStyle(el).fontSize); });
         const foot = slide.querySelector('.foot');
-        const limit = (foot ? foot.offsetTop : 1080) - 26;
+        const limit = 1036;
         const unit = () => slide.getBoundingClientRect().height / 1080;
         const bottom = () => {
             const top = slide.getBoundingClientRect().top, u = unit();
