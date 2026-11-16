@@ -384,6 +384,16 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .form3 .farr { align-self: center; text-align: center; font-size: 40px; color: var(--brass); font-weight: 900; }
 .fconcl, .bg32 { font-size: 28px; margin: 0; } .lud { font-size: 27px; margin: 0; }
 .bigq { margin: 18px auto 0; text-align: center; font-size: 40px; font-weight: 900; color: var(--brass); width: fit-content; padding: 10px 40px; border: 3px dashed var(--brass); }
+/* Epilogue work-hour sequel */
+.wkhead { font-size: 30px; font-weight: 900; color: var(--brass); letter-spacing: .1em; margin-bottom: 10px; }
+.wk { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.wk .wkc { padding: 12px 18px; text-align: center; border-top: 8px solid var(--stamp); }
+.wk .wkc.first { border-top-color: #555; background: #d9cfb6; }
+.wk .wy { display: block; font-size: 34px; font-weight: 900; color: #8a1f17; } .wk .we { display: block; font-size: 26px; font-weight: 700; } .wk .ww { display: block; font-size: 24px; color: #6b5a3a; }
+.wk .wh { display: block; font-size: 76px; line-height: 1.05; font-weight: 900; color: #1f4fa0; } .wk .wh small { font-size: 26px; margin-left: 4px; } .wk .first .wh { color: #8a1f17; }
+.wk .ws { display: block; font-size: 19px; color: #6b5a3a; }
+.wkcon { margin: 16px 0 0; font-size: 30px; line-height: 1.5; } .wkcon .ws2 { font-size: 20px; color: var(--chalk-dim); }
+.body > .endtxt { margin-top: 18px; text-align: center; } .body > .endtxt .enden { font-size: 64px; } .body > .endtxt .endgl { margin: 8px 0 10px; font-size: 26px; } .body > .endtxt p { font-size: 46px; line-height: 1.4; }
 /* Epilogue single question */
 .endq { position: relative; display: flex; align-items: center; justify-content: center; min-height: 760px; }
 .endghost { position: absolute; left: 50%; top: 50%; width: 1200px; transform: translate(-50%,-50%) rotate(-3deg); opacity: .07; text-align: center; font-size: 40px; line-height: 2; padding: 40px; pointer-events: none; }
@@ -929,7 +939,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
         <div class="col reveal" style="--d:3;gap:8px"><div class="task" style="font-size:26px"><span class="lv">思考</span>概括工人斗争目标与形式的变化，并分析原因。</div><div class="hid dark note ansk pop" data-step="6"><span><b class="t">变化：</b>自发捣毁机器 → 组织起来 → 争取普选权等政治权利；从经济斗争走向政治斗争。<br><b class="t">原因：</b>工厂把工人集中起来；处境恶化，矛盾激化；1832 年改革将工人排除在外；马克思主义提供理论指导。<br><b class="t">成果：</b>工时受限、最低工资得到一定保障；选举权逐步扩大。</span></div></div>
         <div class="note hid eliz" data-step="5"><b class="brass">伊丽莎白：</b>1884 年后，成年男子大多有了选票，而我仍没有。</div>
       </div>
-      <div class="dark note pop kppop" id="fight-pop"><span><b class="t">工人运动</b>（纲要下 P62—63）<br>从<b class="r">捣毁机器</b>到<b class="r">争取政治权利</b><br>法国里昂工人起义、<b class="v">英国宪章运动</b>、德意志西里西亚织工起义<br><b class="t">意义</b>　工人阶级开始作为<b class="r">独立的政治力量</b>登上历史舞台；促进马克思主义诞生<br><b class="t">成果</b>（选必2 P27；选必1 P12）<br>最长工时受限，最低工资得到一定保障；1867 年工人阶级大多获得选举权；1884—1885 年基本实现<b class="r">成年男性普选权</b></span></div>
+      <div class="dark note pop kppop" id="fight-pop"><span><b class="t">工人运动</b>（纲要下 P62—63）<br>从<b class="r">捣毁机器</b>到<b class="r">争取政治权利</b><br>法国里昂工人起义、<b class="v">英国宪章运动</b>、德意志西里西亚织工起义<br><b class="t">意义</b>　工人阶级开始作为<b class="r">独立的政治力量</b>登上历史舞台；促进马克思主义诞生<br><b class="t">成果</b>（选必2 P28；选必1 P12）<br>最长工时受限，最低工资得到一定保障；1867 年工人阶级大多获得选举权；1884—1885 年基本实现<b class="r">成年男性普选权</b></span></div>
       <div class="bridge hid" data-step="99">机器日夜运转，原料与市场的需求伸向全世界。</div>
     </div>
   </div>
@@ -1011,9 +1021,11 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 <section class="slide" data-mod="5" data-time="22:30">
   <div class="content">
     <div class="hd reveal"><div><div class="sec">尾声 <small>历史照进现实</small></div><h2>从汽笛到算法：工业革命照进 AI 时代</h2></div></div>
-    <div class="body endq">
-      <div class="card endghost" aria-hidden="true"><div class="ct">LIFE CARD · 一生卡</div><div>伊丽莎白·本特利</div><div>离开土地 · 走进工厂 · 搬进城市 · 联合起来 · 卷入世界</div></div>
-      <div class="endtxt reveal" style="--d:1"><div class="enden">When the Whistle Blows</div><div class="endgl">英语习语：紧要关头。汽笛再次响起，我们又站在紧要关头。</div><p>汽笛时代，人追随机器；</p><p class="hid" data-step="1">算法时代，<b>技术能否服务于人？</b></p></div>
+    <div class="body">
+      <div class="wkhead reveal" style="--d:1">工时卡 · 续集</div>
+      <div class="wk"><div class="card wkc first"><b class="wy">1815</b><span class="we">伊丽莎白进厂</span><span class="ww">6 岁童工每天</span><b class="wh">13—16<small>小时</small></b></div><div class="card wkc hid" data-step="1"><b class="wy">1833</b><span class="we">英国《工厂法》</span><span class="ww">9—13 岁童工每天</span><b class="wh">9<small>小时</small></b><span class="ws">教材外补充</span></div><div class="card wkc hid" data-step="2"><b class="wy">1847</b><span class="we">《十小时工作法》</span><span class="ww">妇女与少年每天</span><b class="wh">10<small>小时</small></b><span class="ws">教材外补充</span></div><div class="card wkc hid" data-step="3"><b class="wy">1886</b><span class="we">芝加哥工人罢工</span><span class="ww">争取每天</span><b class="wh">8<small>小时</small></b><span class="ws">选必2 P28</span></div></div>
+      <div class="note hid wkcon" data-step="4">生产力的解放，为人的解放创造了物质前提；<b class="brass">只有通过斗争与制度变革，生产力才真正服务于人。</b><span class="ws2">（纲要下 P55、P63）</span></div>
+      <div class="endtxt hid" data-step="5"><div class="enden">When the Whistle Blows</div><div class="endgl">英语习语：紧要关头。汽笛再次响起，我们又站在紧要关头。</div><p>汽笛时代，人追随机器；算法时代，<b>技术能否服务于人？</b></p></div>
     </div>
   </div>
 </section>
@@ -1063,7 +1075,7 @@ function autofit() {
     document.querySelectorAll('.slide').forEach((slide) => {
         const body = slide.querySelector('.content .body');
         if (!body) return;
-        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg, .pop, .fig, .arrx, .pane, .mapimg, .flipc, .seesaw, .wipe, .stairs, .endq, .yax'));
+        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg, .pop, .fig, .arrx, .pane, .mapimg, .flipc, .seesaw, .wipe, .stairs, .endq, .yax, .wk, .endtxt'));
         els.forEach((el) => { if (!el.dataset.fs0) el.dataset.fs0 = parseFloat(getComputedStyle(el).fontSize); });
         const foot = slide.querySelector('.foot');
         const limit = 1036;
