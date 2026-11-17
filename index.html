@@ -214,6 +214,7 @@ svg {
 
 /* Chalk note */
 .note { border: 2px dashed var(--chalk-faint); padding: 16px 22px; font-size: 22px; line-height: 1.6; }
+.bridge.big { font-size: 34px !important; font-weight: 900; }
 .bridge { margin-top: 16px; padding: 8px 20px; border-left: 6px solid var(--stamp); color: var(--brass); font-size: 23px; font-weight: 700; line-height: 1.5; }
 .note .k { font-family: var(--f-m); font-size: 17px; letter-spacing: .14em; color: var(--brass); display: block; margin-bottom: 6px; }
 
@@ -384,6 +385,13 @@ table.lg td.f { font-family: var(--f-d); font-size: 26px; color: var(--stamp); t
 .form3 .farr { align-self: center; text-align: center; font-size: 40px; color: var(--brass); font-weight: 900; }
 .fconcl, .bg32 { font-size: 28px; margin: 0; } .lud { font-size: 27px; margin: 0; }
 .bigq { margin: 18px auto 0; text-align: center; font-size: 40px; font-weight: 900; color: var(--brass); width: fit-content; padding: 10px 40px; border: 3px dashed var(--brass); }
+/* Epilogue four answers */
+.q4 { padding: 16px 28px 20px; } .q4 .ct { font-size: 34px; }
+.q4g { display: grid; grid-template-columns: 60px 560px 1fr; gap: 12px 18px; align-items: center; margin-top: 8px; }
+.q4g .q4n { font-size: 38px; font-weight: 900; color: #fff; background: #8a1f17; text-align: center; line-height: 1.4; }
+.q4g .q4q { font-size: 36px; font-weight: 900; color: #2a2620; }
+.q4g .q4a { font-size: 34px; font-weight: 700; color: #8a1f17; border-left: 4px solid #8a1f17; padding-left: 14px; }
+.q4c { margin: 18px 0 0; font-size: 34px; text-align: center; }
 /* Epilogue work-hour sequel */
 .wkhead { font-size: 30px; font-weight: 900; color: var(--brass); letter-spacing: .1em; margin-bottom: 10px; }
 .wk { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -695,7 +703,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
       <tr><td class="n">二</td><td><b>工厂把劳动变成了什么？</b></td><td>两次工业革命与工厂制度</td></tr>
       <tr><td class="n">三</td><td><b>走出车间，怎样生存？</b></td><td>城市化与社会生活</td></tr>
       <tr><td class="n">四</td><td><b>如何回应？处境去了哪里？</b></td><td>工人运动 · 世界市场</td></tr>
-      <tr><td class="n">尾声</td><td><b>从汽笛到算法</b></td><td>生产力与人的解放</td></tr>
+      <tr><td class="n">尾声</td><td><b>回望四问</b></td><td>工业革命对劳动者的影响</td></tr>
     </table>
     <div class="stamp" style="top:auto;bottom:36px;right:44px;--sr:-12deg;--sd:1.2s;font-size:68px">05:00<small style="font-size:30px">汽笛将响</small></div>
   </div>
@@ -735,7 +743,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
         <figure class="fig reveal" style="--d:2;--r:1deg;--h:430px;--op:center 30%"><img src="assets/img/child-1840.jpg" alt="工厂童工版画"><figcaption>工厂里的童工。1840 年小说《迈克尔·阿姆斯特朗》插图，埃尔维厄绘</figcaption></figure>
         <div class="card mat reveal" style="--d:3;--r:.5deg"><div class="ct">材料</div><p style="font-size:24px">在工场手工业和手工业中，是工人利用工具，在工厂中，是工人<b class="r">服侍机器</b>。在前一种场合，劳动资料的运动从工人出发，在后一种场合，则是工人跟随劳动资料的运动。在工场手工业中，工人是一个活机构的肢体。在工厂中，死机构独立于工人而存在，工人被当作<b class="r">活的附属物</b>并入死机构。</p><div class="src">——马克思《资本论》第一卷第十三章（《马克思恩格斯文集》第 5 卷 P486）</div></div>
       </div>
-      <div class="row" style="grid-template-columns:1fr;margin-top:18px"><div class="col reveal" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>工业革命前，纺织劳动在家中进行；工业革命后，6 岁的童工在工厂每天做工 13—16 小时。结合材料，从“工人利用工具”到“工人服侍机器”，劳动者的处境发生了哪些变化？为何会发生这些变化？</div></div></div>
+      <div class="row" style="grid-template-columns:1fr;margin-top:18px"><div class="col reveal" style="--d:4;gap:10px"><div class="note" style="margin:0;font-size:30px">工业革命前，纺织劳动在家中进行；工业革命后，童工在工厂每天做工 13—16 小时。</div></div></div>
       <div class="bridge hid" data-step="99">工人是如何一步步成为机器的“活的附属物”的？先看看，他们为何走进工厂。</div>
     </div>
   </div>
@@ -746,7 +754,6 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
     <div class="hd reveal"><div><div class="sec">一、为何走进工厂 <small>工业革命的背景</small></div><h2>（一）“羊吃人”与“双重自由”：雇佣劳动者的诞生</h2></div><div class="lk">纲要下 P57 · 选必2 P22–24</div></div>
     <div class="body">
       <div class="row" style="grid-template-columns:1.15fr 1fr"><div class="col"><div class="card mat reveal" style="--d:1;--r:-.4deg"><div class="ct">材料一</div><p>这里所说的自由，具有<b class="r">双重意义</b>：一方面，工人是自由人，能够把自己的劳动力当作自己的商品来支配，另一方面，他没有别的商品可以出卖，<b class="r">自由得一无所有</b>……</p><div class="src">——马克思《资本论》第一卷第四章</div></div><div class="card mat hid reveal" data-step="1" style="--d:2;--r:.4deg"><div class="ct">材料二</div><p>盗窃公有地……为城市工业造成了<b class="r">不受法律保护的无产阶级</b>的必要供给。</p><div class="src">——马克思《资本论》第一卷第二十四章</div><p class="gloss"><b>注 · 公有地：</b>村庄共同使用的牧场、荒地和林地，贫苦农民靠它放牧、拾柴。圈地运动将其圈为私产，农民由此失去生计。</p></div></div><div class="col"><div class="card kp hid reveal" data-step="2" style="--d:3;--r:.3deg"><div class="ct">圈地运动</div><div class="meta"><span>约从15世纪开始</span><span>纲要下 P57</span></div><table class="lg"><tr><td class="h">主体</td><td>新贵族、新兴资产阶级</td></tr><tr><td class="h">动因</td><td>养羊获利（“羊吃人”）</td></tr><tr><td class="h">结果</td><td>农民→<b class="v">雇佣劳动者</b></td></tr><tr><td class="h">定性</td><td><b class="r">资本原始积累</b>的重要手段</td></tr></table></div><div class="col hid reveal" data-step="3" style="--d:4;gap:10px"><div class="task"><span class="lv">思考</span>工人为何“自由得一无所有”？圈地运动与工业革命有何关系？</div><div class="hid dark note ansk pop" data-step="4"><span><b class="t">“自由”的含义：</b>人身自由是真实的，但失去了生产资料，“自由”实际上是只能出卖劳动力。<br><b class="t">关系：</b>圈地运动提供雇佣劳动力与国内市场，促进资本原始积累和农业资本主义发展，是工业革命的前提；但这一过程伴随暴力与农民的苦难——<b class="t">工人的处境，从进厂之前就已决定</b>。</span></div></div></div></div>
-      <div class="bridge hid" data-step="99">雇佣劳动力之外，工业革命还需哪些条件？</div>
     </div>
   </div>
 </section>
@@ -767,7 +774,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
         </div>
       </div>
             <div class="dark note pop kppop" id="why-pop"><span><b class="t">政治</b>　“光荣革命”后<b class="r">政局稳定</b>，政府鼓励经济发展<br><b class="t">劳动力·市场</b>　<b class="v">农业资本主义</b>发展：农产品、<b class="r">自由劳动力</b>、国内市场<br><b class="t">资本·原料</b>　<b class="v">殖民扩张</b> → <b class="r">资本原始积累</b>、原料与海外市场<br><b class="t">技术</b>　<b class="v">手工工场</b>分工细致；欧洲<b class="v">科学技术中心</b>之一<br><b class="t">直接原因</b>　<b class="r">市场扩大、需求增长</b>，手工生产不能满足</span></div>
-      <div class="bridge hid" data-step="99">小结：失去土地、一无所有，市场又需要大批劳动力——他们不得不走进工厂。</div>
+      <div class="bridge hid big" data-step="99">小结：失去土地、一无所有，市场又需要大批劳动力——他们不得不走进工厂。</div>
     </div>
   </div>
 </section>
@@ -805,7 +812,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
     <div class="body">
       <div class="row" style="grid-template-columns:1fr;align-items:start"><div class="card mat reveal" style="--d:2;--r:.4deg"><div class="ct">材料一</div><p>资产阶级用来束缚无产阶级的<b class="v">奴隶制</b>的锁链，无论在哪里也不像在工厂制度上这样原形毕露。……<b class="r">专制的钟声</b>经常把他从睡梦中唤走，把他从早餐和午餐中唤走。</p><p style="margin-top:6px">工厂规则通常是怎样的呢，请看吧：……在工作时和别人说话、<b class="r">唱歌或吹口哨</b>，即罚 6 辨士。……只要他喘一口气，拿着<b class="r">罚款簿</b>的监工就会立刻在他背后出现。</p><div class="src">——恩格斯《英国工人阶级状况》（1845）“工厂工人”</div></div></div>
       <div class="row" style="grid-template-columns:1fr 1fr;margin-top:16px;align-items:start"><div class="card mat reveal" style="--d:3;--r:.4deg"><div class="ct">材料二 · 工厂主的辩护</div><p>（机器）几乎不让看管者做什么，<b class="v">绝无肌肉疲劳</b>，却给他稳定的好工资，外加一间免费的卫生车间。</p><div class="src">——［英］尤尔《制造业的哲学》（1835），本课译</div></div><div class="col" style="gap:12px"><div class="note reveal" style="--d:4;margin:0"><span class="k">知识归纳</span><b class="term brass" data-ans="fz-pop">工厂制度</b><span class="pg">选必2 P24—25、P27</span></div><div class="dark note pop kppop" id="fz-pop"><span><b class="t">① 倒班制</b>　机器<b class="r">昼夜运行</b><br><b class="t">② 严格规章</b>　<b class="r">罚款、体罚、解雇</b>强化纪律<br><b class="t">③ 流水线</b>　广泛应用，工厂主监督管理<br><b class="t">④ 原料</b>　统一供应、合理调配<br><b class="t">作用</b>　<b class="v">科学管理、提高效率</b>；<b class="v">时间观念</b>增强</span></div><div class="task reveal" style="--d:5"><span class="lv">思考</span>尤尔说工厂“绝无肌肉疲劳”，恩格斯却称之为“奴隶制”。如何看待？</div><div class="hid dark note ansk pop"><span><b class="t">视角不同：</b>尤尔站在<b class="t">工厂主</b>立场，强调机器省力、效率高；恩格斯从<b class="t">劳动者处境与生产关系</b>评价，纪律与罚款的代价由工人承担（材料一）。两者都有立场，但钟声、罚款等可与工厂规章、议会证词互证。<br><b class="t">结论：</b>工厂制度适应机器大生产、提高效率（教材），也以严酷纪律压迫工人；评价历史现象要区分生产力标准与人的处境。</span></div></div></div>
-      <div class="bridge hid" data-step="99">蒸汽时代之后，科学走进工厂：电力与内燃机登场。</div>
+      <div class="bridge hid" data-step="99">蒸汽时代，纪律规定工人何时劳动；电气时代，流水线将规定工人怎样劳动。</div>
     </div>
   </div>
 </section>
@@ -824,7 +831,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
           </div>
       <div class="row wcap" style="grid-template-columns:1fr 1fr;gap:20px;margin-top:8px"><div>左：英国动力织布车间（1835），阿洛姆绘</div><div style="text-align:right">右：美国福特海兰帕克工厂磁电机流水线（1913）</div></div>
       <div class="task reveal" style="--d:2;font-size:30px;margin-top:16px"><span class="lv">思考</span>从蒸汽时代的工厂到福特流水线，工人越来越像机器的一部分。对比两座工厂：工人干活的方式发生了哪些变化？这和新动力有什么关系？</div>
-          <div class="hid dark note pop" data-step="4"><span><b class="t">1835：</b>一台蒸汽机经长轴、皮带带动整个车间，工人守着机器看管多道工序，工厂要靠近煤和水。<br><b class="t">1913：</b>电力驱动机器，工件沿流水线移动，每个工人只重复一道工序，分工更细、节奏由流水线决定，效率大增。<br><b class="t">关系：</b>电力可以远距离输送、灵活分配，内燃机让动力可以移动——新动力推动生产组织变革，工人进一步成为流水线上的一环。</span></div>
+          <div class="hid dark note pop" data-step="4"><span><b class="t">动力：</b>1835 年一台蒸汽机经长轴、皮带带动整个车间 → 1913 年<b class="v">电动机分别驱动</b>每台机器<br><b class="t">分工：</b>1835 年工人看管机器、兼顾多道工序 → 1913 年固定在一个工位，<b class="r">只重复一道工序</b><br><b class="t">节奏：</b>1835 年由机器和钟声决定 → 1913 年工件沿流水线移到面前，<b class="r">由流水线速度决定</b><br><b class="t">技能：</b>1835 年仍需一定熟练度 → 1913 年动作简单重复，<b class="r">工人更容易被替换</b><br><b class="t">关系：</b>电力可远距离输送、灵活分配，生产得以按流程重新组织，效率大增；工人进一步成为机器体系中可替换的一环。</span></div>
       <div class="dark note pop kppop" id="p9-tz"><span><b class="t">第二次工业革命的特点</b>（纲要下 P59）<br>① <b class="v">科技与生产紧密结合</b>：近代科学理论指导，成果更多、更重要<br>② <b class="v">多国同时发生</b>：主要资本主义国家同时进行，范围广、规模大、进展快<br>③ <b class="v">美国、德国最为突出</b>：英、美、德、法都有重要发明<br>④ <b class="v">各国进程各具特色</b>：自然条件与社会历史条件不同<br><b class="t">结论</b>　<b class="r">不是第一次工业革命的简单延续</b></span></div>
       <div class="dark note pop kppop" id="p9-kp"><span><b class="t">电力</b>　补充、取代蒸汽 → <b class="r">“电气时代”</b><br><b class="t">内燃机</b>　汽车、飞机等新式快速交通工具 → <b class="r">具有深远影响</b><br><b class="t">电话</b>　1876 年贝尔试验第一台可用电话，“电气时代的产物”<br><b class="t">化学工业</b>　<b class="v">合成方法</b>制造新材料，石油化工<br><b class="t">旧产业</b>　炼钢、纺织、铁路等<b class="v">焕发新活力</b></span></div>
       <div class="bridge hid" data-step="99">新动力催生大企业，生产越来越集中。</div>
@@ -845,7 +852,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
         <i class="hid ansmark" data-step="6"></i></div><div class="note hid mconcl" style="margin-top:0" data-step="4"><b class="brass">生产进一步集中 → 垄断组织</b>　实质：<b class="brass">资本主义生产关系的局部调整</b></div></div>
       </div>
       <div class="dark note pop kppop" id="mono-pop"><span><b class="t">原因</b>　技术复杂、投资扩大、竞争激烈 → <b class="v">生产进一步集中</b><br><b class="t">形式</b>　卡特尔、辛迪加、托拉斯、康采恩<br><b class="t">实质</b>　<b class="r">资本主义生产关系的局部调整</b><br><b class="t">影响</b>　获取高额利润；<b class="r">阻碍竞争，导致某些停滞和腐败</b>；推动资本输出、瓜分世界</span></div>
-      <div class="bridge hid" data-step="99">小结：机器定节奏，纪律管身体，流水线拆工序——劳动被彻底重塑。走出车间，他们怎样生存？</div>
+      <div class="bridge hid" data-step="99">小结：企业越大，工人越渺小——面对垄断巨头，工人既难以议价，也更受流水线的支配。走出车间，他们怎样生存？</div>
     </div>
   </div>
 </section>
@@ -927,7 +934,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 </svg><p class="wfcap">19 世纪中期，英国成为“世界工厂”和世界贸易中心。英国纺织工人纺出的棉纱，原料来自美洲，产品销往世界。<span class="pg2">（选必2 P44）</span></p></div><figure class="fig hid" data-step="5" style="--r:.8deg;--h:320px"><img src="assets/img/crystal.jpg" alt="1851年水晶宫万国博览会"><figcaption>1851 年伦敦水晶宫万国工业博览会内景：“世界工厂”的展示</figcaption></figure></div>
       <div class="hid swq" data-step="7"><div class="card q" style="padding:12px 16px"><div class="from">浙江真题 · 2024 年 1 月 · 12</div><p class="stem" style="font-size:24px">咖啡原产于非洲，6世纪传入阿拉伯半岛，15世纪后传播到欧洲。17世纪初，威尼斯商人开设了欧洲第一家咖啡馆，之后咖啡馆逐渐风行欧洲。与此同时，欧洲人也有计划地在殖民地生产咖啡。1882年，第一家国际性的咖啡交易所在纽约开张。到20世纪初，拉丁美洲成了全世界咖啡生产的中心，美国成了全世界最大的咖啡市场。据此判断，下列说法正确的是（　）</p><div class="stmts"><span>①咖啡传入亚洲是在世界市场初步建立之后</span><span>②咖啡传入欧洲源于启蒙思想家的大力宣传</span><span>③拉丁美洲成为全世界咖啡生产中心与近代不合理国际分工密切相关</span><span>④美国成为全世界最大的咖啡市场得益于近代世界贸易与文化的交流</span></div><div class="opts" style="grid-template-columns:repeat(4,1fr)"><span>A. ①④</span><span>B. ②③</span><span>C. ②④</span><span class="right">D. ③④</span></div><i class="hid ansmark" data-step="8"></i></div></div></div>
       <div class="dark note pop kppop" id="wm-pop"><span><b class="t">开始形成</b>　新航路开辟后，西欧通过早期殖民掠夺，世界市场开始形成（纲要下 P34）<br><b class="t">初步形成</b>　17—18 世纪，荷、英、法建立海外殖民地，欧洲商人直接同世界各地建立商业联系（选必2 P41）<br><b class="t">进一步扩大</b>　第一次工业革命后：工厂产品大增，需要<b class="v">更广阔的市场</b>，原料需从世界各地获取；<b class="v">蒸汽机车和轮船</b>改善交通；建立殖民地半殖民地，<b class="r">倾销商品、掠夺原料</b>；英国成为<b class="r">“世界工厂”</b>和世界贸易中心（选必2 P41、P44）<br><b class="t">最终形成</b>　第二次工业革命后：<b class="r">资本输出</b>控制落后国家经济命脉，瓜分世界；20 世纪初，资本主义世界市场<b class="r">最终形成</b>（选必2 P41；纲要下 P61）<br><b class="t">影响</b>　世界各地联系日益紧密（纲要下 P61）；东方从属于西方，农业国从属于工业国（选必3 P56）</span></div>
-      <div class="bridge hid" data-step="99">世界被连成一体，分工格局随之确立。</div>
+      <div class="bridge hid" data-step="99">英国凭借“世界工厂”的优势，又是如何进一步打开世界市场的？</div>
     </div>
   </div>
 </section>
@@ -980,12 +987,11 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(232,196,106,.7)
 
 <section class="slide" data-mod="5" data-time="22:30">
   <div class="content">
-    <div class="hd reveal"><div><div class="sec">尾声 <small>历史照进现实</small></div><h2>从汽笛到算法：工业革命照进 AI 时代</h2></div></div>
+    <div class="hd reveal"><div><div class="sec">尾声 <small>历史照进现实</small></div><h2>回望四问：汽笛响起之后</h2></div></div>
     <div class="body">
-      <div class="wkhead reveal" style="--d:1">工时卡 · 续集</div>
-      <div class="wk"><div class="card wkc first"><b class="wy">1832</b><span class="we">议会童工证词</span><span class="ww">6 岁童工每天</span><b class="wh">13—16<small>小时</small></b></div><div class="card wkc hid" data-step="1"><b class="wy">1833</b><span class="we">英国《工厂法》</span><span class="ww">9—13 岁童工每天</span><b class="wh">9<small>小时</small></b><span class="ws">教材外补充</span></div><div class="card wkc hid" data-step="2"><b class="wy">1847</b><span class="we">《十小时工作法》</span><span class="ww">妇女与少年每天</span><b class="wh">10<small>小时</small></b><span class="ws">教材外补充</span></div><div class="card wkc hid" data-step="3"><b class="wy">1886</b><span class="we">芝加哥工人罢工</span><span class="ww">争取每天</span><b class="wh">8<small>小时</small></b></div></div>
-      <div class="note hid wkcon" data-step="4">生产力的解放，为人的解放创造了物质前提；<b class="brass">只有通过斗争与制度变革，生产力才真正服务于人。</b></div>
-      <div class="endtxt hid" data-step="5"><div class="enden">When the Whistle Blows</div><div class="endgl">英语习语：紧要关头。汽笛再次响起，我们又站在紧要关头。</div><p>汽笛时代，人追随机器；算法时代，<b>技术能否服务于人？</b></p></div>
+      <div class="card q4 reveal" style="--d:1"><div class="ct">处境四问 · 作答</div><div class="q4g"><div class="q4n">一</div><div class="q4q">为何走进工厂？</div><div class="q4a hid" data-step="1">失去土地、一无所有，市场又需要大批劳动力</div><div class="q4n">二</div><div class="q4q">工厂把劳动变成了什么？</div><div class="q4a hid" data-step="2">机器定节奏，纪律管身体，人成为机器的附属</div><div class="q4n">三</div><div class="q4q">走出车间，怎样生存？</div><div class="q4a hid" data-step="3">聚居在被隔开的城市，繁荣与苦难并存</div><div class="q4n">四</div><div class="q4q">如何回应？处境去了哪里？</div><div class="q4a hid" data-step="4">从捣毁机器到争取选票；同样的处境随世界市场复制到全球</div></div></div>
+      <div class="note hid q4c" data-step="5">工业革命改变了世界，也改变了劳动者；<b class="brass">劳动者也在改变着世界。</b></div>
+      <div class="endtxt hid" data-step="6"><div class="enden">When the Whistle Blows</div><div class="endgl">英语习语：紧要关头。汽笛再次响起，我们又站在紧要关头。</div><p>技术进步，<b>劳动者的处境一定会变好吗？</b></p></div>
     </div>
   </div>
 </section>
@@ -1035,7 +1041,7 @@ function autofit() {
     document.querySelectorAll('.slide').forEach((slide) => {
         const body = slide.querySelector('.content .body');
         if (!body) return;
-        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg, .pop, .fig, .arrx, .pane, .mapimg, .flipc, .seesaw, .wipe, .stairs, .endq, .yax, .wk, .endtxt, .wkcon'));
+        const els = [...body.querySelectorAll('*')].filter((el) => !el.closest('.stamp, .life, .ct, .meta, .sim, svg, .pop, .fig, .arrx, .pane, .mapimg, .flipc, .seesaw, .wipe, .stairs, .endq, .yax, .wk, .endtxt, .wkcon, .q4, .q4c'));
         els.forEach((el) => { if (!el.dataset.fs0) el.dataset.fs0 = parseFloat(getComputedStyle(el).fontSize); });
         const foot = slide.querySelector('.foot');
         const limit = 1036;
